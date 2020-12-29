@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ペッと！</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="row header-area">
+          <div class="col-3 d-flex align-items-center justify-content-center">
+            <div class="nav">
+              <% if owner_signed_in? %>
+                <li><%= link_to "みんなの日記", diaries_path %></li>
+                <li><%= link_to "みんなの思い出", "#" %></li>
+              <% else %>
+                <li><%= link_to "ペッと！について", '#' %></li>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-3 offset-1 d-flex align-items-center justify-content-center">
+            <h1>ロゴ</h1>
+          </div>
+          <div class="ml-5 d-flex align-items-center justify-content-center">
+            <ul class="nav">
+              <% if owner_signed_in? %>
+                <li>
+                  <%= link_to pet_path(current_owner) do %>
+                    <i class="fas fa-home"></i><span> マイハウス</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to notifications_path do %>
+                    <i class="far fa-bell"></i><sapn> お知らせ</sapn>
+                  <% end %>
+                </li>
+                <li><%= link_to "ログアウト", destroy_owner_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "新規登録", new_owner_registration_path %></li>
+                <li><%= link_to "ログイン", new_owner_session_path %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <%= yield %>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+
+          </div>
+          <div class="col-md-3 offset-md-6">
+            <%= link_to "Topへ戻る", root_path %>
+            <%= link_to "お問い合わせ", "#" %>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

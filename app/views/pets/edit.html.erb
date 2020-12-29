@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <h2>プロフィール編集</h2>
+  </div>
+  <%= form_with model: current_owner, url: pet_path(@pet) ,local: true do |f| %>
+    <div class="row">
+      <div class="col-4">
+        <h4>あなた</h4>
+        <div class="field">
+          <%= f.label :写真 %><br />
+          <%= attachment_image_tag current_owner, :image, size: "180x180", fallback: "no_image.png", class:"owner_prev" %>
+          <%= f.attachment_field :image, class:"owner_img_btn" %>
+        </div>
+        <div class="field">
+          <%= f.label :名前 %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        </div>
+      </div>
+      <%= f.fields_for :pet, @pet do |pet| %>
+        <div class="col-8">
+          <div class="row">
+            <h4>ペット</h4>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <%= attachment_image_tag @pet, :image, size: '180x180', fallback: "no_image.png", class:"pet_prev" %>
+              <%= pet.attachment_field :image %>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <%= pet.label :名前 %><br />
+                <%= pet.text_field :name %>
+              </div>
+              <div class="row">
+                <%= pet.label :紹介文 %><br />
+                <%= pet.text_area :introduction %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <%= pet.label :性格 %><br />
+            <% PetPersonality.personalities.map do |k, v| %>
+              <div class="col-5 ml-3">
+                <%= pet.fields_for :pet_personalities do |pp| %>
+                  <%= pp.check_box :personality, {}, v, false %>
+                  <%= pp.label :personality, k %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+      <%= f.submit "更新する", class:"btn" %>
+      <%= link_to "退会する", unsubscribe_owner_path(current_owner), class:"btn" %>
+    </div>
+
+  <% end %>
+</div>

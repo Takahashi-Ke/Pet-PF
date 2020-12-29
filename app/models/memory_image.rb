@@ -1,0 +1,2 @@
+class MemoryImage < ApplicationRecord
+end

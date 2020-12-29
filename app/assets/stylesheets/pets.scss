@@ -1,0 +1,47 @@
+// Place all the styles related to the Pets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#tab-menu {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+#tab-menu li {
+  list-style-type: none;
+  width: 25%;
+}
+#tab-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+  text-align: center;
+  background: #000;
+  border: 1px solid #000;
+  border-bottom: none;
+}
+
+#tab-menu .active {
+  background: #fff;
+  color: #000;
+}
+#tab-contents {
+  display: flex;
+  flex-wrap: wrap;
+}
+#tab-contents .tab {
+  width: 100%;
+  padding: 30px;
+  background: #fff;
+  border: 1px solid #000;
+  border-top: none;
+}
+#tab-contents p {
+  color: #000;
+  line-height: 2.5;
+}
+.gender-icon {
+  font-size: 1.3em;
+  color: #444444;
+}

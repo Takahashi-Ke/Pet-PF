@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-8 offset-1">
+    <%= form_with model: diary, url: diaries_path(pet_id: pet), local: true do |f| %>
+      <p>日記を書く</p>
+      <%= f.text_area :body, placeholder: "今日の出来事", size: "50x5" %>
+      <%= f.attachment_field :image %>
+      <%= f.submit "投稿する" %>
+    <% end %>
+  </div>
+</div>
+<div class="hide-modal-btn">
+  閉じる
+</div>

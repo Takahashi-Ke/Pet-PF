@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'pets/pet_info', pet: @pet %>
+    </div>
+    <div class="col-9">
+        <div class="row">
+          <h2>お知らせ</h2>
+        </div>
+        <% @notifications.each do |notification| %>
+          <div class="row mt-5">
+            <div class="col-1">
+              <%= link_to pet_path(notification.visitor) do %>
+                <%= attachment_image_tag notification.visitor, :image, size: '70x70', fallback: "no_image.png" %>
+              <% end %>
+            </div>
+            <div class="col-3">
+              <%= link_to notification.visitor.name, pet_path(notification.visitor) %><span>さんが</span>
+            </div>
+            <div class="col-5">
+              <% case notification.action %>
+                <% when 'follow' then %>
+                  <p>あなたをフォローしました</p>
+                <% when 'favorite' then %>
+                  <p>あなたの日記にいいねしました</p>
+                <% when 'comment' then %>
+                  <% if notification.diary.pet_id == notification.visited.id %>
+                    <span>あなたの日記に</span>
+                  <% else %>
+                    <%= attachment_image_tag notification.diary.pet, :image, size: '70x70', fallback: "no_image.png" %>
+                    <span><%= notification.diary.pet.name %>さんの投稿に</span>
+                  <% end %>
+                <span>コメントしました</span>
+                <%= notification.diary.body %>
+              <% end %>
+            </div>
+            <div class="col-2">
+              <%= time_ago_in_words(notification.created_at) %>前
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

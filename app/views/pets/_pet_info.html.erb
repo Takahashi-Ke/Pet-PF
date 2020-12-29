@@ -1,0 +1,22 @@
+<div class="row">
+  <%= pet.name %>
+</div>
+<div class="row">
+  <%= attachment_image_tag pet, :image, size: '120x120', fallback: "no_image.png" %>
+</div>
+<div class="row">
+  <div class="col-3">
+    <%= attachment_image_tag pet.owner, :image, size: '80x80', fallback: "no_image.png" %>
+  </div>
+  <div class="col-5">
+    <%= pet.owner.name %>
+  </div>
+</div>
+<div class="row">
+  <p>友だち（<%= @pet.following_pets.count%>）</p>
+</div>
+<div class="row">
+  <div class="add-diary-button">
+    日記を書く
+  </div>
+</div>
