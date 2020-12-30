@@ -1,0 +1,21 @@
+<div class="row">
+  <h4>みんなの思い出</h4>
+</div>
+      <% memories.each do |memory| %>
+        <div class="row">
+          <div class="col-3">
+            <%= attachment_image_tag memory.pet, :image, size:'40x40', fallback: "no_image.png", class:"rounded-circle" %>
+            <span> <%= memory.pet.name %></span>
+          </div>
+          <div class="col-3">
+            <%= attachment_image_tag memory.pet.owner, :image, size:'40x40', fallback: "no_image.png", class:"rounded-circle" %>
+            <span> <%= memory.pet.owner.name %></span>
+          </div>
+          <div class="col-5 memory-date d-flex align-items-center justify-content-center">
+            <%= memory.created_at.to_s(:datetime_jp) %>
+          </div>
+        </div>
+        <div class="row">
+          <%= link_to memory.title, memory_path(memory) %>
+        </div>
+      <% end %>

@@ -51,9 +51,6 @@
                     <%= pet.label :gender, "オス", {value: 1} %>
                     <%= pet.radio_button :gender, 'メス' %>
                     <%= pet.label :gender, "メス", {value: 2} %>
-                    <%#= pet.select :gender, Pet.genders.keys %>
-                    <%#= pet.select :gender, options_for_select(Pet.genders.to_a, selected: @owner.build_pet.gender_before_type_cast) %>
-                    <%#= pet.select :gender, Pet.genders.map{|k,v| [k,v]} %>
                   </div>
                 </div>
               </div>
