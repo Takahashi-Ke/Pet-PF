@@ -1,0 +1,18 @@
+<div class="row">
+  <h4><%= pet.name %>の思い出</h4>
+</div>
+<div class="row">
+  <div class="col-3">
+    <%= attachment_image_tag pet, :image, size:'120x120', fallback: "no_image.png" %>
+  </div>
+  <div class="col-3">
+    <%= @pet.name %>
+  </div>
+  <div class="col-3">
+    <%= attachment_image_tag pet.owner, :image, size:'120x120', fallback: "no_image.png" %>
+  </div>
+  <div class="col-3">
+    <%= @pet.owner.name %>
+  </div>
+</div>
+

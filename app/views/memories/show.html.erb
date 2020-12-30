@@ -4,7 +4,19 @@
       <%= render 'pets/pet_info', pet: @pet %>
     </div>
     <div class="col-6">
-      
+      <%= @memory.created_at.to_s(:datetime_jp) %>
+      <%= @memory.title %>
+      <%= @memory.body %>
+      <% if @images.exists? %>
+        <div class="row">
+          <p>写真</p>
+          <% @images.each do |image| %>
+            <div class="col-3">
+              <%= attachment_image_tag image, :image, size: '120x120' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div class="col-3"></div>
   </div>

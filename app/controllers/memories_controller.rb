@@ -8,18 +8,28 @@ class MemoriesController < ApplicationController
   end
   
   def create
-    binding.pry
+    # binding.pry
     memory = Memory.new(memory_params)
+    memory.pet_id = current_owner.pet.id
     memory.save
+    redirect_to memory_path(memory)
   end
   
   def index
-    @memories = Memory.all
+    @pet = current_owner.pet
+    if params.has_key?(:pet_id) && params[:pet_id]
+      @posted_by_pet = Pet.find(params[:pet_id])
+      @memories = Memory.where(pet_id: @pet.id).page(params[:page])
+    else
+      @memories = Memory.page(params[:page])
+    end
+    
     @diary = Diary.new
   end
   
   def show
     @memory = Memory.find(params[:id])
+    @images = MemoryImage.where(memory_id: @memory.id)
     @pet = Pet.find_by(id: @memory.pet_id)
     @diary = Diary.new
     
