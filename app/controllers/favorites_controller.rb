@@ -1,9 +1,9 @@
-class DiaryFavoritesController < ApplicationController
+class FavoritesController < ApplicationController
 
   def create
-    @diary = Diary.find(params[:id])
     pet = current_owner.pet
-    favorite = pet.diary_favorites.new(diary_id: @diary.id)
+    @diary = Diary.find(params[:id])
+    favorite = pet.favorites.new(diary_id: @diary.id)
     favorite.save
     @diary.create_notification_favo(pet)
   end
@@ -11,7 +11,7 @@ class DiaryFavoritesController < ApplicationController
   def destroy
     @diary = Diary.find(params[:id])
     pet = current_owner.pet
-    favorite = pet.diary_favorites.find_by(diary_id: @diary.id)
+    favorite = pet.favorites.find_by(diary_id: @diary.id)
     favorite.destroy
   end
 
