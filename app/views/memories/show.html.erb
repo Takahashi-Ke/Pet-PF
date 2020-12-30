@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'pets/pet_info', pet: @pet %>
+    </div>
+    <div class="col-6">
+      
+    </div>
+    <div class="col-3"></div>
+  </div>
+  <div class="modal-wrapper"></div>
+  <div class="diary-modal">
+    <%= render 'diaries/diary_form', diary: @diary, pet: @pet %>
+  </div>
+</div>
