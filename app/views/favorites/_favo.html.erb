@@ -1,0 +1,29 @@
+<% if memory.nil? %>
+  <% if diary.diary_favorited_by?(current_owner.pet, diary) %>
+    <%= link_to  favorite_path(diary.id), method: :delete, remote: true  do %>
+      <i class="fas fa-heart"></i>
+      <span><%= diary.favorites.count %></span>
+    <% end %>
+  <% else %>
+    <%= link_to  favorites_path(id: diary.id), method: :post, remote: true  do %>
+      <i class="far fa-heart"></i>
+      <span><%= diary.favorites.count %></span>
+    <% end %>
+  <% end %>
+
+  
+<% else %>
+  <% if memory.memory_favorited_by?(current_owner.pet, memory) %>
+    <%= link_to  favorite_path(memory.id), method: :delete, remote: true  do %>
+      <i class="fas fa-heart"></i>
+      <span><%= memory.favorites.count %></span>
+    <% end %>
+  <% else %>
+    <%= link_to  favorites_path(id: memory.id), method: :post, remote: true  do %>
+      <i class="far fa-heart"></i>
+      <span><%= memory.favorites.count %></span>
+    <% end %>
+  <% end %>
+  
+
+<% end %>

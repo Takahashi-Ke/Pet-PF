@@ -2,7 +2,7 @@
   <div class="diary-contents">
     <div class="row">
       <div class="col-2">
-        <%= attachment_image_tag diary.pet, :image, size: '60x60', fallback: "no_image.png" %>
+        <%= attachment_image_tag diary.pet, :image, size: '60x60', fallback: "no_image.png", class:"rounded-circle" %>
       </div>
       <div class="col-10">
         <div class="row">
@@ -24,10 +24,11 @@
         <i class="far fa-comment-alt"></i>
       </div>
 
-      <div class="col-2 diary-favorite-btn-<%= diary.id %>">
-        <%= render 'diary_favorites/diary_favo', diary: diary %>
+      <div class="col-2 favorite-btn-<%= diary.id %>">
+        <%= render 'favorites/favo', diary: diary %>
       </div>
-
+      
+      <!--日記削除ボタン-->
       <% if diary.pet == current_owner.pet %>
         <div class="col-2">
           <%= link_to diary_path(diary), method: :delete, data: {confirm: "削除しますか？"} do %>

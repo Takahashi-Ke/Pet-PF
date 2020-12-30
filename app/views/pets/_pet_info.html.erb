@@ -1,23 +1,51 @@
 <div class="row">
-  <%= pet.name %>
+  <div class="col-5">
+    <h4><%= pet.name %></h4>
+  </div>
+  <div class="col-3 mt-1">
+    <% if @pet.gender == 'オス' %>
+     <i class="fas fa-mars gender-icon"></i>
+    <% else %>
+      <i class="fas fa-venus gender-icon"></i>
+    <% end %>
+  </div>
 </div>
 <div class="row">
-  <%= attachment_image_tag pet, :image, size: '120x120', fallback: "no_image.png" %>
+  <div class="mx-auto">
+    <%= attachment_image_tag pet, :image, size: '120x120', fallback: "no_image.png" %>
+  </div>
 </div>
-<div class="row">
-  <div class="col-3">
+
+<div class="row mt-3">
+  <div class="col-4">
     <%= attachment_image_tag pet.owner, :image, size: '80x80', fallback: "no_image.png" %>
   </div>
-  <div class="col-5">
+  <div class="col-5 ml-1 d-flex align-items-end">
     <%= pet.owner.name %>
   </div>
 </div>
-<div class="row">
-  <p>友だち（<%= @pet.following_pets.count%>）</p>
+<div class="row mt-3 frend-count">
+  <div class="mx-auto">
+    <p>友だち（<%= @pet.following_pets.count%>）</p>
+  </div>
 </div>
 <div class="row">
-  <div class="add-diary-button">
+  <div class="add-diary-button mx-auto">
     日記を書く
   </div>
-  <%= link_to "思い出を見る", memories_path %>
+</div>
+<div class="row mt-3 mb-3">
+  <div class="mx-auto">
+    <%= link_to "思い出を見る", memories_path(pet_id: @pet) %>
+  </div>
+</div>
+<div class="row mt-3 mb-3">
+  <div class="mx-auto">
+    <%= link_to "思い出を作る", new_memory_path %>
+  </div>
+</div>
+<div class="row mt-3 mb-3">
+  <div class="mx-auto">
+    <%= link_to "プロフィール編集", edit_pet_path(@pet) %>
+  </div>
 </div>

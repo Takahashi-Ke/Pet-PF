@@ -17,7 +17,7 @@ class MemoriesController < ApplicationController
   
   def index
     @pet = current_owner.pet
-    if params.has_key?(:pet_id) && params[:pet_id]
+    if params.has_key?(:pet_id)
       @posted_by_pet = Pet.find(params[:pet_id])
       @memories = Memory.where(pet_id: @pet.id).page(params[:page])
     else

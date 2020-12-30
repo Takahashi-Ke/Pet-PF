@@ -1,22 +1,46 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-3">
+    <div class="col-2 ml-5 mr-3">
       <%= render 'pets/pet_info', pet: @pet %>
     </div>
     <div class="col-6">
-      <%= @memory.created_at.to_s(:datetime_jp) %>
-      <%= @memory.title %>
-      <%= @memory.body %>
-      <% if @images.exists? %>
+      <div class="memory-detail">
         <div class="row">
-          <p>写真</p>
-          <% @images.each do |image| %>
-            <div class="col-3">
-              <%= attachment_image_tag image, :image, size: '120x120' %>
-            </div>
-          <% end %>
+          <div class="col-5 memory-title">
+            <p><%= @memory.title %></p>
+          </div>
+          <div class="col-5 mt-2">
+            <%= @memory.created_at.to_s(:datetime_jp) %>
+          </div>
         </div>
-      <% end %>
+           
+        <div class="row">
+          <%= simple_format(@memory.body) %>
+        </div>
+        
+        <% unless @images.blank? %>
+          <div class="row">
+            <p>写真</p>
+          </div>
+          <div class="row">
+            <% @images.each do |image| %>
+              <div class="col-3">
+                <%= attachment_image_tag image, :image, size: '120x120' %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row mt-3">
+        <div class="col-2 offset-6 comment-btn">
+          <i class="far fa-comment-alt"></i>
+        </div>
+        <div class="col-2 favorite-btn-<%= @memory.id %>">
+          <%= render 'favorites/favo', memory: @memory %>
+        </div>
+        <div class="col"></div>
+      </div>
+ 
     </div>
     <div class="col-3"></div>
   </div>
