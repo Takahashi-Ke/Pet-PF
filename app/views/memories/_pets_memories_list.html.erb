@@ -3,16 +3,41 @@
 </div>
 <div class="row">
   <div class="col-3">
-    <%= attachment_image_tag pet, :image, size:'120x120', fallback: "no_image.png" %>
+    <%= attachment_image_tag pet, :image, size:'140x140', fallback: "no_image.png", class:"rounded-circle" %>
   </div>
   <div class="col-3">
     <%= @pet.name %>
   </div>
   <div class="col-3">
-    <%= attachment_image_tag pet.owner, :image, size:'120x120', fallback: "no_image.png" %>
+    <%= attachment_image_tag pet.owner, :image, size:'140x140', fallback: "no_image.png", class:"rounded-circle" %>
   </div>
   <div class="col-3">
-    <%= @pet.owner.name %>
+    <%= pet.owner.name %>
   </div>
 </div>
+<% memories.each do |memory| %>
+  <div class="memory-contents">
+    <div class="row">
+      <div class="col-5 ml-3 mt-3">
+        <%= link_to memory.title, memory_path(memory) %>
+      </div>
+      <div class="col-5 memory-date d-flex align-items-center justify-content-center">
+        <%= memory.created_at.to_s(:datetime_jp) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 mt-3 mb-3">
+        <div class="mx-auto">
+          <%= attachment_image_tag memory.memory_images.first, :image, size: '180x180' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10 offset-2">
+        <%= truncate(memory.body, length: 24) %>
+      </div>
+    </div>
+  </div>
+  <%= render 'memories/memory_icons', memory: memory %>
+<% end %>
 

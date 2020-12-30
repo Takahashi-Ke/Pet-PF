@@ -1,15 +1,27 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-3">
+    <div class="col-2 ml-5">
       <%= render 'pets/pet_info', pet: @pet %>
     </div>
     <div class="col-6">
-      <%= @memory.created_at.to_s(:datetime_jp) %>
-      <%= @memory.title %>
-      <%= @memory.body %>
-      <% if @images.exists? %>
+      <div class="row">
+        <div class="col-5 memory-title">
+          <p><%= @memory.title %></p>
+        </div>
+        <div class="col-5 mt-2">
+          <%= @memory.created_at.to_s(:datetime_jp) %>
+        </div>
+      </div>
+         
+      <div class="row">
+        <%= simple_format(@memory.body) %>
+      </div>
+      
+      <% unless @images.blank? %>
         <div class="row">
           <p>写真</p>
+        </div>
+        <div class="row">
           <% @images.each do |image| %>
             <div class="col-3">
               <%= attachment_image_tag image, :image, size: '120x120' %>
