@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" integrity="sha384-9/D4ECZvKMVEJ9Bhr3ZnUAF+Ahlagp1cyPC7h5yDlZdXs4DQ/vRftzfd+2uFUuqS" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -17,7 +18,7 @@
             <div class="nav">
               <% if owner_signed_in? %>
                 <li><%= link_to "みんなの日記", diaries_path %></li>
-                <li><%= link_to "みんなの思い出", "#" %></li>
+                <li><%= link_to "みんなの思い出", memories_path %></li>
               <% else %>
                 <li><%= link_to "ペッと！について", '#' %></li>
               <% end %>
