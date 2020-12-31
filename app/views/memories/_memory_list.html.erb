@@ -1,0 +1,64 @@
+<% if posted_by_pet.blank? %>
+  <div class="row ml-3">
+    <h4>みんなの思い出</h4>
+  </div>
+<% else %>
+  <div class="row ml-3">
+    <h4><%= pet.name %>の思い出</h4>
+  </div>
+  <div class="row mt-3 mb-3 ml-5">
+    <div class="col-3">
+      <%= link_to pet_path(pet) do %>
+        <%= attachment_image_tag pet, :image, size:'140x140', fallback: "no_image.png", class:"rounded-circle" %>
+      <% end %>
+    </div>
+    <div class="col-3 d-flex align-items-center">
+      <%= link_to pet.name, pet_path(pet), class:"name-link" %>
+    </div>
+    <div class="col-3">
+      <%= attachment_image_tag pet.owner, :image, size:'140x140', fallback: "no_image.png", class:"rounded-circle" %>
+    </div>
+    <div class="col-3 d-flex align-items-center name-link">
+      <%= pet.owner.name %>
+    </div>
+  </div>
+<% end %>
+
+<% memories.each do |memory| %>
+  <div class="memory-contents">
+    
+    <div class="row pt-2 pb-3">
+      <div class="mx-auto">
+        <%= attachment_image_tag memory.memory_images.first, :image, size: '430x320', fallback: "no_image.png" %>
+      </div>
+    </div>
+    
+    <% if posted_by_pet.blank? %>
+      <div class="row">
+        <div class="col-3 offset-2">
+          <%= attachment_image_tag memory.pet, :image, size:'30x30', fallback: "no_image.png", class:"rounded-circle" %>
+          <span> <%= memory.pet.name %></span>
+        </div>
+        <div class="col-3">
+          <%= attachment_image_tag memory.pet.owner, :image, size:'30x30', fallback: "no_image.png", class:"rounded-circle" %>
+          <span> <%= memory.pet.owner.name %></span>
+        </div>
+      </div>
+    <% end %>
+    
+    <div class="row mt-3">
+      <div class="col-6 offset-1 memory-title">
+        <%= link_to memory.title, memory_path(memory) %>
+      </div>
+      <div class="col-4 memory-date">
+        <%= memory.created_at.to_s(:datetime_jp) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10 offset-2">
+        <%= truncate(memory.body, length: 100) %>
+      </div>
+    </div>
+  </div>
+  <%= render 'memories/memory_icons', memory: memory, diary: diary %>
+<% end %>
