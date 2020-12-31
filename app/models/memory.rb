@@ -4,6 +4,7 @@ class Memory < ApplicationRecord
   default_scope -> {order(created_at: :desc)}
   belongs_to :pet
   has_many :memory_images, dependent: :destroy
+  has_many :memory_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   accepts_nested_attributes_for :memory_images, allow_destroy: true
   accepts_attachments_for :post_images, attachment: :images
