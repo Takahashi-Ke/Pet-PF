@@ -29,7 +29,9 @@
     
     <div class="row pt-2 pb-3">
       <div class="mx-auto">
-        <%= attachment_image_tag memory.memory_images.first, :image, size: '430x320', fallback: "no_image.png" %>
+        <%= link_to memory_path(memory) do %>
+          <%= attachment_image_tag memory.memory_images.first, :image, size: '430x320', fallback: "no_image.png" %>
+        <% end %>
       </div>
     </div>
     

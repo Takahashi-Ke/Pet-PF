@@ -16,8 +16,9 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
   end
   resources :diaries, only: [:index, :create, :destroy]
-  resources :memories
   resources :diary_comments, only: [:create, :destroy]
+  resources :memories
+  resources :memory_comments, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
   resources :notifications, only: :index
 end

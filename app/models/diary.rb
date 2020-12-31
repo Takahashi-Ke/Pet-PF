@@ -1,5 +1,8 @@
 class Diary < ApplicationRecord
 
+  # 作成日時が新しい順に取り出す
+  default_scope -> {order(created_at: :desc)}
+  
   belongs_to :pet
   has_many :diary_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
