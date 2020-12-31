@@ -65,58 +65,70 @@
       </ul>
 
       <div id="tab-contents">
-
-        <!--日記一覧(tab1)-->
-        <div id="tab1" class="tab">
-          <div class="row">
-            <div class="col-2">
-              <div class="add-diary-button">
-                日記を書く
+        <div class="tab-area">
+          <!--日記一覧(tab1)-->
+          <div id="tab1" class="tab">
+            <div class="row">
+              <div class="col-2">
+                <div class="add-diary-button">
+                  日記を書く
+                </div>
+              </div>
+              <div class="col-8">
+                <%= render 'diaries/diaries_list', diaries: @diaries %>
               </div>
             </div>
-            <div class="col-8">
-              <%= render 'diaries/diaries_list', diaries: @diaries %>
+          </div>
+  
+          <!--アルバム一覧(tab2)-->
+          <div id="tab2" class="tab">
+            <div class="row">
+              <% if @photos.exists? %>
+                <% @photos.each do |photo| %>
+                  <div class="col-3 mb-3">
+                    <%= attachment_image_tag photo, :image, size: '190x190' %>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="mx-auto no-album">
+                  <p>アルバムはまだありません</p>
+                  <% if @pet.id == current_owner.pet.id %>
+                    <p>日記に写真を載せて投稿しましょう!</p>
+                    <p class="add-diary-button">
+                      日記を書く
+                    </p>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
           </div>
-        </div>
-
-        <!--アルバム一覧(tab2)-->
-        <div id="tab2" class="tab">
-          <div class="row">
-            <% @photos.each do |photo| %>
-              <div class="col-3 mb-3">
-                <%= attachment_image_tag photo, :image, size: '190x190' %>
+  
+          <!--思い出(tab3)-->
+          <div id="tab3" class="tab">
+            <p>思い出</p>
+            <%= link_to "思い出を作る", new_memory_path %>
+          </div>
+  
+          <!--友だち(tab4)-->
+          <div id="tab4" class="tab">
+            <p>友だち</p>
+            <% @pet.followed_pets.each do |follower| %>
+              <div class="row">
+                <div class="col-2">
+                  <%= attachment_image_tag follower, :image, size: '120x120', fallback: "no_image.png" %>
+                </div>
+                <div class="col-7">
+                  <div class="row">
+                    <%= link_to follower.name, pet_path(follower) %>
+                  </div>
+                  <div class="row mt-3 ml-5">
+                    <%= follower.introduction %>
+                  </div>
+                </div>
               </div>
             <% end %>
           </div>
         </div>
-
-        <!--思い出(tab3)-->
-        <div id="tab3" class="tab">
-          <p>思い出</p>
-          <%= link_to "思い出を作る", new_memory_path %>
-        </div>
-
-        <!--友だち(tab4)-->
-        <div id="tab4" class="tab">
-          <p>友だち</p>
-          <% @pet.followed_pets.each do |follower| %>
-            <div class="row">
-              <div class="col-2">
-                <%= attachment_image_tag follower, :image, size: '120x120', fallback: "no_image.png" %>
-              </div>
-              <div class="col-7">
-                <div class="row">
-                  <%= link_to follower.name, pet_path(follower) %>
-                </div>
-                <div class="row mt-3 ml-5">
-                  <%= follower.introduction %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-
       </div>
     </div>
   </div>
