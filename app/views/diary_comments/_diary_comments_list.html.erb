@@ -4,7 +4,7 @@
       <% diary.diary_comments.each do |dc| %>
         <div class="row mt-2 mb-3">
           <div class="col-2">
-            <%= attachment_image_tag dc.pet, :image, size: '40x40', fallback: "no_image.png" %>
+            <%= attachment_image_tag dc.pet, :image, size: '40x40', fallback: "no_image.png", class:"rounded-circle" %>
           </div>
           <div class="col-10">
             <%= link_to dc.pet.name, pet_path(dc.pet) %>

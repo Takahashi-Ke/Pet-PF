@@ -1,0 +1,17 @@
+<% case notification.action %>
+  <% when 'follow' then %>
+    <span>あなたをフォローしました</span>
+  <% when 'favorite' then %>
+    <sppan>あなたの日記にいいねしました</span>
+  <% when 'comment' then %>
+    <% if notification.diary.pet_id == notification.visited.id %>
+      <span>あなたの日記に</span>
+    <% else %>
+      <%= attachment_image_tag notification.diary.pet, :image, size: '70x70', fallback: "no_image.png", class:"rounded-circle" %>
+      <span><%= notification.diary.pet.name %>さんの投稿に</span>
+    <% end %>
+  <span>コメントしました</span>
+  <div class="row pt-2 ml-1">
+    <%= notification.diary.body %>
+  </div>
+<% end %>

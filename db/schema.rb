@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_084025) do
+ActiveRecord::Schema.define(version: 2020_12_31_110425) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "pet_id"
@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 2020_12_31_084025) do
     t.boolean "is_checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "memory_id"
+    t.string "memory_comment_id"
     t.index ["diary_comment_id"], name: "index_notifications_on_diary_comment_id"
     t.index ["diary_id"], name: "index_notifications_on_diary_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"

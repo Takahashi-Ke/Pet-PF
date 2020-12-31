@@ -12,7 +12,7 @@ class Diary < ApplicationRecord
 
   validates :body, presence: true
 
-
+  # 投稿にいいねしているかを確認
   def diary_favorited_by?(pet, diary)
       Favorite.where(pet_id: pet.id, diary_id: diary.id).exists?
   end

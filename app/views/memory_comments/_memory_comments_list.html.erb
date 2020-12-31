@@ -4,7 +4,7 @@
       <% memory.memory_comments.each do |mc| %>
         <div class="row mt-2 mb-3">
           <div class="col-2">
-            <%= attachment_image_tag mc.pet, :image, size: '40x40', fallback: "no_image.png" %>
+            <%= attachment_image_tag mc.pet, :image, size: '40x40', fallback: "no_image.png", class:"rounded-circle" %>
           </div>
           <div class="col-10">
             <%= link_to mc.pet.name, pet_path(mc.pet) %>
