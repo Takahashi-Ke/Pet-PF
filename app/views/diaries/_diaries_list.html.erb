@@ -1,5 +1,5 @@
 <% diaries.each do |diary| %>
-  <div class="diary-contents">
+  <div class="diary-contents ml-3">
     <div class="row">
       <div class="col-2">
         <%= attachment_image_tag diary.pet, :image, size: '60x60', fallback: "no_image.png", class:"rounded-circle" %>
@@ -13,7 +13,7 @@
             <%= diary.created_at.to_s(:datetime_jp) %>
           </div>
           <div class="diary-body">
-            <%= attachment_image_tag diary, :image, size: '230x230' %><br />
+            <%= attachment_image_tag diary, :image, size: '200x200' %><br />
             <%= diary.body %>
           </div>
         </div>

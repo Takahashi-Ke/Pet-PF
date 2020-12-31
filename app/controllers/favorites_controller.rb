@@ -12,6 +12,7 @@ class FavoritesController < ApplicationController
       @memory = Memory.find(params[:id])
       favorite = pet.favorites.new(memory_id: @memory.id)
       favorite.save
+      @memory.create_notification_favo(pet)
       redirect_to request.referer
     end
   end

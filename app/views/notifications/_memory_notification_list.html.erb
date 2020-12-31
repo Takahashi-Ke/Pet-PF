@@ -1,0 +1,14 @@
+<% case notification.action %>
+  <% when 'follow' then %>
+    <span>あなたをフォローしました</span>
+  <% when 'favorite' then %>
+    <span>あなたの思い出にいいねしました</span>
+  <% when 'comment' then %>
+    <% if notification.memory.pet_id == notification.visited.id %>
+      <span>あなたの思い出に</span>
+    <% else %>
+      <%= attachment_image_tag notification.memory.pet, :image, size: '70x70', fallback: "no_image.png", class:"rounded-circle" %>
+      <span><%= notification.memory.pet.name %>さんの投稿に</span>
+    <% end %>
+  <span>コメントしました</span>
+<% end %>

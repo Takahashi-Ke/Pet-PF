@@ -1,5 +1,8 @@
 class Diary < ApplicationRecord
 
+  # 作成日時が新しい順に取り出す
+  default_scope -> {order(created_at: :desc)}
+  
   belongs_to :pet
   has_many :diary_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -9,7 +12,7 @@ class Diary < ApplicationRecord
 
   validates :body, presence: true
 
-
+  # 投稿にいいねしているかを確認
   def diary_favorited_by?(pet, diary)
       Favorite.where(pet_id: pet.id, diary_id: diary.id).exists?
   end

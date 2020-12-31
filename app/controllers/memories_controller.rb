@@ -31,6 +31,7 @@ class MemoriesController < ApplicationController
     @images = MemoryImage.where(memory_id: @memory.id)
     @pet = Pet.find_by(id: @memory.pet_id)
     @diary = Diary.new
+    @memory_comment = MemoryComment.new
   end
   
   def edit

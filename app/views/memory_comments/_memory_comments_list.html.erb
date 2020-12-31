@@ -1,20 +1,20 @@
-<div class="comment-box" id="comment-<%= diary.id %>">
+<div id="comment-<%= memory.id %>">
   <div class="row">
     <div class="col-10 offset-2">
-      <% diary.diary_comments.each do |dc| %>
+      <% memory.memory_comments.each do |mc| %>
         <div class="row mt-2 mb-3">
           <div class="col-2">
-            <%= attachment_image_tag dc.pet, :image, size: '40x40', fallback: "no_image.png", class:"rounded-circle" %>
+            <%= attachment_image_tag mc.pet, :image, size: '40x40', fallback: "no_image.png", class:"rounded-circle" %>
           </div>
           <div class="col-10">
-            <%= link_to dc.pet.name, pet_path(dc.pet) %>
+            <%= link_to mc.pet.name, pet_path(mc.pet) %>
               <div class="row">
                 <div class="col-10 mt-2 ml-3">
-                  <%= dc.comment %>
+                  <%= mc.comment %>
                 </div>
-                <% if dc.pet == current_owner.pet %>
+                <% if mc.pet == current_owner.pet %>
                   <div class="col-1 mt-2">
-                    <%= link_to diary_comment_path(dc, diary_id: diary.id), method: :delete, remote: true do %>
+                    <%= link_to memory_comment_path(mc, memory_id: memory.id), method: :delete, remote: true do %>
                       <i class="far fa-trash-alt"></i>
                     <% end %>
                   </div>
@@ -27,7 +27,7 @@
   </div>
   <div class="row">
     <div class="col-10 offset-2">
-      <%= form_with model: diary_comment, url: diary_comments_path(pet_id: current_owner.pet, diary_id: diary), remote: true do |f| %>
+      <%= form_with model: memory_comment, url: memory_comments_path(memory_id: memory), remote: true do |f| %>
         <%= f.text_area :comment, size: '50x2', placeholder: 'コメントを書く' %>
         <%= f.submit 'コメントする', class:"btn" %>
       <% end %>
