@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-4">
+    <div class="col-3 ml-4">
       <%= attachment_image_tag @pet, :image, size: '220x220', fallback: "no_image.png" %>
     </div>
-    <div class="col-8">
+    <div class="col-6">
       <div class="row">
         <%= @pet.name %>
           <% if @pet.gender == 'オス' %>
@@ -54,7 +54,7 @@
   </div>
 
   <div class="row mt-5">
-    <div class="col-8 offset-1">
+    <div class="col-8 ml-4">
 
       <!--タブメニュー-->
       <ul id="tab-menu">

@@ -1,0 +1,36 @@
+<div id="comment-<%= memory.id %>">
+  <div class="row">
+    <div class="col-10 offset-2">
+      <% memory.memory_comments.each do |mc| %>
+        <div class="row mt-2 mb-3">
+          <div class="col-2">
+            <%= attachment_image_tag mc.pet, :image, size: '40x40', fallback: "no_image.png" %>
+          </div>
+          <div class="col-10">
+            <%= link_to mc.pet.name, pet_path(mc.pet) %>
+              <div class="row">
+                <div class="col-10 mt-2 ml-3">
+                  <%= mc.comment %>
+                </div>
+                <% if mc.pet == current_owner.pet %>
+                  <div class="col-1 mt-2">
+                    <%= link_to memory_comment_path(mc, memory_id: memory.id), method: :delete, remote: true do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-2">
+      <%= form_with model: memory_comment, url: memory_comments_path(memory_id: memory), remote: true do |f| %>
+        <%= f.text_area :comment, size: '50x2', placeholder: 'コメントを書く' %>
+        <%= f.submit 'コメントする', class:"btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>
