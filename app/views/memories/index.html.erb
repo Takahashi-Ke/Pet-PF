@@ -5,9 +5,9 @@
     </div>
     <div class="col-6">
       <% if @posted_by_pet.blank? %>
-        <%= render 'all_memories_list', memories: @memories %>
+        <%= render 'all_memories_list', memories: @memories, diary: @diary %>
       <% else %>
-        <%= render 'pets_memories_list', memories: @memories, pet: @posted_by_pet %>
+        <%= render 'pets_memories_list', memories: @memories, pet: @posted_by_pet, diary: @diary %>
       <% end %>
     </div>
     <div class="col-3">
