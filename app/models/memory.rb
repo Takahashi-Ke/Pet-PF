@@ -4,7 +4,7 @@ class Memory < ApplicationRecord
   default_scope -> {order(created_at: :desc)}
   belongs_to :pet
   has_many :memory_images, dependent: :destroy
-  has_many :faborites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   accepts_nested_attributes_for :memory_images, allow_destroy: true
   accepts_attachments_for :post_images, attachment: :images
   
@@ -12,7 +12,7 @@ class Memory < ApplicationRecord
   validates :body, presence: true
   
   def memory_favorited_by?(pet, memory)
-      Favorite.where(pet_id: pet.id, memory_id: memory.id).exists?
+    Favorite.where(pet_id: pet.id, memory_id: memory.id).exists?
   end
   
 end

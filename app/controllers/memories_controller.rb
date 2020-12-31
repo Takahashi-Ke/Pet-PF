@@ -23,7 +23,6 @@ class MemoriesController < ApplicationController
     else
       @memories = Memory.page(params[:page])
     end
-    
     @diary = Diary.new
   end
   
@@ -32,7 +31,6 @@ class MemoriesController < ApplicationController
     @images = MemoryImage.where(memory_id: @memory.id)
     @pet = Pet.find_by(id: @memory.pet_id)
     @diary = Diary.new
-    
   end
   
   def edit
