@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 ml-5 mr-3">
+      <%= render 'pets/pet_info', pet: current_owner.pet %>
+    </div>
+    <div class="col-6 diary-area">
+      <ul id="tab-menu">
+        <li><a href="#tab1" class="active">ペット</a></li>
+        <li><a href="#tab2" class="">日記</a></li>
+        <li><a href="#tab3" class="">思い出</a></li>
+      </ul>
+      <div id="tab-contents">
+        <div class="search-area">
+          <!--日記一覧(tab1)-->
+          <div id="tab1" class="tab">
+            <% if @pets.present? %>
+              <%= render 'diaries/diaries_list', diaries: @diaries %>
+            <% else %>
+              <div class="row">
+                <div class="mx-auto no-contents">
+                  <p>該当するペットはいません</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+  
+          <!--アルバム一覧(tab2)-->
+          <div id="tab2" class="tab">
+            <% if @diaries.present? %>
+              <%= render 'diaries/diaries_list', diaries: @diaries %>
+            <% else %>
+              <div class="row">
+                <div class="mx-auto no-contents">
+                  <p>該当する日記はありません</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+  
+          <!--思い出(tab3)-->
+          <div id="tab3" class="tab">
+            <% if @memories.present? %>
+              <%= render 'memories/memory_list', memories: @memories, posted_by_pet: @posted_by_pet, diary: @diary %>
+            <% else %>
+              <div class="row">
+                <div class="mx-auto no-contents">
+                  <p>該当する思い出はありません</p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+  
+        </div>
+      </div>
+      
+      
+    </div>
+    <div class="col-3 ml-3">
+      <%= render 'searches/search_box' %>
+    </div>
+  </div>
+  <div class="modal-wrapper"></div>
+  <div class="diary-modal">
+    <%= render 'diaries/diary_form', diary: @diary, pet: current_owner.pet %>
+  </div>
+</div>

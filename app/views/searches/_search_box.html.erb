@@ -17,8 +17,8 @@
     </div>
     <% Pet.types.map do |k, v| %>
       <div class="col-5 ml-4">
-        <%= f.check_box :type, {}, v, false %>
-        <%= f.label :type, k %>
+        <%= f.check_box :types, {multiple: true}, v, false %>
+        <%= f.label :types, k %>
       </div>
     <% end %>
   </div>
@@ -28,7 +28,7 @@
     </div>
     <% Pet.genders.map do |k, v| %>
       <div class="col-5 ml-4">
-        <%= f.check_box :genders, {}, v, false %>
+        <%= f.check_box :genders, {multiple: true}, v, false %>
         <%= f.label :genders, k %>
       </div>
     <% end %>
@@ -39,13 +39,13 @@
     </div>
     <% PetPersonality.personalities.map do |k, v| %>
       <div class="col-5 ml-4">
-        <%= f.check_box :personality, {}, v, false %>
-        <%= f.label :personality, k %>
+        <%= f.check_box :personalities, {multiple: true}, v, false %>
+        <%= f.label :personalities, k %>
       </div>
     <% end %>
-    <div class="row d-flex justify-content-center">
-      <%= f.submit "検索する", class:"btn btn-outline-primary search-btn" %>
-    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <%= f.submit "検索する", class:"btn btn-outline-primary search-btn" %>
   </div>
 <% end %>
 </div>
