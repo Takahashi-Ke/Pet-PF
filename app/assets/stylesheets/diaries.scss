@@ -34,3 +34,8 @@ $diary-modal-width: 500px;
 .diary-body {
   margin-top: 20px;
 }
+.diary-area {
+  width: 100%;
+  overflow: scroll;
+  height: 700px;
+}

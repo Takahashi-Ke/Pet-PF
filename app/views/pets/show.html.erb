@@ -55,7 +55,6 @@
 
   <div class="row mt-5">
     <div class="col-8 ml-4">
-
       <!--タブメニュー-->
       <ul id="tab-menu">
         <li><a href="#tab1" class="active">日記</a></li>
@@ -63,7 +62,7 @@
         <li><a href="#tab3" class="">思い出</a></li>
         <li><a href="#tab4" class="">友だち</a></li>
       </ul>
-
+      <!--タブの中身-->
       <div id="tab-contents">
         <div class="tab-area">
           <!--日記一覧(tab1)-->
@@ -77,7 +76,7 @@
                 <% end %>
               </div>
               <div class="col-8">
-                <% if @photos.exists? %>
+                <% if @diaries.exists? %>
                   <%= render 'diaries/diaries_list', diaries: @diaries %>
                 <% else %>
                   <div class="row">
@@ -141,19 +140,18 @@
         </div>
       </div>
     </div>
-  </div>
-
-
-
-
-
-  <div class="modal-wrapper"></div>
-    <!--日記新規投稿-->
-    <%= render 'diaries/diary_form', diary: @diary, pet: @pet %>
-    <!--ペットの性格入力-->
     
-    <%= render 'pet_personalities/personality_form', pet: @pet %>
+    <div class="col-4">
+      
     </div>
-
-
+    
+    
+  </div>
+  
+  <div class="modal-wrapper"></div>
+  <!--日記新規投稿-->
+  <%= render 'diaries/diary_form', diary: @diary, pet: @pet %>
+  <!--ペットの性格入力-->
+  <%= render 'pet_personalities/personality_form', pet: @pet %>
+    
 </div>
