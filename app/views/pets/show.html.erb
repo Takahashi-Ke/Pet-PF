@@ -70,12 +70,22 @@
           <div id="tab1" class="tab">
             <div class="row">
               <div class="col-2">
-                <div class="add-diary-button">
-                  日記を書く
-                </div>
+                <% if @pet.id == current_owner.pet.id %>
+                  <div class="add-diary-button">
+                    日記を書く
+                  </div>
+                <% end %>
               </div>
               <div class="col-8">
-                <%= render 'diaries/diaries_list', diaries: @diaries %>
+                <% if @photos.exists? %>
+                  <%= render 'diaries/diaries_list', diaries: @diaries %>
+                <% else %>
+                  <div class="row">
+                    <div class="mx-auto no-contents">
+                      <p>日記ははまだありません</p>
+                    </div>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
@@ -90,7 +100,7 @@
                   </div>
                 <% end %>
               <% else %>
-                <div class="mx-auto no-album">
+                <div class="mx-auto no-contents">
                   <p>アルバムはまだありません</p>
                   <% if @pet.id == current_owner.pet.id %>
                     <p>日記に写真を載せて投稿しましょう!</p>
@@ -138,13 +148,12 @@
 
 
   <div class="modal-wrapper"></div>
-  <!--日記新規投稿-->
-  <div class="diary-modal">
+    <!--日記新規投稿-->
     <%= render 'diaries/diary_form', diary: @diary, pet: @pet %>
-  </div>
-  <!--ペットの性格入力-->
-  <div class="personality-modal">
+    <!--ペットの性格入力-->
+    
     <%= render 'pet_personalities/personality_form', pet: @pet %>
-  </div>
+    </div>
+
 
 </div>

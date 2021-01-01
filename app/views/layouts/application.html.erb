@@ -37,7 +37,12 @@
                 </li>
                 <li>
                   <%= link_to notifications_path do %>
-                    <span class="fas fa-bell header-icon"></span>
+                    <span class="fa-layers">
+                      <i class="fas fa-bell header-icon"></i>
+                      <% unless current_owner.pet.unchecked_notifications(current_owner.pet).blank? %>
+                        <span class="fa-layers-text fa-inverse notifications"><%= current_owner.pet.unchecked_notifications(current_owner.pet).count %></span>
+                      <% end %>
+                    </span>
                     <sapn> お知らせ</sapn>
                   <% end %>
                 </li>

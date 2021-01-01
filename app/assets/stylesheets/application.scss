@@ -21,16 +21,16 @@
   height: 150px;
 }
 .header-icon {
-  font-size: 1.7em;
+  font-size: 1.8em;
+  padding-right: 3px;
+  color: #D2691E;
 }
 .nav li {
   margin: 0 8px;
 }
-.hide-modal-btn {
-  display: inline-block;
-  padding: 2px 5px;
-  background-color: gray;
-  margin: 7px 220px;
+.notifications {
+  position: absolute;
+  left: 0.65rem;
 }
 footer {
   height: 120px;

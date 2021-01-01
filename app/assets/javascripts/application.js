@@ -50,7 +50,7 @@ $(function() {
     $('.modal-wrapper').show();
     $('.personality-modal').show();
   });
-});
+  });
 // 非表示
 $(document).on('click', '.modal-wrapper, .hide-modal-btn', function() {
     $('.modal-wrapper').hide();

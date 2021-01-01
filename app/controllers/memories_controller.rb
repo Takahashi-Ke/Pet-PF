@@ -29,7 +29,7 @@ class MemoriesController < ApplicationController
   def show
     @memory = Memory.find(params[:id])
     @images = MemoryImage.where(memory_id: @memory.id)
-    @pet = Pet.find_by(id: @memory.pet_id)
+    @pet = current_owner.pet
     @diary = Diary.new
     @memory_comment = MemoryComment.new
   end

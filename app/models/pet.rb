@@ -17,6 +17,19 @@ class Pet < ApplicationRecord
 
   self.inheritance_column = :_type_disabledrails
 
+  enum gender: {
+    オス: 1,
+    メス: 2
+  }
+  enum type: {
+    犬: 1,
+    猫: 2,
+    小動物: 3,
+    鳥: 4,
+    爬虫類: 5,
+    魚: 6
+  }
+
     # フォローするユーザ
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
@@ -67,6 +80,7 @@ class Pet < ApplicationRecord
     end
   end
 
+  # ペットの年齢を算出するメソッド
   def age
     d1 = self.birthday.strftime("%Y%m%d").to_i
     d2 = Date.today.strftime("%Y%m%d").to_i
@@ -82,19 +96,11 @@ class Pet < ApplicationRecord
       return m
     end
   end
+  
+  # 新しい通知を取得するメソッド
+  def unchecked_notifications(pet)
+    Notification.where(visited_id: id, is_checked: false)
+  end
 
-  enum gender: {
-    オス: 1,
-    メス: 2
-  }
-
-  enum type: {
-    犬: 1,
-    猫: 2,
-    小動物: 3,
-    鳥: 4,
-    爬虫類: 5,
-    魚: 6
-  }
 
 end
