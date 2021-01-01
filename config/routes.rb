@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :owners, only: [:index] do
     member do
       get '/unsubscribe' => 'owners#unsubscribe'
-      delete '/withdraw' => 'owners#withdraw'
     end
   end
   resources :pets, only: [:index, :show, :edit, :update] do
@@ -21,4 +20,5 @@ Rails.application.routes.draw do
   resources :memory_comments, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
   resources :notifications, only: :index
+  get 'search' => 'searches#search'
 end
