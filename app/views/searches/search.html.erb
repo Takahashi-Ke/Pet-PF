@@ -3,57 +3,105 @@
     <div class="col-2 ml-5 mr-3">
       <%= render 'pets/pet_info', pet: current_owner.pet %>
     </div>
-    <div class="col-6 diary-area">
-      <ul id="tab-menu">
-        <li><a href="#tab1" class="active">ペット</a></li>
-        <li><a href="#tab2" class="">日記</a></li>
-        <li><a href="#tab3" class="">思い出</a></li>
-      </ul>
-      <div id="tab-contents">
-        <div class="search-area">
-          <!--日記一覧(tab1)-->
-          <div id="tab1" class="tab">
-            <% if @pets.present? %>
-              <%= render 'diaries/diaries_list', diaries: @diaries %>
-            <% else %>
-              <div class="row">
-                <div class="mx-auto no-contents">
-                  <p>該当するペットはいません</p>
-                </div>
-              </div>
-            <% end %>
+    <div class="col-6">
+      <div class="row ml-5 mt-2 mb-3 d-flex align-items-center">
+        <%= form_with url: search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword, size:'28',placeholder: "#{@keyword}" %>
+          <%= button_tag :type => "submit", :class =>"btn btn-outline-primary" do %>
+            <i class="fas fa-search"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <% if @types.present? %>
+        <div class="row">
+          <div class="col-2">
+            <p>種類 :</p>
           </div>
-  
-          <!--アルバム一覧(tab2)-->
-          <div id="tab2" class="tab">
-            <% if @diaries.present? %>
-              <%= render 'diaries/diaries_list', diaries: @diaries %>
-            <% else %>
-              <div class="row">
-                <div class="mx-auto no-contents">
-                  <p>該当する日記はありません</p>
-                </div>
-              </div>
-            <% end %>
+          <% @types.each do |type| %>
+            <div class="col-2">
+              <%= type.type %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <% if @genders.present? %>
+        <div class="row">
+          <div class="col-2">
+            <p>性別 :</p>
           </div>
-  
-          <!--思い出(tab3)-->
-          <div id="tab3" class="tab">
-            <% if @memories.present? %>
-              <%= render 'memories/memory_list', memories: @memories, posted_by_pet: @posted_by_pet, diary: @diary %>
-            <% else %>
-              <div class="row">
-                <div class="mx-auto no-contents">
-                  <p>該当する思い出はありません</p>
-                </div>
-              </div>
-            <% end %>
+          <% @genders.each do |gender| %>
+            <div class="col-2">
+              <%= gender.gender %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <% if @personalities.present? %>
+        <div class="row">
+          <div class="col-2">
+            <p>種類 :</p>
           </div>
-  
+          <% @personalities.each do |personality| %>
+            <div class="col-2">
+              <%= personality.personality %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-12">
+          <ul id="tab-menu">
+            <li><a href="#tab1" class="active">ペット</a></li>
+            <li><a href="#tab2" class="">日記</a></li>
+            <li><a href="#tab3" class="">思い出</a></li>
+          </ul>
+        </div>
+        <div class="col-12">
+          <div id="tab-contents">
+            <div class="search-area">
+              <!--ペット検索結果一覧(tab1)-->
+              <div id="tab1" class="tab">
+                <% if @pets.present? %>
+                  <%= render 'pets/pet_list', pets: @pets %>
+                <% else %>
+                  <div class="row">
+                    <div class="mx-auto no-contents">
+                      <p>該当するペットはいません</p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+      
+              <!--日記検索結果一覧(tab2)-->
+              <div id="tab2" class="tab">
+                <% if @diaries.present? %>
+                  <%= render 'diaries/diaries_list', diaries: @diaries %>
+                <% else %>
+                  <div class="row">
+                    <div class="mx-auto no-contents">
+                      <p>該当する日記はありません</p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+      
+              <!--思い出検索結果一覧(tab3)-->
+              <div id="tab3" class="tab">
+                <% if @memories.present? %>
+                  <%= render 'memories/memory_list', memories: @memories, posted_by_pet: @posted_by_pet, diary: @diary %>
+                <% else %>
+                  <div class="row">
+                    <div class="mx-auto no-contents">
+                      <p>該当する思い出はありません</p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
-      
-      
     </div>
     <div class="col-3 ml-3">
       <%= render 'searches/search_box' %>
