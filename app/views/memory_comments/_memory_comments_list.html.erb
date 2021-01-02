@@ -28,7 +28,7 @@
       <% end %>
     </div>
   </div>
-  <div class="row memory-comment-box">
+  <div class="row memory-comment-box ml-1 mr-1 mt-3">
     <div class="col-10 offset-2">
       <%= form_with model: memory_comment, url: memory_comments_path(memory_id: memory), remote: true do |f| %>
         <%= f.text_area :comment, size: '60x2', placeholder: 'コメントを書く' %>

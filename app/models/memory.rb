@@ -6,8 +6,7 @@ class Memory < ApplicationRecord
   has_many :memory_images, dependent: :destroy
   has_many :memory_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  accepts_nested_attributes_for :memory_images, allow_destroy: true
-  accepts_attachments_for :post_images, attachment: :images
+  accepts_attachments_for :memory_images, attachment: :image
   
   validates :title, presence: true
   validates :body, presence: true

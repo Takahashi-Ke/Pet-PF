@@ -14,6 +14,7 @@ class MemoryCommentsController < ApplicationController
     @memory = Memory.find(params[:memory_id])
     @memory_comment = MemoryComment.find(params[:id])
     @memory_comment.destroy
+    @memory_comment = MemoryComment.new
   end
 
   private
