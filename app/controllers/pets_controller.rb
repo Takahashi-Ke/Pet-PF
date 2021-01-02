@@ -3,6 +3,7 @@ class PetsController < ApplicationController
   def show
     @pet = Pet.find(params[:id])
     @pet_personalities = @pet.pet_personalities
+    @memories = @pet.memories
     @diaries = @pet.diaries
     @photos  = Diary.where.not(image_id: nil).where(pet_id: @pet)
     @diary = Diary.new

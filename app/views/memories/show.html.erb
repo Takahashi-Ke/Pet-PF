@@ -1,8 +1,10 @@
 <div class="container-fluid">
   <div class="row">
+    
     <div class="col-2 ml-5 mr-3">
       <%= render 'pets/pet_info', pet: @pet %>
     </div>
+    
     <div class="col-6">
       <div class="memory-detail">
         <div class="row">
@@ -13,11 +15,9 @@
             <%= @memory.created_at.to_s(:datetime_jp) %>
           </div>
         </div>
-           
         <div class="row">
           <%= simple_format(@memory.body) %>
         </div>
-        
         <% unless @images.blank? %>
           <div class="row">
             <p>写真</p>
@@ -46,11 +46,24 @@
       </div>
       <!--コメント一覧-->
       <%= render 'memory_comments/memory_comments_list', memory: @memory, memory_comment: @memory_comment %>
-
- 
     </div>
-    <div class="col-3"></div>
+    
+    <div class="col-3">
+      <div class="row d-flex justify-content-center">
+        <h5><%= @memory.pet.name %>の思い出</h5>
+      </div>
+      <%= month_calendar(attribute: :created_at, events: @memories) do |date, memories| %>
+        <%= date.day %>
+        <% memories.each do |memory| %>
+          <%= link_to memory_path(memory) do %>
+            <div class="fas fa-images ml-2"></div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    
   </div>
+  
   <div class="modal-wrapper"></div>
   <div class="diary-modal">
     <%= render 'diaries/diary_form', diary: @diary, pet: @pet %>

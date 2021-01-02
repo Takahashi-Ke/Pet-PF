@@ -70,8 +70,8 @@
             <div class="row">
               <div class="col-2">
                 <% if @pet.id == current_owner.pet.id %>
-                  <div class="add-diary-button">
-                    日記を書く
+                  <div class="add-diary-button post-diary">
+                    日記を書く<span><i class="fas fa-pen-nib"></i></span>
                   </div>
                 <% end %>
               </div>
@@ -82,6 +82,9 @@
                   <div class="row">
                     <div class="mx-auto no-contents">
                       <p>日記ははまだありません</p>
+                      <% if @pet.id == current_owner.pet.id %>
+                        <p>今日の出来事を日記に書いてみましょう！</p>
+                      <% end %>
                     </div>
                   </div>
                 <% end %>
@@ -103,9 +106,9 @@
                   <p>アルバムはまだありません</p>
                   <% if @pet.id == current_owner.pet.id %>
                     <p>日記に写真を載せて投稿しましょう!</p>
-                    <p class="add-diary-button">
-                      日記を書く
-                    </p>
+                    <div class="add-diary-button post-diary">
+                      日記を書く<span><i class="fas fa-pen-nib"></i></span>
+                    </div>
                   <% end %>
                 </div>
               <% end %>
@@ -114,7 +117,14 @@
   
           <!--思い出(tab3)-->
           <div id="tab3" class="tab">
-            <p>思い出</p>
+            <%= month_calendar(attribute: :created_at, events: @memories) do |date, memories| %>
+              <%= date.day %>
+              <% memories.each do |memory| %>
+                <%= link_to memory_path(memory) do %>
+                  <div class="fas fa-images ml-2"></div>
+                <% end %>
+              <% end %>
+            <% end %>
             <%= link_to "思い出を作る", new_memory_path %>
           </div>
   

@@ -28,6 +28,7 @@ class MemoriesController < ApplicationController
   
   def show
     @memory = Memory.find(params[:id])
+    @memories = Memory.where(pet_id: @memory.pet_id)
     @images = MemoryImage.where(memory_id: @memory.id)
     @pet = current_owner.pet
     @diary = Diary.new
