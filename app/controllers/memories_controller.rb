@@ -36,20 +36,24 @@ class MemoriesController < ApplicationController
   
   def edit
     @memory = Memory.find(params[:id])
+    @diary = Diary.new
   end
   
   def update
-    
+    memory = Memory.find(params[:id])
+    memory.update(memory_params)
+    redirect_to memory_path(memory)
   end
   
   def destroy
-    
+    memory = Memory.find(params[:id])
+    memory.destroy
+    redirect_to memories_path
   end
   
   private
   def memory_params
-    params.require(:memory).permit(:title, :body,
-                                    memory_images_attributes: [:id, :image, :_destroy])
+    params.require(:memory).permit(:title, :body, memory_images_images: [])
   end
   
 end

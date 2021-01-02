@@ -31,7 +31,7 @@
       <!--日記削除ボタン-->
       <% if diary.pet == current_owner.pet %>
         <div class="col-2">
-          <%= link_to diary_path(diary), method: :delete, data: {confirm: "削除しますか？"} do %>
+          <%= link_to diary_path(diary), method: :delete, data: {confirm: "削除します。よろしいですか？"} do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
         </div>

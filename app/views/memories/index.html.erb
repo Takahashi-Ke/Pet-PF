@@ -29,7 +29,7 @@
           <h4>みんなの思い出</h4>
         </div>
       <% end %>
-      <%= render 'memory_list', posted_by_pet: @posted_by_pet, memories: @memories, pet: @pet, diary: @diary %>
+      <%= render 'memory_list', posted_by_pet: @posted_by_pet, memories: @memories, pet: current_owner.pet, diary: @diary %>
     </div>
     <div class="col-3 ml-3">
       <%= render 'searches/search_box' %>

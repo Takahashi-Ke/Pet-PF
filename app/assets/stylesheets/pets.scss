@@ -58,3 +58,21 @@
   font-size: 18px;
   text-align: center;
 }
+.pet-contents {
+  margin: 20px 0;
+  padding: 10px 0;
+  border-top: 0.5px solid #C0C0C0;
+  border-bottom: 0.5px solid #C0C0C0;
+}
+.follow-btn {
+  font-size: 14px;
+  padding: 2px 3px;
+  color: #007bff;
+  border: 0.5px solid #007bff;
+  border-radius: 0.25rem;
+}
+.follow-btn:hover {
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+}

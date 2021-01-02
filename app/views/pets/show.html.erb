@@ -43,10 +43,10 @@
           <% if @pet.id == current_owner.pet.id %>
             <%= link_to "プロフィールを編集する", edit_pet_path(@pet) %>
           <% elsif current_owner.pet.following?(@pet) %>
-            <%= link_to "友だち", pet_relationship_path(@pet), method: :delete %>
-            <%= link_to "あいさつする", pet_chats_path(@pet) %>
+            <%= link_to "フォロー中", pet_relationship_path(@pet), method: :delete, data: {confirm: "削除しますか？"}  %>
+            <%= link_to "会話する", pet_chats_path(@pet) %>
           <% else %>
-            <%= link_to "友だちになる", pet_relationships_path(@pet), method: :post %>
+            <%= link_to "フォローする", pet_relationships_path(@pet), method: :post %>
           <% end %>
         </div>
       </div>
@@ -121,28 +121,15 @@
           <!--友だち(tab4)-->
           <div id="tab4" class="tab">
             <p>友だち</p>
-            <% @pet.followed_pets.each do |follower| %>
-              <div class="row">
-                <div class="col-2">
-                  <%= attachment_image_tag follower, :image, size: '120x120', fallback: "no_image.png" %>
-                </div>
-                <div class="col-7">
-                  <div class="row">
-                    <%= link_to follower.name, pet_path(follower) %>
-                  </div>
-                  <div class="row mt-3 ml-5">
-                    <%= follower.introduction %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+            <%= render 'pets/pet_list', pets: @pet.followed_pets %>
+            
           </div>
         </div>
       </div>
     </div>
     
-    <div class="col-4">
-      
+    <div class="col-3 ml-3">
+      <%= render 'searches/search_box' %>
     </div>
     
     
