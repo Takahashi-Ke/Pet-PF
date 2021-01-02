@@ -42,7 +42,7 @@
 .tab-area {
   width: 100%;
   overflow: scroll;
-  height: 500px;
+  height: 560px;
   border: 1px solid #000;
   border-top: none;
 }
@@ -62,7 +62,6 @@
   margin: 20px 0;
   padding: 10px 0;
   border-top: 0.5px solid #C0C0C0;
-  border-bottom: 0.5px solid #C0C0C0;
 }
 .follow-btn {
   font-size: 14px;
@@ -75,4 +74,12 @@
   background-color: #007bff;
   color: white;
   text-decoration: none;
+}
+.post-diary {
+  display: inline-block;
+  padding: 2px 5px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
 }
