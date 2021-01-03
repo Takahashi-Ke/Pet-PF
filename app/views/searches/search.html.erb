@@ -4,11 +4,12 @@
       <%= render 'pets/pet_info', pet: current_owner.pet %>
     </div>
     <div class="col-6">
+      
+      <!--検索条件表示-->
       <div class="row ml-5 mt-2 mb-3 d-flex align-items-center">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
           <%= f.text_field :keyword, size:'28',placeholder: "#{@keyword}" %>
           <%= button_tag :type => "submit", :class =>"btn btn-outline-primary" do %>
-          
             <i class="fas fa-search"></i>
           <% end %>
         <% end %>
@@ -49,6 +50,8 @@
           <% end %>
         </div>
       <% end %>
+      
+      <!--検索結果表示-->
       <div class="row">
         <div class="col-12">
           <ul id="tab-menu">
@@ -57,9 +60,11 @@
             <li><a href="#tab3" class="">思い出</a></li>
           </ul>
         </div>
+        
         <div class="col-12">
           <div id="tab-contents">
             <div class="search-area">
+              
               <!--ペット検索結果一覧(tab1)-->
               <div id="tab1" class="tab">
                 <% if @pets.present? %>
@@ -89,7 +94,9 @@
               <!--思い出検索結果一覧(tab3)-->
               <div id="tab3" class="tab">
                 <% if @memories.present? %>
-                  <%= render 'memories/memory_list', memories: @memories, posted_by_pet: @posted_by_pet, diary: @diary %>
+                  <div class="memory-area">
+                    <%= render 'memories/memory_list', memories: @memories, posted_by_pet: nil, diary: @diary %>
+                  </div>
                 <% else %>
                   <div class="row">
                     <div class="mx-auto no-contents">
@@ -98,6 +105,7 @@
                   </div>
                 <% end %>
               </div>
+              
             </div>
           </div>
           

@@ -8,8 +8,8 @@
         <h4>あなた</h4>
         <div class="field">
           <%= f.label :写真 %><br />
-          <%= attachment_image_tag current_owner, :image, size: "180x180", fallback: "no_image.png", class:"owner_prev" %>
-          <%= f.attachment_field :image, class:"owner_img_btn" %>
+          <%= attachment_image_tag current_owner, :image, size: "180x180", fallback: "no_image.png", class:"owner-prev" %>
+          <%= f.attachment_field :image, class:"owner-image" %>
         </div>
         <div class="field">
           <%= f.label :名前 %><br />
@@ -23,8 +23,8 @@
           </div>
           <div class="row">
             <div class="col-6">
-              <%= attachment_image_tag @pet, :image, size: '180x180', fallback: "no_image.png", class:"pet_prev" %>
-              <%= pet.attachment_field :image %>
+              <%= attachment_image_tag @pet, :image, size: '180x180', fallback: "no_image.png", class:"pet-prev" %>
+              <%= pet.attachment_field :image, class:"pet-image" %>
             </div>
             <div class="col-6">
               <div class="row">

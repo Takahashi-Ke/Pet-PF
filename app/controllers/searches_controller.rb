@@ -2,7 +2,6 @@ class SearchesController < ApplicationController
   
   def search
     # binding.pry
-    
     if params[:keyword].present?
       @keyword = params[:keyword]
     end
@@ -14,10 +13,6 @@ class SearchesController < ApplicationController
                       # .where(pet_id: @pet.ids) if @pet.present?
     @diaries = Diary.where("body LIKE?", "%#{@keyword}%")
                     # .where(pet_id: @pet)
-    
-    
-    binding.pry
-    
     if params[:types].present?
       params[:types].each do |t|
         @types = Pet.select(:type).where(type: t)

@@ -7,8 +7,6 @@ class Owners::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     super
-    @owner = Owner.new
-    @owner.build_pet
   end
 
   # POST /resource
@@ -60,5 +58,10 @@ class Owners::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
+  # end
+  
+  # def profile_params
+  #   params.permit(:sign_up, keys: [:name, :image,
+  #                                 pet_attributes: [:id, :name, :image, :birthday, :gender, :type, :introduction, :_destroy]])
   # end
 end
