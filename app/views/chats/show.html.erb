@@ -27,10 +27,13 @@
           <% end %>
         <% end %>
       </div>
-      <div class="row">
+      <div class="row message-box d-flex align-items-center justify-content-center">
         <%= form_with model: [@pet, @chat], url: pet_chats_path(room_id: @room.id), local: true do |f| %>
-          <%= f.text_area :message %>
-          <%= f.submit "送信", class:"btn" %>
+          <div class="col-5">
+            <%= f.text_area :message, size: '40x2' %>
+            <%= f.submit "送信", class:"btn" %>
+          </div>
+          
         <% end %>
       </div>
     </div>
