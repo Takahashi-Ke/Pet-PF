@@ -1,105 +1,130 @@
-<div class="container">
-  <div class="row">
+<div class="container-fluid">
+  <div class="row mb-3 d-flex justify-content-center">
     <h2>新規登録</h2>
   </div>
-  <div class="row">
+  <div class="row d-flex justify-content-center">
+    <p class="explanation">あなたとペットの情報を入力しましょう！</p>
+  </div>
+  <div class="row d-flex justify-content-center">
     <p>※は必須事項になります</p>
   </div>
-
+  <div class="row">
+    <%= render "devise/shared/error_messages", resource: resource %>
+  </div>
+  
+  <!--Owner情報入力フォーム-->
   <%= form_with model: @owner, url: owner_registration_path, local: true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="row">
-      <div class="col-4">
-        <h4>あなた</h4>
-        <div class="field">
-          <%= f.label :写真 %><br />
-          <%= attachment_image_tag @owner, :image, size: "180x180", fallback: "no_image.png", class:"owner-prev" %>
-          <%= f.attachment_field :image, class:"owner-image"%>
-        </div>
-        <div class="field">
-          <%= f.label :名前※ %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-        </div>
-        <div class="field">
-          <%= f.label :メールアドレス※ %><br />
-          <%= f.email_field :email, autocomplete: "email" %>
-        </div>
+  <div class="row mt-5">
+    <div class="col-4 offset-2">
+      <div class="row">
+        <h4>あなたについて</h4>
       </div>
-      <!--Petモデルの入力フォーム-->
+      <div class="row mt-2 ml-5">
+        <%= f.label :写真, class:"form-label" %>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <%= attachment_image_tag @owner, :image, size: "280x280", fallback: "no_image.png", class:"owner-prev mb-3" %>
+        <%= f.attachment_field :image, class:"owner-image"%>
+      </div>
+      <div class="row mt-2 ml-5">
+        <%= f.label :名前※, class:"form-label" %>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <%= f.text_field :name, size:'30', autofocus: true, autocomplete: "name" %>
+      </div>
+      <div class="row mt-2 ml-5">
+        <%= f.label :メールアドレス※, class:"form-label" %>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <%= f.email_field :email, size:'30', autocomplete: "email" %>
+      </div>
+    </div>
+      
+      <!--Pet情報入力フォーム-->
       <%= f.fields_for :pet, Pet.new do |pet| %>
-        <div class="col-8">
-          <h4>ペット</h4>
+        <div class="col-4 ml-4">  
           <div class="row">
-            <div class="col-4">
-              <div class="field">
-                <%= pet.label :写真 %><br />
-                <%= attachment_image_tag @pet, :image, size: "180x180", fallback: "no_image.png", class:"pet-prev" %>
-                <%= pet.attachment_field :image, class:"pet-image"%>
-              </div>
+            <h4>ペットについて</h4>
+          </div>
+          <div class="row mt-2 ml-5">
+            <%= pet.label :写真, class:"form-label" %>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <%= attachment_image_tag @pet, :image, size: "280x280", fallback: "no_image.png", class:"pet-prev mb-3" %>
+            <%= pet.attachment_field :image, class:"pet-image"%>
+          </div>
+          <div class="row mt-2 ml-5">
+            <%= pet.label :名前※, class:"form-label" %>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <%= pet.text_field :name, size:'30' %>
+          </div>
+          <div class="row ml-5">
+            <%= pet.label :性別※, class:"form-label" %>
+          </div>
+          <div class="row ml-3">
+            <div class="col-3 offset-2">
+              <%= pet.radio_button :gender, 'オス', checked: true %>
+              <%= pet.label :gender, "オス", {value: 1} %>
             </div>
-            <div class="col-8">
-              <div class="row">
-                <div class="col-6">
-                  <div class="field">
-                    <%= pet.label :名前※ %><br />
-                    <%= pet.text_field :name %>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="field">
-                    <%= pet.label :性別※ %><br />
-                    <%= pet.radio_button :gender, 'オス', checked: true %>
-                    <%= pet.label :gender, "オス", {value: 1} %>
-                    <%= pet.radio_button :gender, 'メス' %>
-                    <%= pet.label :gender, "メス", {value: 2} %>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <%= pet.label :生年月日※ %><br />
-                  <%#= sprintf(pet.date_select(:birthday, prefix:'birthday', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日' %>
-                  <%= pet.date_select :birthday, start_year: 1990, end_year: Time.now.year,default: Date.today %>
-                </div>
-                <div class="col-6">
-                  <%= pet.label :種類※ %><br />
-                  <%= pet.select :type, Pet.types.keys %>
-                </div>
-              </div>
-              <div class="row">
-                <%= pet.label :紹介文 %><br />
-                <%= pet.text_area :introduction %>
-              </div>
+            <div class="col-3">
+              <%= pet.radio_button :gender, 'メス' %>
+              <%= pet.label :gender, "メス", {value: 2} %>
             </div>
           </div>
-          <div class="row">
-            <p>性別、生年月日、種類は登録後変更ができません。<br />
-                ご注意ください。</p>
+          <div class="row ml-5">
+            <%= pet.label :生年月日※, class:"form-label" %>
+          </div>
+          <div class="row ml-3">
+            <div class="col-8 offset-2">
+              <%= pet.date_select :birthday, start_year: 1990, end_year: Time.now.year,default: Date.today %>
+            </div>
+          </div>
+          <div class="row ml-5">
+            <%= pet.label :種類※, class:"form-label" %>
+          </div>
+          <div class="row ml-3">
+            <div class="col-3 offset-2">
+              <%= pet.select :type, Pet.types.keys %>
+            </div>
+          </div>
+          <div class="row ml-5">
+            <%= pet.label :紹介文, class:"form-label" %>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <%= pet.text_area :introduction, size:'40x4' %>
+          </div>
+          <div class="row ml-5 mt-3">
+            <p><span class="fas fa-exclamation-circle"></span> 性別、生年月日、種類は登録後変更ができません。</p>
           </div>
         </div>
       <% end %>
-      <!--Petモデル入力ここまで-->
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="field">
-          <%= f.label :パスワード %>
-          <% if @minimum_password_length %>
-          <span>(<%= @minimum_password_length %>文字以上で設定できます)※</span>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :パスワード確認※ %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "新規登録" %>
-        </div>
+  </div>  
+  <div class="row">
+    <div class="col-4 offset-4">
+      <div class="row ml-5">
+        <%= f.label :パスワード, class:"form-label" %>
+        <% if @minimum_password_length %>
+        <span>(<%= @minimum_password_length %>文字以上で設定できます)※</span>
+        <% end %>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <%= f.password_field :password, size:'30', autocomplete: "new-password" %>
+      </div>
+      <div class="row ml-5Ω">
+        <%= f.label :パスワード確認※, class:"form-label" %>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <%= f.password_field :password_confirmation, size:'30', autocomplete: "new-password" %>
+      </div>
+      <div class="row d-flex justify-content-center mt-3">
+        <%= f.submit "新規登録" %>
+      </div>
+      <div class="row d-flex justify-content-center mt-3">
+        <%= link_to "ログイン", new_owner_session_path %>
       </div>
     </div>
+  </div>
   <% end %>
-  <%= link_to "ログイン", new_owner_session_path %>
+  
 </div>

@@ -1,4 +1,5 @@
 <div class="comment-box" id="comment-<%= diary.id %>">
+  <%# input name: "diary-comment-id", type: "hidden", value: diary.id, class: 'diary-comment-id' %>
   <div class="row">
     <div class="col-10 offset-2">
       <% diary.diary_comments.each do |dc| %>
