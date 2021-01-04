@@ -84,10 +84,14 @@ $(document).on("turbolinks:load", function(){
   });
 });
 
+
+/* global diaryId*/
 // コメント表示
+
 $(document).on("turbolinks:load", function(){
   $('.comment-box').hide();
-  $('.comment-btn').on('click', function(){
-    $('.comment-box').toggle();
+    var diaryId = $('.diary-comment-id').val();
+  $('.comment-btn-'+diaryId+'').on('click', function(){
+    $('#comment-'+diaryId+'').toggle();
   });
 });
