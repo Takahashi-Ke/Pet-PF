@@ -3,11 +3,11 @@
   <div class="row">
     <div class="col-10 offset-2">
       <% diary.diary_comments.each do |dc| %>
-        <div class="row mt-2 mb-3">
-          <div class="col-2">
+        <div class="row mt-2 mb-3 comment-contents">
+          <div class="col-1">
             <%= attachment_image_tag dc.pet, :image, size: '40x40', fallback: "no_image.png", class:"rounded-circle" %>
           </div>
-          <div class="col-10">
+          <div class="col-10 ml-2">
             <%= link_to dc.pet.name, pet_path(dc.pet) %>
               <div class="row">
                 <div class="col-10 mt-2 ml-3">
