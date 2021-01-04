@@ -4,9 +4,10 @@ class Pet < ApplicationRecord
   has_many :pet_personalities, dependent: :destroy
   accepts_nested_attributes_for :pet_personalities, allow_destroy: true
   has_many :diaries, dependent: :destroy
-  has_many :memories, dependent: :destroy
   has_many :diary_comments, dependent: :destroy
-  has_many :diary_favorites, dependent: :destroy
+  has_many :memories, dependent: :destroy
+  has_many :memorie_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :pet_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
 
@@ -15,6 +16,19 @@ class Pet < ApplicationRecord
   validates :name, presence: true
 
   self.inheritance_column = :_type_disabledrails
+
+  enum gender: {
+    オス: 1,
+    メス: 2
+  }
+  enum type: {
+    犬: 1,
+    猫: 2,
+    小動物: 3,
+    鳥: 4,
+    爬虫類: 5,
+    魚: 6
+  }
 
     # フォローするユーザ
   has_many :active_relationships, class_name: "Relationship",
@@ -66,6 +80,7 @@ class Pet < ApplicationRecord
     end
   end
 
+  # ペットの年齢を算出するメソッド
   def age
     d1 = self.birthday.strftime("%Y%m%d").to_i
     d2 = Date.today.strftime("%Y%m%d").to_i
@@ -81,19 +96,11 @@ class Pet < ApplicationRecord
       return m
     end
   end
+  
+  # 新しい通知を取得するメソッド
+  def unchecked_notifications(pet)
+    Notification.where(visited_id: id, is_checked: false)
+  end
 
-  enum gender: {
-    オス: 1,
-    メス: 2
-  }
-
-  enum type: {
-    犬: 1,
-    猫: 2,
-    小動物: 3,
-    鳥: 4,
-    爬虫類: 5,
-    魚: 6
-  }
 
 end

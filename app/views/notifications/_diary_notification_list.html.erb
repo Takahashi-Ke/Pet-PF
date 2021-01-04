@@ -1,0 +1,26 @@
+<% case notification.action %>
+  <% when 'follow' then %>
+    <span>あなたをフォローしました</span>
+  <% when 'favorite' then %>
+    <span>あなたの日記にいいねしました</span>
+    <div class="row pt-2 ml-1">
+      <%= attachment_image_tag notification.diary.pet, :image, size: '30x30', fallback: "no_image.png", class:"rounded-circle" %>
+      <div class="mt-1 ml-2">
+        <%= notification.diary.body %>
+      </div>
+    </div>
+  <% when 'comment' then %>
+    <% if notification.diary.pet_id == notification.visited.id %>
+      <span>あなたの日記に</span>
+    <% else %>
+      <%= attachment_image_tag notification.diary.pet, :image, size: '70x70', fallback: "no_image.png", class:"rounded-circle" %>
+      <span><%= link_to notification.diary.pet.name, pet_path(notification.diary.pet) %>さんの日記に</span>
+    <% end %>
+  <span>コメントしました</span>
+  <div class="row pt-2 ml-1">
+    <%= attachment_image_tag notification.diary.pet, :image, size: '30x30', fallback: "no_image.png", class:"rounded-circle" %>
+    <div class="mt-1 ml-2">
+      <%= notification.diary.body %>
+    </div>
+  </div>
+<% end %>

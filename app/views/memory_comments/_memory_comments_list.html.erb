@@ -1,0 +1,43 @@
+<div id="comment-<%= memory.id %>">
+  <div class="row">
+    <div class="col-10 offset-2">
+      <% memory.memory_comments.each do |mc| %>
+        <div class="row mt-2 border-top pt-3">
+          <div class="col-2">
+            <%= attachment_image_tag mc.pet, :image, size: '40x40', fallback: "no_image.png", class:"rounded-circle" %>
+          </div>
+          <div class="col-5">
+            <%= link_to mc.pet.name, pet_path(mc.pet) %>
+          </div>
+          <div class="col-4 memory-date">
+            <%= mc.created_at.to_s(:datetime_jp) %>
+          </div>
+        </div>
+        <div class="row ml-3 mb-4">
+          <div class="col-8 ml-5">
+            <%= mc.comment %>
+          </div>
+          <% if mc.pet == current_owner.pet %>
+            <div class="col-1 mt-2">
+              <%= link_to memory_comment_path(mc, memory_id: memory.id), method: :delete, remote: true do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row memory-comment-box ml-1 mr-1 mt-3">
+    <div class="col-10 offset-2">
+      <%= form_with model: memory_comment, url: memory_comments_path(memory_id: memory), remote: true do |f| %>
+        <%= f.text_area :comment, size: '60x2', placeholder: 'コメントを書く' %>
+        <div class="row">
+          <div class="col-2 offset-7">
+            <%= f.submit 'コメントする', class:"btn btn-outline-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

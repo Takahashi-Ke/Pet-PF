@@ -13,14 +13,18 @@
   opacity: .5;
   display: none;
 }
+$diary-modal-width: 500px;
 .diary-modal {
-  position: absolute;
-  top: 0;
-  margin: 150px 300px;
-  width: 500px;
-  height: 300px;
-  background-color: white;
   display: none;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  height: 300px;
+  width: $diary-modal-width;
+  margin-left: -($diary-modal-width / 2);
 }
 .diary-contents {
   margin: 20px 0;
@@ -29,4 +33,9 @@
 }
 .diary-body {
   margin-top: 20px;
+}
+.diary-area {
+  width: 100%;
+  overflow: scroll;
+  height: 700px;
 }

@@ -34,14 +34,52 @@
   width: 100%;
   padding: 30px;
   background: #fff;
-  border: 1px solid #000;
-  border-top: none;
 }
 #tab-contents p {
   color: #000;
   line-height: 2.5;
 }
+.tab-area {
+  width: 100%;
+  overflow: scroll;
+  height: 560px;
+  border: 1px solid #000;
+  border-top: none;
+}
 .gender-icon {
   font-size: 1.3em;
   color: #444444;
+}
+.frend-count {
+  text-align: center;
+}
+.no-contents {
+  margin-top: 120px;
+  font-size: 18px;
+  text-align: center;
+}
+.pet-contents {
+  margin: 20px 0;
+  padding: 10px 0;
+  border-top: 0.5px solid #C0C0C0;
+}
+.follow-btn {
+  font-size: 14px;
+  padding: 2px 3px;
+  color: #007bff;
+  border: 0.5px solid #007bff;
+  border-radius: 0.25rem;
+}
+.follow-btn:hover {
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+}
+.post-diary {
+  display: inline-block;
+  padding: 2px 5px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
 }

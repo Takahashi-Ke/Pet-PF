@@ -1,0 +1,2 @@
+$('#comment-<%= @memory.id %>').html("<%= j(render 'memory_comments/memory_comments_list', memory: @memory, memory_comment: @memory_comment) %>");
+$('#comments-count').html("<%= j(render 'memory_comments/memory_comments_count', memory: @memory) %>");

@@ -1,19 +1,21 @@
 class Diary < ApplicationRecord
 
+  # 作成日時が新しい順に取り出す
+  default_scope -> {order(created_at: :desc)}
+  
   belongs_to :pet
   has_many :diary_comments, dependent: :destroy
-  has_many :diary_favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
   attachment :image
 
   validates :body, presence: true
 
-
-  def favorited_by?(pet, diary)
-    DiaryFavorite.where(pet_id: pet.id, diary_id: diary.id).exists?
+  # 投稿にいいねしているかを確認
+  def diary_favorited_by?(pet, diary)
+      Favorite.where(pet_id: pet.id, diary_id: diary.id).exists?
   end
-
   # いいねされた時通知を生成するメソッド
   def create_notification_favo(pet)
     history = Notification.where(["visitor_id = ? and visited_id = ? and diary_id = ? and action = ?",

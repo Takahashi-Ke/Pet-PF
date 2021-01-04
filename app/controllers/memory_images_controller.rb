@@ -1,0 +1,2 @@
+class MemoryImagesController < ApplicationController
+end

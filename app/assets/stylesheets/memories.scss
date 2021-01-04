@@ -1,0 +1,36 @@
+// Place all the styles related to the memories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.memory-date {
+  font-size: 13px;
+  line-height: 30px;
+}
+.memory-title{
+  font-size: 30px;
+}
+.memory-contents {
+  margin: 20px 0;
+  padding: 5px 0;
+  border-top: 0.5px solid #C0C0C0;
+}
+.memory-contents a{
+  color: black;
+}
+.name-link {
+  color: black;
+  font-size: 20px;
+}
+.memory-detail {
+  padding-bottom: 15px;
+  border-bottom: 0.5px solid #C0C0C0;
+}
+.memory-comment-box {
+  padding-top: 10px;
+  border-top: 0.5px solid #C0C0C0;
+}
+.memory-area {
+  width: 100%;
+  overflow: scroll;
+  height: 700px;
+}

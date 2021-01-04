@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row">
+    
+    <div class="col-2 ml-5 mr-3">
+      <%= render 'pets/pet_info', pet: @pet %>
+    </div>
+    
+    <div class="col-6">
+      <div class="memory-detail">
+        <div class="row">
+          <div class="col-5 memory-title">
+            <p><%= @memory.title %></p>
+          </div>
+          <div class="col-5 mt-2">
+            <%= @memory.created_at.to_s(:datetime_jp) %>
+          </div>
+        </div>
+        <div class="row">
+          <%= simple_format(@memory.body) %>
+        </div>
+        <% unless @images.blank? %>
+          <div class="row">
+            <p>写真</p>
+          </div>
+          <div class="row">
+            <% @images.each do |image| %>
+              <div class="col-3">
+                <%= attachment_image_tag image, :image, size: '120x120' %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row mt-3">
+        <div class="col-2 offset-6 comment-btn" id="comments-count">
+          <%= render 'memory_comments/memory_comments_count', memory: @memory %>
+        </div>
+        <div class="col-2 favorite-btn-<%= @memory.id %>">
+          <%= render 'favorites/favo', memory: @memory, diary: @diary %>
+        </div>
+        <% if @memory.pet_id == current_owner.pet.id %>
+          <div class="col-2">
+            <%= link_to "編集する", edit_memory_path(@memory), class:"btn btn-outline-primary" %>
+          </div>
+        <% end %>
+      </div>
+      <!--コメント一覧-->
+      <%= render 'memory_comments/memory_comments_list', memory: @memory, memory_comment: @memory_comment %>
+    </div>
+    
+    <div class="col-3">
+      <div class="row d-flex justify-content-center">
+        <h5><%= @memory.pet.name %>の思い出</h5>
+      </div>
+      <%= month_calendar(attribute: :created_at, events: @memories) do |date, memories| %>
+        <%= date.day %>
+        <% memories.each do |memory| %>
+          <%= link_to memory_path(memory) do %>
+            <div class="fas fa-images ml-2"></div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    
+  </div>
+  
+  <div class="modal-wrapper"></div>
+  <div class="diary-modal">
+    <%= render 'diaries/diary_form', diary: @diary, pet: @pet %>
+  </div>
+</div>

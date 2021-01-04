@@ -1,0 +1,26 @@
+<% case notification.action %>
+  <% when 'follow' then %>
+    <span>あなたをフォローしました</span>
+  <% when 'favorite' then %>
+    <span>あなたの思い出にいいねしました</span>
+    <div class="row pt-2 ml-1">
+      <%= attachment_image_tag notification.memory.pet, :image, size: '30x30', fallback: "no_image.png", class:"rounded-circle" %>
+      <div class="mt-1 ml-2">
+        <%= link_to notification.memory.title, memory_path(notification.memory) %>
+      </div>
+    </div>
+  <% when 'comment' then %>
+    <% if notification.memory.pet_id == notification.visited.id %>
+      <span>あなたの思い出に</span>
+    <% else %>
+      <%= attachment_image_tag notification.memory.pet, :image, size: '70x70', fallback: "no_image.png", class:"rounded-circle" %>
+      <span><%= link_to notification.memory.pet.name, pet_path(notification.memory.pet) %>さんの<span><%= link_to "思い出", memory_path(notification.memory) %></span>に</span>
+    <% end %>
+  <span>コメントしました</span>
+  <div class="row pt-2 ml-1">
+    <%= attachment_image_tag notification.memory.pet, :image, size: '30x30', fallback: "no_image.png", class:"rounded-circle" %>
+    <div class="mt-1 ml-2">
+      <%= link_to notification.memory.title, memory_path(notification.memory) %>
+    </div>
+  </div>
+<% end %>
