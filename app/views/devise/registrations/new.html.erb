@@ -23,11 +23,11 @@
         <%= f.label :写真, class:"form-label" %>
       </div>
       <div class="row d-flex justify-content-center">
-        <%= attachment_image_tag @owner, :image, size: "210x210", fallback: "no_image.png", class:"owner-prev mb-3" %>
+        <%= attachment_image_tag @owner, :image, size: "280x280", fallback: "no_image.png", class:"owner-prev mb-3" %>
         <%= f.attachment_field :image, class:"owner-image"%>
       </div>
       <div class="row mt-2 ml-5">
-        <%= f.label :名前※, class:"form-label"%>
+        <%= f.label :名前※, class:"form-label" %>
       </div>
       <div class="row d-flex justify-content-center">
         <%= f.text_field :name, size:'30', autofocus: true, autocomplete: "name" %>
@@ -50,7 +50,7 @@
             <%= pet.label :写真, class:"form-label" %>
           </div>
           <div class="row d-flex justify-content-center">
-            <%= attachment_image_tag @pet, :image, size: "210x210", fallback: "no_image.png", class:"pet-prev mb-3" %>
+            <%= attachment_image_tag @pet, :image, size: "280x280", fallback: "no_image.png", class:"pet-prev mb-3" %>
             <%= pet.attachment_field :image, class:"pet-image"%>
           </div>
           <div class="row mt-2 ml-5">
@@ -102,8 +102,8 @@
   </div>  
   <div class="row">
     <div class="col-4 offset-4">
-      <div class="row">
-        <%= f.label :パスワード※, class:"form-label" %>
+      <div class="row ml-5">
+        <%= f.label :パスワード, class:"form-label" %>
         <% if @minimum_password_length %>
         <span>(<%= @minimum_password_length %>文字以上で設定できます)※</span>
         <% end %>
@@ -111,7 +111,7 @@
       <div class="row d-flex justify-content-center">
         <%= f.password_field :password, size:'30', autocomplete: "new-password" %>
       </div>
-      <div class="row">
+      <div class="row ml-5Ω">
         <%= f.label :パスワード確認※, class:"form-label" %>
       </div>
       <div class="row d-flex justify-content-center">
