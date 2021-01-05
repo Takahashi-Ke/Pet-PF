@@ -52,14 +52,9 @@
       <div class="row d-flex justify-content-center">
         <h5><%= @memory.pet.name %>の思い出</h5>
       </div>
-      <%= month_calendar(attribute: :created_at, events: @memories) do |date, memories| %>
-        <%= date.day %>
-        <% memories.each do |memory| %>
-          <%= link_to memory_path(memory) do %>
-            <div class="fas fa-images ml-2"></div>
-          <% end %>
-        <% end %>
-      <% end %>
+      <div id="memories_calendar">
+        <%= render "pets/memories_calendar", memories: @memories %>
+      </div>
     </div>
     
   </div>
