@@ -9,10 +9,16 @@ class MemoriesController < ApplicationController
   
   def create
     # binding.pry
-    memory = Memory.new(memory_params)
-    memory.pet_id = current_owner.pet.id
-    memory.save
-    redirect_to memory_path(memory)
+    @memory = Memory.new(memory_params)
+    @memory.pet_id = current_owner.pet.id
+    if @memory.save
+      redirect_to memory_path(@memory)
+    else
+      @memory.memory_images.build
+      @pet = current_owner.pet
+      @diary = Diary.new
+      render :new
+    end
   end
   
   def index
