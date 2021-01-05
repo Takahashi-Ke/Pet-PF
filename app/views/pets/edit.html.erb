@@ -51,8 +51,10 @@
             <%= pet.label :性格, class:"form-label" %>
           </div>
           <div class="row ml-5 d-flex justify-content-center">
+          <!--PetPersonalityを選択-->
+            <%= pet.fields_for :pet_personalities do |pp| %>
             <% PetPersonality.personalities.map do |k, v| %>
-              <%= pet.fields_for :pet_personalities do |pp| %>
+              
                 <div class="col-5">
                   <%= pp.check_box :personality, {}, v, false %>
                   <%= pp.label :personality, k %>
@@ -73,9 +75,5 @@
     </div>
   </div>
   <% end %>
-
                 
-
-
-  
 </div>
