@@ -15,8 +15,8 @@
             <%= @memory.created_at.to_s(:datetime_jp) %>
           </div>
         </div>
-        <div class="row">
-          <%= simple_format(@memory.body) %>
+        <div class="row mt-3 ml-3 memory-body">
+          <%= safe_join(@memory.body.split("\n"), tag(:br)) %>
         </div>
         <% unless @images.blank? %>
           <div class="row">
