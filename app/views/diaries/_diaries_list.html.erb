@@ -10,7 +10,7 @@
           <div class="col-5">
             <%= link_to diary.pet.name, pet_path(diary.pet) %>
           </div>
-          <div class="col-6 ml-3">
+          <div class="col-6 ml-3 diary-date">
             <%= diary.created_at.to_s(:datetime_jp) %>
           </div>
           <div class="diary-body">
