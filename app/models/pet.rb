@@ -1,8 +1,7 @@
 class Pet < ApplicationRecord
 
   belongs_to :owner
-  has_many :pet_personalities, dependent: :destroy
-  accepts_nested_attributes_for :pet_personalities, allow_destroy: true
+  has_many :pet_characters, dependent: :destroy
   has_many :diaries, dependent: :destroy
   has_many :diary_comments, dependent: :destroy
   has_many :memories, dependent: :destroy

@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_110425) do
+ActiveRecord::Schema.define(version: 2021_01_06_010054) do
+
+  create_table "characters", force: :cascade do |t|
+    t.integer "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "chats", force: :cascade do |t|
     t.integer "pet_id"
@@ -109,12 +115,13 @@ ActiveRecord::Schema.define(version: 2020_12_31_110425) do
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
 
-  create_table "pet_personalities", force: :cascade do |t|
+  create_table "pet_characters", force: :cascade do |t|
     t.integer "pet_id"
-    t.integer "personality"
+    t.integer "character_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pet_id"], name: "index_pet_personalities_on_pet_id"
+    t.index ["character_id"], name: "index_pet_characters_on_character_id"
+    t.index ["pet_id"], name: "index_pet_characters_on_pet_id"
   end
 
   create_table "pet_rooms", force: :cascade do |t|
