@@ -56,18 +56,18 @@ $(document).on("click", ".pet-image", function(){
 $(function() {
   $(document).on('click', '.add-diary-button', function() {
     $('.modal-wrapper').show();
-    $('.diary-modal').show();
+    $('.diary-modal').fadeIn();
   });
   $(document).on('click', '.select-personality-btn', function() {
     $('.modal-wrapper').show();
-    $('.personality-modal').show();
+    $('.personality-modal').fadeIn();
   });
   });
 // 非表示
 $(document).on('click', '.modal-wrapper, .hide-modal-btn', function() {
     $('.modal-wrapper').hide();
-    $('.diary-modal').hide();
-    $('.personality-modal').hide();
+    $('.diary-modal').fadeOut();
+    $('.personality-modal').fadeOut();
 })
 
 // タブ切り替え

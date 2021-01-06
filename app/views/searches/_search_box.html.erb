@@ -4,11 +4,8 @@
 <div class="check-box">
   <%= form_with url: search_path, method: :get, local: true do |f| %>
   <div class="row">
-    <div class="col-10 ml-2">
-      <h6>フリーワード</h6>
-    </div>
     <div class="col-10 d-flex justify-content-center">
-      <%= f.text_field :keyword, size:'28',placeholder: "Search" %>
+      <%= f.text_field :keyword, size:'28',placeholder: "キーワード検索" %>
     </div>
   </div>
   <div class="row mt-3">
@@ -45,7 +42,7 @@
     <% end %>
   </div>
   <div class="row d-flex justify-content-center">
-    <%= f.submit "検索する", class:"btn btn-outline-primary search-btn" %>
+    <%= f.submit "検索する", class:"btn-layout" %>
   </div>
 <% end %>
 </div>

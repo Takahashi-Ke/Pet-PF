@@ -1,0 +1,20 @@
+<div class="row chat-area">
+  <% chats.each do |chat| %>
+    <% if chat.pet_id == current_owner.pet.id %>
+      <div class="col-1 offset-5 chat-time">
+        <%= chat.created_at.strftime('%H:%M') %>
+      </div>
+      <div class="col-4 chat-message" id="mine-message">
+        <%= chat.message %>
+      </div>
+    <% else %>
+      <div class="col-4 chat-message">
+        <%= chat.message %>
+      </div>
+      <div class="col-2 chat-time">
+        <%= chat.created_at.strftime('%H:%M') %>
+      </div>
+      <div class="col-5"></div>
+    <% end %>
+  <% end %>
+</div>
