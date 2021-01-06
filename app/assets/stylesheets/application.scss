@@ -19,9 +19,15 @@
 body {
   background-color: #f7f3e8;
 }
+header {
+  background-color: #fff;
+  border-bottom: 1px solid #D2B48C;
+  margin-bottom: 20px;
+}
 .header-area {
+  
   width: 100%;
-  height: 150px;
+  height: 100px;
 }
 .header-icon {
   font-size: 1.8em;
@@ -62,6 +68,26 @@ a {
   background-color: #2E94B9;
   color: white;
   text-decoration: none;
+}
+.cancel-btn {
+  background-color: #2E94B9;
+  color: white;
+  text-decoration: none;
+}
+.cancel-btn:hover {
+  background-color: darken(#2E94B9, 10%);
+}
+.destroy-btn {
+  color: #D25565;
+  border: 1px solid #D25565;
+}
+.destroy-btn:hover {
+  background-color: #D25565;
+  color: white;
+  text-decoration: none;
+}
+.pet-info-box {
+  position: fixed;
 }
 
 footer {

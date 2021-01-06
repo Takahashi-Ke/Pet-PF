@@ -20,14 +20,14 @@
       
         <% if current_owner.pet.following?(pet) %>
           <div class="col-2 d-flex align-items-center">
-            <%= link_to "フォロー中", pet_relationship_path(pet, pet_id: pet.id), method: :delete, class:"follow-btn",data: {confirm: "フォローを解除します。よろしいですか？"} %>
+            <%= link_to "フォロー中", pet_relationship_path(pet, pet_id: pet.id), method: :delete, data: {confirm: "フォローを解除します。よろしいですか？"}, class:"btn-layout cancel-btn" %>
           </div>
           <div class="col-3 ml-1 d-flex align-items-center">
-            <%= link_to "会話する", pet_chats_path(pet_id: pet.id), class:"follow-btn" %>
+            <%= link_to "会話する", pet_chats_path(pet_id: pet.id), class:"btn-layout" %>
           </div>
         <% else %>
           <div class="col-3 d-flex align-items-center">
-            <%= link_to "フォロー", pet_relationships_path(pet_id: pet), method: :post, class:"follow-btn" %>
+            <%= link_to "フォロー", pet_relationships_path(pet_id: pet), method: :post, class:"btn-layout" %>
           </div>
         <% end %>
       
