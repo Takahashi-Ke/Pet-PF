@@ -90,8 +90,23 @@ $(document).on("turbolinks:load", function(){
 
 $(document).on("turbolinks:load", function(){
   $('.comment-box').hide();
-    var diaryId = $('.diary-comment-id').val();
-  $('.comment-btn-'+diaryId+'').on('click', function(){
-    $('#comment-'+diaryId+'').toggle();
-  });
+  // 変数の個数分
+  var $diaryComment = $('.diary-comment-id');
+  // i=index,elm=diaryComment
+  $diaryComment.each(function(i, elm) {
+    
+    (function() {
+      var diaryId = $(elm).val();
+      (function() {
+        $('.comment-btn-'+diaryId+'').on('click', function(){
+          $('#comment-'+diaryId+'').toggle();
+        });
+      })(diaryId);
+    })(elm);
+  })
+});
+
+// チャットを下からスクロールする
+$(document).on('turbolinks:load', function() {
+　$('.chat-area').animate({scrollTop: $('.chat-area')[0].scrollHeight}, 'fast');
 });

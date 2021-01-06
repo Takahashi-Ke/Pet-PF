@@ -1,2 +1,3 @@
-$('.chat-contens').html("<%= j(render 'chat_contents', chats: @chats) %>");
+$('.chat-contents').html("<%= j(render 'chat_contents', chats: @chats) %>");
+$('.chat-area').animate({scrollTop: $('.chat-area')[0].scrollHeight}, 'fast');
 $('.chat-form').val('');

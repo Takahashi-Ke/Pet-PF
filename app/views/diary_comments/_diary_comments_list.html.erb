@@ -28,7 +28,7 @@
   </div>
   <div class="row">
     <div class="col-10 offset-2">
-      <%= form_with model: diary_comment, url: diary_comments_path(pet_id: current_owner.pet, diary_id: diary), remote: true do |f| %>
+      <%= form_with model: DiaryComment.new, url: diary_comments_path(pet_id: current_owner.pet, diary_id: diary), remote: true do |f| %>
         <%= f.text_area :comment, size: '50x2', placeholder: 'コメントを書く' %>
         <%= f.submit 'コメントする', class:"btn" %>
       <% end %>

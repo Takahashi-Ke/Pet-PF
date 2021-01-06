@@ -49,6 +49,10 @@ header {
 a {
   color: black;
 }
+a:hover {
+  text-decoration: none;
+  color: #D2B48C;
+}
 .form-label {
   font-size: 18px;
 }
