@@ -104,6 +104,9 @@ $(document).on("turbolinks:load", function(){
       })(diaryId);
     })(elm);
   })
-    
+});
 
+// チャットを下からスクロールする
+$(document).on('turbolinks:load', function() {
+　$('.chat-area').animate({scrollTop: $('.chat-area')[0].scrollHeight}, 'fast');
 });

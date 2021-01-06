@@ -3,35 +3,32 @@
     <div class="row">
       <div class="col-3">
         <%= link_to pet_path(pet) do %>
-          <%= attachment_image_tag pet, :image, size:'70x70', fallback: "no_image.png", class:"rounded-circle" %>
+          <%= attachment_image_tag pet, :image, size:'80x80', fallback: "no_image.png", class:"rounded-circle" %>
         <% end %>
         <span> <%= link_to pet.name, pet_path(pet) %></span>
       </div>
-      <div class="col-9 pt-4">
+      <div class="col-9">
         <div class="row">
-          <div class="col-2">
+          <div class="col-2 pt-4">
             <%= pet.type %>
           </div>
-          <div class="col-2">
+          <div class="col-2 pt-4">
             <% if pet.gender == 'オス' %>
                <i class="fas fa-mars gender-icon"></i>
             <% else %>
               <i class="fas fa-venus gender-icon"></i>
             <% end %>
           </div>
-          <div class="col-4">
-            <%= pet.age %>歳<%= pet.moon_age %>ヶ月
+          <div class="col-4 pt-2">
+            <%= attachment_image_tag pet.owner, :image, size:'50x50', fallback: "no_image.png", class:"rounded-circle" %>
+            <span> <%= pet.owner.name %></span>
           </div>
         </div>
       </div>
     </div>
     <div class="row ml-3">
-      <div class="col-4 ml-5">
-        <%= attachment_image_tag pet.owner, :image, size:'50x50', fallback: "no_image.png", class:"rounded-circle" %>
-        <span> <%= pet.owner.name %></span>
-      </div>
       <% if current_owner.pet.following?(pet) %>
-        <div class="col-3 pl-5 d-flex align-items-center">
+        <div class="col-3 offset-6 pl-5 d-flex align-items-center">
           <%= link_to "フォロー中", pet_relationship_path(pet, pet_id: pet.id), method: :delete, data: {confirm: "フォローを解除します。よろしいですか？"}, class:"btn-layout cancel-btn" %>
         </div>
         <div class="col-3 d-flex align-items-center">
