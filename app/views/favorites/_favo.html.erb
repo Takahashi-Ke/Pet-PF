@@ -1,7 +1,7 @@
 <% if diary.new_record?  %>
   
   <% if memory.memory_favorited_by?(current_owner.pet, memory) %>
-    <%= link_to favorite_path(memory.id, memory_id: memory.id), method: :delete, remote: true  do %>
+    <%= link_to favorite_path(memory.id, memory_id: memory.id), method: :delete, remote: true, class:"favo-icon" do %>
       <i class="fas fa-heart"></i>
       <span><%= memory.favorites.count %></span>
     <% end %>
@@ -15,7 +15,7 @@
 <% else %>
 
   <% if diary.diary_favorited_by?(current_owner.pet, diary) %>
-    <%= link_to favorite_path(diary.id), method: :delete, remote: true do %>
+    <%= link_to favorite_path(diary.id), method: :delete, remote: true, class:"favo-icon" do %>
       <i class="fas fa-heart"></i>
       <span><%= diary.favorites.count %></span>
     <% end %>

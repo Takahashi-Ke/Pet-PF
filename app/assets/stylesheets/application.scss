@@ -25,13 +25,29 @@ header {
   margin-bottom: 20px;
 }
 .header-area {
-  
   width: 100%;
-  height: 100px;
+  height: 110px;
 }
+.header-area p {
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid #D2B48C;
+}
+#bell-icon {
+  margin-top: 36px;
+}
+#bell-icon p {
+  margin-top: 0;
+}
+#bell-icon .header-icon {
+  margin-left: 3px;
+}
+
 .header-icon {
-  font-size: 1.8em;
-  padding-right: 3px;
+  margin-left: 3px;
+  font-size: 2.5em;
   color: #F0B775;
 }
 .header-icon:hover {
@@ -44,8 +60,6 @@ header {
   position: absolute;
   left: 0.65rem;
 }
-
-
 a {
   color: black;
 }
@@ -59,9 +73,12 @@ a:hover {
 .explanation {
   font-size: 21px;
 }
+.favo-icon {
+  color: #D25565;
+}
 .btn-layout {
   display: inline-block;
-  font-size: 16px;
+  font-size: 15px;
   padding: 3px 5px;
   color: #2E94B9;
   background-color: #ffffff;
