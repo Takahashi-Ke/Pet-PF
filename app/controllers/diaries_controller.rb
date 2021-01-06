@@ -4,7 +4,6 @@ class DiariesController < ApplicationController
     @pet = current_owner.pet
     @diary = Diary.new
     @diaries = Diary.all
-    @diary_comment = DiaryComment.new
   end
 
   def create
