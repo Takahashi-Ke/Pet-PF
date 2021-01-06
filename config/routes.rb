@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :pets, only: [:index, :show, :edit, :update] do
-    resource :pet_personalities, only: [:create, :update]
+    resource :pet_characters, only: [:create, :update]
     resource :chats, only: [:show, :create]
     resources :relationships, only: [:create, :destroy]
   end

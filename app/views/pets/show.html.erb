@@ -28,12 +28,12 @@
             <table>
               <tr>
                 <th>性格</th>
-                <% if @pet_personalities.exists? %>
-                  <% @pet_personalities.each do |pp| %>
-                  <td class="ml-5"><%= pp.personality %></td>
+                <% if @pet_characters.exists? %>
+                  <% @pet_characters.each do |pc| %>
+                  <td class="ml-5"><%= pc.name %></td>
                   <% end %>
                 <% else %>
-                  <td class="select-personality-btn"><%= button_tag "性格を選ぶ" %></td>
+                  <td class="select-character-btn"><%= button_tag "性格を選ぶ" %></td>
                 <% end %>
               </tr>
             </table>
@@ -145,7 +145,7 @@
       </div>
     </div>
     <div class="col-3">
-      <%= render 'searches/search_box' %>
+      <%#= render 'searches/search_box' %>
     </div>
   </div>
 
@@ -155,6 +155,6 @@
   <!--日記新規投稿-->
   <%= render 'diaries/diary_form', diary: @diary, pet: @pet %>
   <!--ペットの性格入力-->
-  <%= render 'pet_personalities/personality_form', pet: @pet %>
+  <%= render 'pet_characters/pet_characters_form', pet: @pet, pet_character: @pet_character %>
     
 </div>

@@ -58,16 +58,16 @@ $(function() {
     $('.modal-wrapper').show();
     $('.diary-modal').show();
   });
-  $(document).on('click', '.select-personality-btn', function() {
+  $(document).on('click', '.select-character-btn', function() {
     $('.modal-wrapper').show();
-    $('.personality-modal').show();
+    $('.character-modal').show();
   });
   });
 // 非表示
 $(document).on('click', '.modal-wrapper, .hide-modal-btn', function() {
     $('.modal-wrapper').hide();
     $('.diary-modal').hide();
-    $('.personality-modal').hide();
+    $('.character-modal').hide();
 })
 
 // タブ切り替え

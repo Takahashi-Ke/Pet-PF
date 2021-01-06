@@ -2,6 +2,7 @@ class Pet < ApplicationRecord
 
   belongs_to :owner
   has_many :pet_characters, dependent: :destroy
+  has_many :characters, through: :characters
   has_many :diaries, dependent: :destroy
   has_many :diary_comments, dependent: :destroy
   has_many :memories, dependent: :destroy
