@@ -55,10 +55,10 @@
                   <% if @pet.id == current_owner.pet.id %>
                     <%= link_to "編集する", edit_pet_path(@pet), class:"btn-layout" %>
                   <% elsif current_owner.pet.following?(@pet) %>
-                    <%= link_to "フォロー中", pet_relationship_path(@pet), method: :delete, data: {confirm: "削除しますか？"}, class:"btn-layout mr-3"  %>
+                    <%= link_to "フォロー中", pet_relationship_path(@pet), method: :delete, data: {confirm: "削除しますか？"}, class:"btn-layout cancel-btn mr-3"  %>
                     <%= link_to "会話する", pet_chats_path(@pet), class:"btn-layout" %>
                   <% else %>
-                    <%= link_to "フォローする", pet_relationships_path(@pet), method: :post, class:"btn-layout" %>
+                    <%= link_to "フォロー", pet_relationships_path(@pet), method: :post, class:"btn-layout" %>
                   <% end %>
                 </div>
             </div>
@@ -144,13 +144,22 @@
     
             <!--友だち(tab4)-->
             <div id="tab4" class="tab">
-              <%= render 'pets/pet_list', pets: @pet.followed_pets %>
+              <% unless @pet.followed_pets.blank? %>
+                <%= render 'pets/pet_list', pets: @pet.followed_pets %>
+              <% else %>
+                <div class="mx-auto no-contents">
+                  <p>友だちはまだいません</p>
+                  <% if @pet.id == current_owner.pet.id %>
+                    <p>フォローして友だちを作りましょう!</p>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-3 ml-5">
       <%= render 'searches/search_box' %>
     </div>
   </div>

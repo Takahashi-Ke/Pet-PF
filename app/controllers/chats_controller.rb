@@ -18,11 +18,10 @@ class ChatsController < ApplicationController
   end
 
   def create
-    chat = Chat.new(chat_params)
-    chat.pet_id = current_owner.pet.id
+    chat = current_owner.pet.chats.new(chat_params)
     chat.room_id = params[:room_id]
     chat.save
-    redirect_to request.referer
+    @chats = chat.room.chats
   end
 
   private

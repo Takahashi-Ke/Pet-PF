@@ -10,20 +10,24 @@
 #tab-menu li {
   list-style-type: none;
   width: 25%;
+  margin-right: 10px;
+}
+#tab-menu li:last-child {
+  margin: 0;
 }
 #tab-menu li a {
-  color: #fff;
+  color: #D2B48C;
   text-decoration: none;
   display: block;
   padding: 20px;
   text-align: center;
-  background: #000;
-  border: 1px solid #000;
+  border: 1px solid #D2B48C;
+  border-radius: 15px 15px 0 0;
   border-bottom: none;
 }
-
 #tab-menu .active {
-  background: #fff;
+  font-weight: 600;
+  background-color: #fff;
   color: #000;
 }
 #tab-contents {
@@ -32,6 +36,7 @@
 }
 #tab-contents .tab {
   width: 100%;
+  height: 560px;
   padding: 30px;
   background: #fff;
 }
@@ -43,7 +48,7 @@
   width: 100%;
   overflow: scroll;
   height: 560px;
-  border: 1px solid #000;
+  border: 1px solid #D2B48C;
   border-top: none;
 }
 .gender-icon {
@@ -61,19 +66,7 @@
 .pet-contents {
   margin: 20px 0;
   padding: 10px 0;
-  border-top: 0.5px solid #C0C0C0;
-}
-.follow-btn {
-  font-size: 14px;
-  padding: 2px 3px;
-  color: #007bff;
-  border: 0.5px solid #007bff;
-  border-radius: 0.25rem;
-}
-.follow-btn:hover {
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
+  border-top: 0.5px solid #D2B48C;
 }
 .personality-table th{
   font-weight: normal;
