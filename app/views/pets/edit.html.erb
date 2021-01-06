@@ -3,7 +3,7 @@
     <h2>プロフィール編集</h2>
   </div>
   
-  <%= form_with model: current_owner, url: pet_path(@pet) ,local: true do |f| %>
+  <%= form_with model: @owner, url: pet_path(@pet) ,local: true do |f| %>
   <div class="row mt-5">
     <div class="col-4 offset-2">
       <div class="row">
@@ -23,7 +23,7 @@
          <%= f.text_field :name, size:'30', autofocus: true, autocomplete: "name" %>
       </div>
     </div>
-      <%= f.fields_for :pet, @pet do |pet| %>
+      <%= f.fields_for :pet do |pet| %>
         <div class="col-4 ml-4">
           <div class="row">
             <h4>ペットについて</h4>
@@ -32,7 +32,7 @@
             <%= pet.label :写真, class:"form-label" %>
           </div>
           <div class="row d-flex justify-content-center">
-            <%= attachment_image_tag @pet, :image, size: '280x280', fallback: "no_image.png", class:"pet-prev mb-3" %>
+            <%= attachment_image_tag current_owner.pet, :image, size: '280x280', fallback: "no_image.png", class:"pet-prev mb-3" %>
             <%= pet.attachment_field :image, class:"pet-image" %>
           </div>
           <div class="row mt-2 ml-5">
@@ -52,15 +52,12 @@
           </div>
           <div class="row ml-5 d-flex justify-content-center">
           <!--PetPersonalityを選択-->
-            <%= pet.fields_for :pet_personalities do |pp| %>
-            <% PetPersonality.personalities.map do |k, v| %>
-              
-                <div class="col-5">
-                  <%= pp.check_box :personality, {}, v, false %>
-                  <%= pp.label :personality, k %>
-                </div>
-              <% end %>
-            <% end %>
+            <%= pet.collection_check_boxes :pet_personalities,PetPersonality.personalities,:last,:first  do |b| %>
+              <div class="col-5">
+                <%= b.check_box checked: !@pet.pet_personalities.find_by(personality: b.text).nil? %>
+                <%= b.label %>
+              </div>
+            <%end%>
           </div>
         </div>
       <% end %>

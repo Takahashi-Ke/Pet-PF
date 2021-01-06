@@ -1,144 +1,155 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-3 ml-4">
-      <%= attachment_image_tag @pet, :image, size: '220x220', fallback: "no_image.png" %>
-    </div>
-    <div class="col-6">
+    <div class="col-8">
       <div class="row">
-        <%= @pet.name %>
-          <% if @pet.gender == 'オス' %>
-           <i class="fas fa-mars gender-icon"></i>
-          <% else %>
-            <i class="fas fa-venus gender-icon"></i>
-          <% end %>
-        <%= @pet.age %>歳<%= @pet.moon_age %>ヶ月
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <%= @pet.type %>
+        <div class="col-3 ml-4">
+          <%= attachment_image_tag @pet, :image, size: '220x220', fallback: "no_image.png" %>
         </div>
-        <div class="col-2">
-          <p>性格</p>
-        </div>
-        <div class="col-4">
-          <% if @pet_personalities.exists? %>
-            <% @pet_personalities.each do |pp| %>
-              <%= pp.personality %>
-            <% end %>
-          <% else %>
-            <div class="select-personality-btn">
-              <%= button_tag "性格を選ぶ" %>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-4">
+              <%= @pet.name %>
             </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <%= @pet.introduction %>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <p>友だち（<%= @pet.following_pets.count%>）</p>
-        </div>
-        <div class="col-3 col-offset-3">
-          <% if @pet.id == current_owner.pet.id %>
-            <%= link_to "プロフィールを編集する", edit_pet_path(@pet) %>
-          <% elsif current_owner.pet.following?(@pet) %>
-            <%= link_to "フォロー中", pet_relationship_path(@pet), method: :delete, data: {confirm: "削除しますか？"}  %>
-            <%= link_to "会話する", pet_chats_path(@pet) %>
-          <% else %>
-            <%= link_to "フォローする", pet_relationships_path(@pet), method: :post %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mt-5">
-    <div class="col-8 ml-4">
-      <!--タブメニュー-->
-      <ul id="tab-menu">
-        <li><a href="#tab1" class="active">日記</a></li>
-        <li><a href="#tab2" class="">アルバム</a></li>
-        <li><a href="#tab3" class="">思い出</a></li>
-        <li><a href="#tab4" class="">友だち</a></li>
-      </ul>
-      <!--タブの中身-->
-      <div id="tab-contents">
-        <div class="tab-area">
-          <!--日記一覧(tab1)-->
-          <div id="tab1" class="tab">
-            <div class="row">
-              <div class="col-2">
-                <% if @pet.id == current_owner.pet.id %>
-                  <div class="add-diary-button post-diary">
-                    日記を書く<span><i class="fas fa-pen-nib"></i></span>
-                  </div>
-                <% end %>
-              </div>
-              <div class="col-8">
-                <% if @diaries.exists? %>
-                  <%= render 'diaries/diaries_list', diaries: @diaries %>
-                <% else %>
-                  <div class="row">
-                    <div class="mx-auto no-contents">
-                      <p>日記ははまだありません</p>
-                      <% if @pet.id == current_owner.pet.id %>
-                        <p>今日の出来事を日記に書いてみましょう！</p>
-                      <% end %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
+            <div class="col-2">
+              <%= @pet.type %>
+            </div>
+            <div class="col-2">
+              <% if @pet.gender == 'オス' %>
+                 <i class="fas fa-mars gender-icon"></i>
+              <% else %>
+                <i class="fas fa-venus gender-icon"></i>
+              <% end %>
+            </div>
+            <div class="col-4">
+              <%= @pet.age %>歳<%= @pet.moon_age %>ヶ月
             </div>
           </div>
-  
-          <!--アルバム一覧(tab2)-->
-          <div id="tab2" class="tab">
-            <div class="row">
-              <% if @photos.exists? %>
-                <% @photos.each do |photo| %>
-                  <div class="col-3 mb-3">
-                    <%= attachment_image_tag photo, :image, size: '190x190' %>
-                  </div>
+          <div class="row">
+            <table>
+              <tr>
+                <th>性格</th>
+                <% if @pet_personalities.exists? %>
+                  <% @pet_personalities.each do |pp| %>
+                  <td class="ml-5"><%= pp.personality %></td>
+                  <% end %>
+                <% else %>
+                  <td class="select-personality-btn"><%= button_tag "性格を選ぶ" %></td>
                 <% end %>
+              </tr>
+            </table>
+          </div>
+          <div class="row pet-introduction">
+            <%= simple_format(@pet.introduction) %>
+          </div>
+          <div class="row">
+            <div class="col-2">
+              <%= attachment_image_tag @pet.owner, :image, size: '100x100', fallback: "no_image.png" %>
+            </div>
+            <div class="col-3 ml-3">
+              <%= @pet.owner.name %>
+            </div>
+            <div class="col-3">
+              <p>友だち（<%= @pet.following_pets.count%>）</p>
+            </div>
+            <div class="col-3 col-offset-3">
+              <% if @pet.id == current_owner.pet.id %>
+                <%= link_to "編集する", edit_pet_path(@pet) %>
+              <% elsif current_owner.pet.following?(@pet) %>
+                <%= link_to "フォロー中", pet_relationship_path(@pet), method: :delete, data: {confirm: "削除しますか？"}  %>
+                <%= link_to "会話する", pet_chats_path(@pet) %>
               <% else %>
-                <div class="mx-auto no-contents">
-                  <p>アルバムはまだありません</p>
+                <%= link_to "フォローする", pet_relationships_path(@pet), method: :post %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-5 ml-5">
+        <!--タブメニュー-->
+        <div class="col-12">
+          <ul id="tab-menu">
+            <li><a href="#tab1" class="active">日記</a></li>
+            <li><a href="#tab2" class="">アルバム</a></li>
+            <li><a href="#tab3" class="">思い出</a></li>
+            <li><a href="#tab4" class="">友だち</a></li>
+          </ul>
+        </div>
+        <!--タブの中身-->
+        <div class="col-12" id="tab-contents">
+          <div class="tab-area">
+            <!--日記一覧(tab1)-->
+            <div id="tab1" class="tab">
+              <div class="row">
+                <div class="col-2">
                   <% if @pet.id == current_owner.pet.id %>
-                    <p>日記に写真を載せて投稿しましょう!</p>
                     <div class="add-diary-button post-diary">
                       日記を書く<span><i class="fas fa-pen-nib"></i></span>
                     </div>
                   <% end %>
                 </div>
-              <% end %>
+                <div class="col-8">
+                  <% if @diaries.exists? %>
+                    <%= render 'diaries/diaries_list', diaries: @diaries %>
+                  <% else %>
+                    <div class="row">
+                      <div class="mx-auto no-contents">
+                        <p>日記ははまだありません</p>
+                        <% if @pet.id == current_owner.pet.id %>
+                          <p>今日の出来事を日記に書いてみましょう！</p>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
             </div>
-          </div>
-  
-          <!--思い出(tab3)-->
-          <div id="tab3" class="tab">
-            <div id="memories_calendar">
-              <%= render "memories_calendar", memories: @memories %>
+    
+            <!--アルバム一覧(tab2)-->
+            <div id="tab2" class="tab">
+              <div class="row">
+                <% if @photos.exists? %>
+                  <% @photos.each do |photo| %>
+                    <div class="col-3 mb-3">
+                      <%= attachment_image_tag photo, :image, size: '190x190' %>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <div class="mx-auto no-contents">
+                    <p>アルバムはまだありません</p>
+                    <% if @pet.id == current_owner.pet.id %>
+                      <p>日記に写真を載せて投稿しましょう!</p>
+                      <div class="add-diary-button post-diary">
+                        日記を書く<span><i class="fas fa-pen-nib"></i></span>
+                      </div>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
             </div>
-            <%= link_to "思い出を作る", new_memory_path %>
-          </div>
-  
-          <!--友だち(tab4)-->
-          <div id="tab4" class="tab">
-            <p>友だち</p>
-            <%= render 'pets/pet_list', pets: @pet.followed_pets %>
-            
+      
+            <!--思い出(tab3)-->
+            <div id="tab3" class="tab">
+              <div id="memories_calendar">
+                <%= render "memories_calendar", memories: @memories %>
+              </div>
+              <%= link_to "思い出を作る", new_memory_path %>
+            </div>
+    
+            <!--友だち(tab4)-->
+            <div id="tab4" class="tab">
+              <%= render 'pets/pet_list', pets: @pet.followed_pets %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="col-3 ml-3">
+    <div class="col-3">
       <%= render 'searches/search_box' %>
     </div>
-    
-    
   </div>
+
+
   
   <div class="modal-wrapper"></div>
   <!--日記新規投稿-->
