@@ -39,7 +39,14 @@
 
       </div>
     </div>
-    <div class="col-3"></div>
+        <div class="col-3">
+      <div class="row d-flex justify-content-center">
+        <h5><%= pet.name %>の思い出</h5>
+      </div>
+      <div id="memories_calendar">
+        <%= render "pets/memories_calendar", memories: memories %>
+      </div>
+    </div>
   </div>
   <div class="modal-wrapper"></div>
   <div class="diary-modal">

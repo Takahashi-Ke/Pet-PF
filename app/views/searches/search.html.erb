@@ -9,7 +9,7 @@
       <div class="row ml-5 mt-2 mb-3 d-flex align-items-center">
         <%= form_with url: search_path, method: :get, local: true do |f| %>
           <%= f.text_field :keyword, size:'28',placeholder: "#{@keyword}" %>
-          <%= button_tag :type => "submit", :class =>"btn btn-outline-primary" do %>
+          <%= button_tag :type => "submit", :class =>"btn-layout" do %>
             <i class="fas fa-search"></i>
           <% end %>
         <% end %>
@@ -20,9 +20,13 @@
             <p>種類 :</p>
           </div>
           <% @types.each do |type| %>
-            <div class="col-2">
-              <%= type.type %>
-            </div>
+            <% Pet.types.map do |k,v| %>
+              <% if type.to_i == v %>
+                <div class="mr-2">
+                  <%= k %>
+                </div>
+              <% end %>
+            <% end %>
           <% end %>
         </div>
       <% end %>
@@ -32,9 +36,13 @@
             <p>性別 :</p>
           </div>
           <% @genders.each do |gender| %>
-            <div class="col-2">
-              <%= gender.gender %>
-            </div>
+            <% Pet.genders.map do |k,v| %>
+              <% if gender.to_i == v %>
+                <div class="mr-2">
+                  <%= k %>
+                </div>
+              <% end %>
+            <% end %>
           <% end %>
         </div>
       <% end %>
@@ -44,9 +52,13 @@
             <p>種類 :</p>
           </div>
           <% @personalities.each do |personality| %>
-            <div class="col-2">
-              <%= personality.personality %>
-            </div>
+            <% PetPersonality.personalities.map do |k,v| %>
+              <% if personality.to_i == v %>
+                <div class="mr-2">
+                  <%= k %>
+                </div>
+              <% end %>
+            <% end %>
           <% end %>
         </div>
       <% end %>

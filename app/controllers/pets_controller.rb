@@ -3,12 +3,12 @@ class PetsController < ApplicationController
   def show
     @pet = Pet.find(params[:id])
     @pet_personalities = @pet.pet_personalities
+    @pet.pet_personalities.build
     @memories = @pet.memories
     @diaries = @pet.diaries
     @photos  = Diary.where.not(image_id: nil).where(pet_id: @pet)
     @diary = Diary.new
     @diary_comment = DiaryComment.new
-    @pet.pet_personalities.build
   end
 
   def edit
@@ -20,11 +20,10 @@ class PetsController < ApplicationController
   def update
     pet = Pet.find(params[:id])
     
-    params[:owner][:pet_attributes][:pet_personalities_attributes].each do |k, v|
-       pet_personality = pet.pet_personality
-       pet_personality.personality = v[:personality].to_i
+    # params[:owner][:pet_attributes][:pet_personalities_attributes].each do |k, v|
+    #   pet_personality = pet.pet_personality
+    #   pet_personality.personality = v[:personality].to_i
        current_owner.update(owner_pet_params)
-    end
     redirect_to pet_path(pet)
   end
 

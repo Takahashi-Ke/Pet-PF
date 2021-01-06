@@ -3,6 +3,7 @@ class MemoriesController < ApplicationController
   def new
     @memory = Memory.new
     @memory.memory_images.build
+    @memories = current_owner.pet.memories
     @pet = current_owner.pet
     @diary = Diary.new
   end
@@ -42,6 +43,7 @@ class MemoriesController < ApplicationController
   end
   
   def edit
+    @memories = current_owner.pet.memories
     @memory = Memory.find(params[:id])
     @diary = Diary.new
   end
