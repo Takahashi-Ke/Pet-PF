@@ -13,7 +13,8 @@ class PetsController < ApplicationController
 
   def edit
     @pet = Pet.find(params[:id])
-    @pet.pet_personalities.build
+    #@pet.pet_personalities.build
+    @owner = @pet.owner
   end
 
   def update
