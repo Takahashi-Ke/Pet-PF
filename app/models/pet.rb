@@ -79,6 +79,17 @@ class Pet < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+  
+  scope :search, -> (search_params) do
+    return if search_params.blank?  
+    keyword_search(search_params[:keyword])
+      .type_search(search_params[:types])
+      .gender_serch(search_params[:genders])
+  end
+  
+  scope :keyword_search, -> (keyword) { where("name LIKE?", "%#{keyword}%").where.not(id: current_owner.pet) if keyword.blank? }  #scopeを定義。
+  scope :type_search, -> (types) { where(gender: types) if types.present? }  #scopeを定義。
+  scope :gender_serch, -> (genders) { where(gender: genders) if genders.present? }
 
   # ペットの年齢を算出するメソッド
   def age
@@ -87,8 +98,8 @@ class Pet < ApplicationRecord
     return (d2 - d1) / 10000
   end
   def moon_age
-    d1 = self.birthday.strftime("%Y%m").to_i
-    d2 = Date.today.strftime("%Y%m").to_i
+    d1 = self.birthday.strftime("%m").to_i
+    d2 = Date.today.strftime("%m").to_i
     m = (d2 - d1) / 100
     if m < 0
       return m + 12
