@@ -6,7 +6,7 @@ class Pet < ApplicationRecord
   has_many :diaries, dependent: :destroy
   has_many :diary_comments, dependent: :destroy
   has_many :memories, dependent: :destroy
-  has_many :memorie_comments, dependent: :destroy
+  has_many :memory_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :pet_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy

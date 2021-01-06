@@ -20,10 +20,11 @@ class PetsController < ApplicationController
   def update
     pet = Pet.find(params[:id])
     
-    params[:owner][:pet_attributes][:pet_personalities_attributes].each do |k, v|
-       pet_personality = pet.pet_personality
-       pet_personality.personality = v[:personality].to_i
-       current_owner.update(owner_pet_params)
+    params[:owner][:pet_attributes][:pet_personalities].each do |pp|
+      binding.pry
+      pet_personality = pet.pet_personalities
+      pet_personality.personality = pp.to_i
+      current_owner.update(owner_pet_params)
     end
     redirect_to pet_path(pet)
   end
