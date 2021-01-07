@@ -16,7 +16,7 @@
 
         <%= form_with model: memory, local: true do |f| %>
           <div class="row">
-            <%= f.text_field :title, style: "border: none", placeholder: "タイトル" %>
+            <%= f.text_field :title, size: '40', style: "border: none", placeholder: " タイトル", class:"pt-2 pb-2" %>
           </div>
           
           <!--写真挿入フォーム-->
@@ -24,9 +24,9 @@
             <%= f.attachment_field :memory_images_images, multiple: true %>
           </div>  
           <div class="row mt-3">
-            <%= f.text_area :body, style: "border: none", size: "80x20", placeholder: "#{pet.name}との思い出を書いてみましょう" %>
+            <%= f.text_area :body, style: "border: none", size: "80x20", placeholder: " #{pet.name}との思い出を書いてみましょう", class:"pt-2" %>
           </div>
-          <div class="row d-flex justify-content-center">
+          <div class="row d-flex justify-content-center mt-3">
             <% if memory.new_record? %>
               <%= f.submit "投稿する", class:"btn-layout btn-layout2 pl-5 pr-5" %>
             <% else %>

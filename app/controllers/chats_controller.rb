@@ -1,5 +1,5 @@
 class ChatsController < ApplicationController
-
+  
   def show
     @pet = Pet.find(params[:pet_id])
     rooms = current_owner.pet.pet_rooms.pluck(:room_id)

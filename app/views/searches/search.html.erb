@@ -75,12 +75,13 @@
         
         <div class="col-12">
           <div id="tab-contents">
-            <div class="search-area">
               
               <!--ペット検索結果一覧(tab1)-->
-              <div id="tab1" class="tab">
+              <div id="tab1" class="tab tab-2">
                 <% if @pets.present? %>
-                  <%= render 'pets/pet_list', pets: @pets %>
+                  <div class="scroll-area">
+                    <%= render 'pets/pet_list', pets: @pets %>
+                  </div>
                 <% else %>
                   <div class="row">
                     <div class="mx-auto no-contents">
@@ -91,9 +92,12 @@
               </div>
       
               <!--日記検索結果一覧(tab2)-->
-              <div id="tab2" class="tab">
+              <div id="tab2" class="tab tab-2">
                 <% if @diaries.present? %>
+                <div class="scroll-area">
                   <%= render 'diaries/diaries_list', diaries: @diaries %>
+                </div>
+                  
                 <% else %>
                   <div class="row">
                     <div class="mx-auto no-contents">
@@ -104,9 +108,9 @@
               </div>
       
               <!--思い出検索結果一覧(tab3)-->
-              <div id="tab3" class="tab">
+              <div id="tab3" class="tab tab-2">
                 <% if @memories.present? %>
-                  <div class="memory-area">
+                  <div class="scroll-area">
                     <%= render 'memories/memory_list', memories: @memories, posted_by_pet: nil, diary: @diary %>
                   </div>
                 <% else %>
@@ -118,7 +122,6 @@
                 <% end %>
               </div>
               
-            </div>
           </div>
           
         </div>

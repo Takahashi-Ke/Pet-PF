@@ -7,4 +7,6 @@ class Owner < ApplicationRecord
   accepts_nested_attributes_for :pet, allow_destroy: true
 
   attachment :image
+  
+  validates :name, presence: true, length: { maximum: 10 }
 end
