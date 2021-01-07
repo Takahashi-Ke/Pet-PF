@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 ml-5 mr-3">
+      <%= render 'pets/pet_info', pet: current_owner.pet %>
+    </div>
+    <div class="col-6">
+      <div class="row ml-3">
+        <h4>いいねリスト</h4>
+      </div>
+      <div class="row ml-4 mt-2 mb-3">
+        <div class="col-3">
+          <h5>日記：<%= @pet.favo_diaries.count %> 件</h5>
+        </div>
+        <div class="ml-1">
+          <h5>思い出：<%= @pet.favo_memories.count %> 件</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <ul id="tab-menu">
+            <li><a href="#tab1" class="active">日記</a></li>
+            <li><a href="#tab2" class="">思い出</a></li>
+          </ul>
+        </div>
+      
+        <div class="col-12">
+          <div id="tab-contents">
+            <div class="search-area">
+              <!--いいねした日記一覧(tab1)-->
+              <div id="tab1" class="tab">
+                <% if @pet.favo_diaries.present? %>
+                  <div class="diary-area">
+                    <%= render 'diaries/diaries_list', diaries: @pet.favo_diaries %>
+                  </div>
+                <% else %>
+                  <div class="row">
+                    <div class="mx-auto no-contents">
+                      <p>該当する日記はありません</p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+      
+              <!--いいねした思い出一覧(tab2)-->
+              <div id="tab2" class="tab">
+                <% if @pet.favo_memories.present? %>
+                  <div class="memory-area">
+                    <%= render 'memories/memory_list', memories: @pet.favo_memories, posted_by_pet: nil, diary: @diary %>
+                  </div>
+                <% else %>
+                  <div class="row">
+                    <div class="mx-auto no-contents">
+                      <p>該当する思い出はありません</p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 ml-3">
+      <%= render 'searches/search_box' %>
+    </div>
+  </div>
+  
+  <div class="modal-wrapper"></div>
+  <div class="diary-modal">
+    <%= render 'diaries/diary_form', diary: @diary, pet: current_owner.pet %>
+  </div>
+  
+</div>

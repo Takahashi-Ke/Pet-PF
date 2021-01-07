@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :diary_comments, only: [:create, :destroy]
   resources :memories
   resources :memory_comments, only: [:create, :destroy]
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy, :index]
   resources :notifications, only: :index
   get 'search' => 'searches#search'
 end
