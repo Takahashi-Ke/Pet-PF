@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :pets, only: [:index, :show, :edit, :update] do
     resource :pet_personalities, only: [:create, :update]
     resource :chats, only: [:show, :create]
+    resources :pet_rooms, only: [:index]
     resources :relationships, only: [:create, :destroy]
   end
   resources :diaries, only: [:index, :create, :destroy]
