@@ -20,6 +20,16 @@
     <p>友だち（<%= pet.following_pets.count%>）</p>
   </div>
 </div>
+<div class="row mt-3 mb-3">
+  <div class="mx-auto">
+    <%= link_to "いいねリスト", favorites_path %>
+  </div>
+</div>
+<div class="row mt-3 mb-3">
+  <div class="mx-auto">
+    <%= link_to "会話リスト", favorites_path %>
+  </div>
+</div>
 <div class="row">
   <div class="add-diary-button mx-auto">
     日記を書く

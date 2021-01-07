@@ -17,12 +17,13 @@ $diary-modal-width: 500px;
 .diary-modal {
   display: none;
   position: fixed;
-  top: 10%;
+  top: 15%;
   left: 50%;
   background-color: white;
   margin: 0;
   padding: 0;
-  height: 300px;
+  height: 400px;
+  border-radius: 5px;
   width: $diary-modal-width;
   margin-left: -($diary-modal-width / 2);
 }
@@ -34,9 +35,6 @@ $diary-modal-width: 500px;
   margin: 20px 0;
   padding: 5px 0;
   border-top: 0.5px solid #C0C0C0;
-}
-.diary-body {
-  margin-top: 20px;
 }
 .diary-area {
   width: 100%;

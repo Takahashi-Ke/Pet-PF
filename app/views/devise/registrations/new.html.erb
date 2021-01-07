@@ -95,12 +95,12 @@
             <%= pet.text_area :introduction, size:'40x4' %>
           </div>
           <div class="row ml-5 mt-3">
-            <p><span class="fas fa-exclamation-circle"></span> 性別、生年月日、種類は登録後変更ができません。</p>
+            <p><span class="fas fa-exclamation-circle"></span> 性別、誕生日、種類は登録後変更ができません。</p>
           </div>
         </div>
       <% end %>
   </div>  
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-4 offset-4">
       <div class="row ml-5">
         <%= f.label :パスワード, class:"form-label" %>
@@ -117,11 +117,11 @@
       <div class="row d-flex justify-content-center">
         <%= f.password_field :password_confirmation, size:'30', autocomplete: "new-password" %>
       </div>
-      <div class="row d-flex justify-content-center mt-3">
-        <%= f.submit "新規登録" %>
+      <div class="row d-flex justify-content-center mt-4">
+        <%= f.submit "新規登録", class:"btn-layout btn-layout2 pl-5 pr-5 pt-2 pb-2" %>
       </div>
       <div class="row d-flex justify-content-center mt-3">
-        <%= link_to "ログイン", new_owner_session_path %>
+        <%= link_to "ログイン", new_owner_session_path, class:"btn-layout" %>
       </div>
     </div>
   </div>

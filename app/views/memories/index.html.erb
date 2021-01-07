@@ -8,20 +8,24 @@
         <div class="row ml-3">
           <h4><%= @pet.name %>の思い出</h4>
         </div>
-        <div class="row mt-3 mb-3 ml-5">
-          <div class="col-3">
-            <%= link_to pet_path(@pet) do %>
-              <%= attachment_image_tag @pet, :image, size:'140x140', fallback: "no_image.png", class:"rounded-circle" %>
-            <% end %>
+        <div class="row ml-5 mt-3">
+          <div class="col-5">
+            <div class="row d-flex justify-content-center">
+              <%= link_to pet_path(@pet) do %>
+                <%= attachment_image_tag @pet, :image, size:'110x110', fallback: "no_image.png", class:"rounded-circle" %>
+              <% end %>
+            </div>
+            <div class="row d-flex justify-content-center">
+              <%= link_to @pet.name, pet_path(@pet), class:"name-link" %>
+            </div>
           </div>
-          <div class="col-3 d-flex align-items-center">
-            <%= link_to @pet.name, pet_path(@pet), class:"name-link" %>
-          </div>
-          <div class="col-3">
-            <%= attachment_image_tag @pet.owner, :image, size:'140x140', fallback: "no_image.png", class:"rounded-circle" %>
-          </div>
-          <div class="col-3 d-flex align-items-center name-link">
-            <%= @pet.owner.name %>
+          <div class="col-5">
+            <div class="row d-flex justify-content-center">
+              <%= attachment_image_tag @pet.owner, :image, size:'110x110', fallback: "no_image.png", class:"rounded-circle" %>
+            </div>
+            <div class="row name-link d-flex justify-content-center">
+              <%= @pet.owner.name %>
+            </div>
           </div>
         </div>
       <% else %>
