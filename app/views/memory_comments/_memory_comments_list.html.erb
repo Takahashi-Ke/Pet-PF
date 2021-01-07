@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-10 offset-2">
       <% memory.memory_comments.each do |mc| %>
-        <div class="row mt-2 border-top pt-3">
+        <div class="row mt-2 comment-contents pt-3">
           <div class="col-2">
             <%= attachment_image_tag mc.pet, :image, size: '40x40', fallback: "no_image.png", class:"rounded-circle" %>
           </div>
@@ -34,7 +34,7 @@
         <%= f.text_area :comment, size: '60x2', placeholder: 'コメントを書く' %>
         <div class="row">
           <div class="col-2 offset-7">
-            <%= f.submit 'コメントする', class:"btn btn-outline-primary" %>
+            <%= f.submit 'コメントする', class:"btn-layout btn-layout2" %>
           </div>
         </div>
       <% end %>

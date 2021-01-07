@@ -25,14 +25,16 @@
         </div>
       <% end %>
       <div class="row mt-5 d-flex justify-content-center">
-        <%= f.submit "ログイン" %>
+        <%= f.submit "ログイン", class:"btn-layout btn-layout2 pl-5 pr-5 pt-2 pb-2" %>
       </div>
     </div>
   </div>
   <% end %>
   
-  <div class="row d-flex justify-content-center">
-    <%= link_to "新規登録", new_owner_registration_path %>
+  <div class="row d-flex justify-content-center mt-3">
+    <%= link_to "新規登録", new_owner_registration_path, class:"btn-layout" %>
+  </div>
+  <div class="row d-flex justify-content-center mt-1">
     <%= link_to "パスワードをお忘れの場合", new_password_path(resource_name) %>
   </div>
 </div>

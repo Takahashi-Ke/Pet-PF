@@ -1,17 +1,21 @@
 <div class="diary-modal">
-  <div class="row">
+  <div class="row mt-5">
     <div class="col-8 offset-1">
       <%= form_with model: diary, url: diaries_path(pet_id: pet), local: true do |f| %>
-        <p>日記を書く</p>
+        <div class="row ml-2">
+          <h5>日記を書く</h5>
+        </div>
         <%= f.text_area :body, placeholder: "今日の出来事", size: "50x5" %>
         <%= f.attachment_field :image %>
-        <%= f.submit "投稿する" %>
+        <div class="row d-flex justify-content-center mt-3 ml-5">
+          <%= f.submit "投稿する", class:"btn-layout btn-layout2 pt-2 pb-2 pl-3 pr-3" %>
+        </div>
       <% end %>
-    </div>
-  </div>
-  <div class="row mt-2 d-flex justify-content-center">
-    <div class="hide-modal-btn pl-3 pr-3 btn btn-outline-secondary">
-      閉じる
+      <div class="row mt-2 d-flex justify-content-center ml-5">
+        <div class="hide-modal-btn pl-3 pr-3 btn-layout btn-layout3">
+          閉じる
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -11,13 +11,6 @@ class DiariesController < ApplicationController
     @diary.pet = Pet.find(params[:pet_id])
     if @diary.save
       redirect_to request.referer
-    else
-      @pet = @diary.pet
-      @personalities = @pet.pet_personalities
-      @diaries = @pet.diaries
-      @photos  = Diary.where.not(image_id: nil)
-      @diary_comment = DiaryComment.new
-      render 'pets/show'
     end
   end
 

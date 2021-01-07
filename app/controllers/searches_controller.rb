@@ -16,7 +16,6 @@ class SearchesController < ApplicationController
     end
     @search_params = pet_search_params
     @pets = Pet.search(@search_params)
-    binding.pry
     # @pets = Pet.where("name LIKE?", "%#{@keyword}%").where.not(id: current_owner.pet) if params[:keyword].present?
     #         .where(gender: params[:genders])if params[:genders].present?
     #         .where(type: params[:types])if params[:types].present?
