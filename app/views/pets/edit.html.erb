@@ -64,12 +64,10 @@
   </div>
   
   <div class="row d-flex justify-content-center mt-3">
-    <div class="col-3">
-      <%= f.submit "更新する", class:"btn-layout" %>
-    </div>
-    <div class="col-3">
-      <%= link_to "退会する", unsubscribe_owner_path(current_owner), class:"btn-layout destroy-btn" %>
-    </div>
+      <%= f.submit "更新する", class:"btn-layout btn-layout2 pl-5 pr-5 pt-2 pb-2" %>
+  </div>
+  <div class="row d-flex justify-content-center mt-3">
+    <%= link_to "退会する", unsubscribe_owner_path(current_owner), class:"btn-layout btn-layout3" %>
   </div>
   <% end %>
                 

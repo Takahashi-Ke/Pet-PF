@@ -10,10 +10,12 @@ class Pet < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :pet_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
+  has_many :favo_diaries, through: :favorites, source: :diary
+  has_many :favo_memories, through: :favorites, source: :memory
 
   attachment :image
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 10 }
 
   self.inheritance_column = :_type_disabledrails
 

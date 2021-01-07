@@ -25,13 +25,30 @@ header {
   margin-bottom: 20px;
 }
 .header-area {
-  
   width: 100%;
-  height: 100px;
+  height: 160px;
 }
+.header-area p {
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid #D2B48C;
+}
+#bell-icon {
+  margin-top: 68px;
+}
+#bell-icon p {
+  margin-top: 0;
+}
+#bell-icon .header-icon {
+  margin-left: 3px;
+}
+
 .header-icon {
-  font-size: 1.8em;
-  padding-right: 3px;
+  margin-top: 30px;
+  margin-left: 3px;
+  font-size: 2.5em;
   color: #F0B775;
 }
 .header-icon:hover {
@@ -41,10 +58,12 @@ header {
   margin: 0 10px;
 }
 .notifications {
+  color: #D25565;
+  font-size: 18px;
+  font-weight: 600;
   position: absolute;
-  left: 0.65rem;
+  left: 1.3rem;
 }
-
 
 a {
   color: black;
@@ -59,9 +78,12 @@ a:hover {
 .explanation {
   font-size: 21px;
 }
+.favo-icon {
+  color: #D25565;
+}
 .btn-layout {
   display: inline-block;
-  font-size: 16px;
+  font-size: 15px;
   padding: 3px 5px;
   color: #2E94B9;
   background-color: #ffffff;
@@ -73,25 +95,75 @@ a:hover {
   color: white;
   text-decoration: none;
 }
-.cancel-btn {
+.btn-layout2 {
   background-color: #2E94B9;
   color: white;
   text-decoration: none;
 }
-.cancel-btn:hover {
+.btn-layout2:hover {
   background-color: darken(#2E94B9, 10%);
 }
-.destroy-btn {
+.btn-layout3 {
   color: #D25565;
   border: 1px solid #D25565;
 }
-.destroy-btn:hover {
+.btn-layout3:hover {
   background-color: #D25565;
   color: white;
   text-decoration: none;
 }
 .pet-info-box {
   position: fixed;
+}
+#tab-menu {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+#tab-menu li {
+  list-style-type: none;
+  width: 25%;
+  margin-right: 10px;
+}
+#tab-menu li:last-child {
+  margin: 0;
+}
+#tab-menu li a {
+  color: #D2B48C;
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #D2B48C;
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
+}
+#tab-menu .active {
+  font-weight: 600;
+  background-color: #fff;
+  color: #000;
+}
+#tab-contents {
+  display: flex;
+  flex-wrap: wrap;
+}
+#tab-contents .tab {
+  width: 100%;
+  height: 560px;
+  padding: 30px;
+  
+}
+#tab-contents p {
+  color: #000;
+  line-height: 2.5;
+}
+.tab-area {
+  background: #fff;
+  width: 100%;
+  overflow: scroll;
+  height: 560px;
+  border: 1px solid #D2B48C;
+  border-top: none;
 }
 
 footer {

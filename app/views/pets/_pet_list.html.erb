@@ -29,7 +29,7 @@
     <div class="row ml-3">
       <% if current_owner.pet.following?(pet) %>
         <div class="col-3 offset-6 pl-5 d-flex align-items-center">
-          <%= link_to "フォロー中", pet_relationship_path(pet, pet_id: pet.id), method: :delete, data: {confirm: "フォローを解除します。よろしいですか？"}, class:"btn-layout cancel-btn" %>
+          <%= link_to "フォロー中", pet_relationship_path(pet, pet_id: pet.id), method: :delete, data: {confirm: "フォローを解除します。よろしいですか？"}, class:"btn-layout btn-layout2" %>
         </div>
         <div class="col-3 d-flex align-items-center">
           <%= link_to "会話する", pet_chats_path(pet_id: pet.id), class:"btn-layout" %>

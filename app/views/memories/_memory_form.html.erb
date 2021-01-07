@@ -28,10 +28,10 @@
           </div>
           <div class="row d-flex justify-content-center">
             <% if memory.new_record? %>
-              <%= f.submit "投稿する", class:"btn btn-outline-primary pl-5 pr-5" %>
+              <%= f.submit "投稿する", class:"btn-layout btn-layout2 pl-5 pr-5" %>
             <% else %>
-              <%= f.submit "編集する", class:"btn btn-outline-primary pl-5 pr-5" %>
-              <%= link_to "削除する", memory_path(memory), method: :delete, data: {confirm: "削除します。よろしいですか？"}, class:"btn btn-outline-danger ml-5" %>
+              <%= f.submit "編集する", class:"btn-layout btn-layout2 pl-5 pr-5" %>
+              <%= link_to "削除する", memory_path(memory), method: :delete, data: {confirm: "削除します。よろしいですか？"}, class:"btn-layout btn-layout3 ml-5" %>
             <% end %>
           </div>
         <% end %>

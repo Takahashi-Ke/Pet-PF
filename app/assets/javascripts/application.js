@@ -90,11 +90,10 @@ $(document).on("turbolinks:load", function(){
 
 $(document).on("turbolinks:load", function(){
   $('.comment-box').hide();
-  // 変数の個数分
+  // 変数の中身(個数)取得
   var $diaryComment = $('.diary-comment-id');
-  // i=index,elm=diaryComment
+  // i=index,elm=diaryCommentの値
   $diaryComment.each(function(i, elm) {
-    
     (function() {
       var diaryId = $(elm).val();
       (function() {
@@ -106,7 +105,7 @@ $(document).on("turbolinks:load", function(){
   })
 });
 
-// チャットを下からスクロールする
+// チャットを下端へスクロールする
 $(document).on('turbolinks:load', function() {
 　$('.chat-area').animate({scrollTop: $('.chat-area')[0].scrollHeight}, 'fast');
 });
