@@ -18,6 +18,7 @@
       </div>
       <div class="row mt-2 ml-5">
         <%= f.label :名前, class:"form-label" %>
+        <span>(10文字以内で入力してください)</span>
       </div>
       <div class="row d-flex justify-content-center">
          <%= f.text_field :name, size:'30', autofocus: true, autocomplete: "name" %>
@@ -37,6 +38,7 @@
           </div>
           <div class="row mt-2 ml-5">
             <%= pet.label :名前, class:"form-label" %>
+            <span>(10文字以内で入力してください)</span>
           </div>
           <div class="row d-flex justify-content-center">
             <%= pet.text_field :name, size:'30' %>
@@ -52,7 +54,7 @@
           </div>
           <div class="row ml-5 d-flex justify-content-center">
           <!--PetPersonalityを選択-->
-            <%= pet.collection_check_boxes :pet_personalities,PetPersonality.personalities,:last,:first  do |b| %>
+            <%= pet.collection_check_boxes :pet_personalities,PetPersonality.personalities,:last,:first, include_hidden: false  do |b| %>
               <div class="col-5">
                 <%= b.check_box checked: !@pet.pet_personalities.find_by(personality: b.text).nil? %>
                 <%= b.label %>

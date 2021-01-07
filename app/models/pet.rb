@@ -114,6 +114,12 @@ class Pet < ApplicationRecord
   def unchecked_notifications(pet)
     Notification.where(visited_id: id, is_checked: false)
   end
+  # チャットの最新のメッセージを取得
+  def latest_message(pet)
+    room_id = pet.pet_rooms.pluck(:room_id)
+    latest_message = Chat.where(room_id: room_id).last
+    return latest_message
+  end
 
 
 end

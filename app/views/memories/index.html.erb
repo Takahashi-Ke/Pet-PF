@@ -5,7 +5,7 @@
     </div>
     <div class="col-6">
       <% if @posted_by_pet.present? %>
-        <div class="row ml-3">
+        <div class="row ml-5 mb-2">
           <h4><%= @pet.name %>の思い出</h4>
         </div>
         <div class="row ml-5 mt-3">
@@ -33,7 +33,7 @@
           <h4>みんなの思い出</h4>
         </div>
       <% end %>
-      <div class="memory-area">
+      <div class="scroll-area">
         <%= render 'memory_list', posted_by_pet: @posted_by_pet, memories: @memories, pet: current_owner.pet, diary: @diary %>
       </div>
     </div>

@@ -1,0 +1,20 @@
+// Place all the styles related to the PetRooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.chat-list {
+  padding: 15px 0;
+  border-top: 0.5px solid #D2B48C;
+}
+.chat-list:last-child {
+  border-bottom: 0.5px solid #D2B48C;
+}
+.chat-message {
+  background-color: #f7f3e8;
+  a {
+    color: #D2B48C; 
+  }
+  a:hover {
+    color: darken(#D2B48C, 20%);
+  }
+}
