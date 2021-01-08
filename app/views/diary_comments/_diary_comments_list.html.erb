@@ -1,16 +1,18 @@
 <div class="comment-box" id="comment-<%= diary.id %>">
   <%# input name: "diary-comment-id", type: "hidden", value: diary.id, class: 'diary-comment-id' %>
   <div class="row">
-    <div class="col-10 offset-2">
+    <div class="col-10 offset-1">
       <% diary.diary_comments.each do |dc| %>
-        <div class="row mt-2 mb-3 comment-contents">
-          <div class="col-1">
-            <%= attachment_image_tag dc.pet, :image, size: '40x40', fallback: "no_image.png", class:"rounded-circle" %>
+        <div class="row mt-2 mb-3 contents-box">
+          <div class="col-2">
+            <%= link_to  pet_path(dc.pet) do %>
+              <%= attachment_image_tag dc.pet, :image, size: '60x60', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
+            <% end %>
           </div>
-          <div class="col-10 ml-2">
+          <div class="col-10">
             <%= link_to dc.pet.name, pet_path(dc.pet) %>
               <div class="row">
-                <div class="col-10 mt-2 ml-3">
+                <div class="col-9 mt-2 ml-5">
                   <%= dc.comment %>
                 </div>
                 <% if dc.pet == current_owner.pet %>
@@ -26,11 +28,17 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
+  <div class="row mt-2">
     <div class="col-10 offset-2">
       <%= form_with model: DiaryComment.new, url: diary_comments_path(pet_id: current_owner.pet, diary_id: diary), remote: true do |f| %>
         <%= f.text_area :comment, size: '50x2', placeholder: 'コメントを書く' %>
-        <%= f.submit 'コメントする', class:"btn" %>
+        <div class="row">
+          <div class="col-12 clearfix">
+            <div class="float-right">
+              <%= f.submit 'コメントする', class:"btn-layout" %>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

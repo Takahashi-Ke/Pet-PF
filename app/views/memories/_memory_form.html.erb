@@ -24,7 +24,7 @@
             <%= f.attachment_field :memory_images_images, multiple: true %>
           </div>  
           <div class="row mt-3">
-            <%= f.text_area :body, style: "border: none", size: "80x20", placeholder: " #{pet.name}との思い出を書いてみましょう", class:"pt-2" %>
+            <%= f.text_area :body, style: "border: none", size: "90x25", placeholder: " #{pet.name}との思い出を書いてみましょう", class:"pt-2" %>
           </div>
           <div class="row d-flex justify-content-center mt-3">
             <% if memory.new_record? %>
@@ -39,7 +39,7 @@
 
       </div>
     </div>
-        <div class="col-3">
+        <div class="col-3 ml-3">
       <div class="row d-flex justify-content-center">
         <h5><%= pet.name %>の思い出</h5>
       </div>

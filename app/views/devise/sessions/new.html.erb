@@ -2,7 +2,7 @@
   <div class="row d-flex justify-content-center">
     <h2>ログイン</h2>
   </div>
-  
+  <%= render "devise/shared/error_messages", resource: resource %>
   <%= form_with model: @owner, url: owner_session_path, local: true do |f| %>
   <div class="row mt-3">
     <div class="col-4 offset-4">

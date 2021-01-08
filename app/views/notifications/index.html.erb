@@ -14,7 +14,7 @@
                 <div class="row mt-2 mb-2">
                   <div class="col-1 ml-3">
                     <%= link_to pet_path(notification.visitor) do %>
-                      <%= attachment_image_tag notification.visitor, :image, size: '70x70', fallback: "no_image.png", class:"rounded-circle" %>
+                      <%= attachment_image_tag notification.visitor, :image, size: '70x70', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
                     <% end %>
                   </div>
                   <div class="col-6 mt-4">

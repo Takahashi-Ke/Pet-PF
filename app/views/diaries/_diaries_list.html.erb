@@ -3,14 +3,16 @@
   <div class="contents-box ml-3 mt-2">
     <div class="row">
       <div class="col-2">
-        <%= attachment_image_tag diary.pet, :image, size: '60x60', fallback: "no_image.png", class:"rounded-circle" %>
+        <%= link_to  pet_path(diary.pet) do %>
+          <%= attachment_image_tag diary.pet, :image, size: '60x60', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
+        <% end %>
       </div>
       <div class="col-10">
         <div class="row">
           <div class="col-5 mt-2">
             <h5><%= link_to diary.pet.name, pet_path(diary.pet) %></h5>
           </div>
-          <div class="col-6 ml-3 diary-date">
+          <div class="col-6 ml-3 post-date">
             <%= diary.created_at.to_s(:datetime_jp) %>
           </div>
         </div>
@@ -23,10 +25,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-2 offset-6 comment-btn-<%= diary.id %>">
-        <i class="far fa-comment-alt"></i>
+      <div class="col-2 offset-6" id="comment-btn-<%= diary.id %>">
+        
+        <%= render 'diary_comments/diary_comments_count', diary: diary %>
       </div>
-
       <div class="col-2 favorite-btn-<%= diary.id %>">
         <%= render 'favorites/favo', diary: diary %>
       </div>

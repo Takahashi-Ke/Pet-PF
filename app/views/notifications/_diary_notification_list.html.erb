@@ -20,7 +20,7 @@
   <div class="row pt-2 ml-1">
     <%= attachment_image_tag notification.diary.pet, :image, size: '30x30', fallback: "no_image.png", class:"rounded-circle" %>
     <div class="mt-1 ml-2">
-      <%= notification.diary.body %>
+      <%= truncate(notification.diary.body, length: 20) %>
     </div>
   </div>
 <% end %>
