@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      owner: あなた
+      pet: ペット
+    attributes:
+      owner:
+        name: あなたの名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      pet:
+        name: ペットの名前
+        birthday: ペットの誕生日
