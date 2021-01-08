@@ -6,7 +6,7 @@ class Pet < ApplicationRecord
   has_many :diaries, dependent: :destroy
   has_many :diary_comments, dependent: :destroy
   has_many :memories, dependent: :destroy
-  has_many :memorie_comments, dependent: :destroy
+  has_many :memory_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :pet_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
@@ -113,6 +113,12 @@ class Pet < ApplicationRecord
   # 新しい通知を取得するメソッド
   def unchecked_notifications(pet)
     Notification.where(visited_id: id, is_checked: false)
+  end
+  # チャットの最新のメッセージを取得
+  def latest_message(pet)
+    room_id = pet.pet_rooms.pluck(:room_id)
+    latest_message = Chat.where(room_id: room_id).last
+    return latest_message
   end
 
 

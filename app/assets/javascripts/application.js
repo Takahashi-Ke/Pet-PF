@@ -97,8 +97,8 @@ $(document).on("turbolinks:load", function(){
     (function() {
       var diaryId = $(elm).val();
       (function() {
-        $('.comment-btn-'+diaryId+'').on('click', function(){
-          $('#comment-'+diaryId+'').toggle();
+        $('#comment-btn-'+diaryId+'').on('click', function(){
+          $('#comment-'+diaryId+'').slideToggle();
         });
       })(diaryId);
     })(elm);

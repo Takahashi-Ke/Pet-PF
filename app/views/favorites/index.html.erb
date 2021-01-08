@@ -4,7 +4,7 @@
       <%= render 'pets/pet_info', pet: current_owner.pet %>
     </div>
     <div class="col-6">
-      <div class="row ml-3">
+      <div class="row ml-5 mb-2">
         <h4>いいねリスト</h4>
       </div>
       <div class="row ml-4 mt-2 mb-3">
@@ -29,13 +29,13 @@
               <!--いいねした日記一覧(tab1)-->
               <div id="tab1" class="tab">
                 <% if @pet.favo_diaries.present? %>
-                  <div class="diary-area">
+                  <div class="scroll-area">
                     <%= render 'diaries/diaries_list', diaries: @pet.favo_diaries %>
                   </div>
                 <% else %>
                   <div class="row">
                     <div class="mx-auto no-contents">
-                      <p>該当する日記はありません</p>
+                      <p>いいねした日記はありません</p>
                     </div>
                   </div>
                 <% end %>
@@ -44,13 +44,13 @@
               <!--いいねした思い出一覧(tab2)-->
               <div id="tab2" class="tab">
                 <% if @pet.favo_memories.present? %>
-                  <div class="memory-area">
+                  <div class="scroll-area">
                     <%= render 'memories/memory_list', memories: @pet.favo_memories, posted_by_pet: nil, diary: @diary %>
                   </div>
                 <% else %>
                   <div class="row">
                     <div class="mx-auto no-contents">
-                      <p>該当する思い出はありません</p>
+                      <p>いいねした思い出はありません</p>
                     </div>
                   </div>
                 <% end %>
