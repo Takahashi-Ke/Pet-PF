@@ -18,5 +18,6 @@ module PetMypf
     config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
     config.action_controller.include_all_helpers = false
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
   end
 end

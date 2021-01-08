@@ -3,7 +3,7 @@
     <div class="col-8">
       <div class="row ml-4">
         <div class="col-3 ml-4">
-          <%= attachment_image_tag @pet, :image, size: '220x220', fallback: "no_image.png" %>
+          <%= attachment_image_tag @pet, :image, size: '220x220', fallback: "pet_no_image.png", class:"rounded" %>
         </div>
         <div class="col-8">
           <div class="row ml-2">
@@ -40,7 +40,7 @@
           </div>
           <div class="row mt-4">
             <div class="col-2">
-              <%= attachment_image_tag @pet.owner, :image, size: '100x100', fallback: "no_image.png" %>
+              <%= attachment_image_tag @pet.owner, :image, size: '100x100', fallback: "owner_no_image.png", class:"rounded" %>
             </div>
             <div class="col-3 ml-3">
               <%= @pet.owner.name %>

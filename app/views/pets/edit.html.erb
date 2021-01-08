@@ -13,7 +13,7 @@
         <%= f.label :写真, class:"form-label" %>
       </div>
       <div class="row d-flex justify-content-center">
-        <%= attachment_image_tag current_owner, :image, size: "280x280", fallback: "no_image.png", class:"owner-prev mb-3" %>
+        <%= attachment_image_tag current_owner, :image, size: "280x280", fallback: "owner_no_image.png", class:"owner-prev mb-3 rounded" %>
         <%= f.attachment_field :image, class:"owner-image" %>
       </div>
       <div class="row mt-2 ml-5">
@@ -33,7 +33,7 @@
             <%= pet.label :写真, class:"form-label" %>
           </div>
           <div class="row d-flex justify-content-center">
-            <%= attachment_image_tag current_owner.pet, :image, size: '280x280', fallback: "no_image.png", class:"pet-prev mb-3" %>
+            <%= attachment_image_tag current_owner.pet, :image, size: '280x280', fallback: "pet_no_image.png", class:"pet-prev mb-3 rounded" %>
             <%= pet.attachment_field :image, class:"pet-image" %>
           </div>
           <div class="row mt-2 ml-5">
@@ -70,6 +70,9 @@
   </div>
   <div class="row d-flex justify-content-center mt-3">
     <%= link_to "退会する", unsubscribe_owner_path(current_owner), class:"btn-layout btn-layout3" %>
+  </div>
+  <div class="row d-flex justify-content-center mt-3">
+    <%= link_to "パスワードの変更はこちら→", edit_owner_password_path %>
   </div>
   <% end %>
                 

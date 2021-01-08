@@ -1,7 +1,7 @@
 <div class="row">
   <div class="mx-auto">
     <%= link_to pet_path(pet) do %>
-      <%= attachment_image_tag pet, :image, size: '120x120', fallback: "no_image.png" %>
+      <%= attachment_image_tag pet, :image, size: '120x120', fallback: "pet_no_image.png", class:"rounded-circle icon-img"  %>
     <% end %>
   </div>
 </div>
@@ -10,7 +10,7 @@
 </div>
 
 <div class="row d-flex justify-content-center">
-  <%= attachment_image_tag pet.owner, :image, size: '80x80', fallback: "no_image.png" %>
+  <%= attachment_image_tag pet.owner, :image, size: '80x80', fallback: "owner_no_image.png", class:"rounded-circle icon-img" %>
 </div>
 <div class="row d-flex align-items-center justify-content-center">
   <i class="fas fa-user-alt"></i><span class="pl-1 mt-1"><%= pet.owner.name %></span>

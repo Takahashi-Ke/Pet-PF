@@ -114,6 +114,10 @@ a:hover {
 .pet-info-box {
   position: fixed;
 }
+.icon-img {
+  padding: 0.15rem;
+  background-color: #fff;
+}
 #tab-menu {
   display: flex;
   padding: 0;
@@ -178,7 +182,33 @@ a:hover {
 .contents-box:last-child {
   border-bottom: 0.5px solid #D2B48C;
 }
-
+.post-date {
+  font-size: 13px;
+  line-height: 30px;
+  color: #808080;
+}
+.error-message {
+  width: 550px;
+  height: 230px;
+  color: #D25565;
+  text-align: center;
+  background-color: #F8E0E0;
+  border: 1px solid #D25565;
+  border-radius: 15px;
+  margin: auto;
+}
+.error-message h3{
+  padding-top: 20px;
+  margin: auto;
+}
+.error-message ul{
+  margin: auto;
+  padding-top: 15px;
+  list-style: none;
+}
+.error-message li{
+  margin: 10px 0;
+}
 footer {
   height: 120px;
   margin-top: 40px;
