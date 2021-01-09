@@ -7,19 +7,19 @@
       
       <!--検索条件表示-->
       <div class="row ml-5 mt-2 mb-3 d-flex align-items-center">
-        <%= form_with url: search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :keyword, size:'28',placeholder: "#{@keyword}" %>
+        <%= form_with url: search_path, scope: :search, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword, size:'28',placeholder: "#{@search_params[:keyword]}" %>
           <%= button_tag :type => "submit", :class =>"btn-layout" do %>
             <i class="fas fa-search"></i>
           <% end %>
         <% end %>
       </div>
-      <% if @types.present? %>
+      <% if @search_params[:types].present? %>
         <div class="row">
           <div class="col-2">
             <p>種類 :</p>
           </div>
-          <% @types.each do |type| %>
+          <% @search_params[:types].each do |type| %>
             <% Pet.types.map do |k,v| %>
               <% if type.to_i == v %>
                 <div class="mr-2">
@@ -30,12 +30,12 @@
           <% end %>
         </div>
       <% end %>
-      <% if @genders.present? %>
+      <% if @search_params[:genders].present? %>
         <div class="row">
           <div class="col-2">
             <p>性別 :</p>
           </div>
-          <% @genders.each do |gender| %>
+          <% @search_params[:genders].each do |gender| %>
             <% Pet.genders.map do |k,v| %>
               <% if gender.to_i == v %>
                 <div class="mr-2">
@@ -46,12 +46,12 @@
           <% end %>
         </div>
       <% end %>
-      <% if @personalities.present? %>
+      <% if @search_params[:personalities].present? %>
         <div class="row">
           <div class="col-2">
-            <p>種類 :</p>
+            <p>性格 :</p>
           </div>
-          <% @personalities.each do |personality| %>
+          <% @search_params[:personalities].each do |personality| %>
             <% PetPersonality.personalities.map do |k,v| %>
               <% if personality.to_i == v %>
                 <div class="mr-2">

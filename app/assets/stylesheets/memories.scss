@@ -29,9 +29,31 @@
   padding-top: 10px;
   border-top: 0.5px solid #D2B48C;
 }
-
 .memory-body {
   width: 100%;
   overflow: scroll;
   height: 400px;
+}
+.memory-form span{
+  font-size: 14px;
+  padding-top: 8px;
+  color: #808080;
+}
+.error-memory {
+  width: 400px;
+  color: #D25565;
+  text-align: center;
+  background-color: #F8E0E0;
+  border: 1px solid #D25565;
+  border-radius: 15px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.error-memory ul{
+  margin: auto;
+  padding-top: 15px;
+  list-style: none;
+}
+.error-memory li{
+  margin: 10px 0 10px -10px;
 }

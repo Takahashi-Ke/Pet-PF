@@ -3,6 +3,7 @@ ja:
     models:
       owner: あなた
       pet: ペット
+      memory: 思い出
     attributes:
       owner:
         name: あなたの名前
@@ -12,3 +13,7 @@ ja:
       pet:
         name: ペットの名前
         birthday: ペットの誕生日
+      memory:
+        title: タイトル
+        body: 本文
+        memory_images: 写真
