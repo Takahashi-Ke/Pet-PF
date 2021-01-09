@@ -82,6 +82,8 @@ gem 'cocoon'
 
 gem "simple_calendar", "~> 2.0"
 
+gem 'rspec-rails'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
