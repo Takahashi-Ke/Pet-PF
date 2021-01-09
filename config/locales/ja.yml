@@ -13,6 +13,7 @@ ja:
       pet:
         name: ペットの名前
         birthday: ペットの誕生日
+        introduction: 紹介文
       memory:
         title: タイトル
         body: 本文
