@@ -35,9 +35,7 @@
         <%= render 'memory_list', posted_by_pet: @posted_by_pet, memories: @memories, pet: current_owner.pet, diary: @diary %>
       </div>
     </div>
-    <div class="col-3 ml-3">
-      <%= render 'searches/search_box' %>
-    </div>
+    <%= render 'searches/search_box' %>
   </div>
   
   <div class="modal-wrapper"></div>

@@ -12,7 +12,9 @@ class PetPersonality < ApplicationRecord
     のんき:     5,
     おくびょう: 6,
     きまぐれ:   7,
-    世話好き:   8
+    世話好き:   8,
+    元気:       9,
+    食いしん坊: 10
   }
 
 end
