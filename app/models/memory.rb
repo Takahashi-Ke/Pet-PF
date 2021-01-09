@@ -8,8 +8,9 @@ class Memory < ApplicationRecord
   has_many :favorites, dependent: :destroy
   accepts_attachments_for :memory_images, attachment: :image
   
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 20 }
   validates :body, presence: true
+  validates :memory_images, presence: { message: 'は１枚以上選択してください' }
   
   # 投稿にいいねしているかを確認
   def memory_favorited_by?(pet, memory)

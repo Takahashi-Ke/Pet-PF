@@ -2,7 +2,7 @@
   <h4>友だちを見つける</h4>
 </div>
 <div class="check-box">
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
+  <%= form_with url: search_path,scope: :search, method: :get, local: true do |f| %>
   <div class="row">
     <div class="col-10 d-flex justify-content-center">
       <%= f.text_field :keyword, size:'28',placeholder: "キーワード検索" %>

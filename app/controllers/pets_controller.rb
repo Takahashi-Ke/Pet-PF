@@ -13,24 +13,27 @@ class PetsController < ApplicationController
 
   def edit
     @pet = Pet.find(params[:id])
-    #@pet.pet_personalities.build
     @owner = @pet.owner
   end
 
   def update
-    pet = Pet.find(params[:id])
-    pet.pet_personalities.destroy_all
+    @pet = Pet.find(params[:id])
+    @pet.pet_personalities.destroy_all
     params[:owner][:pet_attributes][:pet_personalities].each do |pp|
       PetPersonality.personalities.map do |k,v|
         if v == pp.to_i
-          pet_personality = pet.pet_personalities.new(personality_params)
+          pet_personality = @pet.pet_personalities.new(personality_params)
           pet_personality.personality = pp.to_i
           pet_personality.save
         end
       end
     end
-    current_owner.update(owner_pet_params)
-    redirect_to pet_path(pet)
+    if current_owner.update(owner_pet_params)
+      redirect_to pet_path(@pet)
+    else
+      @owner = @pet.owner
+      render :edit
+    end
   end
 
   private
