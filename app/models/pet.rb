@@ -89,8 +89,8 @@ class Pet < ApplicationRecord
       .gender_serch(search_params[:genders])
   end
   
-  scope :keyword_search, -> (keyword) { where("name LIKE?", "%#{keyword}%").where.not(id: current_owner.pet) if keyword.blank? }  #scopeを定義。
-  scope :type_search, -> (types) { where(gender: types) if types.present? }  #scopeを定義。
+  scope :keyword_search, -> (keyword) { where("name LIKE?", "%#{keyword}%") unless keyword.blank? }
+  scope :type_search, -> (types) { where(type: types) if types.present? }
   scope :gender_serch, -> (genders) { where(gender: genders) if genders.present? }
 
   # ペットの年齢を算出するメソッド
