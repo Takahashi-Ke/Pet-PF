@@ -38,12 +38,30 @@
 }
 .personality-table th{
   font-weight: normal;
+  border-bottom: dashed 1px #D2B48C;
 }
 .personality-table td{
   padding-left: 10px;
+   border-bottom: dashed 1px #D2B48C;
+}
+.pet-introduction {
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #D2B48C;
+  border-radius: 15px;
 }
 .pet-introduction-sub {
   margin: 10px 0;
   padding-left: 100px;
   width: 650px;
 }
+.pet-nav ul{
+  border-bottom: dashed 1px #D2B48C;
+}
+.pet-nav li {
+  padding: 5px 20px;
+}
+.pet-nav li:first-child {
+  padding-left: 0;
+}
+

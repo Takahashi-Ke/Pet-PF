@@ -16,6 +16,7 @@ class Pet < ApplicationRecord
   attachment :image
 
   validates :name, presence: true, length: { maximum: 10 }
+  validates :introduction, length: { maximum: 120 }
 
   self.inheritance_column = :_type_disabledrails
 

@@ -1,30 +1,40 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row ml-5">
+    <div class="col-3 offset-1">
+      <%= attachment_image_tag @pet, :image, size: '280x280', fallback: "pet_no_image.png", class:"rounded" %>
+    </div>
     <div class="col-8">
-      <div class="row ml-4">
-        <div class="col-3 ml-4">
-          <%= attachment_image_tag @pet, :image, size: '220x220', fallback: "pet_no_image.png", class:"rounded" %>
+      <div class="row mt-2">
+        <div class="col-5">
+          <h3><%= @pet.name %></h3>
         </div>
-        <div class="col-8">
-          <div class="row ml-2">
-            <div class="col-4 d-flex align-items-end">
-              <h4><%= @pet.name %></h4>
-            </div>
-            <div class="col-2 d-flex align-items-end">
-              <%= @pet.type %>
-            </div>
-            <div class="col-2 d-flex align-items-end">
-              <% if @pet.gender == 'オス' %>
-                 <i class="fas fa-mars gender-icon"></i>
-              <% else %>
-                <i class="fas fa-venus gender-icon"></i>
-              <% end %>
-            </div>
-            <div class="col-4 d-flex align-items-end">
-              <%= @pet.age %>歳<%= @pet.moon_age %>ヶ月
-            </div>
+        <div class="col-5">
+          <% if @pet.id == current_owner.pet.id %>
+            <%= link_to "編集する", edit_pet_path(@pet), class:"btn-layout" %>
+          <% elsif current_owner.pet.following?(@pet) %>
+            <%= link_to "フォロー中", pet_relationship_path(@pet), method: :delete, data: {confirm: "削除しますか？"}, class:"btn-layout btn-layout2 mr-3"  %>
+            <%= link_to "会話する", pet_chats_path(@pet), class:"btn-layout" %>
+          <% else %>
+            <%= link_to "フォロー", pet_relationships_path(@pet), method: :post, class:"btn-layout" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row ml-5 mt-2">
+        <div class="col-5">
+          <div class="row mt-3 pet-nav">
+            <ul class="nav">
+              <li><%= @pet.type %></li>
+              <li>
+                <% if @pet.gender == 'オス' %>
+                  <i class="fas fa-mars gender-icon"></i>
+                <% else %>
+                  <i class="fas fa-venus gender-icon"></i>
+                <% end %>
+              </li>
+              <li><%= @pet.age %>歳<%= @pet.moon_age %>ヶ月</li>
+            </ul>
           </div>
-          <div class="row ml-5 mt-4 mb-4 pb-2">
+          <div class="row mt-4">
             <table class="personality-table">
               <tr>
                 <th>性格</th>
@@ -38,40 +48,29 @@
               </tr>
             </table>
           </div>
-          <div class="row mt-4">
-            <div class="col-2">
-              <%= attachment_image_tag @pet.owner, :image, size: '100x100', fallback: "owner_no_image.png", class:"rounded" %>
-            </div>
-            <div class="col-3 ml-3">
-              <%= @pet.owner.name %>
-            </div>
-            <div class="col-3">
-              <p>友だち（<%= @pet.following_pets.count%>）</p>
-            </div>
+        </div>
+        <div class="col-6">
+           <div class="row">
+            <%= attachment_image_tag @pet.owner, :image, size: '100x100', fallback: "owner_no_image.png", class:"rounded" %>
           </div>
-          <div class="row d-flex justify-content-center">
-            <div class="col-12 clearfix">
-                <div class="float-right">
-                  <% if @pet.id == current_owner.pet.id %>
-                    <%= link_to "編集する", edit_pet_path(@pet), class:"btn-layout" %>
-                  <% elsif current_owner.pet.following?(@pet) %>
-                    <%= link_to "フォロー中", pet_relationship_path(@pet), method: :delete, data: {confirm: "削除しますか？"}, class:"btn-layout btn-layout2 mr-3"  %>
-                    <%= link_to "会話する", pet_chats_path(@pet), class:"btn-layout" %>
-                  <% else %>
-                    <%= link_to "フォロー", pet_relationships_path(@pet), method: :post, class:"btn-layout" %>
-                  <% end %>
-                </div>
-            </div>
+          <div class="row">
+            <%= @pet.owner.name %>
           </div>
         </div>
       </div>
-      <div class="row pet-introduction">
-        <div class="col-9 offset-2">
+       
+      <div class="row mt-3">
+        <div class="col-9 pet-introduction pl-5">
           <%= simple_format(@pet.introduction) %>
         </div>
       </div>
+    </div>
+  </div>
       
+  <div class="row">
+    <div class="col-8">
       <div class="row mt-5 ml-5">
+        
         <!--タブメニュー-->
         <div class="col-12">
           <ul id="tab-menu">
@@ -81,6 +80,7 @@
             <li><a href="#tab4" class="">友だち</a></li>
           </ul>
         </div>
+        
         <!--タブの中身-->
         <div class="col-12" id="tab-contents">
           <div class="tab-area">
@@ -161,17 +161,14 @@
                 </div>
               <% end %>
             </div>
+            
           </div>
         </div>
       </div>
     </div>
-    <div class="col-3 ml-5">
       <%= render 'searches/search_box' %>
-    </div>
   </div>
-
-
-  
+ 
   <div class="modal-wrapper"></div>
   <!--日記新規投稿-->
   <%= render 'diaries/diary_form', diary: @diary, pet: @pet %>
