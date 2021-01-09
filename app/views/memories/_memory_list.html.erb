@@ -18,7 +18,7 @@
           <span> <%= link_to memory.pet.name, pet_path(memory.pet) %></span>
         </div>
         <div class="col-3">
-          <%= attachment_image_tag memory.pet.owner, :image, size:'30x30', fallback: "owner_no_image.png", class:"rounded-circl icon-imge" %>
+          <%= attachment_image_tag memory.pet.owner, :image, size:'30x30', fallback: "owner_no_image.png", class:"rounded-circle icon-imge" %>
           <span> <%= memory.pet.owner.name %></span>
         </div>
       </div>

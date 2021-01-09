@@ -31,17 +31,19 @@
        <%= truncate(pet.introduction, length: 100) %>
     </div>
     <div class="row ml-3">
-      <% if current_owner.pet.following?(pet) %>
-        <div class="col-3 offset-6">
-          <%= link_to "フォロー中", pet_relationship_path(pet, pet_id: pet.id), method: :delete, data: {confirm: "フォローを解除します。よろしいですか？"}, class:"btn-layout btn-layout2" %>
-        </div>
-        <div class="col-3">
-          <%= link_to "会話する", pet_chats_path(pet_id: pet.id), class:"btn-layout" %>
-        </div>
-      <% else %>
-        <div class="col-3 offset-6">
-          <%= link_to "フォロー", pet_relationships_path(pet_id: pet), method: :post, class:"btn-layout pl-3 pr-3" %>
-        </div>
+      <% if pet.id != current_owner.pet.id %>
+        <% if current_owner.pet.following?(pet) %>
+          <div class="col-3 offset-6">
+            <%= link_to "フォロー中", pet_relationship_path(pet, pet_id: pet.id), method: :delete, data: {confirm: "フォローを解除します。よろしいですか？"}, class:"btn-layout btn-layout2" %>
+          </div>
+          <div class="col-3">
+            <%= link_to "会話する", pet_chats_path(pet_id: pet.id), class:"btn-layout" %>
+          </div>
+        <% else %>
+          <div class="col-3 offset-6">
+            <%= link_to "フォロー", pet_relationships_path(pet_id: pet), method: :post, class:"btn-layout pl-3 pr-3" %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
