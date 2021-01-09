@@ -2,7 +2,7 @@
   <div class="row mb-3 d-flex justify-content-center">
     <h2>プロフィール編集</h2>
   </div>
-  
+  <%= render "devise/shared/error_messages", resource: current_owner %>
   <%= form_with model: @owner, url: pet_path(@pet) ,local: true do |f| %>
   <div class="row mt-5">
     <div class="col-4 offset-2">
@@ -13,15 +13,22 @@
         <%= f.label :写真, class:"form-label" %>
       </div>
       <div class="row d-flex justify-content-center">
-        <%= attachment_image_tag current_owner, :image, size: "280x280", fallback: "owner_no_image.png", class:"owner-prev mb-3 rounded" %>
-        <%= f.attachment_field :image, class:"owner-image" %>
+        <%= attachment_image_tag current_owner, :image, size: '280x280', fallback: "owner_no_image.png", class:"owner-prev mb-3 rounded" %>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="attachment-field">
+          <%= f.attachment_field :image, class:"owner-image", id:"owner-file" %>
+        </div>
+        <div class="btn-layout pl-5 pr-5" onClick="$('#owner-file').click()" >
+          写真を選ぶ
+        </div>
       </div>
       <div class="row mt-2 ml-5">
         <%= f.label :名前, class:"form-label" %>
         <span>(10文字以内で入力してください)</span>
       </div>
       <div class="row d-flex justify-content-center">
-         <%= f.text_field :name, size:'30', autofocus: true, autocomplete: "name" %>
+         <%= f.text_field :name, size:'30', autocomplete: "name" %>
       </div>
     </div>
       <%= f.fields_for :pet do |pet| %>
@@ -34,7 +41,14 @@
           </div>
           <div class="row d-flex justify-content-center">
             <%= attachment_image_tag current_owner.pet, :image, size: '280x280', fallback: "pet_no_image.png", class:"pet-prev mb-3 rounded" %>
-            <%= pet.attachment_field :image, class:"pet-image" %>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="attachment-field">
+              <%= pet.attachment_field :image, class:"pet-image", id:"pet-file" %>
+            </div>
+            <div class="btn-layout pl-5 pr-5" onClick="$('#pet-file').click()" >
+              写真を選ぶ
+            </div>
           </div>
           <div class="row mt-2 ml-5">
             <%= pet.label :名前, class:"form-label" %>
@@ -70,9 +84,6 @@
   </div>
   <div class="row d-flex justify-content-center mt-3">
     <%= link_to "退会する", unsubscribe_owner_path(current_owner), class:"btn-layout btn-layout3" %>
-  </div>
-  <div class="row d-flex justify-content-center mt-3">
-    <%= link_to "パスワードの変更はこちら→", edit_owner_password_path %>
   </div>
   <% end %>
                 

@@ -1,13 +1,13 @@
 <% pets.each do |pet| %>
   <div class="contents-box">
-    <div class="row">
-      <div class="col-3">
+    <div class="row ml-3">
+      <div class="col-5">
         <%= link_to pet_path(pet) do %>
           <%= attachment_image_tag pet, :image, size:'80x80', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
         <% end %>
         <span> <%= link_to pet.name, pet_path(pet) %></span>
       </div>
-      <div class="col-9">
+      <div class="col-6">
         <div class="row">
           <div class="col-2 pt-4">
             <%= pet.type %>
@@ -19,12 +19,16 @@
               <i class="fas fa-venus gender-icon"></i>
             <% end %>
           </div>
-          <div class="col-4 pt-2">
+          <div class="col-8 pt-2">
             <%= attachment_image_tag pet.owner, :image, size:'50x50', fallback: "owner_no_image.png", class:"rounded-circle icon-img" %>
             <span> <%= pet.owner.name %></span>
           </div>
         </div>
       </div>
+    </div>
+ 
+    <div class="row pet-introduction-sub">
+       <%= truncate(pet.introduction, length: 100) %>
     </div>
     <div class="row ml-3">
       <% if current_owner.pet.following?(pet) %>
@@ -39,9 +43,6 @@
           <%= link_to "フォロー", pet_relationships_path(pet_id: pet), method: :post, class:"btn-layout pl-3 pr-3" %>
         </div>
       <% end %>
-    </div>
-    <div class="row">
-       <%= truncate(pet.introduction, length: 100) %>
     </div>
   </div>
 <% end %>

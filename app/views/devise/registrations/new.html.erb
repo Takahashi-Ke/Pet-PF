@@ -22,7 +22,14 @@
       </div>
       <div class="row d-flex justify-content-center">
         <%= attachment_image_tag @owner, :image, size: "280x280", fallback: "owner_no_image.png", class:"owner-prev mb-3 rounded" %>
-        <%= f.attachment_field :image, class:"owner-image"%>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="attachment-field">
+          <%= f.attachment_field :image, class:"owner-image", id:"owner-file" %>
+        </div>
+        <div class="btn-layout pl-5 pr-5" onClick="$('#owner-file').click()" >
+          写真を選ぶ
+        </div>
       </div>
       <div class="row mt-2 ml-5">
         <%= f.label :名前※, class:"form-label" %>
@@ -50,7 +57,14 @@
           </div>
           <div class="row d-flex justify-content-center">
             <%= attachment_image_tag @pet, :image, size: "280x280", fallback: "pet_no_image.png", class:"pet-prev mb-3 rounded" %>
-            <%= pet.attachment_field :image, class:"pet-image"%>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="attachment-field">
+              <%= pet.attachment_field :image, class:"pet-image", id:"pet-file" %>
+            </div>
+            <div class="btn-layout pl-5 pr-5" onClick="$('#pet-file').click()" >
+              写真を選ぶ
+            </div>
           </div>
           <div class="row mt-2 ml-5">
             <%= pet.label :名前※, class:"form-label" %>

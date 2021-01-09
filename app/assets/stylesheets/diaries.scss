@@ -27,6 +27,10 @@ $diary-modal-width: 500px;
   width: $diary-modal-width;
   margin-left: -($diary-modal-width / 2);
 }
+.diary-body {
+  width: 420px;
+  margin-bottom: 10px;
+}
 .comment-box {
   width: 100%;
   height: 300px;

@@ -15,6 +15,7 @@ class MemoriesController < ApplicationController
     if @memory.save
       redirect_to memory_path(@memory)
     else
+      @memories = current_owner.pet.memories
       @memory.memory_images.build
       @pet = current_owner.pet
       @diary = Diary.new

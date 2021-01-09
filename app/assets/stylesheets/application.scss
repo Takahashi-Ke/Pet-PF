@@ -53,9 +53,6 @@ header {
 }
 .header-icon:hover {
 }
-.nav li {
-  margin: 0 10px;
-}
 .notifications {
   color: #fff;
   font-size: 18px;
@@ -189,7 +186,6 @@ a:hover {
 }
 .error-message {
   width: 550px;
-  height: 230px;
   color: #D25565;
   text-align: center;
   background-color: #F8E0E0;
@@ -207,8 +203,12 @@ a:hover {
   list-style: none;
 }
 .error-message li{
-  margin: 10px 0;
+  margin: 10px 0 10px -10px;
 }
+.attachment-field {
+  display: none;
+}
+
 footer {
   height: 120px;
   margin-top: 40px;

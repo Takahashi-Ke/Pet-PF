@@ -136,10 +136,16 @@
       
             <!--思い出(tab3)-->
             <div id="tab3" class="tab">
+              <% if @pet.id == current_owner.pet.id %>
+                <div class="row">
+                  <div class="col-3 offset-9">
+                    <%= link_to "思い出を作る", new_memory_path, class:"btn-layout pt-2 pb-2"%>
+                  </div>
+                </div>
+              <% end %>
               <div id="memories_calendar">
                 <%= render "memories_calendar", memories: @memories %>
               </div>
-              <%= link_to "思い出を作る", new_memory_path, class:"btn-layout"%>
             </div>
     
             <!--友だち(tab4)-->

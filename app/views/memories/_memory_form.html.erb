@@ -12,16 +12,27 @@
         <% end %>
       </div>
       <div class="row mt-2">
-
+      <% if memory.errors.any? %>
+          <div class="error-memory">
+            <div class="row">
+              <ul>
+                <% memory.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+      <% end %>
 
         <%= form_with model: memory, local: true do |f| %>
           <div class="row">
-            <%= f.text_field :title, size: '40', style: "border: none", placeholder: " タイトル", class:"pt-2 pb-2" %>
+            <%= f.text_field :title, size: '40', style: "border: none", placeholder: " タイトル(20文字以内)", class:"pt-2 pb-2" %>
           </div>
           
           <!--写真挿入フォーム-->
-          <div class="row mt-3">
-            <%= f.attachment_field :memory_images_images, multiple: true %>
+          <div class="row mt-3 memory-form">
+            <%= f.attachment_field :memory_images_images, multiple: true, id:"memory-file" %>
+            <span>　写真は複数投稿できます</span>
           </div>  
           <div class="row mt-3">
             <%= f.text_area :body, style: "border: none", size: "90x25", placeholder: " #{pet.name}との思い出を書いてみましょう", class:"pt-2" %>
