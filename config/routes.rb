@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :favorites, only: [:create, :destroy, :index]
   resources :notifications, only: :index
   get 'search' => 'searches#search'
-  get 'inquiry' => 'inquiries#index'
+  get 'inquiry' => 'inquiries#new'
   get 'inquiry/confirm' => 'inquiries#confirm'
   get 'inquiry/thanks' => 'inquiries#thanks'
 end
