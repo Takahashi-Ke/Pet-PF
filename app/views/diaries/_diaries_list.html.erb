@@ -2,14 +2,14 @@
 <%= hidden_field diary, :id, :multiple => true, :value => diary.id, class: 'diary-comment-id'%>
   <div class="contents-box ml-3 mt-2">
     <div class="row">
-      <div class="col-2">
+      <div class="col-1 mr-4">
         <%= link_to  pet_path(diary.pet) do %>
           <%= attachment_image_tag diary.pet, :image, size: '60x60', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
         <% end %>
       </div>
       <div class="col-10">
-        <div class="row">
-          <div class="col-6 mt-2">
+        <div class="row mt-2">
+          <div class="col-6">
             <h5><%= link_to diary.pet.name, pet_path(diary.pet) %></h5>
           </div>
           <div class="col-6 post-date">
@@ -25,8 +25,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-2 offset-6" id="comment-btn-<%= diary.id %>">
-        
+      <div class="col-2 offset-6 diary-comment-count" id="comment-btn-<%= diary.id %>">
         <%= render 'diary_comments/diary_comments_count', diary: diary %>
       </div>
       <div class="col-2 favorite-btn-<%= diary.id %>">
@@ -36,7 +35,7 @@
       <!--日記削除ボタン-->
       <% if diary.pet == current_owner.pet %>
         <div class="col-2">
-          <%= link_to diary_path(diary), method: :delete, data: {confirm: "削除します。よろしいですか？"} do %>
+          <%= link_to diary_path(diary), method: :delete, data: {confirm: "削除します。よろしいですか？"},class:"trash-icon" do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
         </div>

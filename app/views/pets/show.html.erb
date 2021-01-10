@@ -42,8 +42,10 @@
                   <% @pet_personalities.each do |pp| %>
                   <td><%= pp.personality %></td>
                   <% end %>
-                <% else %>
+                <% elsif @pet.id == current_owner.pet.id %>
                   <td class="select-personality-btn"><%= button_tag "性格を選ぶ", class:"btn-layout" %></td>
+                <% else %>
+                  <td>選択されていません</td>
                 <% end %>
               </tr>
             </table>
@@ -94,7 +96,7 @@
                     </div>
                   <% end %>
                 </div>
-                <div class="col-8">
+                <div class="col-9">
                   <% if @diaries.exists? %>
                     <%= render 'diaries/diaries_list', diaries: @diaries %>
                   <% else %>
