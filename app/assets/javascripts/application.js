@@ -20,6 +20,25 @@
 
 /* global $*/
 
+// 文字数カウント
+$(document).on("turbolinks:load", function(){
+  
+  var count = $('.js-text').text().length;
+  $(".js-text-count").text( count + "/120");
+  
+  $(".js-text").on("keyup", function() {
+    var count = $(this).val().replace(/\n/g, "改行").length;
+    if(count > 120){
+      $(".js-text-count").css("color","#D25565");
+    }else{
+      $(".js-text-count").css("color","#333333");
+    }
+    $(".js-text-count").text( count + "/120");
+  });
+});
+
+
+
 // 画像プレビュー
 $(document).on("click", ".owner-image", function(){
   function readURL(input) {
