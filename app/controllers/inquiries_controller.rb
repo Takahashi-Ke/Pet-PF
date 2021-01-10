@@ -1,9 +1,9 @@
 class InquiriesController < ApplicationController
   
-  def index
+  def new
     # 入力画面を表示
     @inquiry = Inquiry.new
-    render :action => 'index'
+    render :action => 'new'
   end
   
   def confirm
@@ -14,13 +14,14 @@ class InquiriesController < ApplicationController
       render :action => 'confirm'
     else
       # NG。入力画面を再表示
-      render :action => 'index'
+      render :action => 'new'
     end
   end
   
   def thanks
     # メール送信
-    @inquiry = Inquiry.new(inquiry_params)    
+    @inquiry = Inquiry.new(inquiry_params)  
+    #binding.pry
     InquiryMailer.received_email(@inquiry).deliver
     # 完了画面を表示
     render :action => 'thanks'
