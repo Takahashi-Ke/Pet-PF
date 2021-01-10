@@ -70,7 +70,19 @@
       <div class="col-6">
         <h5>4 友だちと会話しよう</h5>
       </div>
-      
     </div>
+    
+    <div class="row d-flex justify-content-center">
+      <p>あなたとペットの生活がより楽しく、より好きになりますように</p>
+    </div>
+    
+    <div class="row d-flex justify-content-center">
+      <% if owner_signed_in? %>  
+        <%= link_to "マイハウスへ", pet_path(current_owner.pet), class:"btn-layout btn-layout4" %>
+      <% else %>  
+        <%= link_to "始める", new_owner_registration_path, class:"btn-layout btn-layout4" %>
+      <% end %>
+    </div>
+    
   </div>
-  </div>
+</div>
