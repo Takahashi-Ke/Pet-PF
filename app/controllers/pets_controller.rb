@@ -19,12 +19,14 @@ class PetsController < ApplicationController
   def update
     @pet = Pet.find(params[:id])
     @pet.pet_personalities.destroy_all
-    params[:owner][:pet_attributes][:pet_personalities].each do |pp|
-      PetPersonality.personalities.map do |k,v|
-        if v == pp.to_i
-          pet_personality = @pet.pet_personalities.new(personality_params)
-          pet_personality.personality = pp.to_i
-          pet_personality.save
+    if params[:owner][:pet_attributes][:pet_personalities].present?
+      params[:owner][:pet_attributes][:pet_personalities].each do |pp|
+        PetPersonality.personalities.map do |k,v|
+          if v == pp.to_i
+            pet_personality = @pet.pet_personalities.new(personality_params)
+            pet_personality.personality = pp.to_i
+            pet_personality.save
+          end
         end
       end
     end
