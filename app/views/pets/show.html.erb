@@ -119,7 +119,7 @@
                 <% if @photos.exists? %>
                   <% @photos.each do |photo| %>
                     <div class="col-3 mb-3">
-                      <%= link_to photo.image_url,  "data-lightbox" => "group" do %>
+                      <%= link_to photo.image_url, "data-lightbox" => "group2" do %>
                         <%= image_tag photo.image_url, size:'190x190'%>
                       <% end %>
                     </div>
