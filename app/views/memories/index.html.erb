@@ -1,9 +1,7 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-2 ml-5 mr-3">
-      <%= render 'pets/pet_info', pet: @pet %>
-    </div>
-    <div class="col-6">
+    <%= render 'pets/pet_info', pet: @pet %>
+    <div class="col-6 ml-5">
       <% if @posted_by_pet.present? %>
         <div class="row ml-5 mb-2">
           <h4><%= @pet.name %>の思い出</h4>
@@ -33,13 +31,11 @@
           <h4>みんなの思い出</h4>
         </div>
       <% end %>
-      <div class="scroll-area">
+      <div class="scroll-area" id="memory-scroll">
         <%= render 'memory_list', posted_by_pet: @posted_by_pet, memories: @memories, pet: current_owner.pet, diary: @diary %>
       </div>
     </div>
-    <div class="col-3 ml-3">
-      <%= render 'searches/search_box' %>
-    </div>
+    <%= render 'searches/search_box' %>
   </div>
   
   <div class="modal-wrapper"></div>

@@ -1,72 +1,41 @@
-<div class="row">
-  <div class="mx-auto">
-    <%= link_to pet_path(pet) do %>
-      <%= attachment_image_tag pet, :image, size: '120x120', fallback: "pet_no_image.png", class:"rounded-circle icon-img"  %>
-    <% end %>
-  </div>
-</div>
-<div class="row mt-2 mb-2 d-flex align-items-center justify-content-center">
-  <h4><%= link_to pet.name, pet_path(pet) %></h4>
-</div>
-
-<div class="row d-flex justify-content-center">
-  <%= attachment_image_tag pet.owner, :image, size: '80x80', fallback: "owner_no_image.png", class:"rounded-circle icon-img" %>
-</div>
-<div class="row d-flex align-items-center justify-content-center">
-  <i class="fas fa-user-alt"></i><span class="pl-1 mt-1"><%= pet.owner.name %></span>
-</div>
-
-<% if @chat.present? %>
-  <% if pet.id == current_owner.pet.id %>
-    <div class="row mt-5 message-box d-flex align-items-center justify-content-center">
-      <%= form_with model: [@pet, @chat], url: pet_chats_path(room_id: @room.id), remote: true do |f| %>
-          <%= f.text_area :message, size: '25x3', placeholder: "メッセージ入力", class:"chat-form" %>
-          <div class="col-2 offset-5 clearfix">
-              <%= f.submit "送信", class:"btn-layout pr-4 pl-4" %>
-          </div>
+<div class="pet-sidebar">
+  <div class="row">
+    <div class="mx-auto">
+      <%= link_to pet_path(pet) do %>
+        <%= attachment_image_tag pet, :image, size: '120x120', fallback: "pet_no_image.png", class:"rounded-circle icon-img"  %>
       <% end %>
     </div>
-  <% else %>
-    <div class="row mt-5 mb-3">
-      <div class="mx-auto">
-        <%= link_to "プロフィールを見る", pet_path(pet) %>
-      </div>
-    </div>
-  <% end %>
-<% else %>
+  </div>
+  <div class="row mt-2 mb-2 d-flex align-items-center justify-content-center">
+    <h4><%= link_to pet.name, pet_path(pet) %></h4>
+  </div>
+  
+  <div class="row d-flex justify-content-center">
+    <%= attachment_image_tag pet.owner, :image, size: '80x80', fallback: "owner_no_image.png", class:"rounded-circle icon-img" %>
+  </div>
+  <div class="row d-flex align-items-center justify-content-center">
+    <i class="fas fa-user-alt"></i><span class="pl-1 mt-1"><%= pet.owner.name %></span>
+  </div>
+
+    
   <div class="row mt-3 frend-count">
     <div class="mx-auto">
       <p>友だち（<%= pet.following_pets.count%>）</p>
     </div>
   </div>
-  <div class="row mt-3 mb-3">
-    <div class="mx-auto">
-      <%= link_to "いいねリスト", favorites_path %>
-    </div>
+  <div class="note-box">
+    <ul>
+      <li><%= link_to "いいねリスト", favorites_path %></li>
+      <li><%= link_to "会話リスト", pet_pet_rooms_path(pet) %></li>
+      <li>
+        <div class="add-diary-button mx-auto">
+          日記を書く
+        </div>
+      </li>
+      <li><%= link_to "思い出を見る", memories_path(pet_id: pet) %></li>
+      <li><%= link_to "思い出を作る", new_memory_path %></li>
+      <li><%= link_to "プロフィール編集", edit_pet_path(pet) %></li>
+    </ul>
   </div>
-  <div class="row mt-3 mb-3">
-    <div class="mx-auto">
-      <%= link_to "会話リスト", pet_pet_rooms_path(pet) %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="add-diary-button mx-auto">
-      日記を書く
-    </div>
-  </div>
-  <div class="row mt-3 mb-3">
-    <div class="mx-auto">
-      <%= link_to "思い出を見る", memories_path(pet_id: pet) %>
-    </div>
-  </div>
-  <div class="row mt-3 mb-3">
-    <div class="mx-auto">
-      <%= link_to "思い出を作る", new_memory_path %>
-    </div>
-  </div>
-  <div class="row mt-3 mb-3">
-    <div class="mx-auto">
-      <%= link_to "プロフィール編集", edit_pet_path(pet) %>
-    </div>
-  </div>
-<% end %>
+    
+</div>

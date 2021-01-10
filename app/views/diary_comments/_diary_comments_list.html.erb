@@ -10,19 +10,27 @@
             <% end %>
           </div>
           <div class="col-10">
-            <%= link_to dc.pet.name, pet_path(dc.pet) %>
-              <div class="row">
-                <div class="col-9 mt-2 ml-5">
-                  <%= dc.comment %>
-                </div>
-                <% if dc.pet == current_owner.pet %>
-                  <div class="col-1 mt-2">
-                    <%= link_to diary_comment_path(dc, diary_id: diary.id), method: :delete, remote: true do %>
-                      <i class="far fa-trash-alt"></i>
-                    <% end %>
-                  </div>
-                <% end %>
+            <div class="row">
+              <div class="col-6">
+                <%= link_to dc.pet.name, pet_path(dc.pet) %>
               </div>
+              <div class="col-5 post-date">
+                <%= dc.created_at.to_s(:datetime_jp) %>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-9 mt-2 ml-5">
+                <%= dc.comment %>
+              </div>
+              <% if dc.pet == current_owner.pet %>
+                <div class="col-1 mt-2">
+                  <%= link_to diary_comment_path(dc, diary_id: diary.id), method: :delete, remote: true do %>
+                    <i class="far fa-trash-alt"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
           </div>
         </div>
       <% end %>

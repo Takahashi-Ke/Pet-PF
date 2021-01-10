@@ -1,16 +1,15 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-2 ml-5 mr-3">
-      <%= render 'pets/pet_info', pet: @pet ,chat: @chat %>
+    <div class="chat-pet" id="chat-frend">
+      <%= render 'chat_pet', pet: @pet %>
     </div>
     <div class="col-7">
       <div class="chat-contents">
         <%= render 'chat_contents', chats: @chats %>
       </div>
-      
     </div>
-    <div class="col-2">
-      <%= render 'pets/pet_info', pet: current_owner.pet, chat: @chat, room: @room %>
+    <div class="chat-pet" id="chat-me">
+      <%= render 'chat_pet', pet: current_owner.pet %>
     </div>
   </div>
 </div>
