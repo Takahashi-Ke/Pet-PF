@@ -2,7 +2,7 @@
   <div class="row">
     <% chats.each do |chat| %>
       <% if chat.pet_id == current_owner.pet.id %>
-        <div class="col-1 d-flex align-items-end offset-5 chat-time">
+        <div class="col-1 d-flex align-items-end chat-time" id="mine-time">
           <%= chat.created_at.strftime('%H:%M') %>
         </div>
         <div class="col-5 chat-message" id="mine-message">
