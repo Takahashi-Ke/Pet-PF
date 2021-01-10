@@ -3,11 +3,11 @@
     <%= render 'pets/pet_info', pet: @pet %>
     <div class="col-6 ml-5">
       <div class="memory-detail">
+        <div class="row ml-3">
+          <h3><%= @memory.title %></h3>
+        </div>
         <div class="row">
-          <div class="col-5 memory-title">
-            <p><%= @memory.title %></p>
-          </div>
-          <div class="col-5 mt-2">
+          <div class="col-4 offset-7">
             <%= @memory.created_at.to_s(:datetime_jp) %>
           </div>
         </div>

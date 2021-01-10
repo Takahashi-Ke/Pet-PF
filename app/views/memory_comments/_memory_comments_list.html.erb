@@ -31,6 +31,11 @@
   <div class="row memory-comment-box ml-1 mr-1 mt-3">
     <div class="col-10 offset-2">
       <%= form_with model: memory_comment, url: memory_comments_path(memory_id: memory), remote: true do |f| %>
+        <% if memory_comment.errors.any? %>
+          <div class="row ml-3">
+            <h6>※コメントを入力してさい</h6>  
+          </div>
+        <% end %>
         <%= f.text_area :comment, size: '60x2', placeholder: 'コメントを書く' %>
         <div class="row">
           <div class="col-2 offset-7">

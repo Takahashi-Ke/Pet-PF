@@ -24,7 +24,7 @@
                 <%= dc.comment %>
               </div>
               <% if dc.pet == current_owner.pet %>
-                <div class="col-1 mt-2">
+                <div class="col-1 mt-2 trash-icon">
                   <%= link_to diary_comment_path(dc, diary_id: diary.id), method: :delete, remote: true do %>
                     <i class="far fa-trash-alt"></i>
                   <% end %>
@@ -39,7 +39,7 @@
   <div class="row mt-2">
     <div class="col-10 offset-2">
       <%= form_with model: DiaryComment.new, url: diary_comments_path(pet_id: current_owner.pet, diary_id: diary), remote: true do |f| %>
-        <%= f.text_area :comment, size: '50x2', placeholder: 'コメントを書く' %>
+        <%= f.text_area :comment, size: '45x2', placeholder: 'コメントを書く' %>
         <div class="row">
           <div class="col-12 clearfix">
             <div class="float-right">
