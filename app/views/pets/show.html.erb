@@ -91,7 +91,7 @@
               <div class="row">
                 <div class="col-2">
                   <% if @pet.id == current_owner.pet.id %>
-                    <div class="add-diary-button btn-layout">
+                    <div class="add-diary-button btn-layout pet_add-diary-button">
                       日記を書く
                     </div>
                   <% end %>
@@ -119,7 +119,9 @@
                 <% if @photos.exists? %>
                   <% @photos.each do |photo| %>
                     <div class="col-3 mb-3">
-                      <%= attachment_image_tag photo, :image, size: '190x190' %>
+                      <%= link_to photo.image_url, "data-lightbox" => "group2" do %>
+                        <%= image_tag photo.image_url, size:'190x190'%>
+                      <% end %>
                     </div>
                   <% end %>
                 <% else %>

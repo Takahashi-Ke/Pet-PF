@@ -104,11 +104,13 @@
           </div>
           <div class="row ml-5">
             <%= pet.label :紹介文, class:"form-label" %>
+            <span>(120文字以内で入力してください)</span>
           </div>
           <div class="row d-flex justify-content-center">
-            <%= pet.text_area :introduction, size:'40x4' %>
+            <%= pet.text_area :introduction, size:'40x4',class:"js-text" %>
           </div>
-          <div class="row ml-5 mt-3">
+          <p class="js-text-count float-right mr-3">/120</p>
+          <div class="row d-flex justify-content-center mt-4">
             <p><span class="fas fa-exclamation-circle"></span> 性別、誕生日、種類は登録後変更ができません。</p>
           </div>
         </div>

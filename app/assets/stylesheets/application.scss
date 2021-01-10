@@ -112,6 +112,16 @@ a:hover {
   color: white;
   text-decoration: none;
 }
+.btn-layout4 {
+  padding: 10px 60px;
+  background-color: #D2B48C;
+  color: white;
+  text-decoration: none;
+  border: none;
+}
+.btn-layout4:hover {
+  background-color: darken(#D2B48C, 10%);
+}
 .pet-info-box {
   position: fixed;
 }
@@ -219,6 +229,9 @@ a:hover {
   color: #D2B48C;
   cursor: pointer;
   cursor: hand;
+}
+.pet_add-diary-button:hover {
+  color: #fff;
 }
 .trash-icon:hover {
   color: #D25565;

@@ -16,12 +16,14 @@
         </div>
         <% unless @images.blank? %>
           <div class="row">
-            <p>写真</p>
+            <p>写真 (クリックすると拡大します)</p>
           </div>
           <div class="row">
             <% @images.each do |image| %>
-              <div class="col-3">
-                <%= attachment_image_tag image, :image, size: '120x120' %>
+              <div class="col-4">
+                <%= link_to image.image_url, "data-lightbox" => "image-group" do %>
+                  <%= image_tag image.image_url, size:'200x200'%>
+                <% end %>
               </div>
             <% end %>
           </div>
