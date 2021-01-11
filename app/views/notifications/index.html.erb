@@ -16,11 +16,13 @@
                     <% end %>
                   </div>
                   <div class="col-6 mt-4">
-                    <%= link_to notification.visitor.name, pet_path(notification.visitor) %><span>さんが</span>
-                      <% if notification.diary.nil? %>
+                    <%= link_to notification.visitor.name, pet_path(notification.visitor) %><span>さん</span>
+                      <% if notification.diary.present? %>
+                        <%= render 'diary_notification_list', notification: notification %>
+                      <% elsif notification.memory.present? %>
                         <%= render 'memory_notification_list', notification: notification %>
                       <% else %>
-                        <%= render 'diary_notification_list', notification: notification %>
+                        <%= render 'chat_notification_list', notification: notification, pet: @pet %>
                       <% end %> 
                   </div>
                   <div class="col-2 mt-4">
