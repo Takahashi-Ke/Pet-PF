@@ -10,7 +10,7 @@
           <div class="col-5">
             <div class="row d-flex justify-content-center">
               <%= link_to pet_path(@pet) do %>
-                <%= attachment_image_tag @pet, :image, size:'110x110', fallback: "no_image.png", class:"rounded-circle" %>
+                <%= attachment_image_tag @pet, :image, size:'110x110', fallback: "pet_no_image.png", class:"rounded-circle" %>
               <% end %>
             </div>
             <div class="row d-flex justify-content-center">
@@ -19,7 +19,7 @@
           </div>
           <div class="col-5">
             <div class="row d-flex justify-content-center">
-              <%= attachment_image_tag @pet.owner, :image, size:'110x110', fallback: "no_image.png", class:"rounded-circle" %>
+              <%= attachment_image_tag @pet.owner, :image, size:'110x110', fallback: "owner_no_image.png", class:"rounded-circle" %>
             </div>
             <div class="row name-link d-flex justify-content-center">
               <%= @pet.owner.name %>
