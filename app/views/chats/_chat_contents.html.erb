@@ -1,22 +1,24 @@
 <div class="chat-area mb-3">
-  <div class="row">
     <% chats.each do |chat| %>
       <% if chat.pet_id == current_owner.pet.id %>
-        <div class="col-1 d-flex align-items-end chat-time" id="mine-time">
-          <%= chat.created_at.strftime('%H:%M') %>
-        </div>
-        <div class="col-5 chat-message" id="mine-message">
-          <%= chat.message %>
+        <div class="row">
+          <div class="col-1 d-flex align-items-end chat-time" id="mine-time">
+            <%= chat.created_at.strftime('%H:%M') %>
+          </div>
+          <div class="col-5 chat-message" id="mine-message">
+            <%= chat.message %>
+          </div>
         </div>
       <% else %>
-        <div class="col-5 chat-message">
-          <%= chat.message %>
-        </div>
-        <div class="col-2 d-flex align-items-end chat-time">
-          <%= chat.created_at.strftime('%H:%M') %>
-        </div>
-        <div class="col-4"></div>
+        <div class="row">
+          <div class="col-5 chat-message">
+            <%= chat.message %>
+          </div>
+          <div class="col-2 d-flex align-items-end chat-time">
+            <%= chat.created_at.strftime('%H:%M') %>
+          </div>
+          <div class="col-4"></div>
+          </div>
       <% end %>
     <% end %>
-  </div>
 </div>
