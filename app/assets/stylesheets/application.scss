@@ -191,6 +191,7 @@ a:hover {
   border-top: 0.5px solid #D2B48C;
 }
 .contents-box h5 {
+  display: inline;
   font-weight: 300;
 }
 .contents-box:last-child {
@@ -229,6 +230,10 @@ a:hover {
   color: #D2B48C;
   cursor: pointer;
   cursor: hand;
+}
+.pet_add-diary-button {
+  position: sticky; 
+  top: 30px; 
 }
 .pet_add-diary-button:hover {
   color: #fff;
