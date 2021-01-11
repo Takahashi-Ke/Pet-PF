@@ -14,6 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+
 //= require cocoon
 //= require bootstrap-sprockets
 //= require_tree .
@@ -22,10 +23,9 @@
 
 // 文字数カウント
 $(document).on("turbolinks:load", function(){
-  
   var count = $('.js-text').text().length;
   $(".js-text-count").text( count + "/120");
-  
+  // 文字が入力される度発火
   $(".js-text").on("keyup", function() {
     var count = $(this).val().replace(/\n/g, "改行").length;
     if(count > 120){
@@ -104,6 +104,7 @@ $(document).on("turbolinks:load", function(){
 });
 
 
+
 /* global diaryId*/
 // コメント表示
 
@@ -127,4 +128,14 @@ $(document).on("turbolinks:load", function(){
 // チャットを下端へスクロールする
 $(document).on('turbolinks:load', function() {
 　$('.chat-area').animate({scrollTop: $('.chat-area')[0].scrollHeight}, 'fast');
+});
+
+
+
+// 無限スクロール
+$(document).on('turbolinks:load', function() {
+  $('.jscroll').infiniteScroll({
+    
+    path: "nav.pagination a[rel=next]"
+  });
 });
