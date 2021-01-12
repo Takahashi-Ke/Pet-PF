@@ -14,12 +14,20 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
-
 //= require cocoon
 //= require bootstrap-sprockets
 //= require_tree .
 
 /* global $*/
+$(document).on("turbolinks:load",function(){
+  $('.bxslider').bxSlider({
+		auto: true,
+		pause: 6000,
+	});
+
+});
+
+
 
 // 文字数カウント
 $(document).on("turbolinks:load", function(){

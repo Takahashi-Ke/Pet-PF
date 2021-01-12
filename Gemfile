@@ -62,29 +62,41 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# ログイン
 gem 'devise'
 
+# アプリケーション名変更
 gem 'rename'
 
+# デバック
 gem 'pry-byebug'
 
+# 画像投稿・表示
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
+# Bootstrap4
 gem 'bootstrap', '~> 4.3.1'
 
+# jQuery
 gem 'jquery-rails'
 
+# ページネーション
 gem 'kaminari','~> 1.2.1'
 
+# 多言語化
 gem 'rails-i18n', '~> 5.1'
 
+# モデルの親子関係
 gem 'cocoon'
 
+# カレンダー
 gem "simple_calendar", "~> 2.0"
 
-
+# 環境変数
 gem 'dotenv-rails'
+
+# 本番環境DB（mySQL）
 group :production do
   gem 'mysql2'
 end

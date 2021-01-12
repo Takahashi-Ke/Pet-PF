@@ -31,9 +31,23 @@
           <h4>みんなの思い出</h4>
         </div>
       <% end %>
-      <div class="scroll-area" id="memory-scroll">
-        <%= render 'memory_list', posted_by_pet: @posted_by_pet, memories: @memories, pet: current_owner.pet, diary: @diary %>
-      </div>
+      <% if @memories.present? %>
+        <div class="scroll-area" id="memory-scroll">
+          <%= render 'memory_list', posted_by_pet: @posted_by_pet, memories: @memories, pet: current_owner.pet, diary: @diary %>
+        </div>
+      <% else %>
+        <div class="row mt-5 d-flex justify-content-center">
+          <p>思い出はまだありません</p>
+         </div>
+          <% if @pet.id == current_owner.pet.id %>
+          <div class="row mt-3 d-flex justify-content-center">
+            <p><%= @pet.name %>との思い出を作ってみましょう！</p>
+          </div>
+          <div class="row mt-3 d-flex justify-content-center">
+            <%= link_to "思い出を作る", new_memory_path, class:"btn-layout pt-2 pb-2" %>
+          </div>
+          <% end %>
+      <% end %>
     </div>
     <%= render 'searches/search_box' %>
   </div>
