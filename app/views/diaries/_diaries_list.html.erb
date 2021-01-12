@@ -29,11 +29,16 @@
         <%= render 'diary_comments/diary_comments_count', diary: diary %>
       </div>
       <div class="col-2 favorite-btn-<%= diary.id %>">
-        <%= render 'favorites/favo', diary: diary %>
+        <% if owner_signed_in? %>
+          <%= render 'favorites/favo', diary: diary %>
+        <% else %>
+          <i class="far fa-heart"></i>
+          <span><%= diary.favorites.count %></span>
+        <% end %>
       </div>
       
       <!--日記削除ボタン-->
-      <% if diary.pet == current_owner.pet %>
+      <% if owner_signed_in? && diary.pet == current_owner.pet %>
         <div class="col-2">
           <%= link_to diary_path(diary), method: :delete, data: {confirm: "削除します。よろしいですか？"},class:"trash-icon" do %>
             <i class="far fa-trash-alt"></i>
@@ -43,7 +48,9 @@
     </div>
 
     <!--コメント一覧-->
-    <%= render 'diary_comments/diary_comments_list', diary: diary %>
+    <% if owner_signed_in? %>
+      <%= render 'diary_comments/diary_comments_list', diary: diary %>
+    <% end %>
 
   </div>
 <% end %>
