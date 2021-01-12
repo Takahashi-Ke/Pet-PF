@@ -18,9 +18,9 @@
 @import 'bootstrap';
 body {
   // background-color: #f7f3e8;
-  background-color: #f7f3e8;
+  background-color: #f7f5f0;
   font-family: source-han-sans-japanese, sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
   color: #333333;
 }
@@ -31,17 +31,20 @@ header {
 }
 .header-area {
   width: 100%;
-  height: 160px;
+  height: 110px;
 }
 .header-area p {
-  display: inline-block;
+  display: inline;
   font-size: 12px;
   margin-top: 5px;
   padding-top: 5px;
   border-top: 1px solid #D2B48C;
 }
+.header-left p{
+  padding: 5px 8px;
+}
 #bell-icon {
-  margin-top: 68px;
+  margin-top: 42px;
 }
 #bell-icon p {
   margin-top: 0;
@@ -57,7 +60,7 @@ header {
   color: #D2B48C;
 }
 .notifications {
-  color: #fff;
+  color: #D25565;
   font-size: 18px;
   font-weight: 600;
   position: absolute;

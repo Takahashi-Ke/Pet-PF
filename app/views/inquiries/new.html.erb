@@ -30,10 +30,10 @@
         <%= f.email_field :email, size:'30', autocomplete: "email" %>
       </div>
       <div class="row ml-3 mt-2">
-        <%= f.label :お問い合わせ内容, class:"form-label" %>
+        <%= f.label :お問い合わせ内容,class:"form-label" %>
       </div>
-      <div class="row d-flex justify-content-center">
-        <%= f.text_area :message, size:'30x2' %>
+      <div class="row ml-2">
+        <%= f.text_area :message, size:'50x10' %>
       </div>
       <div class="row mt-3 d-flex justify-content-center">
         <%= f.submit '確認', class: 'btn-layout btn-layout2 pr-5 pl-5' %>

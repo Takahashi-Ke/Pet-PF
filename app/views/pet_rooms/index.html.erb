@@ -17,7 +17,7 @@
               <div class="col-10 ml-3">
                 <div class="row mt-2">
                   <div class="col-7">
-                    <h5><%= pet.name %></h5>
+                    <h5><%= link_to pet.name, pet_path(pet) %></h5>
                   </div>
                   <div class="col-3">
                     <%= time_ago_in_words(pet.latest_message(pet).created_at) %>前

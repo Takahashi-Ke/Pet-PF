@@ -1,31 +1,41 @@
 <header>
   <div class="container-fluid">
     <div class="row header-area">
-      <div class="col-4">
-        <div class="row">
+      <div class="col-4 header-left">
+        <div class="row d-flex align-items-center">
           <% if owner_signed_in? %>
-            <div class="col-1 offset-4 mt-4">
+            <div class="col-3 offset-2">
               <%= link_to  diaries_path do %>
                 <div class="row">
-                  <i class="fas fa-pencil-alt header-icon"></i>
+                  <i class="fas fa-pencil-alt header-icon pl-2"></i>
                 </div>
                 <div class="row">
                   <p>日記</p>
                 </div>
               <% end %>
             </div>
-            <div class="col-2 mt-4 ml-5">
+            <div class="col-3">
               <%= link_to  memories_path do %>
-                <div class="row ml-3">
-                  <i class="fas fa-paw header-icon"></i>
+                <div class="row">
+                  <i class="fas fa-paw header-icon pl-1"></i>
                 </div>
-                <div class="row ml-3 pl-1">
+                <div class="row">
                   <p>思い出</p>
                 </div>
               <% end %>
             </div>
+            <div class="col-3">
+              <%= link_to  pet_pet_rooms_path(current_owner.pet) do %>
+                <div class="row">
+                  <i class="fas fa-comments header-icon"></i>
+                </div>
+                <div class="row">
+                  <p>会話</p>
+                </div>
+              <% end %>
+            </div>
           <% else %>
-            <div class="col-5 offset-3 mt-5 pt-3">
+            <div class="col-5 offset-3 pt-5">
               <%= link_to "ペッと！について", about_path %>
             </div>
           <% end %>
@@ -37,10 +47,10 @@
       <div class="col-4">
         <% if owner_signed_in? %>
           <div class="row d-flex align-items-center">
-            <div class="col-3 mt-4 mr-1">
+            <div class="col-3 mr-1">
               <%= link_to pet_path(current_owner) do %>
                 <div class="row">
-                  <i class="fas fa-home header-icon"></i>
+                  <i class="fas fa-home header-icon pl-1"></i>
                 </div>
                 <div class="row">
                   <p>マイハウス</p>
@@ -52,7 +62,7 @@
                 <div class="row mb-3">
                   <span class="fa-layers">
                     <i class="fas fa-bell header-icon"></i>
-                    <% unless current_owner.pet.unchecked_notifications(current_owner.pet).blank? %>
+                    <% if current_owner.pet.unchecked_notifications(current_owner.pet).present? %>
                       <span class="fa-layers-text fa-inverse notifications"><%= current_owner.pet.unchecked_notifications(current_owner.pet).count %></span>
                     <% end %>
                   </span>
@@ -62,7 +72,7 @@
                 </div>
               <% end %>
             </div>
-            <div class="col-3 mt-4">
+            <div class="col-3">
               <%= link_to  destroy_owner_session_path, method: :delete do %>
                 <div class="row">
                   <i class="fas fa-door-closed header-icon"></i>
@@ -76,12 +86,12 @@
         <% else %>
           <div class="row">
             <div class="col-4">
-              <div class="row mt-5 pt-3">
+              <div class="row mt-5">
                 <%= link_to "新規登録", new_owner_registration_path %>
               </div>
             </div>
             <div class="col-4">
-              <div class="row mt-5 pt-3">
+              <div class="row mt-5">
                 <%= link_to "ログイン", new_owner_session_path %>
               </div>
             </div>
