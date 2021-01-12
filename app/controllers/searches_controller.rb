@@ -13,7 +13,7 @@ class SearchesController < ApplicationController
    
     unless @search_params[:keyword].blank?
       @memories = Memory.where("title LIKE? OR body LIKE?", "%#{@search_params[:keyword]}%", "%#{@search_params[:keyword]}%")
-      @diaries = Diary.where("body LIKE?", "%#{@search_params[:keyword]}%")
+      @diaries = Diary.where("body LIKE?", "%#{@search_params[:keyword]}%").reverse_order
     end
     # @memories << @pets.memories
     # diaries = []

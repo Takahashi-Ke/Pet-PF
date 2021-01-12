@@ -5,8 +5,8 @@ class PetsController < ApplicationController
     @pet_personalities = @pet.pet_personalities
     @pet.pet_personalities.build
     @memories = @pet.memories
-    @diaries = @pet.diaries.page(params[:page]).per(10)
-    @photos  = Diary.where.not(image_id: nil).where(pet_id: @pet)
+    @diaries = @pet.diaries.page(params[:page]).per(10).reverse_order
+    @photos  = Diary.where.not(image_id: nil).where(pet_id: @pet).reverse_order
     @diary = Diary.new
     @diary_comment = DiaryComment.new
   end

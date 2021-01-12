@@ -5,6 +5,10 @@
 .check-box {
   margin-left: 45px;
 }
+.check-box p{
+  font-size: 15px;
+  color: darken(#D2B48C, 10%);;
+}
 .search-area {
   width: 100%;
   overflow: scroll;
@@ -35,10 +39,10 @@
   position: absolute;
   border-right: dotted 10px #e8e2d1; 
   height: 80%;
-  top: 12.5em; 
+  top: 10.5em; 
   right: 0.5em; 
 }
 #pets::before {
   height: 80%;
-  top: 37.5em; 
+  top: 34.5em; 
 }
