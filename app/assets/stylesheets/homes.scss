@@ -5,9 +5,23 @@
 // Topページ適用
 .top-area p{
   font-size: 20px;
-  // font-weight: 400;
+  border-bottom: dashed 1px #D2B48C; 
 }
-
+.scroll-horizontal {
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-item {
+  display: inline-block;
+  margin-right: 20px;
+}
+.today-diary {
+  margin-left: 50px;
+  width: 560px;
+  border: 1px solid #D2B48C;
+  background-color: #fff;
+}
 
 // Aboutページ適用
 .about-contents {
