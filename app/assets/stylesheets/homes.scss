@@ -8,6 +8,9 @@
   border-bottom: dashed 1px #D2B48C; 
 }
 .scroll-horizontal {
+  background-color: #fff;
+  padding: 25px 10px;
+  border: 1px solid #D2B48C;
   overflow-x: auto;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
@@ -17,6 +20,7 @@
   margin-right: 20px;
 }
 .today-diary {
+  margin-top: 14px;
   margin-left: 50px;
   width: 560px;
   border: 1px solid #D2B48C;
