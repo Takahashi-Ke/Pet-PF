@@ -1,8 +1,15 @@
 <div class="container">
-  <div class="row">
-    <p>本当に退会しますか</p>
+  <div class="text-center mt-3 mb-5">
+    <h3><span class="fas fa-exclamation-circle"></span> ご確認ください <span class="fas fa-exclamation-circle"></span></h3>
   </div>
-  <div class="row">
-    <%= link_to "退会する", owner_path(current_owner), method: :delete, class:"btn-layout destroy-btn" %>
+  <div class="text-center mt-5 mb-5 pb-5">
+    <p>退会すると今まで投稿した日記や思い出が全て消えてしまいます</p>
+    <p>元に戻すことはできませんが、本当に退会しますか?</p>
+  </div>
+  <div class="text-center mt-5">
+    <%= link_to "マイハウスへ戻る", pet_path(current_owner.pet), class:"btn-layout pl-3 pr-3" %>
+  </div>
+  <div class="text-center mt-5">
+    <%= link_to "退会する", owner_path(current_owner), method: :delete, class:"btn-layout btn-layout3 pl-5 pr-5" %>
   </div>
 </div>
