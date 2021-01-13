@@ -78,7 +78,9 @@
             <% if @diaries.present? %>
               <%= render 'diaries/diaries_list', diaries: @diaries %>
             <% else %>
-              投稿はまだありません
+              <div class="text-center mt-5">
+                投稿はまだありません
+              </div>
             <% end %>
           </div>
         </div>
