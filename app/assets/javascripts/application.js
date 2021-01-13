@@ -24,7 +24,6 @@ $(document).on("turbolinks:load",function(){
 		auto: true,
 		pause: 6000,
 	});
-
 });
 
 
@@ -143,7 +142,6 @@ $(document).on('turbolinks:load', function() {
 // 無限スクロール
 $(document).on('turbolinks:load', function() {
   $('.jscroll').infiniteScroll({
-    
     path: "nav.pagination a[rel=next]"
   });
 });
