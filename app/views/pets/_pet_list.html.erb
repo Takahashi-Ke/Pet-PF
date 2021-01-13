@@ -9,7 +9,7 @@
       </div>
       <div class="col-6">
         <div class="row">
-          <div class="col-2 pt-4">
+          <div class="col-3 pt-4">
             <%= pet.type %>
           </div>
           <div class="col-2 pt-4">
@@ -19,7 +19,7 @@
               <i class="fas fa-venus gender-icon"></i>
             <% end %>
           </div>
-          <div class="col-8 pt-2">
+          <div class="col-7 pt-2">
             <%= attachment_image_tag pet.owner, :image, size:'50x50', fallback: "owner_no_image.png", class:"rounded-circle icon-img" %>
             <span> <%= pet.owner.name %></span>
           </div>

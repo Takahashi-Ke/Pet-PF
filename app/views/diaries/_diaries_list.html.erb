@@ -16,15 +16,19 @@
             <%= diary.created_at.to_s(:datetime_jp) %>
           </div>
         </div>
-        <div class="row mt-3 ml-5">
-          <%= attachment_image_tag diary, :image, size: '200x200' %>
-        </div>
-        <div class="row diary-body">
+        <div class="diary-body">
           <%= diary.body %>
         </div>
+        <% if diary.image.present? %>
+          <div class="row d-flex justify-content-center">
+            <%= link_to diary.image_url, "data-lightbox" => diary.image do %>
+              <%= image_tag diary.image_url, size:'200x200'%>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
-    <div class="row">
+    <div class="row mt-2">
       <div class="col-2 offset-6 diary-comment-count" id="comment-btn-<%= diary.id %>">
         <%= render 'diary_comments/diary_comments_count', diary: diary %>
       </div>

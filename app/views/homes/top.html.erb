@@ -29,7 +29,7 @@
             <% @random_photos.each do |photo|%>
               <li class="scroll-item">
                 <%= link_to photo.image_url, "data-lightbox" => "group" do %>
-                  <%= image_tag photo.image_url, size:"190x190", class:"rounded" %>
+                  <%= image_tag photo.image_url, size:"230x230", class:"rounded" %>
                 <% end %>
               </li>
             <% end %>

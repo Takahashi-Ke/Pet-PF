@@ -137,8 +137,6 @@ $(document).on('turbolinks:load', function() {
 　$('.chat-area').animate({scrollTop: $('.chat-area')[0].scrollHeight}, 'fast');
 });
 
-
-
 // 無限スクロール
 $(document).on('turbolinks:load', function() {
   $('.jscroll').infiniteScroll({

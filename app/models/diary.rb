@@ -8,7 +8,7 @@ class Diary < ApplicationRecord
 
   attachment :image
 
-  validates :body, presence: true
+  validates :body, presence: true, length: { maximum: 120 }
 
   # 投稿にいいねしているかを確認
   def diary_favorited_by?(pet, diary)
