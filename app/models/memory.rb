@@ -6,6 +6,7 @@ class Memory < ApplicationRecord
   has_many :memory_images, dependent: :destroy
   has_many :memory_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   accepts_attachments_for :memory_images, attachment: :image
   
   validates :title, presence: true, length: { maximum: 20 }

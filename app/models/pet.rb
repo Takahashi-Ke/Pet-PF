@@ -17,6 +17,11 @@ class Pet < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 10 }
   validates :introduction, length: { maximum: 120 }
+  validate :after_tomorrow
+
+  def after_tomorrow
+    errors.add(:birthday, 'は今日より前で設定してください') if birthday > Date.today
+  end
 
   self.inheritance_column = :_type_disabledrails
 
