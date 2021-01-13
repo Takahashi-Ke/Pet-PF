@@ -6,28 +6,32 @@
         <h4>会話リスト</h4>
       </div>
       <div class="scroll-area">
-        <% if @pets.exists? %>
+        <% if @pets.present? %>
           <% @pets.each do |pet| %>
             <div class="row chat-list">
               <div class="col-1">
-                <%= link_to pet_path(pet) do %>
+                <%= link_to pet_chats_path(pet) do %>
                   <%= attachment_image_tag pet, :image, size:'80x80', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
                 <% end %>
               </div>
               <div class="col-10 ml-3">
                 <div class="row mt-2">
                   <div class="col-7">
-                    <h5><%= link_to pet.name, pet_path(pet) %></h5>
+                    <h6><%= link_to pet.name, pet_chats_path(pet) %></h6>
                   </div>
-                  <div class="col-3">
-                    <%= time_ago_in_words(pet.latest_message(pet).created_at) %>前
-                  </div>
-                </div>
-                <div class="row mt-3 ml-5 latest-message">
-                  <%= link_to pet_chats_path(pet_id: pet) do %>
-                    <%= truncate(pet.latest_message(pet).message, length: 25) %>
+                  <% if pet.latest_message(pet).present? %>
+                    <div class="col-3">
+                      <%= time_ago_in_words(pet.latest_message(pet).created_at) %>前
+                    </div>
                   <% end %>
                 </div>
+                <% if pet.latest_message(pet).present? %>
+                  <div class="row mt-3 ml-5 latest-message">
+                    <%= link_to pet_chats_path(pet_id: pet) do %>
+                      <%= truncate(pet.latest_message(pet).message, length: 25) %>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
             </div>
           <% end %>
