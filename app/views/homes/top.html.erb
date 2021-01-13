@@ -7,7 +7,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="text-center mt-4">
+    <div class="text-center mt-5">
       <h5>ペットとの毎日をもっと楽しく、ずっと大切に</h5>
     </div>
     <ul class="bxslider">
@@ -47,12 +47,16 @@
         <div class="row mt-5">
           <p>人気のペットたち</p>
         </div>
-        <div class="scroll-horizontal mt-4 ml-4">
+        <div class="scroll-horizontal mt-4">
           <% @pets.each do |pet|%>
-            <div class="scroll-item">
-                <%= attachment_image_tag pet, :image, size:"150x150", fallback: "pet_no_image.png", class:"rounded-circle icon-img mr-5" %><br />
-                <%= link_to pet.name,pet_path(pet), class:"ml-3" %><br />
-                <div class="ml-5">
+            <div class="col-4 scroll-item">
+                <div class="text-center">
+                  <%= attachment_image_tag pet, :image, size:"150x150", fallback: "pet_no_image.png", class:"rounded-circle icon-img mr-5" %>
+                </div>
+                <div class="text-center">
+                  <%= link_to pet.name,pet_path(pet), class:""%>
+                </div>
+                <div class="text-center">
                   <%= pet.type %>
                   <% if pet.gender == 'オス' %>
                     <span class="fas fa-mars gender-icon ml-3"></span>
