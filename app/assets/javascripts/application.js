@@ -22,7 +22,7 @@
 $(document).on("turbolinks:load",function(){
   $('.bxslider').bxSlider({
 		auto: true,
-		pause: 6000,
+		pause: 5000,
 	});
 });
 
@@ -135,16 +135,4 @@ $(document).on("turbolinks:load", function(){
 // チャットを下端へスクロールする
 $(document).on('turbolinks:load', function() {
 　$('.chat-area').animate({scrollTop: $('.chat-area')[0].scrollHeight}, 'fast');
-});
-
-// 無限スクロール
-$(document).on('turbolinks:load', function() {
-  $('.jscroll').jscroll({
-    // 無限に追加する要素は、どこに入れる？
-    contentSelector: '.jscroll', 
-    // 次のページにいくためのリンクの場所は？ ＞aタグの指定
-    nextSelector: 'a.next',
-    // 読み込み中の表示はどうする？
-    loadingHtml: '読み込み中'
-  });
 });

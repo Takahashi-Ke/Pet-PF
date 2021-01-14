@@ -3,7 +3,7 @@ class DiariesController < ApplicationController
   def index
     @pet = current_owner.pet
     @diary = Diary.new
-    @diaries = Diary.page(params[:page]).per(4).reverse_order
+    @diaries = Diary.all.reverse_order
   end
 
   def create
