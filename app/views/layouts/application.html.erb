@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ペッと！</title>
+    <title>Petto！</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -21,11 +21,11 @@
       <div class="container">
         <div class="row mt-5">
           <div class="col-3">
-            <%= link_to "ペッと！について", about_path %>
+            <%= link_to "Petto！について", about_path %>
           </div>
           <div class="col-3 offset-6">
             <%= link_to "Topへ戻る", root_path %>
-            <%= link_to "お問い合わせ", inquiry_path %>
+            <%= link_to "お問い合わせ", inquiry_path, class:"ml-5" %>
           </div>
         </div>
       </div>
@@ -50,6 +50,6 @@
     <!--スライダープラグイン(jquery.bxslider)読み込み-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-
+    
   </body>
 </html>
