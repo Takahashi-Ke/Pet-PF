@@ -2,7 +2,7 @@ class HomesController < ApplicationController
   
   def top
     # 1週間分の画像データをランダムで１０個取得する
-    to = Time.current.at_beginning_of_day
+    to = Time.current.at_end_of_day
     from = (Time.current - 6.day).at_end_of_day
     # @random_photos = Diary.where.not(image_id: nil).where(created_at: from...to).order("RANDOM()").limit(10)
     # mySQL対応(RAND)
