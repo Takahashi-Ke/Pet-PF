@@ -83,7 +83,7 @@ https://docs.google.com/spreadsheets/d/1zYaHEBrVYdKGm5i3wVgvqxcngStebhYQ_qWhvrrk
 - rspec-rails 3.5.2
 - factory_bot_rails
  
-### 本番環境
+## 本番環境
 - AWS(EC2、RDS、Route53)
 - Nginx
 - puma
