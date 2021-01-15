@@ -3,13 +3,21 @@
 ## サイト概要
 
 あなたとペットの情報を登録して利用する SNS サイトです。  
-ペットとの日常を切り取って、日記を投稿したり、友だちを作ってチャットをすることができます。
+ペットとの日常を切り取って、日記を投稿したり、友だちを作って会話をすることができます。
 
 ### サイトテーマ
 
 ペットが主役の SNS
 
 ### テーマを選んだ理由
+
+私自身これまでの人生の半分以上を愛犬と過ごし、とても身近な存在だったため、動物をテーマにしたいと考えました。  
+いつも一番近くで生活している飼い主だからこそわかるペットの可愛さ、魅力を最大限に活かして共有できるようなサービスがあればという想いから「Petto!」を作成しました。  
+  
+同じく動物と生活をする動物好きの人たちと交流をすることで、いろいろな情報や癒しを得ることができ、ペットとの生活がより楽しくなるのではないかと思います。  
+  
+「私のペットの可愛さをみんなに知って欲しい...」「いろんなペットたちの生活を覗き見してみたい...」
+「同じ犬種を飼っている人だからこそわかるあるあるを共有したい...」そんなニーズに応えるコミュニケーションツールとして活用していただければ幸いです。
 
 ### ターゲットユーザ
 
@@ -50,6 +58,7 @@
 - 画像プレビュー
 
 詳細は下記よりご確認ください
+
 https://docs.google.com/spreadsheets/d/1zYaHEBrVYdKGm5i3wVgvqxcngStebhYQ_qWhvrrkm14/edit#gid=0
 
 ## 開発環境
@@ -63,10 +72,11 @@ https://docs.google.com/spreadsheets/d/1zYaHEBrVYdKGm5i3wVgvqxcngStebhYQ_qWhvrrk
 ## 使用素材
 
 「silhouette-AC」サイト内画像利用
-https://www.silhouette-ac.com/#a_aid=5dd6cc067098b&a_bid=d4c0850c
 
+<https://www.silhouette-ac.com/#a_aid=5dd6cc067098b&a_bid=d4c0850c>  
 「O-DN」アカウント画像利用
-https://o-dan.net/ja/
 
+<https://o-dan.net/ja/>  
 「Adobe Fonts」フォント利用(源ノ角ゴシック JP )
-https://fonts.adobe.com/
+
+<https://fonts.adobe.com/>
