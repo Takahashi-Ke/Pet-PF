@@ -54,8 +54,10 @@
 - 通知機能（相手からいいね、コメント、フォロー、チャットが来るとお知らせに表示されます）
 - 検索機能(条件を追加してペットの絞り込み検索が可能です)
 - カレンダー(投稿日に印がつきます)
+- お問い合わせ(Action Mailer)
 - POST & DELETE 非同期通信
 - 画像プレビュー
+- lightbox2、bxslider(jQueryプラグイン)
 
 詳細は下記よりご確認ください
 
@@ -63,11 +65,25 @@ https://docs.google.com/spreadsheets/d/1zYaHEBrVYdKGm5i3wVgvqxcngStebhYQ_qWhvrrk
 
 ## 開発環境
 
-- OS：Linux(CentOS)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
-- JS ライブラリ：jQuery
-- IDE：Cloud9
+### フロントエンド
+- Bootstrap 4.3.1
+- SCSS
+- JavaScript、jQuery、Ajax
+
+### バックエンド
+- Ruby 2.6.3
+- Rails 5.2.4
+
+### テスト
+- rspec-rails 3.5.2
+- factory_bot_rails
+ 
+###本番環境
+- AWS(EC2、RDS、Route53)
+- Nginx
+- puma
+- MySQL 5.7.22
+
 
 ## 使用素材
 
