@@ -89,7 +89,7 @@ https://docs.google.com/spreadsheets/d/1zYaHEBrVYdKGm5i3wVgvqxcngStebhYQ_qWhvrrk
 
 「silhouette-AC」サイト内画像利用  
 <https://www.silhouette-ac.com/#a_aid=5dd6cc067098b&a_bid=d4c0850c>  
-「O-DN」アカウント画像利用  
+「O-DN」アップロード画像利用  
 <https://o-dan.net/ja/>  
 「Adobe Fonts」フォント利用(源ノ角ゴシック JP )  
 <https://fonts.adobe.com/>
