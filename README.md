@@ -1,4 +1,4 @@
-![petto_logo](https://user-images.githubusercontent.com/71317975/104673914-02116400-5726-11eb-9aab-c01052ec4293.png)
+![petto_logo](https://user-images.githubusercontent.com/71317975/104681968-efebf180-5736-11eb-8869-60dc2e086db1.png)
 
 ## サイト概要
 
