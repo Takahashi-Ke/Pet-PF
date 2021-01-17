@@ -4,6 +4,7 @@ class Room < ApplicationRecord
   has_many :chats, dependent: :destroy
   has_many :notifications, dependent: :destroy
   
+  # チャットがきた時に通知を生成するメソッド
   def create_notification_chat(pet, chat)
     chat_pet = PetRoom.find_by(room_id: id, pet_id: pet.id)
     notification = chat.pet.active_notifications.new(
@@ -17,8 +18,9 @@ class Room < ApplicationRecord
     notification.save if notification.valid?
   end
   
+  # 最新メッセージを取得するメソッド
   def now_message(room)
-    latest_message = Chat.where(room_id: room_id).last
+    latest_message = Chat.where(room_id: id).last
     return latest_message
   end
   
