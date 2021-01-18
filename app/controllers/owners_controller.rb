@@ -1,5 +1,5 @@
 class OwnersController < ApplicationController
-  before_action :check_guest, only: :unsubscribe
+  before_action :check_guest, only: :destroy
 
   def unsubscribe
   end
@@ -11,10 +11,9 @@ class OwnersController < ApplicationController
 
   def check_guest
     if current_owner.email == 'guest@example.com'
-      @owner = current_owner
-      @pet = @owner.pet
       flash.now[:alert] = 'ゲストは退会できません'
-      render 'pets/edit'
+      render :unsubscribe
+      
     end
   end
 
