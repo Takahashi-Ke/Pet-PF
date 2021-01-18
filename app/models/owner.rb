@@ -18,11 +18,11 @@ class Owner < ApplicationRecord
       owner.name = 'ゲスト'
       owner.pet = Pet.new(
         id: owner.id,
-        name: 'ゲストペット',
-        birthday: '20180915',
+        name: "ゲストペット",
+        birthday: "20180915",
         gender: 1,
         type: 3,
-        introduction: '閲覧用アカウントです'
+        introduction: "閲覧用アカウントです\r\n性格以外の編集と退会はできません"
         )
     end
   end
