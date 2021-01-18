@@ -10,4 +10,21 @@ class Owner < ApplicationRecord
   
   validates :name, presence: true, length: { maximum: 10 }
   validates :email, presence: true
+  
+  # ゲストログイン
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |owner|
+      owner.password = SecureRandom.urlsafe_base64
+      owner.name = 'ゲスト'
+      owner.pet = Pet.new(
+        id: owner.id,
+        name: 'ゲストペット',
+        birthday: '20180915',
+        gender: 1,
+        type: 3,
+        introduction: '閲覧用アカウントです'
+        )
+    end
+  end
+  
 end
