@@ -2,11 +2,6 @@
   <div class="row mb-3 d-flex justify-content-center">
     <h2>プロフィール編集</h2>
   </div>
-  <% flash.each do |message_type, message| %>
-   <div class="error-message">
-     <%= message %>
-   </div>
-  <% end %>
   <%= render "devise/shared/error_messages", resource: current_owner %>
   <%= form_with model: @owner, url: pet_path(@pet) ,local: true do |f| %>
   <div class="row mt-5">
