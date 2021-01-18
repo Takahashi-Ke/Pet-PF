@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :owner
+  devise_scope :owner do
+    post 'owners/guest_sign_in', to: 'owners/sessions#new_guest'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homes#top'
   get 'about' => 'homes#about'

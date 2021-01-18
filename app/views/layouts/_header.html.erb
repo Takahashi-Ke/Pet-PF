@@ -31,11 +31,6 @@
         </div>
       </div>
         
-        
-        
-        
-        
-        
       <%# ヘッダー中央(ロゴ) %>
       <div class="col-md-4 mt-3">
         <div class="text-center">
@@ -74,10 +69,13 @@
             </div>
           <% else %>
             <div class="col-4 mt-3">
-                <%= link_to "新規登録", new_owner_registration_path %>
+              <%= link_to "新規登録", new_owner_registration_path %>
             </div>
             <div class="col-4 mt-3">
-                <%= link_to "ログイン", new_owner_session_path %>
+              <%= link_to "ログイン", new_owner_session_path %>
+            </div>
+            <div class="col-4 mt-3">
+              <%= link_to "ゲストログイン(閲覧用)", owners_guest_sign_in_path, method: :post %>
             </div>
           <% end %>
         </div>
