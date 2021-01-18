@@ -1,4 +1,6 @@
 class PetsController < ApplicationController
+  before_action :check_guest, only: :update
+
 
   def show
     @pet = Pet.find(params[:id])
@@ -43,8 +45,19 @@ class PetsController < ApplicationController
     params.require(:owner).permit(:name, :image, pet_attributes: [:id, :name, :image, :birthday, :gender, :type, :introduction, :_destroy,
                                       ])
   end
+  
   def personality_params
     params.permit(:personality)
+  end
+  
+  def check_guest
+    if current_owner.email == 'guest@example.com'
+      params[:owner][:image] = nil
+      params[:owner][:pet_attributes][:image] = nil
+      params[:owner][:name] = "ゲスト"
+      params[:owner][:pet_attributes][:introduction] = "閲覧用アカウントですす\r\n性格以外の編集と退会はできません"
+      params[:owner][:pet_attributes][:name] = "ゲストペット"
+    end
   end
 
 end

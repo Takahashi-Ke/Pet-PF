@@ -1,105 +1,87 @@
 <header>
   <div class="container-fluid">
-    <div class="row header-area">
-      <div class="col-4 header-left">
-        <div class="row d-flex align-items-center">
+    <div class="row header-link">
+      <%# ヘッダー左側 %>
+      <div class="col-md-4">
+        <div class="row mt-4">
           <% if owner_signed_in? %>
-            <div class="col-3 offset-2">
+            <div class="col-md-3 offset-2">
               <%= link_to  diaries_path do %>
-                <div class="row">
-                  <i class="fas fa-pencil-alt header-icon pl-2"></i>
-                </div>
-                <div class="row">
+                  <i class="fas fa-pencil-alt header-icon"></i><br />
                   <p>日記</p>
-                </div>
               <% end %>
             </div>
-            <div class="col-3">
+            <div class="col-md-3">
               <%= link_to  memories_path do %>
-                <div class="row">
-                  <i class="fas fa-paw header-icon pl-1"></i>
-                </div>
-                <div class="row">
-                  <p>思い出</p>
-                </div>
+                <i class="fas fa-paw header-icon"></i><br />
+                <p>思い出</p>
               <% end %>
             </div>
-            <div class="col-3">
+            <div class="col-md-3">
               <%= link_to  pet_pet_rooms_path(current_owner.pet) do %>
-                <div class="row">
-                  <i class="fas fa-comments header-icon"></i>
-                </div>
-                <div class="row">
-                  <p>会話</p>
-                </div>
+                <i class="fas fa-comments header-icon"></i><br />
+                <p>会話</p>
               <% end %>
             </div>
           <% else %>
-            <div class="col-5 offset-3 pt-5">
+            <div class="col-md-5 offset-3 mt-3">
               <%= link_to "Petto！について", about_path %>
             </div>
           <% end %>
         </div>
       </div>
-      <div class="col-4 d-flex align-items-center justify-content-center">
-        <%= link_to root_path do %>
-          <%= image_tag 'petto_logo.png', size:'160x90' %>
-        <% end %>
+        
+      <%# ヘッダー中央(ロゴ) %>
+      <div class="col-md-4 mt-3">
+        <div class="text-center">
+          <%= link_to root_path do %>
+            <%= image_tag 'petto_logo.png', size:'160x90' %>
+          <% end %>
+        </div>
       </div>
-      <div class="col-4">
-        <% if owner_signed_in? %>
-          <div class="row ml-5 d-flex align-items-center">
-            <div class="col-3 mr-1">
+      
+      <%# ヘッダー右側 %>
+      <div class="col-md-4">
+        <div class="row mt-4">
+          <% if owner_signed_in? %>
+            <div class="col-sm-4 col-md-3">
               <%= link_to pet_path(current_owner) do %>
-                <div class="row">
-                  <i class="fas fa-home header-icon pl-1"></i>
-                </div>
-                <div class="row">
-                  <p>マイハウス</p>
-                </div>
+                <i class="fas fa-home header-icon" id="home-icon"></i><br />
+                <p>マイハウス</p>
               <% end %>
             </div>
-            <div class="col-3" id="bell-icon">
+            <div class="col-sm-4 col-md-3">
               <%= link_to notifications_path do %>
-                <div class="row mb-3">
-                  <span class="fa-layers">
-                    <i class="fas fa-bell header-icon"></i>
-                    <% if current_owner.pet.unchecked_notifications(current_owner.pet).present? %>
-                      <span class="fa-layers-text fa-inverse notifications"><%= current_owner.pet.unchecked_notifications(current_owner.pet).count %></span>
-                    <% end %>
-                  </span>
-                </div>
-                <div class="row">
-                  <p>お知らせ</p>
-                </div>
+                <span class="fa-layers" id="bell-icon">
+                  <i class="fas fa-bell header-icon"></i>
+                  <% if current_owner.pet.unchecked_notifications(current_owner.pet).present? %>
+                    <span class="fa-layers-text fa-inverse notifications"><%= current_owner.pet.unchecked_notifications(current_owner.pet).count %></span>
+                  <% end %>
+                </span><br />
+                <p>お知らせ</p>
               <% end %>
             </div>
-            <div class="col-3">
+            <div class="col-sm-4 col-md-3">
               <%= link_to  destroy_owner_session_path, method: :delete do %>
-                <div class="row">
-                  <i class="fas fa-door-closed header-icon"></i>
-                </div>
-                <div class="row">
-                  <p>ログアウト</p>
-                </div>
+                <i class="fas fa-door-closed header-icon"></i><br />
+                <p>ログアウト</p>
               <% end %>
             </div>
-          </div>
-        <% else %>
-          <div class="row">
-            <div class="col-4">
-              <div class="row mt-5">
-                <%= link_to "新規登録", new_owner_registration_path %>
-              </div>
+          <% else %>
+            <div class="col-4 mt-3">
+              <%= link_to "新規登録", new_owner_registration_path %>
             </div>
-            <div class="col-4">
-              <div class="row mt-5">
-                <%= link_to "ログイン", new_owner_session_path %>
-              </div>
+            <div class="col-4 mt-3">
+              <%= link_to "ログイン", new_owner_session_path %>
             </div>
-          </div>
-        <% end %>
+            <div class="col-4 mt-3">
+              <%= link_to "ゲストログイン(閲覧用)", owners_guest_sign_in_path, method: :post %>
+            </div>
+          <% end %>
+        </div>
       </div>
+      
+      
     </div>
   </div>
 </header>
