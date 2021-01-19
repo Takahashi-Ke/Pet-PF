@@ -2,6 +2,16 @@
   <div class="row">
       <%= render 'pets/pet_info', pet: @pet %>
     <div class="col-lg-7">
+      <div class="row mt-2 mb-2">
+        <% flash.each do |message_type, message| %>
+            <div class="error-message pt-2 pb-2">
+              <% if message_type == "notice" %>
+                <h5><span class="fas fa-exclamation-circle"></span>投稿できませんでした</h5>
+                <%= message.html_safe %>
+              <% end %>
+            </div>
+        <% end %>
+      </div>
       <div class="row ml-5">
           <h4>みんなの日記</h4>
       </div>
