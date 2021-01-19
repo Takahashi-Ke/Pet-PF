@@ -53,8 +53,8 @@ class PetsController < ApplicationController
   def check_guest
     if current_owner.email == 'guest@example.com'
       params[:owner][:image] = nil
-      params[:owner][:pet_attributes][:image] = nil
       params[:owner][:name] = "ゲスト"
+      params[:owner][:pet_attributes][:image] = nil
       params[:owner][:pet_attributes][:introduction] = "閲覧用アカウントです\r\n性格以外の編集と退会はできません"
       params[:owner][:pet_attributes][:name] = "ゲストペット"
     end

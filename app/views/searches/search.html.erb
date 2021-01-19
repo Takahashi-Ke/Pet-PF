@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <%= render 'pets/pet_info', pet: current_owner.pet %>
-    <div class="col-6 ml-5">
+    <div class="col-lg-6 ml-5">
       
       <!--検索条件表示-->
       <div class="row ml-5 mt-2 mb-3 d-flex align-items-center">
@@ -14,7 +14,7 @@
       </div>
       <% if @search_params[:types].present? %>
         <div class="row">
-          <div class="col-2">
+          <div class="col-lg-2">
             <p>種類 :</p>
           </div>
           <% @search_params[:types].each do |type| %>
@@ -30,7 +30,7 @@
       <% end %>
       <% if @search_params[:genders].present? %>
         <div class="row">
-          <div class="col-2">
+          <div class="col-lg-2">
             <p>性別 :</p>
           </div>
           <% @search_params[:genders].each do |gender| %>
@@ -46,7 +46,7 @@
       <% end %>
       <% if @search_params[:personalities].present? %>
         <div class="row">
-          <div class="col-2">
+          <div class="col-lg-2">
             <p>性格 :</p>
           </div>
           <% @search_params[:personalities].each do |personality| %>
@@ -63,7 +63,7 @@
       
       <!--検索結果表示-->
       <div class="row">
-        <div class="col-12">
+        <div class="col-lg-12">
           <ul id="tab-menu">
             <li><a href="#tab1" class="active">ペット</a></li>
             <li><a href="#tab2" class="">日記</a></li>
@@ -71,7 +71,7 @@
           </ul>
         </div>
         
-        <div class="col-12">
+        <div class="col-lg-12">
           <div id="tab-contents">
               
               <!--ペット検索結果一覧(tab1)-->
