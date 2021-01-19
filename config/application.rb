@@ -15,12 +15,8 @@ module PetMypf
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    # 時間表示を東京に設定
     config.time_zone = 'Tokyo'
-    # 日本語化の設定
     config.i18n.default_locale = :ja
-    # lib 以下のファイルを読み込み
-    config.paths.add 'lib', eager_load: true
     config.action_controller.include_all_helpers = false
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
   end
