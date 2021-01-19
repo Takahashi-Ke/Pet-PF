@@ -71,4 +71,9 @@
   background-color: #fff;
 }
 
+@media (max-width: 767px) {
+  .pet-sidebar {
+    display: none;
+  }
+}
 

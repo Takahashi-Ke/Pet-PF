@@ -1,6 +1,7 @@
 <header>
   <div class="container-fluid">
-    <div class="row header-link">
+    <!--PC画面サイズヘッダー-->
+    <div class="row big-header">
       <%# ヘッダー左側 %>
       <div class="col-lg-4">
         <div class="row mt-4">
@@ -81,6 +82,78 @@
         </div>
       </div>
       
+      
+    </div>
+    
+    <!--スマホ画面サイズヘッダー-->
+    <div class="row mini-header">
+      <div class="col-3">
+        <%= link_to root_path do %>
+          <%= image_tag 'petto_logo_min.png', size:'90x50' %>
+        <% end %>
+      </div>
+      
+      <!--ハンバーガーメニュー-->
+      <div id="sp-menu" class="col-12">
+        <ul>
+          <% if owner_signed_in? %>
+            <li>
+              <%= link_to pet_path(current_owner) do %>
+                <i class="fas fa-home"></i>
+                <span>　マイハウス</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to notifications_path do %>
+                <i class="fas fa-bell"></i>
+                <span>　お知らせ</span>
+                <% if current_owner.pet.unchecked_notifications(current_owner.pet).present? %>
+                  <span class="fas fa-circle"></span>
+                <% end %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  pet_pet_rooms_path(current_owner.pet) do %>
+                <i class="fas fa-comments"></i>
+                <span>　会話</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  diaries_path do %>
+                <i class="fas fa-pencil-alt"></i>
+                <span>　日記</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  memories_path do %>
+                <i class="fas fa-paw "></i>
+                <span>　思い出</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  destroy_owner_session_path, method: :delete do %>
+                <i class="fas fa-door-closed"></i>
+                <span>　ログアウト</span>
+              <% end %>
+            </li>
+          <% else %>
+            <li><%= link_to "新規登録", new_owner_registration_path %></li>
+            <li><%= link_to "ログイン", new_owner_session_path %></li>
+            <li>
+              <%= link_to "ゲストログイン", owners_guest_sign_in_path, method: :post %><br />
+              (閲覧用)
+            </li>
+            <li><%= link_to "Petto！について", about_path %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div id="hm-icon">
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
       
     </div>
   </div>
