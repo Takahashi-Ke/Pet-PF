@@ -19,6 +19,7 @@
 //= require_tree .
 
 /* global $*/
+// bxslider設定
 $(document).on("turbolinks:load",function(){
   $('.bxslider').bxSlider({
 		auto: true,
@@ -26,6 +27,14 @@ $(document).on("turbolinks:load",function(){
 	});
 });
 
+// ハンバーガーメニュー
+$(document).on("turbolinks:load",function(){
+  $('.menu-trigger').on('click', function(event) {
+    $(this).toggleClass('active');
+    $('#sp-menu').slideToggle();
+    event.preventDefault();
+  });
+});
 
 
 // 文字数カウント
