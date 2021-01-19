@@ -34,3 +34,9 @@
   top: 1em; 
   right: 0.5em; 
 }
+
+@media (max-width: 767px) {
+  .search-sidebar {
+    display: none;
+  }
+}
