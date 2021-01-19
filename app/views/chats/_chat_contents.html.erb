@@ -2,22 +2,22 @@
     <% chats.each do |chat| %>
       <% if chat.pet_id == current_owner.pet.id %>
         <div class="row">
-          <div class="col-1 d-flex align-items-end chat-time" id="mine-time">
+          <div class="col-lg-1 d-flex align-items-end chat-time" id="mine-time">
             <%= chat.created_at.strftime('%H:%M') %>
           </div>
-          <div class="col-5 chat-message" id="mine-message">
+          <div class="col-lg-5 chat-message" id="mine-message">
             <%= chat.message %>
           </div>
         </div>
       <% else %>
         <div class="row">
-          <div class="col-5 chat-message">
+          <div class="col-lg-5 chat-message">
             <%= chat.message %>
           </div>
-          <div class="col-2 d-flex align-items-end chat-time">
+          <div class="col-lg-2 d-flex align-items-end chat-time">
             <%= chat.created_at.strftime('%H:%M') %>
           </div>
-          <div class="col-4"></div>
+          <div class="col-lg-4"></div>
           </div>
       <% end %>
     <% end %>
