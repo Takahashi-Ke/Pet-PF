@@ -16,13 +16,13 @@
   <div class="row justify-content-center">
     <%= pet.owner.name %>
   </div>
-
     
-  <div class="row mt-3 frend-count">
+  <div class="row mt-3">
     <div class="mx-auto">
       <p>友だち（<%= pet.following_pets.count%>）</p>
     </div>
   </div>
+  
   <div class="note-box">
     <ul>
       <li><%= link_to "いいねリスト", favorites_path %></li>
@@ -37,4 +37,5 @@
       <li><%= link_to "プロフィール編集", edit_pet_path(pet) %></li>
     </ul>
   </div>
+  
 </div>
