@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// サイドバーpet情報
 .pet-sidebar {
-  width: 18%;
   height: 670px;
   padding-top: 30px;
   background-color: #fff;
@@ -20,10 +20,13 @@
    content: "";
    position: absolute;
    border-right: dotted 10px #e8e2d1;
-   height: 80%;
-   top: 10.5em;
+   height: 95%;
+   top: 1em;
    left: 0.5em;
 }
+
+
+
 .gender-icon {
   font-size: 1.3em;
   color: #444444;

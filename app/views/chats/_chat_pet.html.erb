@@ -19,7 +19,7 @@
   <div class="row mt-5 d-flex align-items-center justify-content-center">
     <%= form_with model: [@pet, @chat], url: pet_chats_path(room_id: @room.id), remote: true do |f| %>
         <%= f.text_area :message, size: '25x3', placeholder: "メッセージ入力", class:"chat-form" %>
-        <div class="col-2 offset-5 clearfix">
+        <div class="col-lg-2 offset-5 clearfix">
             <%= f.submit "送信", class:"btn-layout pr-4 pl-4" %>
         </div>
     <% end %>
