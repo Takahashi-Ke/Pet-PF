@@ -1,1 +1,1 @@
-# Refile.backends['store'] = Refile::Backend::FileSystem.new('public/uploads/')
+Refile.backends['store'] = Refile::Backend::FileSystem.new('public/uploads/')
