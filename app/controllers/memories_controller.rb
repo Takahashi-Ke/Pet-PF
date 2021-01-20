@@ -19,18 +19,20 @@ class MemoriesController < ApplicationController
       @diary = Diary.new
       render :new
     else 
-      binding.pry
       # visionAPIで画像認識
       params[:memory][:memory_images_images].each do |post_image|
-        result = Vision.image_analysis(post_image)
-        if result == false
-          flash.now[:alert] = "選択された画像が不適切なコンテンツと判断されました"
-          @memory = Memory.new
-          @memory.memory_images.build
-          @memories = current_owner.pet.memories
-          @pet = current_owner.pet
-          @diary = Diary.new
-          render 'new'
+        if post_image != "[]"
+          result = Vision.image_analysis(post_image)
+          if result == false
+            flash.now[:alert] = "選択された画像が不適切なコンテンツと判断されました"
+            @memory = Memory.new
+            @memory.memory_images.build
+            @memories = current_owner.pet.memories
+            @pet = current_owner.pet
+            @diary = Diary.new
+            render :new
+            return
+          end
         end
       end
       @memory.save
@@ -66,9 +68,26 @@ class MemoriesController < ApplicationController
   end
   
   def update
-    memory = Memory.find(params[:id])
-    memory.update(memory_params)
-    redirect_to memory_path(memory)
+    @memory = Memory.find(params[:id])
+    params[:memory][:memory_images_images].each do |post_image|
+      if post_image != "[]"
+        result = Vision.image_analysis(post_image)
+        if result == false
+          flash.now[:alert] = "選択された画像が不適切なコンテンツと判断されました"
+          @memories = current_owner.pet.memories
+          @diary = Diary.new
+          render :edit
+          return
+        end
+      end
+    end
+    if @memory.update(memory_params)
+      redirect_to memory_path(@memory)
+    else 
+      @memories = current_owner.pet.memories
+      @diary = Diary.new
+      render :edit
+    end
   end
   
   def destroy
