@@ -63,6 +63,7 @@ URL : <https://petto.work/>
 - POST & DELETE 非同期通信
 - 画像プレビュー
 - lightbox2、bxslider(jQueryプラグイン)
+- VisionAPI画像認識機能（不適切なコンテンツを検出します）
 
 詳細は下記よりご確認ください
 
@@ -94,7 +95,7 @@ https://docs.google.com/spreadsheets/d/1zYaHEBrVYdKGm5i3wVgvqxcngStebhYQ_qWhvrrk
 
 「silhouette-AC」サイト内画像利用  
 <https://www.silhouette-ac.com/#a_aid=5dd6cc067098b&a_bid=d4c0850c>  
-「O-DN」アップロード画像利用  
+「O-DAN」アップロード画像利用  
 <https://o-dan.net/ja/>  
 「Adobe Fonts」フォント利用(源ノ角ゴシック JP )  
 <https://fonts.adobe.com/>
