@@ -10,17 +10,28 @@
         <% end %>
       </div>
       <div class="row mt-2">
-      <% if memory.errors.any? %>
-          <div class="error-memory">
-            <div class="row">
-              <ul>
-                <% memory.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
+        <% if memory.errors.any? %>
+            <div class="error-memory">
+              <div class="text-center pt-3">
+                <h5><span class="fas fa-exclamation-circle"></span>投稿できませんでした</h5>
+              </div>
+              <div class="row">
+                <ul>
+                  <% memory.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+        <% flash.each do |message_type, message| %>
+          <% if message_type == "alert" %>
+            <div class="error-message pt-2 pb-2 mb-3">
+              <h5><span class="fas fa-exclamation-circle"></span>投稿できませんでした</h5>
+              <%= message.html_safe %>
+            </div>
+          <% end %>
+        <% end %>
 
         <%= form_with model: memory, local: true do |f| %>
           <div class="row">
