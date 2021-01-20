@@ -12,12 +12,6 @@ class PetPersonalitiesController < ApplicationController
     redirect_to request.referer
   end
 
-  def update
-    pet_personalities = PetPersonality.find_by(pet_id: params[:id])
-    pet_personalities.update(personality_params)
-    redirect_to request.referer
-  end
-
   private
   def personality_params
     params.require(:pet).permit(pet_personalities: [:personality, :_destroy])

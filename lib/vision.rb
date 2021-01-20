@@ -8,10 +8,8 @@ module Vision
       
       # APIのURL作成
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['GOOGLE_API_KEY']}"
-      
       # 画像をbase64にエンコード
       base64_image = Base64.encode64(open(post_image).read)
-      
       # APIリクエスト用のJSONパラメータ
       params = {
         requests: [{
@@ -33,7 +31,7 @@ module Vision
       request['Content-Type'] = 'application/json'
       response = https.request(request, params)
       result = JSON.parse(response.body)['responses'][0]['safeSearchAnnotation'].to_h
-      
+
       # 解析結果が「LIKELY」又は「VERY_LIKELY」を含む場合はfalse、それ以外はtrueを返す
       if result.values.include?("LIKELY") || result.values.include?("VERY_LIKELY")
         return false
