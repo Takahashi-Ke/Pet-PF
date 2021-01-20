@@ -11,7 +11,6 @@ module Vision
       
       # 画像をbase64にエンコード
       base64_image = Base64.encode64(open(post_image).read)
-      
       # APIリクエスト用のJSONパラメータ
       params = {
         requests: [{
