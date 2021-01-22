@@ -2,28 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// サイドバーpet情報
-.pet-sidebar {
-  height: 670px;
-  padding-top: 30px;
-  background-color: #fff;
-  border: 1px solid #D2B48C;
-}
-.note-box ul{
-  list-style-type: none;
-}
-.note-box li{
-  border-bottom: dashed 1px #D2B48C; 
-  padding: 0.5em 0 0.5em 1.5em;
-}
-.pet-sidebar::before {
-   content: "";
-   position: absolute;
-   border-right: dotted 10px #e8e2d1;
-   height: 95%;
-   top: 1em;
-   left: 0.5em;
-}
+
 
 
 
@@ -69,11 +48,5 @@
 }
 #memories_calendar {
   background-color: #fff;
-}
-
-@media (max-width: 767px) {
-  .pet-sidebar {
-    display: none;
-  }
 }
 
