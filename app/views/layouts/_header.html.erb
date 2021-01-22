@@ -3,29 +3,29 @@
     <!--PC画面サイズヘッダー-->
     <div class="row big-header">
       <%# ヘッダー左側 %>
-      <div class="col-lg-4">
+      <div class="col-md-4 col-lg-4">
         <div class="row mt-4">
           <% if owner_signed_in? %>
-            <div class="col-lg-3 offset-2">
+            <div class="col-md-4 col-lg-3 offset-lg-2">
               <%= link_to  diaries_path do %>
                   <i class="fas fa-pencil-alt header-icon"></i><br />
                   <p>日記</p>
               <% end %>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-4 col-lg-3">
               <%= link_to  memories_path do %>
                 <i class="fas fa-paw header-icon"></i><br />
                 <p>思い出</p>
               <% end %>
             </div>
-            <div class="col-lg-3">
+            <div class="col-md-4 col-lg-3">
               <%= link_to  pet_pet_rooms_path(current_owner.pet) do %>
                 <i class="fas fa-comments header-icon"></i><br />
                 <p>会話</p>
               <% end %>
             </div>
           <% else %>
-            <div class="col-lg-5 offset-3 mt-3">
+            <div class="col-8 offset-3 mt-3">
               <%= link_to "Petto！について", about_path %>
             </div>
           <% end %>
@@ -33,7 +33,7 @@
       </div>
         
       <%# ヘッダー中央(ロゴ) %>
-      <div class="col-lg-4 mt-3">
+      <div class="col-md-3 col-lg-4 mt-3">
         <div class="text-center">
           <%= link_to root_path do %>
             <%= image_tag 'petto_logo.png', size:'160x90' %>
@@ -42,16 +42,16 @@
       </div>
       
       <%# ヘッダー右側 %>
-      <div class="col-lg-4">
+      <div class="col-md-5 col-lg-4">
         <div class="row mt-4">
           <% if owner_signed_in? %>
-            <div class="col-sm-4 col-lg-3">
+            <div class="col-md-4">
               <%= link_to pet_path(current_owner) do %>
                 <i class="fas fa-home header-icon" id="home-icon"></i><br />
                 <p>マイハウス</p>
               <% end %>
             </div>
-            <div class="col-sm-4 col-lg-3">
+            <div class="col-md-4">
               <%= link_to notifications_path do %>
                 <span class="fa-layers" id="bell-icon">
                   <i class="fas fa-bell header-icon"></i>
@@ -62,7 +62,7 @@
                 <p>お知らせ</p>
               <% end %>
             </div>
-            <div class="col-sm-4 col-lg-3">
+            <div class="col-md-4">
               <%= link_to  destroy_owner_session_path, method: :delete do %>
                 <i class="fas fa-door-closed header-icon"></i><br />
                 <p>ログアウト</p>
@@ -76,7 +76,9 @@
               <%= link_to "ログイン", new_owner_session_path %>
             </div>
             <div class="col-4 mt-3">
-              <%= link_to "ゲストログイン(閲覧用)", owners_guest_sign_in_path, method: :post %>
+              <%= link_to owners_guest_sign_in_path, method: :post do %>
+                ゲストログイン<br />(閲覧用)
+              <% end %>
             </div>
           <% end %>
         </div>
