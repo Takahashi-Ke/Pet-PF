@@ -16,10 +16,16 @@
  */
 
 @import 'bootstrap';
+// TopスライドショーCDN読み込み
 @import 'jquery.bxslider.css';
+// ヘッダーレイアウト
 @import 'header.scss';
+// サイドバーレイアウト
+@import 'sidebar.scss';
+// タブメニューレイアウト
+@import 'tab.scss';
+
 body {
-  // background-color: #f7f3e8;
   background-color: #f7f5f0;
   font-family: source-han-sans-japanese, sans-serif;
   font-weight: 300;
@@ -92,58 +98,6 @@ a:hover {
 .icon-img {
   padding: 0.15rem;
   background-color: #fff;
-}
-#tab-menu {
-  display: flex;
-  padding: 0;
-  margin: 0;
-}
-#tab-menu li {
-  list-style-type: none;
-  width: 25%;
-  margin-right: 10px;
-}
-#tab-menu li:last-child {
-  margin: 0;
-}
-#tab-menu li a {
-  color: #D2B48C;
-  text-decoration: none;
-  display: block;
-  padding: 20px;
-  text-align: center;
-  border: 1px solid #D2B48C;
-  border-radius: 15px 15px 0 0;
-  border-bottom: none;
-}
-#tab-menu .active {
-  font-weight: 600;
-  background-color: #fff;
-  color: #000;
-}
-#tab-contents {
-  display: flex;
-  flex-wrap: wrap;
-}
-#tab-contents .tab {
-  width: 100%;
-  height: 560px;
-  padding: 30px;
-}
-#tab-contents .tab-2 {
-  height: 700px;
-}
-#tab-contents p {
-  color: #000;
-  line-height: 2.5;
-}
-.tab-area {
-  background: #fff;
-  width: 100%;
-  overflow: scroll;
-  height: 560px;
-  border: 1px solid #D2B48C;
-  border-top: none;
 }
 .scroll-area {
   width: 100%;
