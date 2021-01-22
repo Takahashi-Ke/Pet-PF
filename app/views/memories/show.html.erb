@@ -1,28 +1,30 @@
 <div class="container-fluid">
   <div class="row">
     <%= render 'pets/pet_info', pet: @pet %>
-    <div class="col-lg-6 ml-5">
+    <div class="col-12 col-lg-6 ml-lg-5">
       <div class="memory-detail">
         <div class="row ml-3">
           <h3><%= @memory.title %></h3>
         </div>
         <div class="row">
-          <div class="col-lg-4 offset-7">
+          <div class="col-6 offset-6 create-date">
             <%= @memory.created_at.to_s(:datetime_jp) %>
           </div>
         </div>
         <div class="row mt-3 ml-3">
-          <%= safe_join(@memory.body.split("\n"), tag(:br)) %>
+          <div class="col-12">
+            <%= safe_join(@memory.body.split("\n"), tag(:br)) %>
+          </div>
         </div>
         <% unless @images.blank? %>
-          <div class="row mt-3">
+          <div class="row mt-3 pl-3">
             <p>写真 (クリックすると拡大します)</p>
           </div>
           <div class="row">
             <% @images.each do |image| %>
-              <div class="col-lg-4">
+              <div class="col-6 col-sm-4">
                 <%= link_to image.image_url, "data-lightbox" => "image-group" do %>
-                  <%= image_tag image.image_url, size:'200x200'%>
+                  <%= image_tag image.image_url, size:'200x200', class:"memory-image-contents"%>
                 <% end %>
               </div>
             <% end %>
@@ -30,14 +32,14 @@
         <% end %>
       </div>
       <div class="row mt-3">
-        <div class="col-lg-2 offset-6 comment-btn" id="comments-count">
+        <div class="col-2 offset-4 offset-sm-5 comment-btn" id="comments-count">
           <%= render 'memory_comments/memory_comments_count', memory: @memory %>
         </div>
-        <div class="col-lg-2 favorite-btn-<%= @memory.id %>">
+        <div class="col-2 favorite-btn-<%= @memory.id %>">
           <%= render 'favorites/favo', memory: @memory, diary: @diary %>
         </div>
         <% if @memory.pet_id == current_owner.pet.id %>
-          <div class="col-lg-2">
+          <div class="col-4 col-sm-3">
             <%= link_to "編集する", edit_memory_path(@memory), class:"btn-layout" %>
           </div>
         <% end %>

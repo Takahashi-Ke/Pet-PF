@@ -28,16 +28,25 @@ $diary-modal-width: 500px;
   margin-left: -($diary-modal-width / 2);
 }
 .diary-body {
-  width: 420px;
+  width: 70%;
   margin: 10px 30px;
 }
 .comment-box {
   margin-top: 10px;
   max-height: 300px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 .diary-comment-count:hover {
   color: #D2B48C;
   cursor: pointer;
   cursor: hand;
+}
+
+@media (max-width: 576px) {
+  .diary-body {
+    width: 90%;
+    margin: 5px 0px;
+    font-size: 15px;
+  }
 }

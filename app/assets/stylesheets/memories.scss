@@ -58,3 +58,25 @@
 #memory-scroll {
   height: 1200px;
 }
+@media (max-width: 767px) {
+  .memory-image {
+    width: 390px;
+    height: 290px;
+  }
+  .memory-image-contents {
+    width: 150px;
+    height: 150px;
+  }
+  .memory-form {
+    width: 320px;
+  }
+  .memory-comment-form {
+    width: 260px;
+  }
+  .create-date {
+    font-size: 12px;
+  }
+  .memory-date {
+    font-size: 10px;
+  }
+}
