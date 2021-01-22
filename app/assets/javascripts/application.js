@@ -89,7 +89,7 @@ $(document).on("click", ".pet-image", function(){
 // モーダルウィンドウ
 // 表示
 $(function() {
-  $(document).on('click', '.add-diary-button', function() {
+  $(document).on('click', '.add-diary-button, .add-diary-mini-btn', function() {
     $('.modal-wrapper').show();
     $('.diary-modal').fadeIn();
   });

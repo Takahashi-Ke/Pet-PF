@@ -25,4 +25,9 @@
   <div class="diary-modal">
     <%= render 'diaries/diary_form', diary: @diary, pet: @pet, diary_comment: @diary_comment %>
   </div>
+  
+  <%# 日記投稿ボタン（スマホ対応） %>
+  <div class="d-block d-lg-none add-diary-mini-btn">
+    <i class="fas fa-pencil-alt"></i>
+  </div>
 </div>
