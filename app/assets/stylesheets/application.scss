@@ -167,4 +167,18 @@ footer {
   border-top: 1px solid #F0B775;
   z-index: 1;
 }
-
+// スマホ時ボタンの色変更
+@media (max-width: 576px) {
+  .btn-layout {
+    background-color: #CC6600;
+    border: none;
+    color: #fff;
+  }
+  .btn-layout3 {
+    color: #CC6600;
+    border: 1px solid #CC6600;
+  }
+  .btn-layout:hover {
+    background-color: darken(#CC6600, 10%);
+  }
+}

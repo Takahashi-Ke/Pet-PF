@@ -2,16 +2,16 @@
   <div class="row">
       <%= render 'pets/pet_info', pet: @pet %>
     <div class="col-12 col-lg-9 col-xl-7">
-      <div class="row mt-2 mb-2">
-        <% flash.each do |message_type, message| %>
+      <% flash.each do |message_type, message| %>
+        <div class="row mt-2 mb-2">
           <% if message_type == "alert" %>
             <div class="error-message pt-2 pb-2">
                 <h5><span class="fas fa-exclamation-circle"></span>投稿できませんでした</h5>
                 <%= message.html_safe %>
               </div>
             <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
       <div class="row ml-5">
           <h4>みんなの日記</h4>
       </div>
@@ -24,10 +24,5 @@
   <div class="modal-wrapper"></div>
   <div class="diary-modal">
     <%= render 'diaries/diary_form', diary: @diary, pet: @pet, diary_comment: @diary_comment %>
-  </div>
-  
-  <%# 日記投稿ボタン（スマホ対応） %>
-  <div class="d-block d-lg-none add-diary-mini-btn">
-    <i class="fas fa-pencil-alt"></i>
   </div>
 </div>

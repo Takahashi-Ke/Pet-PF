@@ -1,25 +1,25 @@
 <% pets.each do |pet| %>
   <div class="contents-box">
     <div class="row ml-3">
-      <div class="col-lg-5">
+      <div class="col-12 col-sm-5">
         <%= link_to pet_path(pet) do %>
           <%= attachment_image_tag pet, :image, size:'60x60', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
         <% end %>
         <span><h5><%= link_to pet.name, pet_path(pet) %></h5></span>
       </div>
-      <div class="col-lg-6">
+      <div class="col-6 d-none d-sm-block">
         <div class="row">
-          <div class="col-lg-3 pt-4">
+          <div class="col-3 pt-4">
             <%= pet.type %>
           </div>
-          <div class="col-lg-2 pt-4">
+          <div class="col-2 pt-4">
             <% if pet.gender == 'オス' %>
                <i class="fas fa-mars gender-icon"></i>
             <% else %>
               <i class="fas fa-venus gender-icon"></i>
             <% end %>
           </div>
-          <div class="col-lg-7 pt-2">
+          <div class="col-7 pt-2">
             <%= attachment_image_tag pet.owner, :image, size:'50x50', fallback: "owner_no_image.png", class:"rounded-circle icon-img" %>
             <span> <%= pet.owner.name %></span>
           </div>
@@ -33,14 +33,14 @@
     <div class="row ml-3">
       <% if pet.id != current_owner.pet.id %>
         <% if current_owner.pet.following?(pet) %>
-          <div class="col-lg-3 offset-6">
+          <div class="col-6 col-sm-3 offset-sm-6">
             <%= link_to "フォロー中", pet_relationship_path(pet, pet_id: pet.id), method: :delete, data: {confirm: "フォローを解除します。よろしいですか？"}, class:"btn-layout btn-layout2" %>
           </div>
-          <div class="col-lg-3">
+          <div class="col-6 col-sm-3">
             <%= link_to "会話する", pet_chats_path(pet_id: pet.id), class:"btn-layout" %>
           </div>
         <% else %>
-          <div class="col-lg-3 offset-6">
+          <div class="col-3 offset-6">
             <%= link_to "フォロー", pet_relationships_path(pet_id: pet), method: :post, class:"btn-layout pl-3 pr-3" %>
           </div>
         <% end %>
