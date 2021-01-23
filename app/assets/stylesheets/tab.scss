@@ -51,3 +51,15 @@
   border: 1px solid #D2B48C;
   border-top: none;
 }
+
+@media (max-width: 576px) {
+  #tab-menu li{
+    font-size: 12px;
+    margin-right: 0;
+  }
+  .btn-layout {
+    background-color: #CC6600;
+    border: none;
+    color: #fff;
+  }
+}

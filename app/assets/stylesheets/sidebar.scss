@@ -48,3 +48,9 @@
   font-size: 15px;
   color: darken(#D2B48C, 10%);;
 }
+
+@media (max-width: 1199px) {
+  .search-sidebar {
+    display: none;
+  }
+}
