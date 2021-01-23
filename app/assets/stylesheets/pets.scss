@@ -3,9 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-
-
 .gender-icon {
   font-size: 1.3em;
   color: #444444;
@@ -48,5 +45,13 @@
 }
 #memories_calendar {
   background-color: #fff;
+}
+@media (max-width: 576px) {
+  .pet-info {
+    margin-left: 60px;
+  }
+  .pet-introduction-sub {
+    width: 80%;
+  }
 }
 
