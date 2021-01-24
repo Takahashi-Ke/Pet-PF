@@ -18,13 +18,14 @@ class ChatsController < ApplicationController
   end
 
   def create
-    pet = Pet.find(params[:pet_id])
-    room = Room.find(params[:room_id])
+    @pet = Pet.find(params[:pet_id])
+    @room = Room.find(params[:room_id])
     chat = current_owner.pet.chats.new(chat_params)
-    chat.room_id = room.id
+    chat.room_id = @room.id
     chat.save
-    room.create_notification_chat(pet, chat)
+    @room.create_notification_chat(@pet, chat)
     @chats = chat.room.chats
+    @chat = Chat.new
   end
 
   private
