@@ -54,6 +54,7 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
+    ast (2.4.2)
     autoprefixer-rails (10.1.0.0)
       execjs
     bcrypt (3.1.16)
@@ -163,6 +164,8 @@ GEM
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    parser (3.0.0.0)
+      ast (~> 2.4.1)
     popper_js (1.16.0)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -262,6 +265,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    scout_apm (4.0.3)
+      parser
     simple_calendar (2.4.1)
       rails (>= 3.0)
     sinatra (2.0.8.1)
@@ -336,6 +341,7 @@ DEPENDENCIES
   rename
   rspec-rails (~> 3.5, >= 3.5.2)
   sass-rails (~> 5.0)
+  scout_apm
   simple_calendar (~> 2.0)
   spring
   spring-watcher-listen (~> 2.0.0)

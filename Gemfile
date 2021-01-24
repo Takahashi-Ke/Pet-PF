@@ -96,6 +96,8 @@ gem "simple_calendar", "~> 2.0"
 # 環境変数
 gem 'dotenv-rails'
 
+gem 'scout_apm'
+
 # 本番環境DB（mySQL）
 group :production do
   gem 'mysql2'
