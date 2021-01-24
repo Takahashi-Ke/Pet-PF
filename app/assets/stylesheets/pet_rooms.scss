@@ -20,3 +20,8 @@
     color: darken(#D2B48C, 20%);
   }
 }
+@media (max-width: 576px) {
+  .latest-message {
+    font-size: 15px;
+  }
+}
