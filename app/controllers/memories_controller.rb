@@ -45,15 +45,15 @@ class MemoriesController < ApplicationController
     @pet = current_owner.pet
     if params.has_key?(:pet_id)
       @posted_by_pet = Pet.find(params[:pet_id])
-      @memories = Memory.where(pet_id: @pet.id).page(params[:page])
+      @memories = Memory.includes(:memory_images,:memory_comments).where(pet_id: @pet.id).page(params[:page])
     else
-      @memories = Memory.page(params[:page])
+      @memories = Memory.includes(:memory_images,:memory_comments).page(params[:page])
     end
     @diary = Diary.new
   end
   
   def show
-    @memory = Memory.find(params[:id])
+    @memory = Memory.includes(:memory_images, :memory_comments).find(params[:id])
     @memories = Memory.where(pet_id: @memory.pet_id)
     @images = MemoryImage.where(memory_id: @memory.id)
     @pet = current_owner.pet
