@@ -19,16 +19,16 @@
                   <div class="col-7">
                     <h6><%= link_to pet.name, pet_chats_path(pet) %></h6>
                   </div>
-                  <% if pet.latest_message(pet).present? %>
+                  <% if pet.latest_message(pet, current_owner.pet).present? %>
                     <div class="col-3 post-date">
-                      <%= time_ago_in_words(pet.latest_message(pet).created_at) %>前
+                      <%= time_ago_in_words(pet.latest_message(pet, current_owner.pet).created_at) %>前
                     </div>
                   <% end %>
                 </div>
-                <% if pet.latest_message(pet).present? %>
+                <% if pet.latest_message(pet, current_owner.pet).present? %>
                   <div class="row mt-3 ml-lg-5 latest-message">
                     <%= link_to pet_chats_path(pet_id: pet) do %>
-                      <%= truncate(pet.latest_message(pet).message, length: 25) %>
+                      <%= truncate(pet.latest_message(pet, current_owner.pet).message, length: 25) %>
                     <% end %>
                   </div>
                 <% end %>
