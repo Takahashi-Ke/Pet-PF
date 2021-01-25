@@ -135,6 +135,8 @@ class Pet < ApplicationRecord
     latest_message = Chat.where(room_id: room.room_id).last
     return latest_message
   end
+  
+
 
 
 end
