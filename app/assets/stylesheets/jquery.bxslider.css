@@ -90,3 +90,9 @@ ul.bxslider {
 .bx-wrapper .bx-pager {
     bottom: 20px;
 }
+.bxslider li {
+display: none;
+}
+.bx-viewport .bxslider li {
+display: block !important;
+}
