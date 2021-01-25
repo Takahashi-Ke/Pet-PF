@@ -89,15 +89,23 @@ class Pet < ApplicationRecord
   end
   
   scope :search, -> (search_params) do
-    return if search_params.blank?  
+    if search_params[:personalities].present?
+      pet_personalities = PetPersonality.where(personality: search_params[:personalities])
+      pet_ids = []
+      pet_personalities.each do |pp|
+        pet_ids << pp.pet_id
+      end
+    end
     keyword_search(search_params[:keyword])
       .type_search(search_params[:types])
-      .gender_serch(search_params[:genders])
+      .gender_search(search_params[:genders])
+      .personality_search(pet_ids)
   end
   
   scope :keyword_search, -> (keyword) { where("name LIKE?", "%#{keyword}%") unless keyword.blank? }
   scope :type_search, -> (types) { where(type: types) if types.present? }
-  scope :gender_serch, -> (genders) { where(gender: genders) if genders.present? }
+  scope :gender_search, -> (genders) { where(gender: genders) if genders.present? }
+  scope :personality_search, -> (pet_ids) { where(id: pet_ids) if pet_ids != [] }
 
   # ペットの年齢を算出するメソッド
   def age
