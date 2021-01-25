@@ -129,9 +129,10 @@ class Pet < ApplicationRecord
     Notification.where(visited_id: id, is_checked: false)
   end
   # チャットの最新のメッセージを取得
-  def latest_message(pet)
-    room_id = pet.pet_rooms.pluck(:room_id)
-    latest_message = Chat.where(room_id: room_id).last
+  def latest_message(pet, current_pet)
+    current_rooms = current_pet.pet_rooms.pluck(:room_id)
+    room = pet.pet_rooms.find_by(room_id: current_rooms)
+    latest_message = Chat.where(room_id: room.room_id).last
     return latest_message
   end
 
