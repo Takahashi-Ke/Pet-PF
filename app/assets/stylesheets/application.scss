@@ -42,7 +42,13 @@ a:hover {
   color: #D2B48C;
 }
 
-
+.about-pet {
+  font-weight: 400px;
+  color: #dc3545;
+}
+.js-text-count {
+  text-align: right;
+}
 .form-label {
   font-size: 18px;
 }
@@ -197,7 +203,21 @@ footer {
   .post-date {
     font-size: 9px;
   }
-  h4 {
+  h2, h4 {
     font-size: 18px;
+  }
+  // ログイン、新規登録、編集画面調整
+  .form-label {
+    font-size: 15px;
+  }
+  .explanation, .text-danger {
+    font-size: 13px;
+  }
+  .owner-prev, .pet-prev {
+    width: 200px;
+    height: 200px;
+  }
+  .about-pet {
+    font-size: 15px;
   }
 }
