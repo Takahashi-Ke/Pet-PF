@@ -2,9 +2,9 @@
   <div class="contents-box">
     
     <div class="row pt-2 pb-3">
-      <div class="mx-auto">
+      <div class="mx-auto memory-main-image">
         <%= link_to memory_path(memory) do %>
-          <%= attachment_image_tag memory.memory_images.first, :image, size: '430x320', fallback: "no_image.png", class:"memory-image" %>
+          <%= attachment_image_tag memory.memory_images.first, :image, size: '430x360', fallback: "no_image.png", class:"memory-image" %>
         <% end %>
       </div>
     </div>
@@ -26,14 +26,14 @@
     
     <div class="row mt-3">
       <div class="col-12 col-sm-6 offset-sm-1 memory-title">
-        <%= link_to memory.title, memory_path(memory) %>
+        <%= link_to truncate(memory.title, length: 12), memory_path(memory) %>
       </div>
-      <div class="col-12 col-sm-5 memory-date">
+      <div class="col-6 offset-6 col-sm-5 offset-sm-0 mt-2 post-date">
         <%= memory.created_at.to_s(:datetime_jp) %>
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-sm-10 offset-sm-2">
+      <div class="col-10 offset-1 memory-body">
         <%= truncate(memory.body, length: 100) %>
       </div>
     </div>

@@ -1,10 +1,10 @@
 <!--思い出一覧ページのアイコン-->
-<div class="row pb-4">
-  <div class="col-2 offset-5 comment-btn">
+<div class="row pb-4 memory-icons">
+  <div class="col-3 offset-3 col-sm-2 offset-sm-5 comment-btn">
     <i class="far fa-comment-alt"></i>
     <span><%= memory.memory_comments.count %></span>
   </div>
-  <div class="col-2 favorite-btn-<%= memory.id %>">
+  <div class="col-3 col-sm-2 favorite-btn-<%= memory.id %>">
     <%= render 'favorites/favo', memory: memory, diary: diary %>
   </div>
   <div class="col-3">

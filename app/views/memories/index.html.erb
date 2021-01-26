@@ -3,7 +3,7 @@
     <%= render 'pets/pet_info', pet: @pet %>
     <div class="col-12 col-lg-9 col-xl-7">
       <% if @posted_by_pet.present? %>
-        <div class="row ml-5 mb-2">
+        <div class="row ml-3 mb-2">
           <h4><%= @pet.name %>の思い出</h4>
         </div>
         <div class="row ml-5 mt-3">
@@ -27,7 +27,7 @@
           </div>
         </div>
       <% else %>
-        <div class="row ml-5 mb-2">
+        <div class="row ml-3 mb-2">
           <h4>みんなの思い出</h4>
         </div>
       <% end %>
