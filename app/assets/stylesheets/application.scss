@@ -167,8 +167,9 @@ footer {
   border-top: 1px solid #F0B775;
   z-index: 1;
 }
-// スマホ時ボタンの色変更
+
 @media (max-width: 576px) {
+  // スマホ時ボタンの色変更
   .btn-layout {
     background-color: #CC6600;
     border: none;
@@ -181,5 +182,22 @@ footer {
   }
   .btn-layout:hover {
     background-color: darken(#CC6600, 10%);
+  }
+  // アイコン縮小
+  .icon-img {
+    width: 50px;
+    height: 50px;
+  }
+  .contents-box h5 {
+    font-size: 15px;
+  }
+  .contents-box span {
+    font-size: 12px;
+  }
+  .post-date {
+    font-size: 9px;
+  }
+  h4 {
+    font-size: 18px;
   }
 }
