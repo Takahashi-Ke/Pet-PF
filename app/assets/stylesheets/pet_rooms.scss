@@ -21,7 +21,10 @@
   }
 }
 @media (max-width: 576px) {
-  .latest-message {
+  .chat-list h6{
     font-size: 15px;
+  }
+  .latest-message {
+    font-size: 12px;
   }
 }
