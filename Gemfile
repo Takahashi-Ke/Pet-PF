@@ -96,7 +96,11 @@ gem "simple_calendar", "~> 2.0"
 # 環境変数
 gem 'dotenv-rails'
 
-gem 'scout_apm'
+# コーディングチェック(Rubocop)
+gem 'rubocop', require: false
+gem 'rubocop-performance', require: false
+gem 'rubocop-rails', require: false
+gem 'rubocop-rspec'
 
 # 本番環境DB（mySQL）
 group :production do
