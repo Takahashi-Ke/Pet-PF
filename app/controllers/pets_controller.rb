@@ -50,6 +50,7 @@ class PetsController < ApplicationController
     params.permit(:personality)
   end
   
+  # ゲストの場合は編集を制限
   def check_guest
     if current_owner.email == 'guest@example.com'
       params[:owner][:image] = nil

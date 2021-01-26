@@ -105,7 +105,7 @@ class Pet < ApplicationRecord
   scope :keyword_search, -> (keyword) { where("name LIKE?", "%#{keyword}%") unless keyword.blank? }
   scope :type_search, -> (types) { where(type: types) if types.present? }
   scope :gender_search, -> (genders) { where(gender: genders) if genders.present? }
-  scope :personality_search, -> (pet_ids) { where(id: pet_ids) if pet_ids != [] }
+  scope :personality_search, -> (pet_ids) { where(id: pet_ids) if pet_ids != [] && pet_ids.present? }
 
   # ペットの年齢を算出するメソッド
   def age
