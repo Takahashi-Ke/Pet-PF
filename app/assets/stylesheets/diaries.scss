@@ -65,9 +65,9 @@ $diary-modal-width: 500px;
 }
 @media (max-width: 576px) {
   .diary-body {
-    width: 90%;
+    width: 100%;
     margin: 5px 0px;
-    font-size: 15px;
+    font-size: 12px;
   }
   .diary-modal {
     width: 340px;
@@ -78,6 +78,12 @@ $diary-modal-width: 500px;
   }
   .diary-form {
     width: 280px;
+  }
+  .diary-comment-count,
+  .diary-favo-count,
+  .diary-delete {
+    display: block;
+    font-size: 11px;
   }
   .diary-comment-form {
     width: 95%;
