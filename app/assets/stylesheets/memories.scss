@@ -2,9 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.memory-date {
-  font-size: 13px;
-  line-height: 30px;
+.memory-main-image {
+  width: 80%;
+}
+.memory-main-image img{
+  width: 100%;
 }
 .memory-title{
   font-size: 30px;
@@ -59,10 +61,7 @@
   height: 1200px;
 }
 @media (max-width: 767px) {
-  .memory-image {
-    width: 380px;
-    height: 290px;
-  }
+ 
   .memory-image-contents {
     width: 150px;
     height: 150px;
@@ -76,7 +75,19 @@
   .create-date {
     font-size: 12px;
   }
-  .memory-date {
-    font-size: 10px;
+}
+@media (max-width: 576px) {
+  .memory-main-image img{
+    height: 240px;
+  }
+  .memory-title {
+    font-size: 22px;
+    font-weight: 400;
+  }
+  .memory-body {
+    font-size: 12px;
+  }
+  .memory-icons {
+    font-size: 11px;
   }
 }
