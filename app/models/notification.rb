@@ -11,4 +11,8 @@ class Notification < ApplicationRecord
   belongs_to :visited, class_name: 'Pet', foreign_key: 'visited_id', optional: true
 
   validates :visited_id, presence: true
+  
+  def new_message
+    Chat.where(room_id: room_id, pet_id: visitor_id).last
+  end
 end
