@@ -1,5 +1,4 @@
 class RelationshipsController < ApplicationController
-
   def create
     current_owner.pet.follow(params[:pet_id])
     pet = Pet.find_by(id: params[:pet_id])
@@ -11,5 +10,4 @@ class RelationshipsController < ApplicationController
     current_owner.pet.unfollow(params[:pet_id])
     redirect_to request.referer
   end
-
 end

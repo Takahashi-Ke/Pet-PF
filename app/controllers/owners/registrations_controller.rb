@@ -59,7 +59,7 @@ class Owners::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  
+
   # def profile_params
   #   params.permit(:sign_up, keys: [:name, :image,
   #                                 pet_attributes: [:id, :name, :image, :birthday, :gender, :type, :introduction, :_destroy]])
