@@ -1,10 +1,9 @@
 class FavoritesController < ApplicationController
-  
   def index
     @diary = Diary.new
     @pet = current_owner.pet
   end
-  
+
   def create
     pet = current_owner.pet
     if params[:memory_id].present?
@@ -18,7 +17,7 @@ class FavoritesController < ApplicationController
       favorite = pet.favorites.new(diary_id: @diary.id)
       favorite.save
       @diary.create_notification_favo(pet)
-      
+
     end
   end
 
@@ -34,5 +33,4 @@ class FavoritesController < ApplicationController
     end
     favorite.destroy
   end
-
 end

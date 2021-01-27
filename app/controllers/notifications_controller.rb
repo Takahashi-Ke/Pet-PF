@@ -1,5 +1,4 @@
 class NotificationsController < ApplicationController
-
   def index
     @pet = current_owner.pet
     @diary = Diary.new
@@ -8,5 +7,4 @@ class NotificationsController < ApplicationController
       notification.update(is_checked: true)
     end
   end
-
 end
