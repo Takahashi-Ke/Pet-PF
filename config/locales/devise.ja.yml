@@ -3,3 +3,6 @@ ja:
     sessions:
       signed_in: 'ログインしました。'
       signed_out: 'ログアウトしました。'
+    failure:
+      invalid: "%{authentication_keys} もしくはパスワードに誤りがあります。"
+      not_found_in_database: "%{authentication_keys} もしくはパスワードに誤りがあります。"
