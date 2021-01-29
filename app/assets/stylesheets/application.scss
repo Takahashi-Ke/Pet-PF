@@ -197,8 +197,9 @@ footer {
   .contents-box h5 {
     font-size: 15px;
   }
-  .contents-box span {
-    font-size: 12px;
+  .contents-box span,
+  .post-comment {
+    font-size: 13px;
   }
   .post-date {
     font-size: 9px;
@@ -209,6 +210,20 @@ footer {
   // ログイン、新規登録、編集画面調整
   .form-label {
     font-size: 15px;
+  }
+  .form-field {
+    width: 60%;
+  }
+  .error-message {
+    width: 90%;
+    text-align: center;
+  }
+  .error-message h3{
+    font-size: 18px;
+  }
+  .error-message ul,
+  #flash_alert {
+    font-size: 12px;
   }
   .explanation, .text-danger {
     font-size: 13px;
