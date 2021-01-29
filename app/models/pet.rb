@@ -116,11 +116,7 @@ class Pet < ApplicationRecord
     d1 = birthday.strftime('%m').to_i
     d2 = Date.today.strftime('%m').to_i
     m = (d2 - d1) / 100
-    if m < 0
-      m + 12
-    else
-      m
-    end
+    m + 12  if m < 0
   end
 
   # 新しい通知を取得するメソッド

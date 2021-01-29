@@ -211,6 +211,20 @@ footer {
   .form-label {
     font-size: 15px;
   }
+  .form-field {
+    width: 60%;
+  }
+  .error-message {
+    width: 90%;
+    text-align: center;
+  }
+  .error-message h3{
+    font-size: 18px;
+  }
+  .error-message ul,
+  #flash_alert {
+    font-size: 12px;
+  }
   .explanation, .text-danger {
     font-size: 13px;
   }
