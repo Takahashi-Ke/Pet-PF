@@ -36,13 +36,13 @@
         <span>(10文字以内で入力してください)</span>
       </div>
       <div class="row justify-content-center">
-        <%= f.text_field :name, size:'30', autocomplete: "name" %>
+        <%= f.text_field :name, size:'30', autocomplete: "name", class:"form-field" %>
       </div>
       <div class="row mt-2 ml-5">
         <%= f.label :メールアドレス※, class:"form-label" %>
       </div>
       <div class="row justify-content-center">
-        <%= f.email_field :email, size:'30', autocomplete: "email" %>
+        <%= f.email_field :email, size:'30', autocomplete: "email", class:"form-field" %>
       </div>
     </div>
       
@@ -71,7 +71,7 @@
             <span>(10文字以内で入力してください)</span>
           </div>
           <div class="row justify-content-center">
-            <%= pet.text_field :name, size:'30' %>
+            <%= pet.text_field :name, size:'30', class:"form-field" %>
           </div>
           <div class="row ml-5">
             <%= pet.label :性別※, class:"form-label" %>
@@ -107,7 +107,7 @@
             <span>(120文字以内で入力してください)</span>
           </div>
           <div class="row justify-content-center">
-            <%= pet.text_area :introduction, size:'40x4',class:"js-text" %>
+            <%= pet.text_area :introduction, size:'40x4', class:"js-text form-field" %>
           </div>
           <p class="js-text-count">/120</p>
           <div class="row  justify-content-center mt-4 about-pet">
@@ -125,13 +125,13 @@
         <% end %>
       </div>
       <div class="row justify-content-center">
-        <%= f.password_field :password, size:'30', autocomplete: "new-password" %>
+        <%= f.password_field :password, size:'30', autocomplete: "new-password", class:"form-field" %>
       </div>
       <div class="row ml-5">
         <%= f.label :パスワード確認※, class:"form-label" %>
       </div>
       <div class="row justify-content-center">
-        <%= f.password_field :password_confirmation, size:'30', autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, size:'30', autocomplete: "new-password", class:"form-field" %>
       </div>
       <div class="row justify-content-center mt-4">
         <%= f.submit "新規登録", class:"btn-layout btn-layout2 pl-5 pr-5 pt-2 pb-2" %>

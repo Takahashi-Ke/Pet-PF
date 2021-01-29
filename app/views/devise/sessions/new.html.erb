@@ -4,31 +4,31 @@
   </div>
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= form_with model: @owner, url: owner_session_path, local: true do |f| %>
-  <div class="row mt-3">
-    <div class="col-12 col-sm-4 offset-sm-4">
-      <div class="row ml-3">
-        <%= f.label :メールアドレス, class:"form-label" %>
-      </div>
-      <div class="row justify-content-center">
-        <%= f.email_field :email, size:'30', autofocus: true, autocomplete: "email" %>
-      </div>
-      <div class="row ml-3 mt-3">
-        <%= f.label :パスワード, class:"form-label" %>
-      </div>
-      <div class="row justify-content-center">
-        <%= f.password_field :password, size:'30', autocomplete: "current-password" %>
-      </div>
-      <% if devise_mapping.rememberable? %>
-        <div class="row ml-5 mt-2">
-          <%= f.check_box :remember_me, class:"mt-1 mr-1" %>
-          <%= f.label :ログイン状態を保存する, class:"form-label" %>
+    <div class="row mt-3">
+      <div class="col-12 col-sm-4 offset-sm-4">
+        <div class="row ml-3">
+          <%= f.label :メールアドレス, class:"form-label" %>
         </div>
-      <% end %>
-      <div class="row mt-5 justify-content-center">
-        <%= f.submit "ログイン", class:"btn-layout btn-layout2 pl-5 pr-5 pt-2 pb-2" %>
+        <div class="row justify-content-center">
+          <%= f.email_field :email, size:'30', autofocus: true, autocomplete: "email", class:"form-field" %>
+        </div>
+        <div class="row ml-3 mt-3">
+          <%= f.label :パスワード, class:"form-label" %>
+        </div>
+        <div class="row justify-content-center">
+          <%= f.password_field :password, size:'30', autocomplete: "current-password", class:"form-field" %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="row ml-5 mt-2">
+            <%= f.check_box :remember_me, class:"mt-1 mr-1" %>
+            <%= f.label :ログイン状態を保存する, class:"form-label" %>
+          </div>
+        <% end %>
+        <div class="row mt-5 justify-content-center">
+          <%= f.submit "ログイン", class:"btn-layout btn-layout2 pl-5 pr-5 pt-2 pb-2" %>
+        </div>
       </div>
     </div>
-  </div>
   <% end %>
   
   <div class="row justify-content-center mt-3">
