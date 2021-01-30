@@ -3,31 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .chat-pet {
-  width: 300px;
   height: 500px;
   padding-top: 30px;
   background-color: #fff;
   border: 1px solid #D2B48C;
 }
 .pet-link a{
-  margin-left: 80px;
   padding: 0.5em 0;
   border-bottom: dashed 1px #D2B48C; 
 }
-#chat-frend::before {
+.chat-pet::before {
   content: "";
   position: absolute;
   border-right: dotted 10px #e8e2d1; 
-  height: 60%;
-  top: 9.5em; 
+  height: 90%;
+  top: 1em; 
   left: 0.5em; 
 }
 #chat-me::before {
-  content: "";
-  position: absolute;
-  border-right: dotted 10px #e8e2d1; 
-  height: 60%;
-  top: 9.5em; 
   right: 0.5em; 
 }
 .chat-area {
@@ -48,6 +41,9 @@
 }
 #mine-message {
   background-color: #CCFF99;
+}
+.chat-min-form {
+  width: 80%;
 }
 @media (max-width: 576px) {
   #mine-time {
