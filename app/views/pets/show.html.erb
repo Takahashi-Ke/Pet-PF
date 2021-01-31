@@ -9,15 +9,8 @@
           <div class="col-12 col-sm-5">
             <h3><%= @pet.name %></h3>
           </div>
-          <div class="col-6 col-sm-5 ml-sm-4">
-            <% if @pet.id == current_owner.pet.id %>
-              <%= link_to "編集する", edit_pet_path(@pet), class:"btn-layout" %>
-            <% elsif current_owner.pet.following?(@pet) %>
-              <%= link_to "フォロー中", pet_relationship_path(@pet), method: :delete, data: {confirm: "フォローを解除します。よろしいですか？"}, class:"btn-layout btn-layout2 mr-3"  %>
-              <%= link_to "会話する", pet_chats_path(@pet), class:"btn-layout" %>
-            <% else %>
-              <%= link_to "フォロー", pet_relationships_path(@pet), method: :post, class:"btn-layout" %>
-            <% end %>
+          <div class="col-6 col-sm-5 ml-sm-4 follow-btn-<%= @pet.id %>">
+            <%= render 'relationships/follow', pet: @pet %>
           </div>
         </div>
         <div class="row ml-5 mt-2">
@@ -74,8 +67,8 @@
   </div>
   
       
-  <div class="row">
-    <div class="col-12 col-sm-8">
+  <div class="row mt-sm-4">
+    <div class="col-12 col-sm-9">
       <div class="row mt-5 ml-sm-5">
         
         <!--タブメニュー-->
@@ -175,7 +168,8 @@
         </div>
       </div>
     </div>
-      <%= render 'searches/search_box' %>
+    <%= render 'searches/search_box' %>
+      
   </div>
  
   <div class="modal-wrapper"></div>

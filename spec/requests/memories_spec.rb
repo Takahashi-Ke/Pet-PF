@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Memories", type: :request do
   before do
-    @owner = FactoryBot.create(:owner)
-    @pet = FactoryBot.create(:pet)
+    @memory = create(:memory)
+    
   end
   
   describe "GET #index" do
@@ -14,13 +14,13 @@ RSpec.describe "Memories", type: :request do
   end
   describe "GET #show" do
     it '思い出詳細画面の表示に成功すること' do
-      get memory_path(id: 1)
+      get memory_path(@memory)
       expect(response).to have_http_status(302)
     end
   end
   describe "GET #edit" do
     it '思い出編集画面の表示に成功すること' do
-      get edit_memory_path(id: 1)
+      get edit_memory_path(@memory)
       expect(response).to have_http_status(302)
     end
   end

@@ -1,5 +1,5 @@
 <% flash.each do |name, msg| %>
-  <% if msg != 'ログアウトしました。' || msg != 'ログインしました。' %>
+  <% if msg != 'ログアウトしました。' && msg != 'ログインしました。' %>
     <div class="error-message">
       <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
     </div>
