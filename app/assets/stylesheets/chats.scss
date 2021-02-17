@@ -45,6 +45,18 @@
 .chat-min-form {
   width: 80%;
 }
+.today-message {
+  width: 100%;
+}
+.today-message p{
+  display: inline-block;
+  margin: 0 auto;
+  background-color: #C0C0C0;
+  color: #fff;
+  border-radius: 15px;
+  padding: 5px 30px;
+  margin-left: 35%;
+}
 @media (max-width: 576px) {
   #mine-time {
     margin-right: 10px;
@@ -54,5 +66,9 @@
   }
   .chat-message {
    font-size: 12px; 
+  }
+  .today-message p{
+    font-size: 13px;
+    margin-left: 25%;
   }
 }
