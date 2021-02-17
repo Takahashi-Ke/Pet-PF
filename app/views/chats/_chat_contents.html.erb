@@ -8,6 +8,11 @@
 </div>
 <div class="chat-area mb-3">
     <% chats.each do |chat| %>
+      <% if chat.message_date(chat) == true %>
+        <div class="today-message mt-lg-3 mb-lg-3">
+          <p><%= Date.today.to_s(:datetime_jp) %></p>
+        </div>
+      <% end %>
       <% if chat.pet_id == current_owner.pet.id %>
         <div class="row">
           <div class="col-1 offset-5 d-flex align-items-end chat-time" id="mine-time">
