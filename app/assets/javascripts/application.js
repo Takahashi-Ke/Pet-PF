@@ -143,5 +143,6 @@ $(document).on("turbolinks:load", function(){
 
 // チャットを下端へスクロールする
 $(document).on('turbolinks:load', function() {
+  // $('.chat-area').get(0).scrollHeight;
 　$('.chat-area').animate({scrollTop: $('.chat-area')[0].scrollHeight}, 'fast');
 });

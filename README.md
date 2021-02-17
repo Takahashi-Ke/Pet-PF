@@ -64,6 +64,7 @@ URL : <https://petto.work/>
 - 画像プレビュー
 - lightbox2、bxslider(jQueryプラグイン)
 - VisionAPI画像認識機能（不適切なコンテンツを検出します）
+- レスポンシブ対応(スマートフォン対応)
 
 詳細は下記よりご確認ください
 
