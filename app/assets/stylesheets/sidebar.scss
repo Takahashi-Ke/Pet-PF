@@ -12,6 +12,13 @@
   border-bottom: dashed 1px #D2B48C; 
   padding: 0.5em 0 0.5em 1.5em;
 }
+.note-box li:hover{
+  border: none;
+  background-color: #D2B48C;
+  a,.add-diary-button {
+    color: #fff;
+  }
+}
 .pet-sidebar::before {
    content: "";
    position: absolute;
