@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">
+    <%= render 'pets/pet_info', pet: current_owner.pet %>
+  <div class="col-12 col-lg-9 col-xl-7">
+    <%= render 'diaries/diary_contents', diary: @diary %>
+  </div>
+    <%= render 'searches/search_box' %>
+  </div>
+  
+  
+  <div class="modal-wrapper"></div>
+  <div class="diary-modal">
+    <%= render 'diaries/diary_form', diary: @diary, pet: @pet, diary_comment: @diary_comment %>
+  </div>
+  <%# 日記投稿ボタン（スマホ対応） %>
+  <div class="d-block d-lg-none add-diary-mini-btn">
+    <i class="fas fa-pencil-alt"></i>
+  </div>
+</div>
