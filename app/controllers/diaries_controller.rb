@@ -4,6 +4,10 @@ class DiariesController < ApplicationController
     @diary = Diary.new
     @diaries = Diary.includes(:diary_comments).all.reverse_order
   end
+  
+  def show
+    @diary = Diary.includes(:diary_comments).find(params[:id])
+  end
 
   def create
     @diary = Diary.new(diary_params)
