@@ -5,7 +5,7 @@ class Room < ApplicationRecord
 
   # チャットがきた時に通知を生成するメソッド
   def create_notification_chat(pet, chat)
-    notification_room = Notification.find_by(room_id: id)
+    notification_room = Notification.find_by(room_id: id, visited_id: pet.id)
     if notification_room.present?
       notification_room.update(created_at: DateTime.now, is_checked: false)
     else

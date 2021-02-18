@@ -17,7 +17,7 @@
 </div>
 <% if pet.id == current_owner.pet.id %>
   <div class="row mt-5 justify-content-center">
-    <%= form_with model: [@pet, @chat], url: pet_chats_path(room_id: room.id), remote: true do |f| %>
+    <%= form_with model: [pet, chat], url: pet_chats_path(room_id: room.id), remote: true do |f| %>
         <%= f.text_area :message, size: '20x2', placeholder: "メッセージ入力", class:"chat-form" %>
         <div class="col-lg-2 offset-5 clearfix">
             <%= f.submit "送信", class:"btn-layout pr-4 pl-4" %>
