@@ -1,0 +1,14 @@
+<% if pet.id != current_owner.pet.id %>
+  <% if current_owner.pet.following?(pet) %>
+    <div class="col-6 col-sm-3 offset-sm-6">
+      <%= link_to "フォロー中", pet_relationship_path(pet, pet_id: pet.id), method: :delete, remote: true, data: {confirm: "フォローを解除します。よろしいですか？"}, class:"btn-layout btn-layout2" %>
+    </div>
+    <div class="col-6 col-sm-3">
+      <%= link_to "会話する", pet_chats_path(pet_id: pet.id), class:"btn-layout" %>
+    </div>
+  <% else %>
+    <div class="col-6 offset-3 offset-sm-6">
+      <%= link_to "フォロー", pet_relationships_path(pet_id: pet), method: :post, remote: true, class:"btn-layout pl-3 pr-3" %>
+    </div>
+  <% end %>
+<% end %>

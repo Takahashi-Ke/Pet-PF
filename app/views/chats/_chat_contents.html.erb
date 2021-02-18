@@ -1,0 +1,45 @@
+<div class="row d-block d-lg-none">
+  <div class="text-center">
+    <%= link_to pet_pet_rooms_path(current_owner.pet) do %>
+      <%= attachment_image_tag pet, :image, size: '60x60', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
+      <span><%= pet.name %>との会話</span>
+    <% end %>
+  </div>
+</div>
+<div class="chat-area mb-3">
+    <% chats.each do |chat| %>
+      <% if chat.message_date(chat) == true %>
+        <div class="today-message mt-lg-3 mb-lg-3">
+          <p><%= Date.today.to_s(:datetime_jp) %></p>
+        </div>
+      <% end %>
+      <% if chat.pet_id == current_owner.pet.id %>
+        <div class="row">
+          <div class="col-1 offset-5 d-flex align-items-end chat-time" id="mine-time">
+            <%= chat.created_at.strftime('%H:%M') %>
+          </div>
+          <div class="col-5 chat-message" id="mine-message">
+            <%= chat.message %>
+          </div>
+        </div>
+      <% else %>
+        <div class="row">
+          <div class="col-5 chat-message">
+            <%= chat.message %>
+          </div>
+          <div class="col-2 d-flex align-items-end chat-time">
+            <%= chat.created_at.strftime('%H:%M') %>
+          </div>
+          <div class="col-4"></div>
+          </div>
+      <% end %>
+    <% end %>
+</div>
+<div class="row d-block d-lg-none">
+  <%= form_with model: [@pet, @chat], url: pet_chats_path(room_id: @room.id), remote: true do |f| %>
+    <div class="text-center">
+      <%= f.text_area :message, placeholder: "メッセージ入力", class:"chat-min-form" %><br />
+      <%= f.submit "送信", class:"btn-layout pr-4 pl-4" %>
+    </div>
+  <% end %>
+</div>

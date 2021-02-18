@@ -1,0 +1,48 @@
+<div id="comment-<%= memory.id %>">
+  <div class="row">
+    <div class="col-10 offset-1 col-sm-9 offset-sm-2">
+      <% memory.memory_comments.each do |mc| %>
+        <div class="row mt-2 comment-contents pt-3">
+          <div class="col-2">
+            <%= attachment_image_tag mc.pet, :image, size: '40x40', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
+          </div>
+          <div class="col-10 mt-2 col-sm-5">
+            <%= link_to mc.pet.name, pet_path(mc.pet) %>
+          </div>
+          <div class="col-7 offset-5 col-sm-5 offset-sm-0 mt-sm-2 post-date">
+            <%= mc.created_at.to_s(:datetime_jp) %>
+          </div>
+        </div>
+        <div class="row ml-3 mb-4">
+          <div class="col-11 ml-1 mt-2 post-comment">
+            <%= mc.comment %>
+          </div>
+          <% if mc.pet == current_owner.pet %>
+            <div class="col-1 offset-9 mt-2">
+              <%= link_to memory_comment_path(mc, memory_id: memory.id), method: :delete, remote: true do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row memory-comment-box ml-1 mr-1 mt-3 mb-5">
+    <div class="col-lg-10 offset-2">
+      <%= form_with model: memory_comment, url: memory_comments_path(memory_id: memory), remote: true do |f| %>
+        <% if memory_comment.errors.any? %>
+          <div class="row ml-3">
+            <h6>※コメントを入力してさい</h6>  
+          </div>
+        <% end %>
+        <%= f.text_area :comment, size: '60x2', placeholder: 'コメントを書く',class:"memory-comment-form" %>
+        <div class="row">
+          <div class="col-2 offset-7">
+            <%= f.submit 'コメントする', class:"btn-layout btn-layout2" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

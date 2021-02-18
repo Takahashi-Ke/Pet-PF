@@ -2,22 +2,73 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.chat-area {
-  overflow: scroll;
+.chat-pet {
   height: 500px;
+  padding-top: 30px;
+  background-color: #fff;
+  border: 1px solid #D2B48C;
+}
+.pet-link a{
+  padding: 0.5em 0;
+  border-bottom: dashed 1px #D2B48C; 
+}
+.chat-pet::before {
+  content: "";
+  position: absolute;
+  border-right: dotted 10px #e8e2d1; 
+  height: 90%;
+  top: 1em; 
+  left: 0.5em; 
+}
+#chat-me::before {
+  left: 14em; 
+}
+.chat-area {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 600px;
 }
 .chat-message {
-  height: 70px;
-  line-height: 70px;
+  padding: 20px 0;
   margin: 10px 5px;
-  background-color: #EEEEEE;
+  background-color: #fff;
 }
 .chat-time {
   font-size: 12px;
   color: #888888;
-  line-height: 70px;
-  margin: 10px 0;
+  margin-bottom: 10px;
+  
 }
 #mine-message {
   background-color: #CCFF99;
+}
+.chat-min-form {
+  width: 80%;
+}
+.today-message {
+  width: 100%;
+}
+.today-message p{
+  display: inline-block;
+  margin: 0 auto;
+  background-color: #C0C0C0;
+  color: #fff;
+  border-radius: 15px;
+  padding: 5px 30px;
+  margin-left: 35%;
+}
+@media (max-width: 576px) {
+  #mine-time {
+    margin-right: 10px;
+  }
+  .chat-area {
+    height: 440px;
+  }
+  .chat-message {
+   font-size: 12px; 
+  }
+  .today-message p{
+    font-size: 13px;
+    margin-left: 25%;
+  }
 }

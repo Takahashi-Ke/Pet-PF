@@ -1,107 +1,152 @@
-<div class="container">
-  <div class="row">
+<div class="container-fluid">
+  <div class="row mb-3 justify-content-center">
     <h2>新規登録</h2>
   </div>
-  <div class="row">
+  <div class="row justify-content-center">
+    <p class="explanation">あなたとペットの情報を入力しましょう！</p>
+  </div>
+  <div class="row justify-content-center text-danger">
     <p>※は必須事項になります</p>
   </div>
-
-  <%= form_with model: @owner, url: owner_registration_path, local: true do |f| %>
-  <%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="row">
-      <div class="col-4">
-        <h4>あなた</h4>
-        <div class="field">
-          <%= f.label :写真 %><br />
-          <%= f.attachment_field :image %>
+  
+  <!--Owner情報入力フォーム-->
+  <%= form_with model: @owner, url: owner_registration_path, local: true do |f| %>
+  <div class="row mt-5">
+    <div class="col-12 col-lg-4 offset-lg-2">
+      <div class="row">
+        <h4 class="ml-5 ml-lg-0">あなたについて</h4>
+      </div>
+      <div class="row mt-2 ml-5">
+        <%= f.label :写真, class:"form-label" %>
+      </div>
+      <div class="row justify-content-center">
+        <%= attachment_image_tag @owner, :image, size: "280x280", fallback: "owner_no_image.png", class:"owner-prev mb-3 rounded" %>
+      </div>
+      <div class="row justify-content-center">
+        <div class="attachment-field">
+          <%= f.attachment_field :image, class:"owner-image", id:"owner-file" %>
         </div>
-        <div class="field">
-          <%= f.label :名前※ %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-        </div>
-        <div class="field">
-          <%= f.label :メールアドレス※ %><br />
-          <%= f.email_field :email, autocomplete: "email" %>
+        <div class="btn-layout pl-5 pr-5" onClick="$('#owner-file').click()" >
+          写真を選ぶ
         </div>
       </div>
-      <!--Petモデルの入力フォーム-->
-      <%= f.fields_for :pet, @owner.build_pet do |pet| %>
-        <div class="col-8">
-          <h4>ペット</h4>
+      <div class="row mt-2 ml-5">
+        <%= f.label :名前※, class:"form-label" %>
+        <span>(10文字以内で入力してください)</span>
+      </div>
+      <div class="row justify-content-center">
+        <%= f.text_field :name, size:'30', autocomplete: "name", class:"form-field" %>
+      </div>
+      <div class="row mt-2 ml-5">
+        <%= f.label :メールアドレス※, class:"form-label" %>
+      </div>
+      <div class="row justify-content-center">
+        <%= f.email_field :email, size:'30', autocomplete: "email", class:"form-field" %>
+      </div>
+    </div>
+      
+      <!--Pet情報入力フォーム-->
+      <%= f.fields_for :pet, Pet.new do |pet| %>
+        <div class="col-12 mt-5 col-lg-4 ml-lg-4 mt-lg-0">  
           <div class="row">
-            <div class="col-4">
-              <div class="field">
-                <%= pet.label :写真 %><br />
-                <%= pet.attachment_field :image %>
-              </div>
+            <h4 class="ml-5 ml-lg-0">ペットについて</h4>
+          </div>
+          <div class="row mt-2 ml-5">
+            <%= pet.label :写真, class:"form-label" %>
+          </div>
+          <div class="row justify-content-center">
+            <%= attachment_image_tag @pet, :image, size: "280x280", fallback: "pet_no_image.png", class:"pet-prev mb-3 rounded" %>
+          </div>
+          <div class="row justify-content-center">
+            <div class="attachment-field">
+              <%= pet.attachment_field :image, class:"pet-image", id:"pet-file" %>
             </div>
-            <div class="col-8">
-              <div class="row">
-                <div class="col-6">
-                  <div class="field">
-                    <%= pet.label :名前※ %><br />
-                    <%= pet.text_field :name %>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="field">
-                    <%= pet.label :性別※ %><br />
-                    <%= pet.radio_button :gender, 'オス', checked: true %>
-                    <%= pet.label :gender, "オス", {value: 1} %>
-                    <%= pet.radio_button :gender, 'メス' %>
-                    <%= pet.label :gender, "メス", {value: 2} %>
-                    <%#= pet.select :gender, Pet.genders.keys %>
-                    <%#= pet.select :gender, options_for_select(Pet.genders.to_a, selected: @owner.build_pet.gender_before_type_cast) %>
-                    <%#= pet.select :gender, Pet.genders.map{|k,v| [k,v]} %>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <%= pet.label :生年月日※ %><br />
-                  <%#= sprintf(pet.date_select(:birthday, prefix:'birthday', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日' %>
-                  <%= pet.date_select :birthday %>
-                </div>
-                <div class="col-6">
-                  <%= pet.label :種類※ %><br />
-                  <%= pet.select :type, Pet.types.keys %>
-                </div>
-              </div>
-              <div class="row">
-                <%= pet.label :紹介文 %><br />
-                <%= pet.text_area :introduction %>
-              </div>
+            <div class="btn-layout pl-5 pr-5" onClick="$('#pet-file').click()" >
+              写真を選ぶ
             </div>
           </div>
-          <div class="row">
-            <p>性別、生年月日、種類は登録後変更ができません。<br />
-                ご注意ください。</p>
+          <div class="row mt-2 ml-5">
+            <%= pet.label :名前※, class:"form-label" %>
+            <span>(10文字以内で入力してください)</span>
+          </div>
+          <div class="row justify-content-center">
+            <%= pet.text_field :name, size:'30', class:"form-field" %>
+          </div>
+          <div class="row ml-5">
+            <%= pet.label :性別※, class:"form-label" %>
+          </div>
+          <div class="row ml-3">
+            <div class="col-3 offset-2">
+              <%= pet.radio_button :gender, 'オス', checked: true %>
+              <%= pet.label :gender, "オス", {value: 1} %>
+            </div>
+            <div class="col-3">
+              <%= pet.radio_button :gender, 'メス' %>
+              <%= pet.label :gender, "メス", {value: 2} %>
+            </div>
+          </div>
+          <div class="row ml-5">
+            <%= pet.label :誕生日※, class:"form-label" %>
+          </div>
+          <div class="row ml-3">
+            <div class="col-8 offset-2">
+              <%= pet.date_select :birthday, start_year: 1990, end_year: Time.now.year,default: Date.today %>
+            </div>
+          </div>
+          <div class="row ml-5">
+            <%= pet.label :種類※, class:"form-label" %>
+          </div>
+          <div class="row ml-3">
+            <div class="col-3 offset-2">
+              <%= pet.select :type, Pet.types.keys %>
+            </div>
+          </div>
+          <div class="row ml-5 mt-2">
+            <%= pet.label :紹介文, class:"form-label" %>
+            <span>(120文字以内で入力してください)</span>
+          </div>
+          <div class="row justify-content-center">
+            <%= pet.text_area :introduction, size:'40x4', class:"js-text form-field" %>
+          </div>
+          <p class="js-text-count">/120</p>
+          <div class="row  justify-content-center mt-4 about-pet">
+            <p><span class="fas fa-exclamation-circle"></span> 性別、誕生日、種類は登録後変更ができません。</p>
           </div>
         </div>
       <% end %>
-      <!--Petモデル入力ここまで-->
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="field">
-          <%= f.label :パスワード %>
-          <% if @minimum_password_length %>
-          <span>(<%= @minimum_password_length %>文字以上で設定できます)※</span>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :パスワード確認※ %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "新規登録" %>
-        </div>
+  </div>  
+  <div class="row mt-3">
+    <div class="col-12 col-lg-4 offset-lg-4">
+      <div class="row ml-5">
+        <%= f.label :パスワード, class:"form-label" %>
+        <% if @minimum_password_length %>
+        <span>(<%= @minimum_password_length %>文字以上で設定できます)※</span>
+        <% end %>
+      </div>
+      <div class="row justify-content-center">
+        <%= f.password_field :password, size:'30', autocomplete: "new-password", class:"form-field" %>
+      </div>
+      <div class="row ml-5">
+        <%= f.label :パスワード確認※, class:"form-label" %>
+      </div>
+      <div class="row justify-content-center">
+        <%= f.password_field :password_confirmation, size:'30', autocomplete: "new-password", class:"form-field" %>
+      </div>
+      <div class="row justify-content-center mt-4">
+        <%= f.submit "新規登録", class:"btn-layout btn-layout2 pl-5 pr-5 pt-2 pb-2" %>
+      </div>
+      <div class="row justify-content-center mt-3">
+        <%= link_to "ログイン", new_owner_session_path, class:"btn-layout" %>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <p>閲覧される方はこちらから</p>
+      </div>
+      <div class="row justify-content-center">
+        <%= link_to "ゲストログイン", owners_guest_sign_in_path, method: :post, class:"btn-layout btn-layout2 pl-5 pr-5 pt-2 pb-2" %>
       </div>
     </div>
+  </div>
   <% end %>
-  <%= link_to "ログイン", new_owner_session_path %>
+  
 </div>

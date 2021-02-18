@@ -1,60 +1,92 @@
-<div class="container">
-  <div class="row">
+<div class="container-fluid">
+  <div class="row mb-3 justify-content-center">
     <h2>プロフィール編集</h2>
   </div>
-  <%= form_with model: current_owner, url: pet_path(@pet) ,local: true do |f| %>
-    <div class="row">
-      <div class="col-4">
-        <h4>あなた</h4>
-        <div class="field">
-          <%= f.label :写真 %><br />
-          <%= attachment_image_tag current_owner, :image, size: "180x180", fallback: "no_image.png", class:"owner_prev" %>
-          <%= f.attachment_field :image, class:"owner_img_btn" %>
+  <%= render "devise/shared/error_messages", resource: current_owner %>
+  <%= form_with model: @owner, url: pet_path(@pet) ,local: true do |f| %>
+  <div class="row mt-5">
+    <div class="col-12 col-lg-4 offset-lg-2">
+      <div class="row">
+        <h4 class="ml-5 ml-lg-0">あなたについて</h4>
+      </div>
+      <div class="row mt-2 ml-2 ml-lg-5">
+        <%= f.label :写真, class:"form-label" %>
+      </div>
+      <div class="row justify-content-center">
+        <%= attachment_image_tag current_owner, :image, size: '280x280', fallback: "owner_no_image.png", class:"owner-prev mb-3 rounded" %>
+      </div>
+      <div class="row justify-content-center">
+        <div class="attachment-field">
+          <%= f.attachment_field :image, class:"owner-image", id:"owner-file" %>
         </div>
-        <div class="field">
-          <%= f.label :名前 %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        <div class="btn-layout pl-5 pr-5" onClick="$('#owner-file').click()" >
+          写真を選ぶ
         </div>
       </div>
-      <%= f.fields_for :pet, @pet do |pet| %>
-        <div class="col-8">
+      <div class="row mt-2 ml-2 ml-lg-5">
+        <%= f.label :名前, class:"form-label" %>
+        <span>(10文字以内で入力してください)</span>
+      </div>
+      <div class="row justify-content-center">
+         <%= f.text_field :name, size:'30', autocomplete: "name", class:"form-field" %>
+      </div>
+    </div>
+      <%= f.fields_for :pet do |pet| %>
+        <div class="col-12 mt-5 col-lg-4 ml-lg-4 mt-lg-0">
           <div class="row">
-            <h4>ペット</h4>
+            <h4 class="ml-5 ml-lg-0">ペットについて</h4>
           </div>
-          <div class="row">
-            <div class="col-6">
-              <%= attachment_image_tag @pet, :image, size: '180x180', fallback: "no_image.png", class:"pet_prev" %>
-              <%= pet.attachment_field :image %>
+          <div class="row mt-2 ml-2 ml-lg-5">
+            <%= pet.label :写真, class:"form-label" %>
+          </div>
+          <div class="row justify-content-center">
+            <%= attachment_image_tag current_owner.pet, :image, size: '280x280', fallback: "pet_no_image.png", class:"pet-prev mb-3 rounded" %>
+          </div>
+          <div class="row justify-content-center">
+            <div class="attachment-field">
+              <%= pet.attachment_field :image, class:"pet-image", id:"pet-file" %>
             </div>
-            <div class="col-6">
-              <div class="row">
-                <%= pet.label :名前 %><br />
-                <%= pet.text_field :name %>
-              </div>
-              <div class="row">
-                <%= pet.label :紹介文 %><br />
-                <%= pet.text_area :introduction %>
-              </div>
+            <div class="btn-layout pl-5 pr-5" onClick="$('#pet-file').click()" >
+              写真を選ぶ
             </div>
           </div>
-          <div class="row">
-            <%= pet.label :性格 %><br />
-            <% PetPersonality.personalities.map do |k, v| %>
-              <div class="col-5 ml-3">
-                <%= pet.fields_for :pet_personalities do |pp| %>
-                  <%= pp.check_box :personality, {}, v, false %>
-                  <%= pp.label :personality, k %>
-                <% end %>
+          <div class="row mt-2 ml-2 ml-lg-5">
+            <%= pet.label :名前, class:"form-label" %>
+            <span>(10文字以内で入力してください)</span>
+          </div>
+          <div class="row justify-content-center">
+            <%= pet.text_field :name, size:'30', class:"form-field" %>
+          </div>
+          <div class="row ml-2 ml-lg-5 mt-2">
+            <%= pet.label :紹介文, class:"form-label" %>
+            <span>(120文字以内で入力してください)</span>
+          </div>
+          <div class="row justify-content-center">
+            <%= pet.text_area :introduction, size:'50x5',class:"js-text form-field" %>
+          </div>
+          <p class="js-text-count">/120</p>
+          <div class="row ml-2 ml-lg-5 mt-3">
+            <%= pet.label :性格, class:"form-label" %>
+          </div>
+          <div class="row ml-lg-5 justify-content-center">
+          <!--PetPersonalityを選択-->
+            <%= pet.collection_check_boxes :pet_personalities,PetPersonality.personalities,:last,:first, include_hidden: false  do |b| %>
+              <div class="col-5">
+                <%= b.check_box checked: !@pet.pet_personalities.find_by(personality: b.text).nil? %>
+                <%= b.label %>
               </div>
-            <% end %>
+            <%end%>
           </div>
         </div>
       <% end %>
-    </div>
-    <div class="row">
-      <%= f.submit "更新する", class:"btn" %>
-      <%= link_to "退会する", unsubscribe_owner_path(current_owner), class:"btn" %>
-    </div>
-
+  </div>
+  
+  <div class="row justify-content-center mt-3">
+      <%= f.submit "更新する", class:"btn-layout btn-layout2 pl-5 pr-5 pt-2 pb-2" %>
+  </div>
+  <div class="row justify-content-center mt-3">
+    <%= link_to "退会する", unsubscribe_owner_path(current_owner), class:"btn-layout btn-layout3" %>
+  </div>
   <% end %>
+                
 </div>

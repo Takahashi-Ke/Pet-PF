@@ -1,0 +1,23 @@
+// Place all the styles related to the inquiry controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.thanks-area {
+  width: 100%;
+  height: 470px;
+}
+.thanks-area p{
+  font-size: 20px;
+}
+
+@media (max-width: 576px) {
+  .inquiry h2 {
+    font-size: 20px;
+  }
+  .inquiry h5 {
+    font-size: 18px;
+  }
+  .inquiry p {
+    font-size: 13px;
+  }
+}

@@ -1,40 +1,37 @@
 class Diary < ApplicationRecord
-
   belongs_to :pet
   has_many :diary_comments, dependent: :destroy
-  has_many :diary_favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
   attachment :image
 
-  validates :body, presence: true
+  validates :body, presence: true, length: { maximum: 120 }
 
-
-  def favorited_by?(pet, diary)
-    DiaryFavorite.where(pet_id: pet.id, diary_id: diary.id).exists?
+  # 投稿にいいねしているかを確認
+  def diary_favorited_by?(pet, diary)
+    Favorite.where(pet_id: pet.id, diary_id: diary.id).exists?
   end
 
   # いいねされた時通知を生成するメソッド
   def create_notification_favo(pet)
-    history = Notification.where(["visitor_id = ? and visited_id = ? and diary_id = ? and action = ?",
-                                pet.id, pet_id, id, 'favorite'])
+    history = Notification.where(['visitor_id = ? and visited_id = ? and diary_id = ? and action = ?',
+                                  pet.id, pet_id, id, 'favorite'])
     if history.blank?
       notification = pet.active_notifications.new(
         diary_id: id,
         visited_id: pet_id,
         action: 'favorite'
-        )
+      )
       # 自分で自分の日記にいいねした場合
-      if notification.visitor_id == notification.visited_id
-        notification.is_checked = true
-      end
+      notification.is_checked = true if notification.visitor_id == notification.visited_id
       notification.save if notification.valid?
     end
   end
 
   # 投稿にコメントされた時通知を生成するメソッド
   def create_notification_comment(pet, diary_comment_id)
-    history_ids = DiaryComment.select(:pet_id).where(diary_id: self.id).where.not(pet_id: pet.id).distinct
+    history_ids = DiaryComment.select(:pet_id).where(diary_id: id).where.not(pet_id: pet.id).distinct
     # 自分意外にもコメントしている人がいる場合、その全員に通知を送る
     if history_ids.blank?
       save_notification_comment(pet, diary_comment_id, pet_id)
@@ -44,6 +41,7 @@ class Diary < ApplicationRecord
       end
     end
   end
+
   def save_notification_comment(pet, diary_comment_id, visited_id)
     notification = pet.active_notifications.new(
       diary_id: id,
@@ -52,14 +50,7 @@ class Diary < ApplicationRecord
       action: 'comment'
     )
     # 自分で自分の投稿にコメントした場合
-    if notification.visitor_id == notification.visited_id
-      notification.is_checked = true
-    end
-    if notification.valid?
-      notification.save
-    end
+    notification.is_checked = true if notification.visitor_id == notification.visited_id
+    notification.save if notification.valid?
   end
-
-
-
 end

@@ -1,70 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ペッと！</title>
+    <title>Petto！</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag('favicon.ico') %>
+    <%# レスポンシブ対応 %>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--lightbox2(css)読み込み-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.css" integrity="sha512-Woz+DqWYJ51bpVk5Fv0yES/edIMXjj3Ynda+KWTIkGoynAMHrqTcDUQltbipuiaD5ymEo9520lyoVOo9jCQOCA==" crossorigin="anonymous" />
   </head>
-
   <body>
-    <header>
-      <div class="container">
-        <div class="row header-area">
-          <div class="col-3 d-flex align-items-center justify-content-center">
-            <div class="nav">
-              <% if owner_signed_in? %>
-                <li><%= link_to "みんなの日記", diaries_path %></li>
-                <li><%= link_to "みんなの思い出", "#" %></li>
-              <% else %>
-                <li><%= link_to "ペッと！について", '#' %></li>
-              <% end %>
-            </div>
-          </div>
-          <div class="col-3 offset-1 d-flex align-items-center justify-content-center">
-            <h1>ロゴ</h1>
-          </div>
-          <div class="ml-5 d-flex align-items-center justify-content-center">
-            <ul class="nav">
-              <% if owner_signed_in? %>
-                <li>
-                  <%= link_to pet_path(current_owner) do %>
-                    <i class="fas fa-home"></i><span> マイハウス</span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to notifications_path do %>
-                    <i class="far fa-bell"></i><sapn> お知らせ</sapn>
-                  <% end %>
-                </li>
-                <li><%= link_to "ログアウト", destroy_owner_session_path, method: :delete %></li>
-              <% else %>
-                <li><%= link_to "新規登録", new_owner_registration_path %></li>
-                <li><%= link_to "ログイン", new_owner_session_path %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </header>
-
+    
+    <%= render 'layouts/header' %>
+    
     <%= yield %>
-
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-
-          </div>
-          <div class="col-md-3 offset-md-6">
-            <%= link_to "Topへ戻る", root_path %>
-            <%= link_to "お問い合わせ", "#" %>
-          </div>
-        </div>
-      </div>
-    </footer>
-
+    
+    
+    <%= render 'layouts/footer' %>
+    
+    <!--fontawesome読み込み-->
+    <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" integrity="sha384-9/D4ECZvKMVEJ9Bhr3ZnUAF+Ahlagp1cyPC7h5yDlZdXs4DQ/vRftzfd+2uFUuqS" crossorigin="anonymous"></script>
+    <!--lightbox2(画像拡大)読み込み-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js" integrity="sha512-6gudNVbNM/cVsLUMOb8g2b/RBqtQJ3aDfRFgU+5paeaCTtbYY/Dg00MzZq7r6RvJGI2KKtPBhjkHGTL/iOe21A==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" integrity="sha512-k2GFCTbp9rQU412BStrcD/rlwv1PYec9SNrkbQlo6RZCf75l6KcC3UwDY8H5n5hl4v77IDtIPwOk9Dqjs/mMBQ==" crossorigin="anonymous"></script>
+    <!--フォント（Source Han Sans Japanese）読み込み-->
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'jeo8klg',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+    <!--jquery.bxslider(スライドショー)読み込み-->
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
   </body>
+    
 </html>

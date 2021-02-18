@@ -1,0 +1,93 @@
+// Place all the styles related to the memories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.memory-main-image {
+  width: 80%;
+}
+.memory-main-image img{
+  width: 100%;
+}
+.memory-title{
+  font-size: 30px;
+}
+.memory-contents {
+  margin: 20px 0;
+  padding: 5px 0;
+  border-top: 0.5px solid #D2B48C;
+}
+.memory-contents a{
+  color: black;
+}
+.name-link {
+  padding-top: 15px;
+  font-size: 20px;
+}
+.memory-detail {
+  padding-bottom: 15px;
+  border-bottom: 0.5px solid #D2B48C;
+}
+.memory-comment-box {
+  padding-top: 10px;
+  border-top: 0.5px solid #D2B48C;
+}
+.memory-form span{
+  font-size: 14px;
+  padding-top: 8px;
+  color: #808080;
+}
+.error-memory {
+  width: 400px;
+  color: #D25565;
+  text-align: center;
+  background-color: #F8E0E0;
+  border: 1px solid #D25565;
+  border-radius: 15px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.error-memory ul{
+  margin: auto;
+  padding-top: 15px;
+  list-style: none;
+}
+.error-memory li{
+  margin: 10px 0 10px -10px;
+}
+.memory-comment-box h6{
+  color: #D25565;
+}
+#memory-scroll {
+  height: 1200px;
+}
+@media (max-width: 767px) {
+ 
+  .memory-image-contents {
+    width: 150px;
+    height: 150px;
+  }
+  .memory-form {
+    width: 350px;
+  }
+  .memory-comment-form {
+    width: 260px;
+  }
+  .create-date {
+    font-size: 12px;
+  }
+}
+@media (max-width: 576px) {
+  .memory-main-image img{
+    height: 240px;
+  }
+  .memory-title {
+    font-size: 22px;
+    font-weight: 400;
+  }
+  .memory-body {
+    font-size: 12px;
+  }
+  .memory-icons {
+    font-size: 11px;
+  }
+}

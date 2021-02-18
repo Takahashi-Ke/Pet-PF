@@ -1,2 +1,0 @@
-class DiaryFavorite < ApplicationRecord
-end

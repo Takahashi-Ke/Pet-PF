@@ -1,41 +1,15 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-3">
-      <%= render 'pets/pet_info', pet: @pet %>
+    <div class="chat-pet d-none d-lg-block col-lg-2">
+      <%= render 'chat_pet', pet: @pet %>
     </div>
-    <div class="col-7">
-      <div class="row">
-        <%= @pet.name %>
-      </div>
-      <div class="row chat-area">
-        <% @chats.each do |chat| %>
-          <% if chat.pet_id == current_owner.pet.id %>
-            <div class="col-1 offset-5 chat-time">
-              <%= chat.created_at.strftime('%H:%M') %>
-            </div>
-            <div class="col-4 chat-message" id="mine-message">
-              <%= chat.message %>
-            </div>
-          <% else %>
-            <div class="col-4 chat-message">
-              <%= chat.message %>
-            </div>
-            <div class="col-2 chat-time">
-              <%= chat.created_at.strftime('%H:%M') %>
-            </div>
-            <div class="col-5"></div>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="row">
-        <%= form_with model: [@pet, @chat], url: pet_chats_path(room_id: @room.id), local: true do |f| %>
-          <%= f.text_area :message %>
-          <%= f.submit "送信", class:"btn" %>
-        <% end %>
+    <div class="col-12 col-lg-7 offset-lg-1">
+      <div class="chat-contents">
+        <%= render 'chat_contents', pet: @pet, chats: @chats, room: @room, chat: @chat %>
       </div>
     </div>
-    <div class="col-2">
-      <%= render 'pets/pet_info', pet: current_owner.pet %>
+    <div class="chat-pet d-none d-lg-block col-lg-2" id="chat-me">
+      <%= render 'chat_pet', pet: current_owner.pet, room: @room, chat: @chat %>
     </div>
   </div>
 </div>

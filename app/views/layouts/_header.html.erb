@@ -1,0 +1,162 @@
+<header>
+  <div class="container-fluid">
+    <!--PC画面サイズヘッダー-->
+    <div class="row big-header">
+      <%# ヘッダー左側 %>
+      <div class="col-md-4 col-lg-4">
+        <div class="row mt-4">
+          <% if owner_signed_in? %>
+            <div class="col-md-4 col-lg-3 offset-lg-2">
+              <%= link_to  diaries_path do %>
+                  <i class="fas fa-pencil-alt header-icon"></i><br />
+                  <p>日記</p>
+              <% end %>
+            </div>
+            <div class="col-md-4 col-lg-3">
+              <%= link_to  memories_path do %>
+                <i class="fas fa-paw header-icon"></i><br />
+                <p>思い出</p>
+              <% end %>
+            </div>
+            <div class="col-md-4 col-lg-3">
+              <%= link_to  pet_pet_rooms_path(current_owner.pet) do %>
+                <i class="fas fa-comments header-icon"></i><br />
+                <p>会話</p>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="col-8 offset-3 mt-3">
+              <%= link_to "Petto！について", about_path %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+        
+      <%# ヘッダー中央(ロゴ) %>
+      <div class="col-md-3 col-lg-4 mt-3">
+        <div class="text-center">
+          <%= link_to root_path do %>
+            <%= image_tag 'petto_logo.png', size:'160x90' %>
+          <% end %>
+        </div>
+      </div>
+      
+      <%# ヘッダー右側 %>
+      <div class="col-md-5 col-lg-4">
+        <div class="row mt-4">
+          <% if owner_signed_in? %>
+            <div class="col-md-4">
+              <%= link_to pet_path(current_owner) do %>
+                <i class="fas fa-home header-icon" id="home-icon"></i><br />
+                <p>マイハウス</p>
+              <% end %>
+            </div>
+            <div class="col-md-4">
+              <%= link_to notifications_path do %>
+                <span class="fa-layers" id="bell-icon">
+                  <i class="fas fa-bell header-icon"></i>
+                  <% if current_owner.pet.unchecked_notifications(current_owner.pet).present? %>
+                    <span class="fa-layers-text fa-inverse notifications"><%= current_owner.pet.unchecked_notifications(current_owner.pet).count %></span>
+                  <% end %>
+                </span><br />
+                <p>お知らせ</p>
+              <% end %>
+            </div>
+            <div class="col-md-4">
+              <%= link_to  destroy_owner_session_path, method: :delete do %>
+                <i class="fas fa-door-closed header-icon"></i><br />
+                <p>ログアウト</p>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="col-4 mt-3">
+              <%= link_to "新規登録", new_owner_registration_path %>
+            </div>
+            <div class="col-4 mt-3">
+              <%= link_to "ログイン", new_owner_session_path %>
+            </div>
+            <div class="col-4 mt-3">
+              <%= link_to owners_guest_sign_in_path, method: :post do %>
+                ゲストログイン<br />(閲覧用)
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+      
+    </div>
+    
+    <!--スマホ画面サイズヘッダー-->
+    <div class="row mini-header">
+      <div class="col-3 pt-1">
+        <%= link_to root_path do %>
+          <%= image_tag 'petto_logo_min.png', size:'90x50' %>
+        <% end %>
+      </div>
+      
+      <!--ハンバーガーメニュー-->
+      <div id="sp-menu" class="col-12">
+        <ul>
+          <% if owner_signed_in? %>
+            <li>
+              <%= link_to pet_path(current_owner) do %>
+                <i class="fas fa-home"></i>
+                <span>　マイハウス</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to notifications_path do %>
+                <i class="fas fa-bell"></i>
+                <span>　お知らせ</span>
+                <% if current_owner.pet.unchecked_notifications(current_owner.pet).present? %>
+                  <span class="fas fa-circle"></span>
+                <% end %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  pet_pet_rooms_path(current_owner.pet) do %>
+                <i class="fas fa-comments"></i>
+                <span>　会話</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  diaries_path do %>
+                <i class="fas fa-pencil-alt"></i>
+                <span>　日記</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  memories_path do %>
+                <i class="fas fa-paw "></i>
+                <span>　思い出</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to  destroy_owner_session_path, method: :delete do %>
+                <i class="fas fa-door-closed"></i>
+                <span>　ログアウト</span>
+              <% end %>
+            </li>
+          <% else %>
+            <li><%= link_to "新規登録", new_owner_registration_path %></li>
+            <li><%= link_to "ログイン", new_owner_session_path %></li>
+            <li>
+              <%= link_to "ゲストログイン", owners_guest_sign_in_path, method: :post %><br />
+              (閲覧用)
+            </li>
+            <li><%= link_to "Petto！について", about_path %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div id="hm-icon">
+        <a class="menu-trigger" href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</header>

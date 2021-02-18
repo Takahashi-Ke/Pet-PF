@@ -1,44 +1,52 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-3">
-      <%= render 'pets/pet_info', pet: @pet %>
-    </div>
-    <div class="col-9">
-        <div class="row">
-          <h2>お知らせ</h2>
+    <%= render 'pets/pet_info', pet: @pet %>
+    <div class="col-12 col-lg-8 ml-xl-5">
+        <div class="row ml-3 mb-2">
+          <h4>お知らせ</h4>
         </div>
-        <% @notifications.each do |notification| %>
-          <div class="row mt-5">
-            <div class="col-1">
-              <%= link_to pet_path(notification.visitor) do %>
-                <%= attachment_image_tag notification.visitor, :image, size: '70x70', fallback: "no_image.png" %>
-              <% end %>
+        <div class="scroll-area">
+          <% if @notifications.exists? %>
+            <% @notifications.each do |notification| %>
+              <div class="contents-box">
+                <div class="row mt-2 mb-2">
+                  <div class="col-8 order-1 col-sm-1 order-sm-1">
+                    <%= link_to pet_path(notification.visitor) do %>
+                      <%= attachment_image_tag notification.visitor, :image, size: '70x70', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
+                    <% end %>
+                  </div>
+                  <div class="col-11 order-3 col-sm-8 order-sm-2 notification-contents">
+                    <%= link_to notification.visitor.name, pet_path(notification.visitor), class:"visitor-name" %><span>さん</span>
+                      <% if notification.diary.present? %>
+                        <%= render 'diary_notification_list', notification: notification %>
+                      <% elsif notification.memory.present? %>
+                        <%= render 'memory_notification_list', notification: notification %>
+                      <% else %>
+                        <%= render 'chat_notification_list', notification: notification, pet: @pet %>
+                      <% end %> 
+                  </div>
+                  <div class="col-3 order-2 mt-2 col-sm-2 order-sm-3 mt-sm-4 post-date">
+                    <%= time_ago_in_words(notification.created_at) %>前
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="row mt-5 ml-5 no-contents">
+              <p>お知らせはありません</p>
             </div>
-            <div class="col-3">
-              <%= link_to notification.visitor.name, pet_path(notification.visitor) %><span>さんが</span>
-            </div>
-            <div class="col-5">
-              <% case notification.action %>
-                <% when 'follow' then %>
-                  <p>あなたをフォローしました</p>
-                <% when 'favorite' then %>
-                  <p>あなたの日記にいいねしました</p>
-                <% when 'comment' then %>
-                  <% if notification.diary.pet_id == notification.visited.id %>
-                    <span>あなたの日記に</span>
-                  <% else %>
-                    <%= attachment_image_tag notification.diary.pet, :image, size: '70x70', fallback: "no_image.png" %>
-                    <span><%= notification.diary.pet.name %>さんの投稿に</span>
-                  <% end %>
-                <span>コメントしました</span>
-                <%= notification.diary.body %>
-              <% end %>
-            </div>
-            <div class="col-2">
-              <%= time_ago_in_words(notification.created_at) %>前
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
+        
     </div>
+  </div>
+  <div class="modal-wrapper"></div>
+  <!--日記新規投稿-->
+  <div class="diary-modal">
+    <%= render 'diaries/diary_form', diary: @diary, pet: @pet %>
+  </div>
+  <%# 日記投稿ボタン（スマホ対応） %>
+  <div class="d-block d-lg-none add-diary-mini-btn">
+    <i class="fas fa-pencil-alt"></i>
   </div>
 </div>

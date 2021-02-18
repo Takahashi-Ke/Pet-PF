@@ -14,47 +14,95 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require cocoon
 //= require bootstrap-sprockets
 //= require_tree .
 
 /* global $*/
+// bxslider設定
+$(document).on("turbolinks:load",function(){
+  $('.bxslider').bxSlider({
+		auto: true,
+		pause: 5000,
+	});
+});
+
+// ハンバーガーメニュー
+$(document).on("turbolinks:load",function(){
+  $('.menu-trigger').on('click', function(event) {
+    $(this).toggleClass('active');
+    $('#sp-menu').slideToggle();
+    event.preventDefault();
+  });
+});
+
+
+// 文字数カウント
+$(document).on("turbolinks:load", function(){
+  var count = $('.js-text').text().length;
+  $(".js-text-count").text( count + "/120");
+  // 文字が入力される度発火
+  $(".js-text").on("keyup", function() {
+    var count = $(this).val().replace(/\n/g, "改行").length;
+    if(count > 120){
+      $(".js-text-count").css("color","#D25565");
+    }else{
+      $(".js-text-count").css("color","#333333");
+    }
+    $(".js-text-count").text( count + "/120");
+  });
+});
+
+
 
 // 画像プレビュー
-$(document).on("turbolinks:load", function(){
+$(document).on("click", ".owner-image", function(){
   function readURL(input) {
     if(input.files && input.files[0]){
       var reader = new FileReader();
       reader.onload = function (e) {
-        $('.owner_prev').attr('src', e.target.result);
+          $('.owner-prev').attr('src', e.target.result);
       }
       reader.readAsDataURL(input.files[0]);
     }
   }
-  $("#owner_image").change(function(){
+  $(".owner-image").change(function(){
     readURL(this);
   });
-  $("#pet_image").change(function(){
+});
+$(document).on("click", ".pet-image", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $('.pet-prev').attr('src', e.target.result);
+        
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $(".pet-image").change(function(){
     readURL(this);
   });
 });
 
 // モーダルウィンドウ
 // 表示
-$(function() {
-  $(document).on('click', '.add-diary-button', function() {
+$(document).on("turbolinks:load", function(){
+  $(document).on('click', '.add-diary-button, .add-diary-mini-btn', function() {
     $('.modal-wrapper').show();
-    $('.diary-modal').show();
+    $('.diary-modal').fadeIn();
   });
   $(document).on('click', '.select-personality-btn', function() {
     $('.modal-wrapper').show();
-    $('.personality-modal').show();
+    $('.personality-modal').fadeIn();
   });
-});
+  });
 // 非表示
 $(document).on('click', '.modal-wrapper, .hide-modal-btn', function() {
     $('.modal-wrapper').hide();
-    $('.diary-modal').hide();
-    $('.personality-modal').hide();
+    $('.diary-modal').fadeOut();
+    $('.personality-modal').fadeOut();
 })
 
 // タブ切り替え
@@ -71,10 +119,30 @@ $(document).on("turbolinks:load", function(){
   });
 });
 
+
+
+/* global diaryId*/
 // コメント表示
+
 $(document).on("turbolinks:load", function(){
   $('.comment-box').hide();
-  $('.comment-btn').on('click', function(){
-    $('.comment-box').toggle();
-  });
+  // 変数の中身(個数)取得
+  var $diaryComment = $('.diary-comment-id');
+  // i=index,elm=diaryCommentの値
+  $diaryComment.each(function(i, elm) {
+    (function() {
+      var diaryId = $(elm).val();
+      (function() {
+        $('#comment-btn-'+diaryId+'').on('click', function(){
+          $('#comment-'+diaryId+'').slideToggle();
+        });
+      })(diaryId);
+    })(elm);
+  })
+});
+
+// チャットを下端へスクロールする
+$(document).on('turbolinks:load', function() {
+  // $('.chat-area').get(0).scrollHeight;
+　$('.chat-area').animate({scrollTop: $('.chat-area')[0].scrollHeight}, 'fast');
 });

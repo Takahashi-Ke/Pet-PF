@@ -1,22 +1,41 @@
-<div class="row">
-  <%= pet.name %>
-</div>
-<div class="row">
-  <%= attachment_image_tag pet, :image, size: '120x120', fallback: "no_image.png" %>
-</div>
-<div class="row">
-  <div class="col-3">
-    <%= attachment_image_tag pet.owner, :image, size: '80x80', fallback: "no_image.png" %>
+<div class="col-lg-3 col-xl-2 d-none d-lg-block pet-sidebar">
+  <div class="row">
+    <div class="mx-auto">
+      <%= link_to pet_path(pet) do %>
+        <%= attachment_image_tag pet, :image, size: '120x120', fallback: "pet_no_image.png", class:"rounded-circle icon-img"  %>
+      <% end %>
+    </div>
   </div>
-  <div class="col-5">
+  <div class="row mt-2 mb-2 justify-content-center">
+    <h5><%= link_to pet.name, pet_path(pet) %></h5>
+  </div>
+  
+  <div class="row justify-content-center">
+    <%= attachment_image_tag pet.owner, :image, size: '80x80', fallback: "owner_no_image.png", class:"rounded-circle icon-img" %>
+  </div>
+  <div class="row justify-content-center">
     <%= pet.owner.name %>
   </div>
-</div>
-<div class="row">
-  <p>友だち（<%= @pet.following_pets.count%>）</p>
-</div>
-<div class="row">
-  <div class="add-diary-button">
-    日記を書く
+    
+  <div class="row mt-3">
+    <div class="mx-auto">
+      <p>友だち（<%= pet.following_pets.count%>）</p>
+    </div>
   </div>
+  
+  <div class="note-box">
+    <ul>
+      <li><%= link_to "いいねリスト", favorites_path %></li>
+      <li><%= link_to "会話リスト", pet_pet_rooms_path(pet) %></li>
+      <li>
+        <div class="add-diary-button">
+          日記を書く
+        </div>
+      </li>
+      <li><%= link_to "思い出を見る", memories_path(pet_id: pet) %></li>
+      <li><%= link_to "思い出を作る", new_memory_path %></li>
+      <li><%= link_to "プロフィール編集", edit_pet_path(pet) %></li>
+    </ul>
+  </div>
+  
 </div>

@@ -2,46 +2,59 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#tab-menu {
-  display: flex;
-  padding: 0;
-  margin: 0;
-}
-#tab-menu li {
-  list-style-type: none;
-  width: 25%;
-}
-#tab-menu li a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  padding: 20px;
-  text-align: center;
-  background: #000;
-  border: 1px solid #000;
-  border-bottom: none;
-}
 
-#tab-menu .active {
-  background: #fff;
-  color: #000;
-}
-#tab-contents {
-  display: flex;
-  flex-wrap: wrap;
-}
-#tab-contents .tab {
-  width: 100%;
-  padding: 30px;
-  background: #fff;
-  border: 1px solid #000;
-  border-top: none;
-}
-#tab-contents p {
-  color: #000;
-  line-height: 2.5;
-}
 .gender-icon {
   font-size: 1.3em;
   color: #444444;
 }
+.frend-count {
+  text-align: center;
+}
+.no-contents {
+  margin-top: 120px;
+  font-size: 18px;
+  text-align: center;
+}
+.personality-table th{
+  font-weight: normal;
+  border-bottom: dashed 1px #D2B48C;
+}
+.personality-table td{
+  padding-left: 10px;
+  border-bottom: dashed 1px #D2B48C;
+}
+.pet-introduction {
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #D2B48C;
+  border-radius: 15px;
+}
+.pet-introduction-sub {
+  margin: 10px 0;
+  padding-left: 100px;
+  width: 650px;
+}
+.pet-nav ul{
+  border-bottom: dashed 1px #D2B48C;
+}
+.pet-nav li {
+  padding: 5px 20px;
+}
+.pet-nav li:first-child {
+  padding-left: 0;
+}
+#memories_calendar {
+  background-color: #fff;
+}
+@media (max-width: 576px) {
+  .pet-info {
+    margin-left: 60px;
+  }
+  .pet-info h3 {
+    font-size: 22px;
+  }
+  .pet-introduction-sub {
+    width: 80%;
+  }
+}
+
