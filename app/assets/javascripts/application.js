@@ -12,15 +12,22 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery
 //= require cocoon
 //= require bootstrap-sprockets
 //= require_tree .
 
 /* global $*/
+
+/* global location*/
+window.onpageshow = function(evt) {
+    if (evt.persisted) {
+      location.reload();
+    }
+};
+
 // bxslider設定
-$(document).on("turbolinks:load",function(){
+$(document).ready(function(){
   $('.bxslider').bxSlider({
 		auto: true,
 		pause: 5000,
@@ -28,7 +35,7 @@ $(document).on("turbolinks:load",function(){
 });
 
 // ハンバーガーメニュー
-$(document).on("turbolinks:load",function(){
+$(document).ready(function(){
   $('.menu-trigger').on('click', function(event) {
     $(this).toggleClass('active');
     $('#sp-menu').slideToggle();
@@ -38,7 +45,7 @@ $(document).on("turbolinks:load",function(){
 
 
 // 文字数カウント
-$(document).on("turbolinks:load", function(){
+$(document).ready(function(){
   var count = $('.js-text').text().length;
   $(".js-text-count").text( count + "/120");
   // 文字が入力される度発火
@@ -56,7 +63,7 @@ $(document).on("turbolinks:load", function(){
 
 
 // 画像プレビュー
-$(document).on("click", ".owner-image", function(){
+$(document).ready(function(){
   function readURL(input) {
     if(input.files && input.files[0]){
       var reader = new FileReader();
@@ -88,7 +95,7 @@ $(document).on("click", ".pet-image", function(){
 
 // モーダルウィンドウ
 // 表示
-$(document).on("turbolinks:load", function(){
+$(document).ready(function(){
   $(document).on('click', '.add-diary-button, .add-diary-mini-btn', function() {
     $('.modal-wrapper').show();
     $('.diary-modal').fadeIn();
@@ -106,10 +113,10 @@ $(document).on('click', '.modal-wrapper, .hide-modal-btn', function() {
 })
 
 // タブ切り替え
-$(document).on("turbolinks:load", function(){
+$(document).ready(function(){
   $('#tab-contents .tab[id != "tab1"]').hide();
 });
-$(document).on("turbolinks:load", function(){
+$(document).ready(function(){
   $('#tab-menu a').on('click', function(event) {
     $("#tab-contents .tab").hide();
     $("#tab-menu .active").removeClass("active");
@@ -124,7 +131,7 @@ $(document).on("turbolinks:load", function(){
 /* global diaryId*/
 // コメント表示
 
-$(document).on("turbolinks:load", function(){
+$(document).ready(function(){
   $('.comment-box').hide();
   // 変数の中身(個数)取得
   var $diaryComment = $('.diary-comment-id');
@@ -142,7 +149,6 @@ $(document).on("turbolinks:load", function(){
 });
 
 // チャットを下端へスクロールする
-$(document).on('turbolinks:load', function() {
-  // $('.chat-area').get(0).scrollHeight;
+$(document).ready(function(){
 　$('.chat-area').animate({scrollTop: $('.chat-area')[0].scrollHeight}, 'fast');
 });
