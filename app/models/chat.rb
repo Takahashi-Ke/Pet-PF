@@ -6,7 +6,7 @@ class Chat < ApplicationRecord
   
   def message_date(chat)
     today_message = Chat.find_by(room_id: chat.room_id, created_at: Date.today.all_day)
-    if chat.id == today_message.id
+    if today_message.present? && chat.id == today_message.id
       return true
     end
   end
