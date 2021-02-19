@@ -2,7 +2,7 @@ class DiariesController < ApplicationController
   def index
     @pet = current_owner.pet
     @diary = Diary.new
-    @diaries = Diary.includes(:diary_comments).all.reverse_order
+    @diaries = Diary.includes(:diary_comments).page(params[:page]).per(5).reverse_order
   end
   
   def show
