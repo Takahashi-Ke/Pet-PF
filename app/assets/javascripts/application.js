@@ -10,21 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery.jscroll.min.js
 //= require rails-ujs
 //= require activestorage
-//= require jquery
 //= require cocoon
 //= require bootstrap-sprockets
 //= require_tree .
 
 /* global $*/
 
-/* global location*/
-window.onpageshow = function(evt) {
-    if (evt.persisted) {
-      location.reload();
-    }
-};
+
 
 // bxslider設定
 $(document).ready(function(){
@@ -130,7 +126,6 @@ $(document).ready(function(){
 
 /* global diaryId*/
 // コメント表示
-
 $(document).ready(function(){
   $('.comment-box').hide();
   // 変数の中身(個数)取得
@@ -148,7 +143,22 @@ $(document).ready(function(){
   })
 });
 
+
+
+// jscroll無限スクロール
+$(window).on('scroll', function() {
+  scrollHeight = $(document).height();
+  scrollPosition = $(window).height() + $(window).scrollTop();
+  if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+    $('.jscroll').jscroll({
+      contentSelector: '.scroll-list',
+      nextSelector: 'span.next:last a'
+    });
+  }
+});
+
 // チャットを下端へスクロールする
 $(document).ready(function(){
-　$('.chat-area').animate({scrollTop: $('.chat-area')[0].scrollHeight}, 'fast');
+  var $scrollAuto = $('.chat-area');
+　$('.chat-area').animate({scrollTop: $scrollAuto[0].scrollHeight}, 'fast');
 });
