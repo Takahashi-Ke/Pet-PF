@@ -1,4 +1,5 @@
 <div class="container-fluid">
+  
   <div class="pet-info">
     <div class="row ml-sm-5">
       <div class="col-12 col-sm-3 offset-sm-1">
@@ -6,10 +7,10 @@
       </div>
       <div class="col-12 col-sm-8">
         <div class="row mt-2">
-          <div class="col-12 col-sm-5">
+          <div class="col-12">
             <h3><%= @pet.name %></h3>
           </div>
-          <div class="col-6 col-sm-5 ml-sm-4 follow-btn-<%= @pet.id %>">
+          <div class="col-6 offset-1 mt-3 follow-btn-<%= @pet.id %>">
             <%= render 'relationships/follow', pet: @pet %>
           </div>
         </div>
@@ -45,23 +46,16 @@
               </table>
             </div>
           </div>
-          <div class="col-12 col-sm-6">
-            <div class="row">
-              <div class="col-5 col-sm-12">
-                <%= attachment_image_tag @pet.owner, :image, size: '100x100', fallback: "owner_no_image.png", class:"rounded" %>
-              </div>
-              <div class="col-5 col-sm-12">
-                <%= @pet.owner.name %>
-              </div>
-            </div>
-          </div>
         </div>
-         
-        <div class="row mt-3">
-          <div class="col-10 col-sm-9 pet-introduction pl-5">
-            <%= simple_format(@pet.introduction) %>
-          </div>
-        </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2 offset-1">
+         <%= attachment_image_tag @pet.owner, :image, size: '100x100', fallback: "owner_no_image.png", class:"rounded" %>
+         <%= @pet.owner.name %>
+      </div>
+      <div class="col-7 pet-introduction pl-5">
+        <%= simple_format(@pet.introduction) %>
       </div>
     </div>
   </div>
