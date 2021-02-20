@@ -2,25 +2,27 @@
 <%= hidden_field diary, :id, :multiple => true, :value => diary.id, class: 'diary-comment-id'%>
   <div class="contents-box ml-3 mt-2">
     <div class="row">
-      <div class="col-1 mr-4">
+      <div class="col-2 col-sm-2">
         <%= link_to  pet_path(diary.pet) do %>
-          <%= attachment_image_tag diary.pet, :image, size: '60x60', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
+          <%= attachment_image_tag diary.pet, :image, size: '80x80', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
         <% end %>
       </div>
-      <div class="col-10">
+      <div class="col-9 col-sm-10">
         <div class="row mt-2">
-          <div class="col-6">
+          <div class="col-12 col-sm-6">
             <h5><%= link_to diary.pet.name, pet_path(diary.pet) %></h5>
           </div>
-          <div class="col-6 post-date">
+          <div class="col-12 col-sm-6 post-date">
             <%= diary.created_at.to_s(:datetime_jp) %>
           </div>
         </div>
-        <div class="diary-body">
-          <%= diary.body %>
-        </div>
+        <%= link_to diary_path(diary) do %>
+          <div class="diary-body">
+            <%= diary.body %>
+          </div>
+        <% end %>
         <% if diary.image.present? %>
-          <div class="row d-flex justify-content-center">
+          <div class="row justify-content-center">
             <%= link_to diary.image_url, "data-lightbox" => diary.image do %>
               <%= image_tag diary.image_url, size:'200x200'%>
             <% end %>
@@ -29,10 +31,10 @@
       </div>
     </div>
     <div class="row mt-2">
-      <div class="col-2 offset-6 diary-comment-count" id="comment-btn-<%= diary.id %>">
+      <div class="col-2 offset-6" id="comment-btn-<%= diary.id %>">
         <%= render 'diary_comments/diary_comments_count', diary: diary %>
       </div>
-      <div class="col-2 favorite-btn-<%= diary.id %>">
+      <div class="col-2 favorite-btn-<%= diary.id %> diary-favo-count">
         <% if owner_signed_in? %>
           <%= render 'favorites/favo', diary: diary %>
         <% else %>
@@ -43,7 +45,7 @@
       
       <!--日記削除ボタン-->
       <% if owner_signed_in? && diary.pet == current_owner.pet %>
-        <div class="col-2">
+        <div class="col-2 diary-delete">
           <%= link_to diary_path(diary), method: :delete, data: {confirm: "削除します。よろしいですか？"},class:"trash-icon" do %>
             <i class="far fa-trash-alt"></i>
           <% end %>
@@ -53,9 +55,10 @@
 
     <!--コメント一覧-->
     <% if owner_signed_in? %>
-      <%= render 'diary_comments/diary_comments_list', diary: diary %>
+      <div class="comment-box" id="comment-<%= diary.id %>">
+        <%= render 'diary_comments/diary_comments_list', diary: diary %>
+      </div>
     <% end %>
 
   </div>
 <% end %>
-<%#= paginate diaries %>

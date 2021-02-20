@@ -1,5 +1,4 @@
 class MemoryCommentsController < ApplicationController
-  
   def create
     @memory = Memory.find(params[:memory_id])
     @memory_comment = MemoryComment.new(memory_params)
@@ -15,7 +14,7 @@ class MemoryCommentsController < ApplicationController
       @diary = Diary.new
     end
   end
-  
+
   def destroy
     @memory = Memory.find(params[:memory_id])
     @memory_comment = MemoryComment.find(params[:id])
@@ -24,8 +23,8 @@ class MemoryCommentsController < ApplicationController
   end
 
   private
+
   def memory_params
     params.require(:memory_comment).permit(:comment)
   end
-  
 end

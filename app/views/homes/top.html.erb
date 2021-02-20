@@ -7,9 +7,6 @@
         <% end %>
       <% end %>
     </div>
-    <div class="text-center mt-5">
-      <h5>ペットとの毎日をもっと楽しく、ずっと大切に</h5>
-    </div>
     <ul class="bxslider">
       <li><%= image_tag 'slider_1.png',size:'1900x700',class:"mt-5" %></li>
       <li><%= image_tag 'slider_2.png',size:'1900x700',class:"mt-5" %></li>
@@ -20,7 +17,7 @@
       <li><%= image_tag 'slider_7.png',size:'1900x700',class:"mt-5" %></li>
     </ul>
     <div class="row ml-4">
-      <div class="col-6 ml-5">
+      <div class="col-lg-6 ml-5">
         <div class="row">
           <p>今週のベストショット</p>
         </div>
@@ -35,12 +32,12 @@
             <% end %>
           </ul>
         <% else %>
-          <div class="row mt-5 ml-5">
-            <h6>今週投稿された写真はありません</h6>
+          <div class="mt-4 no-photo">
+            <h6 class="mt-5 ml-5">今週投稿された写真はありません</h6>
           </div>
         <% end %>
         <div class="row">
-          <div class="col-3 offset-9">
+          <div class="col-lg-3 offset-9">
             <%= link_to "もっと見る>>", diaries_path %>
           </div>
         </div>
@@ -49,7 +46,7 @@
         </div>
         <div class="scroll-horizontal mt-4">
           <% @pets.each do |pet|%>
-            <div class="col-4 scroll-item">
+            <div class="col-lg-4 scroll-item">
                 <div class="text-center">
                   <%= attachment_image_tag pet, :image, size:"150x150", fallback: "pet_no_image.png", class:"rounded-circle icon-img mr-5" %>
                 </div>
@@ -68,12 +65,12 @@
           <% end %>
         </div>
         <div class="row">
-          <div class="col-3 offset-9 mt-2">
+          <div class="col-lg-3 offset-9 mt-2">
             <%= link_to "もっと見る>>", diaries_path %>
           </div>
         </div>
       </div>
-      <div class="col-4">
+      <div class="col-lg-4">
         <div class="row ml-3">
           <p>本日の投稿</p>
         </div>
@@ -89,7 +86,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-4 offset-8">
+          <div class="col-lg-4 offset-8">
             <%= link_to "もっと見る>>", diaries_path %>
           </div>
         </div>

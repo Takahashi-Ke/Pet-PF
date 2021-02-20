@@ -1,4 +1,4 @@
-<div class="pet-sidebar">
+<div class="col-lg-3 col-xl-2 d-none d-lg-block pet-sidebar">
   <div class="row">
     <div class="mx-auto">
       <%= link_to pet_path(pet) do %>
@@ -6,29 +6,29 @@
       <% end %>
     </div>
   </div>
-  <div class="row mt-2 mb-2 d-flex align-items-center justify-content-center">
+  <div class="row mt-2 mb-2 justify-content-center">
     <h5><%= link_to pet.name, pet_path(pet) %></h5>
   </div>
   
-  <div class="row d-flex justify-content-center">
+  <div class="row justify-content-center">
     <%= attachment_image_tag pet.owner, :image, size: '80x80', fallback: "owner_no_image.png", class:"rounded-circle icon-img" %>
   </div>
-  <div class="row d-flex align-items-center justify-content-center">
-    <i class="fas fa-user-alt"></i><span class="pl-1 mt-1"><%= pet.owner.name %></span>
+  <div class="row justify-content-center">
+    <%= pet.owner.name %>
   </div>
-
     
-  <div class="row mt-3 frend-count">
+  <div class="row mt-3">
     <div class="mx-auto">
       <p>友だち（<%= pet.following_pets.count%>）</p>
     </div>
   </div>
+  
   <div class="note-box">
     <ul>
       <li><%= link_to "いいねリスト", favorites_path %></li>
       <li><%= link_to "会話リスト", pet_pet_rooms_path(pet) %></li>
       <li>
-        <div class="add-diary-button mx-auto">
+        <div class="add-diary-button">
           日記を書く
         </div>
       </li>
@@ -37,5 +37,5 @@
       <li><%= link_to "プロフィール編集", edit_pet_path(pet) %></li>
     </ul>
   </div>
-    
+  
 </div>

@@ -1,30 +1,28 @@
-<div class="comment-box" id="comment-<%= diary.id %>">
-  <%# input name: "diary-comment-id", type: "hidden", value: diary.id, class: 'diary-comment-id' %>
   <div class="row">
-    <div class="col-10 offset-1">
+    <div class="col-11 offset-1 col-sm-10 offset-sm-2">
       <% diary.diary_comments.each do |dc| %>
         <div class="row mt-2 mb-3 contents-box">
-          <div class="col-2">
+          <div class="col-3 col-sm-2">
             <%= link_to  pet_path(dc.pet) do %>
               <%= attachment_image_tag dc.pet, :image, size: '60x60', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
             <% end %>
           </div>
-          <div class="col-10">
+          <div class="col-9 col-sm-10">
             <div class="row">
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <%= link_to dc.pet.name, pet_path(dc.pet) %>
               </div>
-              <div class="col-6 post-date">
+              <div class="col-12 col-sm-6 post-date">
                 <%= dc.created_at.to_s(:datetime_jp) %>
               </div>
             </div>
             
             <div class="row">
-              <div class="col-9 mt-2 ml-5">
+              <div class="col-12 mt-2 post-comment">
                 <%= dc.comment %>
               </div>
               <% if dc.pet == current_owner.pet %>
-                <div class="col-1 mt-2 trash-icon">
+                <div class="col-3 offset-8 mt-2 trash-icon">
                   <%= link_to diary_comment_path(dc, diary_id: diary.id), method: :delete, remote: true do %>
                     <i class="far fa-trash-alt"></i>
                   <% end %>
@@ -36,18 +34,4 @@
       <% end %>
     </div>
   </div>
-  <div class="row mt-2">
-    <div class="col-10 offset-2">
-      <%= form_with model: DiaryComment.new, url: diary_comments_path(pet_id: current_owner.pet, diary_id: diary), remote: true do |f| %>
-        <%= f.text_area :comment, size: '45x2', placeholder: 'コメントを書く' %>
-        <div class="row">
-          <div class="col-12 clearfix">
-            <div class="float-right">
-              <%= f.submit 'コメントする', class:"btn-layout" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+  <%= render 'diary_comments/diary_comment_form', diary: diary %>

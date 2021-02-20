@@ -2,9 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.memory-date {
-  font-size: 13px;
-  line-height: 30px;
+.memory-main-image {
+  width: 80%;
+}
+.memory-main-image img{
+  width: 100%;
 }
 .memory-title{
   font-size: 30px;
@@ -28,11 +30,6 @@
 .memory-comment-box {
   padding-top: 10px;
   border-top: 0.5px solid #D2B48C;
-}
-.memory-body {
-  width: 100%;
-  overflow: scroll;
-  height: 400px;
 }
 .memory-form span{
   font-size: 14px;
@@ -62,4 +59,35 @@
 }
 #memory-scroll {
   height: 1200px;
+}
+@media (max-width: 767px) {
+ 
+  .memory-image-contents {
+    width: 150px;
+    height: 150px;
+  }
+  .memory-form {
+    width: 350px;
+  }
+  .memory-comment-form {
+    width: 260px;
+  }
+  .create-date {
+    font-size: 12px;
+  }
+}
+@media (max-width: 576px) {
+  .memory-main-image img{
+    height: 240px;
+  }
+  .memory-title {
+    font-size: 22px;
+    font-weight: 400;
+  }
+  .memory-body {
+    font-size: 12px;
+  }
+  .memory-icons {
+    font-size: 11px;
+  }
 }

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :owner
+  devise_scope :owner do
+    post 'owners/guest_sign_in', to: 'owners/sessions#new_guest'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'homes#top'
   get 'about' => 'homes#about'
@@ -14,7 +17,7 @@ Rails.application.routes.draw do
     resources :pet_rooms, only: [:index]
     resources :relationships, only: [:create, :destroy]
   end
-  resources :diaries, only: [:index, :create, :destroy]
+  resources :diaries, only: [:index, :show, :create, :destroy]
   resources :diary_comments, only: [:create, :destroy]
   resources :memories
   resources :memory_comments, only: [:create, :destroy]

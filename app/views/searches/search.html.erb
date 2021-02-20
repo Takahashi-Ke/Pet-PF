@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <%= render 'pets/pet_info', pet: current_owner.pet %>
-    <div class="col-6 ml-5">
+    <div class="col-12 col-lg-9 col-xl-7">
       
       <!--検索条件表示-->
       <div class="row ml-5 mt-2 mb-3 d-flex align-items-center">
@@ -130,5 +130,9 @@
   <div class="modal-wrapper"></div>
   <div class="diary-modal">
     <%= render 'diaries/diary_form', diary: @diary, pet: current_owner.pet %>
+  </div>
+  <%# 日記投稿ボタン（スマホ対応） %>
+  <div class="d-block d-lg-none add-diary-mini-btn">
+    <i class="fas fa-pencil-alt"></i>
   </div>
 </div>

@@ -1,9 +1,11 @@
-![petto_logo](https://user-images.githubusercontent.com/71317975/104673914-02116400-5726-11eb-9aab-c01052ec4293.png)
+![petto_logo](https://user-images.githubusercontent.com/71317975/104681968-efebf180-5736-11eb-8869-60dc2e086db1.png)
 
 ## サイト概要
 
-あなたとペットの情報を登録して利用する SNS サイトです。  
+ペットを飼っている人が対象で、飼い主とペットの情報を登録して利用する SNS サイトです。  
 ペットとの日常を切り取って、日記を投稿したり、友だちを作って会話をすることができます。
+
+URL : <https://petto.work/>
 
 ### サイトテーマ
 
@@ -61,6 +63,8 @@
 - POST & DELETE 非同期通信
 - 画像プレビュー
 - lightbox2、bxslider(jQueryプラグイン)
+- VisionAPI画像認識機能（不適切なコンテンツを検出します）
+- レスポンシブ対応(スマートフォン対応)
 
 詳細は下記よりご確認ください
 
@@ -81,7 +85,7 @@ https://docs.google.com/spreadsheets/d/1zYaHEBrVYdKGm5i3wVgvqxcngStebhYQ_qWhvrrk
 - rspec-rails 3.5.2
 - factory_bot_rails
  
-### 本番環境
+## 本番環境
 - AWS(EC2、RDS、Route53)
 - Nginx
 - puma
@@ -92,7 +96,7 @@ https://docs.google.com/spreadsheets/d/1zYaHEBrVYdKGm5i3wVgvqxcngStebhYQ_qWhvrrk
 
 「silhouette-AC」サイト内画像利用  
 <https://www.silhouette-ac.com/#a_aid=5dd6cc067098b&a_bid=d4c0850c>  
-「O-DN」アップロード画像利用  
+「O-DAN」アップロード画像利用  
 <https://o-dan.net/ja/>  
 「Adobe Fonts」フォント利用(源ノ角ゴシック JP )  
 <https://fonts.adobe.com/>

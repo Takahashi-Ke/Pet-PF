@@ -1,25 +1,20 @@
 class Room < ApplicationRecord
-
   has_many :pet_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  
+
+  # チャットがきた時に通知を生成するメソッド
   def create_notification_chat(pet, chat)
-    chat_pet = PetRoom.find_by(room_id: id, pet_id: pet.id)
-    notification = chat.pet.active_notifications.new(
-        room_id: self.id,
-        visited_id: chat_pet.pet_id,
+    notification_room = Notification.find_by(room_id: id, visited_id: pet.id)
+    if notification_room.present?
+      notification_room.update(created_at: DateTime.now, is_checked: false)
+    else
+      notification = chat.pet.active_notifications.new(
+        room_id: id,
+        visited_id: pet.id,
         action: 'chat'
-        )
-    if notification.visitor_id == chat.pet_id
-      notification.is_checked = true
+      )
+      notification.save if notification.valid?
     end
-    notification.save if notification.valid?
   end
-  
-  def now_message(room)
-    latest_message = Chat.where(room_id: room_id).last
-    return latest_message
-  end
-  
 end

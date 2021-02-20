@@ -1,11 +1,11 @@
-<div class="search-sidebar" id="<%= controller.controller_name %>">
-  <div class="row d-flex justify-content-center">
+<div class="col-xl-3 d-none d-xl-block search-sidebar">
+  <div class="row mt-3 justify-content-center">
     <h4>友だちを見つける</h4>
   </div>
   <div class="check-box">
     <%= form_with url: search_path,scope: :search, method: :get, local: true do |f| %>
     <div class="row">
-      <div class="col-10 mt-2 ml-2 mb-2">
+      <div class="col-lg-10 mt-2 ml-2 mb-2">
         <%= f.text_field :keyword, size:'30',placeholder: "キーワード検索" %>
       </div>
     </div>
@@ -13,33 +13,33 @@
       <p>以下の条件はペット検索に反映されます</p>
     </div>
     <div class="row mt-2">
-      <div class="col-10 ml-2">
+      <div class="col-lg-10 ml-2">
         <h6>種類</h6>
       </div>
       <% Pet.types.map do |k, v| %>
-        <div class="col-5 ml-4">
+        <div class="col-lg-5 ml-4">
           <%= f.check_box :types, {multiple: true}, v, false %>
           <%= f.label :types, k %>
         </div>
       <% end %>
     </div>
     <div class="row mt-3">
-      <div class="col-10 ml-2">
+      <div class="col-lg-10 ml-2">
         <h6>性別</h6>
       </div>
       <% Pet.genders.map do |k, v| %>
-        <div class="col-5 ml-4">
+        <div class="col-lg-5 ml-4">
           <%= f.check_box :genders, {multiple: true}, v, false %>
           <%= f.label :genders, k %>
         </div>
       <% end %>
     </div>
     <div class="row mt-3">
-      <div class="col-10 ml-2">
+      <div class="col-lg-10 ml-2">
         <h6>性格</h6>
       </div>
       <% PetPersonality.personalities.map do |k, v| %>
-        <div class="col-5 ml-4">
+        <div class="col-lg-5 ml-4">
           <%= f.check_box :personalities, {multiple: true}, v, false %>
           <%= f.label :personalities, k %>
         </div>

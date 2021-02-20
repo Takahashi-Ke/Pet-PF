@@ -2,38 +2,38 @@
   <div class="contents-box">
     
     <div class="row pt-2 pb-3">
-      <div class="mx-auto">
+      <div class="mx-auto memory-main-image">
         <%= link_to memory_path(memory) do %>
-          <%= attachment_image_tag memory.memory_images.first, :image, size: '430x320', fallback: "no_image.png" %>
+          <%= attachment_image_tag memory.memory_images.first, :image, size: '430x360', fallback: "no_image.png", class:"memory-image" %>
         <% end %>
       </div>
     </div>
     
     <% unless posted_by_pet.present? %>
       <div class="row">
-        <div class="col-4 offset-2">
+        <div class="col-6 offset-1 col-sm-4 offset-sm-2">
           <%= link_to pet_path(memory.pet) do %>
-            <%= attachment_image_tag memory.pet, :image, size:'30x30', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
+            <%= attachment_image_tag memory.pet, :image, size:'50x50', fallback: "pet_no_image.png", class:"rounded-circle icon-img" %>
           <% end %>
           <span> <%= link_to memory.pet.name, pet_path(memory.pet) %></span>
         </div>
-        <div class="col-4">
-          <%= attachment_image_tag memory.pet.owner, :image, size:'30x30', fallback: "owner_no_image.png", class:"rounded-circle icon-imge" %>
+        <div class="col-5 col-sm-4">
+          <%= attachment_image_tag memory.pet.owner, :image, size:'50x50', fallback: "owner_no_image.png", class:"rounded-circle icon-imge" %>
           <span> <%= memory.pet.owner.name %></span>
         </div>
       </div>
     <% end %>
     
     <div class="row mt-3">
-      <div class="col-6 offset-1 memory-title">
-        <%= link_to memory.title, memory_path(memory) %>
+      <div class="col-12 col-sm-6 offset-sm-1 memory-title">
+        <%= link_to truncate(memory.title, length: 12), memory_path(memory) %>
       </div>
-      <div class="col-4 memory-date">
+      <div class="col-6 offset-6 col-sm-5 offset-sm-0 mt-2 post-date">
         <%= memory.created_at.to_s(:datetime_jp) %>
       </div>
     </div>
     <div class="row">
-      <div class="col-10 offset-2">
+      <div class="col-10 offset-1 memory-body">
         <%= truncate(memory.body, length: 100) %>
       </div>
     </div>
