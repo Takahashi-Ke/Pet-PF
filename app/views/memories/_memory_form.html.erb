@@ -10,21 +10,32 @@
         <% end %>
       </div>
       <div class="row mt-2">
-      <% if memory.errors.any? %>
-          <div class="error-memory">
-            <div class="row">
-              <ul>
-                <% memory.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
+        <% if memory.errors.any? %>
+            <div class="error-memory">
+              <div class="text-center pt-3">
+                <h5><span class="fas fa-exclamation-circle"></span>投稿できませんでした</h5>
+              </div>
+              <div class="row">
+                <ul>
+                  <% memory.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
             </div>
-          </div>
-      <% end %>
+        <% end %>
+        <% flash.each do |message_type, message| %>
+          <% if message_type == "alert" %>
+            <div class="error-message pt-2 pb-2 mb-3">
+              <h5><span class="fas fa-exclamation-circle"></span>投稿できませんでした</h5>
+              <%= message.html_safe %>
+            </div>
+          <% end %>
+        <% end %>
 
         <%= form_with model: memory, local: true do |f| %>
           <div class="row">
-            <%= f.text_field :title, size: '40', style: "border: none", placeholder: " タイトル(20文字以内)", class:"pt-2 pb-2" %>
+            <%= f.text_field :title, size: '40', style: "border: none", placeholder: " タイトル(20文字以内)", class:"pt-2 pb-2 memory-form" %>
           </div>
           
           <!--写真挿入フォーム-->
@@ -33,9 +44,9 @@
             <span>　写真は複数投稿できます</span>
           </div>  
           <div class="row mt-3">
-            <%= f.text_area :body, style: "border: none", size: "90x25", placeholder: " #{pet.name}との思い出を書いてみましょう", class:"pt-2" %>
+            <%= f.text_area :body, style: "border: none", size: "90x25", placeholder: " #{pet.name}との思い出を書いてみましょう", class:"pt-2 memory-form" %>
           </div>
-          <div class="row d-flex justify-content-center mt-3">
+          <div class="row d-flex justify-content-center mt-3 mb-5">
             <% if memory.new_record? %>
               <%= f.submit "投稿する", class:"btn-layout btn-layout2 pl-5 pr-5" %>
             <% else %>

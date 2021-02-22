@@ -1,12 +1,25 @@
 <div class="container-fluid">
   <div class="row">
       <%= render 'pets/pet_info', pet: @pet %>
-    <div class="col-lg-7">
-      <div class="row ml-5">
+    <div class="col-12 col-lg-9 col-xl-7">
+      <% flash.each do |message_type, message| %>
+        <div class="row mt-2 mb-2">
+          <% if message_type == "alert" %>
+            <div class="error-message pt-2 pb-2">
+                <h5><span class="fas fa-exclamation-circle"></span>投稿できませんでした</h5>
+                <%= message.html_safe %>
+              </div>
+            <% end %>
+        </div>
+      <% end %>
+      <div class="row ml-3">
           <h4>みんなの日記</h4>
       </div>
       <div class="scroll-area">
-        <%= render 'diaries/diaries_list', diaries: @diaries %>
+        <div class="scroll-list jscroll">
+          <%= render 'diaries/diaries_list', diaries: @diaries %>
+          <%= paginate @diaries %>
+        </div>
       </div>
     </div>
     <%= render 'searches/search_box' %>
@@ -14,5 +27,9 @@
   <div class="modal-wrapper"></div>
   <div class="diary-modal">
     <%= render 'diaries/diary_form', diary: @diary, pet: @pet, diary_comment: @diary_comment %>
+  </div>
+  <%# 日記投稿ボタン（スマホ対応） %>
+  <div class="d-block d-lg-none add-diary-mini-btn">
+    <i class="fas fa-pencil-alt"></i>
   </div>
 </div>

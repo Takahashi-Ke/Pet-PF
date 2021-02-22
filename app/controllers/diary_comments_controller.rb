@@ -1,5 +1,4 @@
 class DiaryCommentsController < ApplicationController
-
   def create
     @diary = Diary.find(params[:diary_id])
     @diary_comment = DiaryComment.new(comment_params)
@@ -23,8 +22,8 @@ class DiaryCommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.require(:diary_comment).permit(:comment)
   end
-
 end

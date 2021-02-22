@@ -11,6 +11,7 @@ $personality-modal-width: 600px;
   border-radius: 5px;
   background-color: white;
   height: 430px;
+   z-index: 98;
   width: $personality-modal-width;
   margin-left: -($personality-modal-width / 2);
 }

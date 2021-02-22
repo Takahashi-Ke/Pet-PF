@@ -20,3 +20,11 @@
     color: darken(#D2B48C, 20%);
   }
 }
+@media (max-width: 576px) {
+  .chat-list h6{
+    font-size: 15px;
+  }
+  .latest-message {
+    font-size: 12px;
+  }
+}

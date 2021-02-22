@@ -1,9 +1,8 @@
 class PetPersonalitiesController < ApplicationController
-
   def create
     pet = current_owner.pet
     unless params[:pet].nil?
-      params[:pet][:pet_personalities_attributes].each do |k, v|
+      params[:pet][:pet_personalities_attributes].each do |_k, v|
         pet_personality = pet.pet_personalities.new(personality_params)
         pet_personality.personality = v[:personality].to_i
         pet_personality.save
@@ -12,14 +11,9 @@ class PetPersonalitiesController < ApplicationController
     redirect_to request.referer
   end
 
-  def update
-    pet_personalities = PetPersonality.find_by(pet_id: params[:id])
-    pet_personalities.update(personality_params)
-    redirect_to request.referer
-  end
-
   private
+
   def personality_params
-    params.require(:pet).permit(pet_personalities: [:personality, :_destroy])
+    params.require(:pet).permit(pet_personalities: %i[personality _destroy])
   end
 end

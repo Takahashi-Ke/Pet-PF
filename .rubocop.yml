@@ -1,0 +1,38 @@
+# コーディング規約を設定
+
+# 規約の読み込み
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  # Rubyバージョン指定
+  TargetRubyVersion: 2.6.3
+  # 除外
+  Exclude:
+    - 'app/channels/*'
+    - 'config.ru'
+    - 'bin/**'
+    - 'lib/**'
+    - 'test/**/*'
+    - 'spec/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+
+# 日本語でのコメントを許可
+AsciiComments:
+  Enabled: false
+# クラスのコメント必須を無視
+Documentation:
+  Enabled: false
+# モジュール名::クラス名の定義を許可
+ClassAndModuleChildren:
+  Enabled: false
+# マジックコメント必須を無視
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 35
+Metrics/MethodLength:
+  Max: 25

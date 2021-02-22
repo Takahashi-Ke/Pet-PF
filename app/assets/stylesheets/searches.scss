@@ -2,41 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.check-box {
-  margin-left: 25px;
-}
-.check-box p{
-  font-size: 15px;
-  color: darken(#D2B48C, 10%);;
-}
 .search-area {
   width: 100%;
   overflow: scroll;
   height: 700px;
   border-top: none;
-}
-.search-sidebar {
-  height: 670px;
-  width: 25%;
-  background-color: #fff;
-  border: 1px solid #D2B48C;
-}
-.search-sidebar h6 {
-  font-weight: 600;
-  padding-bottom: 5px;
-  border-bottom: dashed 1px #D2B48C;
-}
-.search-sidebar::before {
-  content: "";
-  position: absolute;
-  border-right: dotted 10px #e8e2d1; 
-  height: 95%;
-  top: 1em; 
-  right: 0.5em; 
-}
-
-@media (max-width: 767px) {
-  .search-sidebar {
-    display: none;
-  }
 }

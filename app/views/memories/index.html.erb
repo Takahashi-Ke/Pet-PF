@@ -1,19 +1,19 @@
 <div class="container-fluid">
   <div class="row">
     <%= render 'pets/pet_info', pet: @pet %>
-    <div class="col-lg-7">
+    <div class="col-12 col-lg-9 col-xl-7">
       <% if @posted_by_pet.present? %>
-        <div class="row ml-5 mb-2">
+        <div class="row ml-3 mb-2">
           <h4><%= @pet.name %>の思い出</h4>
         </div>
         <div class="row ml-5 mt-3">
           <div class="col-lg-5">
-            <div class="row d-flex justify-content-center">
+            <div class="row justify-content-center">
               <%= link_to pet_path(@pet) do %>
                 <%= attachment_image_tag @pet, :image, size:'110x110', fallback: "pet_no_image.png", class:"rounded-circle" %>
               <% end %>
             </div>
-            <div class="row d-flex justify-content-center">
+            <div class="row justify-content-center">
               <%= link_to @pet.name, pet_path(@pet), class:"name-link" %>
             </div>
           </div>
@@ -27,7 +27,7 @@
           </div>
         </div>
       <% else %>
-        <div class="row ml-5 mb-2">
+        <div class="row ml-3 mb-2">
           <h4>みんなの思い出</h4>
         </div>
       <% end %>
@@ -55,6 +55,10 @@
   <div class="modal-wrapper"></div>
   <div class="diary-modal">
     <%= render 'diaries/diary_form', diary: @diary, pet: @pet %>
+  </div>
+  <%# 日記投稿ボタン（スマホ対応） %>
+  <div class="d-block d-lg-none add-diary-mini-btn">
+    <i class="fas fa-pencil-alt"></i>
   </div>
   
 </div>

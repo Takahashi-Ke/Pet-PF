@@ -12,6 +12,7 @@
   background-color: black;
   opacity: .5;
   display: none;
+  z-index: 9;
 }
 $diary-modal-width: 500px;
 .diary-modal {
@@ -24,20 +25,73 @@ $diary-modal-width: 500px;
   padding: 0;
   height: 400px;
   border-radius: 5px;
+  z-index: 99;
   width: $diary-modal-width;
   margin-left: -($diary-modal-width / 2);
 }
 .diary-body {
-  width: 420px;
+  width: 70%;
   margin: 10px 30px;
 }
 .comment-box {
-  width: 100%;
+  margin-top: 10px;
   max-height: 300px;
   overflow-y: scroll;
+  overflow-x: hidden;
+}
+.diary-comment-count {
+  display: inline;
 }
 .diary-comment-count:hover {
   color: #D2B48C;
   cursor: pointer;
   cursor: hand;
+}
+.add-diary-mini-btn {
+  width: 50px;
+  height : 50px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.8rem;
+  background-color: #CC6600;
+  bottom: 30px;
+  position: fixed;
+  right: 20px;
+  z-index: 90 !important;
+}
+.add-diary-mini-btn svg{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+@media (max-width: 576px) {
+  .diary-body {
+    width: 100%;
+    margin: 5px 0px;
+    font-size: 12px;
+  }
+  .diary-modal {
+    width: 340px;
+    height: 370px;
+    right: 20px;
+    top: 20%;
+    left: unset;
+  }
+  .diary-form {
+    width: 280px;
+  }
+  .diary-comment-count,
+  .diary-favo-count,
+  .diary-delete {
+    display: block;
+    font-size: 11px;
+  }
+  .diary-comment-form {
+    width: 95%;
+  }
+}
+nav.pagination {
+  display: none;
+}
+.scroll-list {
+  padding: 0;
 }

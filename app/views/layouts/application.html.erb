@@ -4,6 +4,7 @@
     <title>Petto！</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag('favicon.ico') %>
     <%# レスポンシブ対応 %>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,6 +17,7 @@
     <%= render 'layouts/header' %>
     
     <%= yield %>
+    
     
     <%= render 'layouts/footer' %>
     
@@ -36,7 +38,6 @@
       })(document);
     </script>
     <!--jquery.bxslider(スライドショー)読み込み-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
   </body>
     

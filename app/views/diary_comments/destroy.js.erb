@@ -1,1 +1,2 @@
 $('#comment-<%= @diary.id %>').html("<%= j(render 'diary_comments/diary_comments_list', diary: @diary, diary_comment: @diary_comment) %>");
+$('#comment-btn-<%= @diary.id %>').html("<%= j(render'diary_comments/diary_comments_count', diary: @diary) %>");
