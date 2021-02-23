@@ -1,7 +1,3 @@
-/** VARIABLES
-===================================*/
-/** RESET AND LAYOUT
-===================================*/
 .bx-wrapper {
   position: relative;
   margin-bottom: 60px;
@@ -71,7 +67,6 @@ ul.bxslider {
 /* DIRECTION CONTROLS (NEXT / PREV) */
 .bx-wrapper .bx-prev {
   left: 10px;
-  background: url('images/controls.png') no-repeat 0 -32px;
 }
 .bx-wrapper .bx-prev:hover,
 .bx-wrapper .bx-prev:focus {
