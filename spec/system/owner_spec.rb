@@ -15,8 +15,9 @@ RSpec.describe "Owner", type: :system do
         fill_in 'owner[password_confirmation]', with: owner.password
         fill_in 'owner[pet_attributes][name]', with: pet.name
         # fill_in 'owner[pet_attributes][birthday]', with: pet.birthday
-        # fill_in 'owner[pet_attributes][gender]', with: pet.gender
-        # fill_in 'owner[pet_attributes][type]', with: pet.type
+        # select 'owner[pet_attributes][gender]', selected: pet.gender
+        choose 'owner_pet_attributes_gender_オス'
+        select pet.type, from: 'owner[pet_attributes][type]'
         
         click_button '新規登録'
         expect(current_path).to eq pet_path(pet)
