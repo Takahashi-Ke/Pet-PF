@@ -57,6 +57,8 @@ group :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'selenium-webdriver', '~> 3.8.0'
+  gem 'chromedriver-helper', '~> 1.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -82,7 +84,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
 # ページネーション
-gem 'kaminari', '~> 1.2.1'
+gem 'kaminari'
 
 # 多言語化
 gem 'rails-i18n', '~> 5.1'
