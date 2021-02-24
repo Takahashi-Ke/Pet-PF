@@ -10,11 +10,11 @@
           <div class="col-12">
             <h3><%= @pet.name %></h3>
           </div>
-          <div class="col-6 offset-1 mt-3 follow-btn-<%= @pet.id %>">
+          <div class="col-12 mt-3 follow-btn-<%= @pet.id %>">
             <%= render 'relationships/follow', pet: @pet %>
           </div>
         </div>
-        <div class="row ml-5 mt-2">
+        <div class="row mt-2">
           <div class="col-12 col-sm-5">
             <div class="row mt-3 pet-nav">
               <ul class="nav">
@@ -50,11 +50,18 @@
       </div>
     </div>
     <div class="row mt-3">
-      <div class="col-2 offset-1">
-         <%= attachment_image_tag @pet.owner, :image, size: '100x100', fallback: "owner_no_image.png", class:"rounded" %>
-         <%= @pet.owner.name %>
+      <div class="col-2">
+        <div class="text-center">
+          <h6>パートナー</h6>
+        </div>
+        <div class="text-center">
+          <%= attachment_image_tag @pet.owner, :image, size: '100x100', fallback: "owner_no_image.png", class:"rounded" %>
+        </div>
+        <div class="text-center">
+          <%= @pet.owner.name %>
+        </div>
       </div>
-      <div class="col-7 pet-introduction pl-5">
+      <div class="col-8 pet-introduction pl-5">
         <%= simple_format(@pet.introduction) %>
       </div>
     </div>
@@ -78,6 +85,7 @@
         <!--タブの中身-->
         <div class="col-12" id="tab-contents">
           <div class="tab-area">
+            
             <!--日記一覧(tab1)-->
             <div id="tab1" class="tab">
               <div class="row">
