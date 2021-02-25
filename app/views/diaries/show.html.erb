@@ -2,6 +2,10 @@
   <div class="row">
     <%= render 'pets/pet_info', pet: current_owner.pet %>
   <div class="col-12 col-lg-9 col-xl-7">
+    <%= link_to diaries_path do %>
+      <i class="fas fa-arrow-left"></i>
+      <span>戻る</span>
+    <% end %>
     <%= render 'diaries/diary_contents', diary: @diary %>
   </div>
     <%= render 'searches/search_box' %>
