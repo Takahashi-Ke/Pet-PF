@@ -16,10 +16,11 @@ class Pet < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 10 }
   validates :introduction, length: { maximum: 120 }
+  validates :birthday, presence: true
   validate :after_tomorrow
 
   def after_tomorrow
-    errors.add(:birthday, 'は今日より前で設定してください') if birthday > Date.today
+    errors.add(:birthday, 'を正しく設定してください') if birthday.present? && birthday > Date.today
   end
 
   self.inheritance_column = :_type_disabledrails
@@ -109,14 +110,20 @@ class Pet < ApplicationRecord
   def age
     d1 = birthday.strftime('%Y%m%d').to_i
     d2 = Date.today.strftime('%Y%m%d').to_i
-    (d2 - d1) / 10_000
+    (d2 - d1) / 10000
   end
 
   def moon_age
     d1 = birthday.strftime('%m').to_i
     d2 = Date.today.strftime('%m').to_i
-    m = (d2 - d1) / 100
-    m + 12  if m < 0
+    if d2 - d1 < 0
+      m = d2 - d1 + 12
+    elsif d2 - d1 != 0
+      m = (d2 - d1) / 100
+    else
+      m = 0
+    end
+    return m
   end
 
   # 新しい通知を取得するメソッド

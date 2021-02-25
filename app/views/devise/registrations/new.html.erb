@@ -91,7 +91,7 @@
           </div>
           <div class="row ml-3">
             <div class="col-8 offset-2">
-              <%= pet.date_select :birthday, start_year: 1990, end_year: Time.now.year,default: Date.today %>
+              <%= pet.date_field :birthday, start_year: 1990, end_year: Time.now.year,default: Date.today %>
             </div>
           </div>
           <div class="row ml-5">
