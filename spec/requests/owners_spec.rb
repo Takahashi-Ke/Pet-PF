@@ -30,11 +30,15 @@ RSpec.describe "Owner", type: :request do
     context "ログイン済みの場合" do
       before do
         sign_in owner
+        get unsubscribe_owner_path(owner)
       end
       it "退会できるか" do
-        get unsubscribe_owner_path(owner)
         delete owner_path(owner)
         expect(Owner.find_by(id: owner.id)).to be_falsey
+      end
+      it "退会後トップページに遷移するか" do
+        delete owner_path(owner)
+        expect(response).to redirect_to root_path
       end
     end
     
