@@ -57,6 +57,7 @@ group :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'rails-controller-testing'
   gem 'selenium-webdriver', '~> 3.8.0'
   gem 'chromedriver-helper', '~> 1.1.0'
 end
