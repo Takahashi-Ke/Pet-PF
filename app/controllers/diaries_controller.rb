@@ -12,7 +12,7 @@ class DiariesController < ApplicationController
   def create
     @diary = Diary.new(diary_params)
     @diary.pet = Pet.find(params[:pet_id])
-    if params[:diary][:image] != '{}'
+    if params[:diary][:image] != '{}' && params[:diary][:image].present?
       # visionAPIで画像認識
       post_image = params[:diary][:image]
       result = Vision.image_analysis(post_image)
@@ -21,7 +21,7 @@ class DiariesController < ApplicationController
     end
     if result == true && @diary.valid?
       @diary.save
-      redirect_to request.referer
+      redirect_to diaries_path
     else
       if result == false
         flash.now[:alert] = '選択された画像が不適切なコンテンツと判断されました'
@@ -38,7 +38,7 @@ class DiariesController < ApplicationController
   def destroy
     diary = Diary.find(params[:id])
     diary.destroy
-    redirect_to request.referer
+    redirect_to diaries_path
   end
 
   private
