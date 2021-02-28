@@ -27,10 +27,10 @@ RSpec.describe Pet, type: :model do
     end
 
     context '日付' do
-      it '誕生日が明日以降だとエラーが返ってくるか' do
+      it '誕生日が次の日以降だとエラーが返ってくるか' do
         pet.birthday = Date.today + 1.day
         is_expected.to eq false
-        expect(pet.errors[:birthday]).to include('は今日より前で設定してください')
+        expect(pet.errors[:birthday]).to include('を正しく設定してください')
       end
     end
   end
