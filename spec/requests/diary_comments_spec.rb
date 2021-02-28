@@ -18,7 +18,7 @@ RSpec.describe "DiaryComment", type: :request do
       end
       it "コメントを投稿できるか" do
         get diary_path(diary)
-        post diary_comments_path(pet_id: comment_pet.id, diary_id: diary.id), params: { diary_comment: { comment: "コメントを投稿する"} }
+        post diary_comments_path(pet_id: comment_pet.id, diary_id: diary.id), params: { diary_comment: { comment: "コメントを投稿する"} }, xhr: true
         expect(DiaryComment.find_by(pet_id: comment_pet.id, comment: "コメントを投稿する")).to be_truthy
       end
     end
