@@ -1,19 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe "Pet", type: :system do
+RSpec.describe "Diary", type: :system do
   let!(:owner) { attributes_for(:pet) }
-  binding.pry
   describe 'オーナー、ペット情報編集テスト' do
     before do
       sign_in_as(owner)
-      visit pet_path(owner.pet)
+      visit edit_pet_path(owner.pet)
     end
     context '編集に成功、マイページに遷移' do
       it '正しく遷移されているか' do
-        click_on '編集'
-        visit edit_pet_path(ownet.pet)
-        expect(page).to have_content 'プロフィール編集'
-      end
+            click_on '編集'
+            visit edit_user_path(user)
+            expect(page).to have_content 'プロフィール編集'
+          end
       it '編集に成功する' do
         fill_in 'owner[name]', with: 'testowner'
         fill_in 'owner[pet_attributes][name]', with: 'testpet'
