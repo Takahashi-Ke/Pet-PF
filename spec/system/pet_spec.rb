@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "Pet", type: :system do
   let!(:owner) { attributes_for(:pet) }
-  binding.pry
   describe 'オーナー、ペット情報編集テスト' do
     before do
       sign_in_as(owner)
