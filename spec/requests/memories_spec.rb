@@ -1,26 +1,42 @@
 require 'rails_helper'
 
 RSpec.describe "Memories", type: :request do
-  before do
-    @memory = create(:memory)
+  let!(:owner) { create(:owner) }
+  let!(:pet) { create(:pet, owner_id: owner.id) }
+  let!(:memory) { create(:memory, pet_id: pet.id) }
+  let!(:memory_image) { create(:memory, memory_id: memory.id) }
+  
+  describe "一覧画面を表示(GET #index)" do
+    
+    context "未ログインの場合" do
+      it "ログインページへリダイレクトすること" do
+        get memories_path
+        expect(response).to redirect_to new_owner_session_path
+      end
+    end
+    
+    context "ログイン済みの場合" do
+      before do
+        sign_in owner
+      end
+      it '表示に成功すること' do
+        get memories_path
+        expect(response).to have_http_status(302)
+      end
+    end
     
   end
   
-  describe "GET #index" do
-    it '思い出一覧画面の表示に成功すること' do
-      get memories_path
+  
+  describe "詳細画面を表示(GET #show)" do
+    it '表示に成功すること' do
+      get memory_path(memory)
       expect(response).to have_http_status(302)
     end
   end
-  describe "GET #show" do
-    it '思い出詳細画面の表示に成功すること' do
-      get memory_path(@memory)
-      expect(response).to have_http_status(302)
-    end
-  end
-  describe "GET #edit" do
-    it '思い出編集画面の表示に成功すること' do
-      get edit_memory_path(@memory)
+  describe "編集画面を表示(GET #edit)" do
+    it '表示に成功すること' do
+      get edit_memory_path(memory)
       expect(response).to have_http_status(302)
     end
   end
