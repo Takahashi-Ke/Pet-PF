@@ -1,5 +1,0 @@
-<% if @memory.present? %>
-  $('.favorite-btn-<%= @memory.id %>').html("<%= j(render 'favorites/favo', memory: @memory, diary: @diary) %>");
-<% else %>
-  $('.favorite-btn-<%= @diary.id %>').html("<%= j(render 'favorites/favo', diary: @diary) %>");
-<% end %>

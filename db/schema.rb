@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_084025) do
+ActiveRecord::Schema.define(version: 2020_12_29_083947) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "pet_id"
@@ -41,14 +41,13 @@ ActiveRecord::Schema.define(version: 2020_12_31_084025) do
     t.index ["pet_id"], name: "index_diary_comments_on_pet_id"
   end
 
-  create_table "favorites", force: :cascade do |t|
+  create_table "diary_favorites", force: :cascade do |t|
     t.integer "pet_id"
     t.integer "diary_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "memory_id"
-    t.index ["diary_id"], name: "index_favorites_on_diary_id"
-    t.index ["pet_id"], name: "index_favorites_on_pet_id"
+    t.index ["diary_id"], name: "index_diary_favorites_on_diary_id"
+    t.index ["pet_id"], name: "index_diary_favorites_on_pet_id"
   end
 
   create_table "memories", force: :cascade do |t|
@@ -58,16 +57,6 @@ ActiveRecord::Schema.define(version: 2020_12_31_084025) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pet_id"], name: "index_memories_on_pet_id"
-  end
-
-  create_table "memory_comments", force: :cascade do |t|
-    t.integer "pet_id"
-    t.integer "memory_id"
-    t.string "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["memory_id"], name: "index_memory_comments_on_memory_id"
-    t.index ["pet_id"], name: "index_memory_comments_on_pet_id"
   end
 
   create_table "memory_images", force: :cascade do |t|
@@ -80,21 +69,15 @@ ActiveRecord::Schema.define(version: 2020_12_31_084025) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer "diary_id"
-    t.integer "memory_id"
-    t.integer "room_id"
     t.integer "visitor_id"
     t.integer "visited_id"
     t.integer "diary_comment_id"
-    t.integer "memory_comment_id"
     t.string "action"
     t.boolean "is_checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["diary_comment_id"], name: "index_notifications_on_diary_comment_id"
     t.index ["diary_id"], name: "index_notifications_on_diary_id"
-    t.index ["memory_comment_id"], name: "index_notifications_on_memory_comment_id"
-    t.index ["memory_id"], name: "index_notifications_on_memory_id"
-    t.index ["room_id"], name: "index_notifications_on_room_id"
     t.index ["visited_id"], name: "index_notifications_on_visited_id"
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
