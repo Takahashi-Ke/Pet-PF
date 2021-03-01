@@ -57,6 +57,7 @@ RSpec.describe "Diaries", type: :request do
         get diaries_path
         post diaries_path(pet_id: pet.id), params: { diary: { body: "日記のテスト",image: nil } }
         expect(Diary.find_by(pet_id: pet.id, body: "日記のテスト")).to be_truthy
+        expect(response).to have_http_status(302)
       end
       it "投稿後、一覧画面に遷移するか" do
         post diaries_path(pet_id: pet.id), params: { diary: { body: "日記のテスト",image: nil } }
