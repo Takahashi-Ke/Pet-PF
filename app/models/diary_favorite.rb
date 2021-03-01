@@ -1,0 +1,2 @@
+class DiaryFavorite < ApplicationRecord
+end

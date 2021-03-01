@@ -1,26 +1,21 @@
-<div class="personality-modal">
-  <div class="row mt-3 mb-2 d-flex align-items-center justify-content-center">
-    <h5><%= pet.name %>の性格を選びましょう</h5>
-  </div>
-  <%= form_with model: pet, url: pet_pet_personalities_path(pet.id), method: :post, local: true do |f| %>
-    <div class="row ml-5 d-flex align-items-left justify-content-center">
-      <% PetPersonality.personalities.map do |k, v| %>
-        <div class="col-lg-5 mt-3">
-          <%= f.fields_for :pet_personalities do |pp| %>
-            <%= pp.check_box :personality, {}, v, false %>
-            <%= pp.label :personality, k %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <div class="row mt-4 d-flex justify-content-center">
-      <%= f.submit "決定する", class:"btn-layout pt-2 pb-2 pr-5 pl-5" %>
-    </div>
-    <div class="row mt-2 d-flex justify-content-center">
-      <div class="hide-modal-btn pl-3 pr-3 btn-layout btn-layout3">
-        閉じる
-      </div>
-    </div>
-    
-  <% end %>
+<div class="row">
+  <p><%= pet.name %>の性格を選びましょう</p>
 </div>
+<%= form_with model: pet, url: pet_pet_personalities_path(pet.id), method: :post, local: true do |f| %>
+  <div class="row">
+    <% PetPersonality.personalities.map do |k, v| %>
+      <div class="col-5 ml-3">
+        <%= f.fields_for :pet_personalities do |pp| %>
+          <%= pp.check_box :personality, {}, v, false %>
+          <%= pp.label :personality, k %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= f.submit "決定する", class:"btn" %>
+  </div>
+  <div class="hide-modal-btn">
+    閉じる
+  </div>
+<% end %>

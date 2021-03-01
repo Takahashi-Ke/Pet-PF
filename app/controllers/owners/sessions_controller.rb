@@ -3,12 +3,6 @@
 class Owners::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  def new_guest
-    owner = Owner.guest
-    sign_in owner
-    redirect_to pet_path(owner.pet)
-  end
-
   # GET /resource/sign_in
   # def new
   #   super
