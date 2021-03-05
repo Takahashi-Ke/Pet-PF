@@ -25,4 +25,19 @@ RSpec.describe "DiaryComment", type: :request do
     
   end
   
+  describe "消去処理(DELETE #destroy)" do
+    
+    context "自分の投稿の場合" do
+      before do
+        sign_in comment_owner
+        get diary_path(diary)
+      end
+      it "コメントを削除できるか" do
+        delete diary_comment_path(diary_id: diary.id), xhr: true
+        expect(DiaryComment.find_by(pet_id: comment_pet.id, comment: "テストコメント")).to be_falsey
+      end
+    end
+    
+  end
+  
 end
