@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :notification do
-    action        { "comment" }
+    action        { 'comment' }
     is_checked    { false }
     association :visited
     association :visitor

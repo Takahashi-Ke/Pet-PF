@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :pet_rooms, only: [:index]
     resources :relationships, only: [:create, :destroy]
   end
-  resources :diaries, only: [:index, :create, :destroy]
+  resources :diaries, only: [:index, :show, :create, :destroy]
   resources :diary_comments, only: [:create, :destroy]
   resources :memories
   resources :memory_comments, only: [:create, :destroy]

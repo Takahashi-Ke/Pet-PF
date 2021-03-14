@@ -8,6 +8,11 @@
 </div>
 <div class="chat-area mb-3">
     <% chats.each do |chat| %>
+      <% if chat.message_date(chat) == true %>
+        <div class="today-message mt-lg-3 mb-lg-3">
+          <p><%= Date.today.to_s(:datetime_jp) %></p>
+        </div>
+      <% end %>
       <% if chat.pet_id == current_owner.pet.id %>
         <div class="row">
           <div class="col-1 offset-5 d-flex align-items-end chat-time" id="mine-time">
@@ -33,7 +38,7 @@
 <div class="row d-block d-lg-none">
   <%= form_with model: [@pet, @chat], url: pet_chats_path(room_id: @room.id), remote: true do |f| %>
     <div class="text-center">
-      <%= f.text_area :message, size: '45x2', placeholder: "メッセージ入力", class:"chat-form" %><br />
+      <%= f.text_area :message, placeholder: "メッセージ入力", class:"chat-min-form" %><br />
       <%= f.submit "送信", class:"btn-layout pr-4 pl-4" %>
     </div>
   <% end %>

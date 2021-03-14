@@ -1,11 +1,11 @@
 <% case notification.action %>
   <% when 'follow' then %>
-    <span>あなたをフォローしました</span>
+    <span>があなたをフォローしました</span>
   <% when 'chat' then %>
     <span>からメッセージが届きました</span>
     <div class="row pt-2 ml-1 latest-message relevant-message">
       <%= link_to pet_chats_path(pet_id: notification.visitor_id) do %>
-       <%= truncate(pet.latest_message(pet, current_owner.pet).message, length: 25) %>
+       <%= truncate(notification.new_message.message, length: 25) %>
       <% end %>
     </div>
 <% end %>

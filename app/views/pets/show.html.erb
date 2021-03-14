@@ -1,4 +1,5 @@
 <div class="container-fluid">
+  
   <div class="pet-info">
     <div class="row ml-sm-5">
       <div class="col-12 col-sm-3 offset-sm-1">
@@ -6,21 +7,14 @@
       </div>
       <div class="col-12 col-sm-8">
         <div class="row mt-2">
-          <div class="col-12 col-sm-5">
+          <div class="col-12">
             <h3><%= @pet.name %></h3>
           </div>
-          <div class="col-6 col-sm-5 ml-sm-4">
-            <% if @pet.id == current_owner.pet.id %>
-              <%= link_to "編集する", edit_pet_path(@pet), class:"btn-layout" %>
-            <% elsif current_owner.pet.following?(@pet) %>
-              <%= link_to "フォロー中", pet_relationship_path(@pet), method: :delete, data: {confirm: "フォローを解除します。よろしいですか？"}, class:"btn-layout btn-layout2 mr-3"  %>
-              <%= link_to "会話する", pet_chats_path(@pet), class:"btn-layout" %>
-            <% else %>
-              <%= link_to "フォロー", pet_relationships_path(@pet), method: :post, class:"btn-layout" %>
-            <% end %>
+          <div class="col-12 mt-3 follow-btn-<%= @pet.id %>">
+            <%= render 'relationships/follow', pet: @pet %>
           </div>
         </div>
-        <div class="row ml-5 mt-2">
+        <div class="row mt-2">
           <div class="col-12 col-sm-5">
             <div class="row mt-3 pet-nav">
               <ul class="nav">
@@ -52,30 +46,30 @@
               </table>
             </div>
           </div>
-          <div class="col-12 col-sm-6">
-            <div class="row">
-              <div class="col-5 col-sm-12">
-                <%= attachment_image_tag @pet.owner, :image, size: '100x100', fallback: "owner_no_image.png", class:"rounded" %>
-              </div>
-              <div class="col-5 col-sm-12">
-                <%= @pet.owner.name %>
-              </div>
-            </div>
-          </div>
         </div>
-         
-        <div class="row mt-3">
-          <div class="col-10 col-sm-9 pet-introduction pl-5">
-            <%= simple_format(@pet.introduction) %>
-          </div>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-2">
+        <div class="text-center">
+          <h6>パートナー</h6>
         </div>
+        <div class="text-center">
+          <%= attachment_image_tag @pet.owner, :image, size: '100x100', fallback: "owner_no_image.png", class:"rounded" %>
+        </div>
+        <div class="text-center">
+          <%= @pet.owner.name %>
+        </div>
+      </div>
+      <div class="col-8 pet-introduction pl-5">
+        <%= simple_format(@pet.introduction) %>
       </div>
     </div>
   </div>
   
       
-  <div class="row">
-    <div class="col-12 col-sm-8">
+  <div class="row mt-sm-4">
+    <div class="col-12 col-sm-9">
       <div class="row mt-5 ml-sm-5">
         
         <!--タブメニュー-->
@@ -91,6 +85,7 @@
         <!--タブの中身-->
         <div class="col-12" id="tab-contents">
           <div class="tab-area">
+            
             <!--日記一覧(tab1)-->
             <div id="tab1" class="tab">
               <div class="row">
@@ -175,7 +170,8 @@
         </div>
       </div>
     </div>
-      <%= render 'searches/search_box' %>
+    <%= render 'searches/search_box' %>
+      
   </div>
  
   <div class="modal-wrapper"></div>

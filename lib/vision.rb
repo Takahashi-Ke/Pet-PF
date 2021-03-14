@@ -33,7 +33,7 @@ module Vision
       result = JSON.parse(response.body)['responses'][0]['safeSearchAnnotation'].to_h
 
       # 解析結果が「LIKELY」又は「VERY_LIKELY」を含む場合はfalse、それ以外はtrueを返す
-      if result.values.include?("LIKELY") || result.values.include?("VERY_LIKELY")
+      if result.values.include?("VERY_LIKELY")
         return false
       else
         return true

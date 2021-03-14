@@ -16,9 +16,11 @@
             <%= diary.created_at.to_s(:datetime_jp) %>
           </div>
         </div>
-        <div class="diary-body">
-          <%= diary.body %>
-        </div>
+        <%= link_to diary_path(diary) do %>
+          <div class="diary-body">
+            <%= diary.body %>
+          </div>
+        <% end %>
         <% if diary.image.present? %>
           <div class="row justify-content-center">
             <%= link_to diary.image_url, "data-lightbox" => diary.image do %>
@@ -53,9 +55,10 @@
 
     <!--コメント一覧-->
     <% if owner_signed_in? %>
-      <%= render 'diary_comments/diary_comments_list', diary: diary %>
+      <div class="comment-box" id="comment-<%= diary.id %>">
+        <%= render 'diary_comments/diary_comments_list', diary: diary %>
+      </div>
     <% end %>
 
   </div>
 <% end %>
-<%#= paginate diaries %>

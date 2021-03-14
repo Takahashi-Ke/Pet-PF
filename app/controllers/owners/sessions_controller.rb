@@ -2,7 +2,7 @@
 
 class Owners::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  
+
   def new_guest
     owner = Owner.guest
     sign_in owner

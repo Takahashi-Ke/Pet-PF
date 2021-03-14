@@ -9,16 +9,16 @@
           <div class="col-10 mt-2 col-sm-5">
             <%= link_to mc.pet.name, pet_path(mc.pet) %>
           </div>
-          <div class="col-7 offset-5 col-sm-5 memory-date">
+          <div class="col-7 offset-5 col-sm-5 offset-sm-0 mt-sm-2 post-date">
             <%= mc.created_at.to_s(:datetime_jp) %>
           </div>
         </div>
         <div class="row ml-3 mb-4">
-          <div class="col-12">
+          <div class="col-11 ml-1 mt-2 post-comment">
             <%= mc.comment %>
           </div>
           <% if mc.pet == current_owner.pet %>
-            <div class="col-1 mt-2">
+            <div class="col-1 offset-9 mt-2">
               <%= link_to memory_comment_path(mc, memory_id: memory.id), method: :delete, remote: true do %>
                 <i class="far fa-trash-alt"></i>
               <% end %>

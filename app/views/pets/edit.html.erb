@@ -28,7 +28,7 @@
         <span>(10文字以内で入力してください)</span>
       </div>
       <div class="row justify-content-center">
-         <%= f.text_field :name, size:'30', autocomplete: "name" %>
+         <%= f.text_field :name, size:'30', autocomplete: "name", class:"form-field" %>
       </div>
     </div>
       <%= f.fields_for :pet do |pet| %>
@@ -55,14 +55,14 @@
             <span>(10文字以内で入力してください)</span>
           </div>
           <div class="row justify-content-center">
-            <%= pet.text_field :name, size:'30' %>
+            <%= pet.text_field :name, size:'30', class:"form-field" %>
           </div>
           <div class="row ml-2 ml-lg-5 mt-2">
             <%= pet.label :紹介文, class:"form-label" %>
             <span>(120文字以内で入力してください)</span>
           </div>
           <div class="row justify-content-center">
-            <%= pet.text_area :introduction, size:'50x5',class:"js-text" %>
+            <%= pet.text_area :introduction, size:'50x5',class:"js-text form-field" %>
           </div>
           <p class="js-text-count">/120</p>
           <div class="row ml-2 ml-lg-5 mt-3">
