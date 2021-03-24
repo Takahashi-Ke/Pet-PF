@@ -1,18 +1,22 @@
 class ChatsController < ApplicationController
   def show
     @pet = Pet.find(params[:pet_id])
-    rooms = current_owner.pet.pet_rooms.pluck(:room_id)
-    # 二人のチャット部屋があるか確認
-    pet_room = PetRoom.find_by(pet_id: @pet.id, room_id: rooms)
-    if pet_room.nil?
-      @room = Room.create
-      PetRoom.create(pet_id: current_owner.pet.id, room_id: @room.id)
-      PetRoom.create(pet_id: @pet.id, room_id: @room.id)
+    if @pet.id != current_owner.pet.id
+      rooms = current_owner.pet.pet_rooms.pluck(:room_id)
+      # 二人のチャット部屋があるか確認
+      pet_room = PetRoom.find_by(pet_id: @pet.id, room_id: rooms)
+      if pet_room.nil?
+        @room = Room.create
+        PetRoom.create(pet_id: current_owner.pet.id, room_id: @room.id)
+        PetRoom.create(pet_id: @pet.id, room_id: @room.id)
+      else
+        @room = pet_room.room
+      end
+      @chats = @room.chats
+      @chat = Chat.new
     else
-      @room = pet_room.room
+      redirect_to root_path
     end
-    @chats = @room.chats
-    @chat = Chat.new
   end
 
   def create
